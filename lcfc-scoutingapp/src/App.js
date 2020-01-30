@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './LCFC-Print.png';
+import logo from './Images/LCFC-Print.png';
 import './App.css';
 
 
