@@ -21,8 +21,9 @@ class Login extends React.Component {
 
                     <br/>
 
-                    <button type="button" class="submit">Submit</button>
+                    <button type="button" class="submit" onClick={{ }}>Submit</button>
                 </form>
+                
         </div> 
         );
     }

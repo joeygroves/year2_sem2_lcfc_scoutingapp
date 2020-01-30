@@ -7,9 +7,21 @@
     box-sizing: border-box;
     align-items: center;
     font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+    font-weight: bold;
   }
   
 body{
   background-color: #0B56A4;
   ;
+}
+
+.App-logo {
+  height: 40vmin;
+  padding-top: 10px;
+  pointer-events: none;
+  align-items: center;
+}
+
+.LoginForm{
+  font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
 }
