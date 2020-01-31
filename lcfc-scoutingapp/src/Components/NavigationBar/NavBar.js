@@ -19,6 +19,7 @@ class navBar extends React.Component{
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
                 <div className="topnav" id="myTopnav">
                     <div class="topLogo"><img src={imageNav} alt ="navImage"></img></div>
+                    {/* eslint-disable-next-line */}
                     <a href="javascript:void(0);" class="icon" onClick={this.myFunction}>
                         <i class="fa fa-bars"></i>
                     </a>
@@ -27,8 +28,6 @@ class navBar extends React.Component{
                     <a href="/contact">Contact</a>
                     <a href="/about">About</a>
                     <a href="/logout" class="right">Logout</a>
-                    {/* eslint-disable-next-line */}
-                    
                 </div>
             </div>
             
