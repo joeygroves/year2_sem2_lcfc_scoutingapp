@@ -8,7 +8,7 @@ class GoalkeeperForm extends React.Component{
             <div class="grid-container">
                 <div class="grid-item">
                     <h3>General</h3>
-                    <label>Test: </label>
+                    <label>Handling: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                     <label>Shot Stopping: </label>

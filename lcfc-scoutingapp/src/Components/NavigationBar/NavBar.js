@@ -23,8 +23,8 @@ class navBar extends React.Component{
                     <a href="javascript:void(0);" class="icon" onClick={this.myFunction}>
                         <i class="fa fa-bars"></i>
                     </a>
-                    <a href="/">Home</a>
-                    <a href="/news">News</a>
+                    <a href="/" >Home</a>
+                    <a href="PlayerReport.js">Player Reports</a>
                     <a href="/contact">Contact</a>
                     <a href="/about">About</a>
                     <a href="/logout" class="right">Logout</a>
