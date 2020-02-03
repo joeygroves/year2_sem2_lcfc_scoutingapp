@@ -20,12 +20,15 @@ var FormChange = Goalkeeper;
 
 
 class PlayerReportPage extends React.Component{
-   runFormChange(id){
-       var myVal = Goalkeeper;
-       FormChange = myVal;
-       
-    }
-    
+    runFormChange(SelectedValue){
+        if(SelectedValue.value == "Goalkeeper"){
+            FormChange = Goalkeeper;
+        }
+        else if(SelectedValue.value == "Defender"){
+            FormChange = Defender;
+        }
+        
+     }
     render(){
         return(
             <div class= "Player Reports Forms">
@@ -36,7 +39,7 @@ class PlayerReportPage extends React.Component{
                     </h1>
                     <label for="PlayerPositions" >Select Player Position</label>
                     <br/>
-                    <select id = "PlayerPositions" onUpdate={this.runFormChange(this)}>
+                    <select id = "PlayerPositions" onChange={this.runFormChange(this)}> 
                         <option value = "Goalkeeper">Goalkeeper</option>
                         <option value = "Defender" >Defender</option>
                         <option value = "fallBack">Fall Back </option>
@@ -44,8 +47,14 @@ class PlayerReportPage extends React.Component{
                         <option value = "wideMidfielder">Wide Midfielder</option>
                         <option value = "Striker">Striker</option>
                     </select>
+                    <br/>
+                    <br/>
+                    <label>Scout Name: </label>
+                    <input></input>
+                    <br/>
+                    <br/>
                     
-                    <PlayerInfo />
+                    <PlayerInfo/>
                     
                     <FormChange />
                     

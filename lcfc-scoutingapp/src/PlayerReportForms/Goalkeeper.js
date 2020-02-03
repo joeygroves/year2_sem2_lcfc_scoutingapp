@@ -5,8 +5,8 @@ class GoalkeeperForm extends React.Component{
     render(){
         return(
             <form>
+            <h2>Goalkeeper</h2>
             <div class="grid-container">
-                <h2>Goalkeeper</h2>
                 <div class="grid-item">
                     <h3>General</h3>
                     <label>Handling: </label>
