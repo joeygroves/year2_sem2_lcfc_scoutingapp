@@ -12,17 +12,20 @@ import Midfielder from '../PlayerReportForms/Midfielder'
 import wideMidfielder from '../PlayerReportForms/wideMidfielder'
 // eslint-disable-next-line
 import Striker from '../PlayerReportForms/Striker'
+// eslint-disable-next-line
+import PlayerInfo from '../PlayerReportForms/Player Info'
 
 var FormChange = Goalkeeper;
 
 
+
 class PlayerReportPage extends React.Component{
-   /* runFormChange(id){;
-        FormChange = id;
+   runFormChange(id){
+       var myVal = Goalkeeper;
+       FormChange = myVal;
+       
     }
     
-    onChange={this.runFormChange(this.value)}
-    */
     render(){
         return(
             <div class= "Player Reports Forms">
@@ -31,18 +34,22 @@ class PlayerReportPage extends React.Component{
                     <h1>
                         Player Report Page
                     </h1>
-                    <label for="PlayerPositions">Select Player Position</label>
+                    <label for="PlayerPositions" >Select Player Position</label>
                     <br/>
-                    <select id = "PlayerPositions" >
+                    <select id = "PlayerPositions" onUpdate={this.runFormChange(this)}>
                         <option value = "Goalkeeper">Goalkeeper</option>
-                        <option value = "Defender">Defender</option>
-                        <option value = "fallBack">Fall Back</option>
+                        <option value = "Defender" >Defender</option>
+                        <option value = "fallBack">Fall Back </option>
                         <option value = "Midfielder">Midfielder</option>
                         <option value = "wideMidfielder">Wide Midfielder</option>
                         <option value = "Striker">Striker</option>
                     </select>
                     
+                    <PlayerInfo />
+                    
                     <FormChange />
+                    
+                    <br/>
                 </div>
             </div>
         );

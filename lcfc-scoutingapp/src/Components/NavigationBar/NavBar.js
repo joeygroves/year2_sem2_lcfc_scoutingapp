@@ -1,6 +1,7 @@
 import React from 'react';
 import './NavBar.css';
 import imageNav from '../../Images/NavLogo.png'
+import HomePage from '../../Pages/PlayerReport'
 
 class navBar extends React.Component{
     myFunction = () =>{
@@ -23,7 +24,7 @@ class navBar extends React.Component{
                     <a href="javascript:void(0);" class="icon" onClick={this.myFunction}>
                         <i class="fa fa-bars"></i>
                     </a>
-                    <a href="/" >Home</a>
+                    <a href="/HomePage"  >Home</a>
                     <a href="PlayerReport.js">Player Reports</a>
                     <a href="/contact">Contact</a>
                     <a href="/about">About</a>
