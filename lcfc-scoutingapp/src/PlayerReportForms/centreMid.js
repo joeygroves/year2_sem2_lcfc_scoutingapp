@@ -1,30 +1,33 @@
 import React from 'react'
 import './Goalkeeper.css'
-class fullBackForm extends React.Component{
+class centreMidfielderForm extends React.Component{
     
     render(){
         return(
             <form>
             <div class="grid-container">
-                
+
             <div class="grid-item">
                     <h3>In Possession</h3>
-                    <label>Receiving under pressure: </label>
+                    <label>Control under pressure: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Bravery in possession: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                     <label>Short passing: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Long passing: </label>
+                    <label>Switching play: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Control: </label>
-                    <input type="number" max="10" min= "0"></input>
-                    <br></br>
-                    <label>Right foot: </label>
+                    <label>Running with the ball: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                     <label>Left foot: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Right foot: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>	
                 </div>
@@ -40,6 +43,9 @@ class fullBackForm extends React.Component{
                     <label>Crossing: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
+                    <label>Shooting: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
                 </div>
 
                 <div class="grid-item">
@@ -53,19 +59,13 @@ class fullBackForm extends React.Component{
                     <label>Tackling: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Defending far post: </label>
-                    <input type="number" max="10" min= "0"></input>
-                    <br></br>
-                    <label>Stop the cross: </label>
-                    <input type="number" max="10" min= "0"></input>
-                    <br></br>
-                    <label>Pressing: </label>
+                    <label>Closing down: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                     <label>Recovery runs: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Tracking runners: </label>
+                    <label>Marking awareness: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                 </div>
@@ -75,26 +75,23 @@ class fullBackForm extends React.Component{
                     <label>Agility: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Angles to receive: </label>
+                    <label>Finding space: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Link up with winger: </label>
+                    <label>Vision to see a pass: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Covering across: </label>
-                    <input type="number" max="10" min= "0"></input>
-                    <br></br>
-                    <label>Willingness to get forward: </label>
+                    <label>Creativity: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                 </div>
 
                 <div class="grid-item">
                     <h3>Physical</h3>
-                    <label>Pace: </label>
+                    <label>Speed: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Mobility: </label>
+                    <label>Movement skills: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                     <label>Work rate: </label>
@@ -103,30 +100,24 @@ class fullBackForm extends React.Component{
                     <label>Strength: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Jump/spring: </label>
-                    <input type="number" max="10" min= "0"></input>
-                    <br></br>
                 </div>
 
                 
                 <div class="grid-item">
                     <h3>Pyschological</h3>
-                    <label>Bravery: </label>
-                    <input type="number" max="10" min= "0"></input>
-                    <br></br>
-                    <label>Leadership: </label>
-                    <input type="number" max="10" min= "0"></input>
-                    <br></br>
-                    <label>Team work: </label>
-                    <input type="number" max="10" min= "0"></input>
-                    <br></br>
                     <label>Communication: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Response to criticism: </label>
+                    <label>Concentration: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Reaction to mistakes: </label>
+                    <label>Commitment: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Emotional control: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Confidence: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                 </div>
@@ -136,4 +127,4 @@ class fullBackForm extends React.Component{
         );
     }
 }
-export default fullBackForm;
+export default centreMidfielderForm;

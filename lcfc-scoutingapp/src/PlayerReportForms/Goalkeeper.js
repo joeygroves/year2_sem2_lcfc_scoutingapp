@@ -6,8 +6,10 @@ class GoalkeeperForm extends React.Component{
         return(
             <form>
             <div class="grid-container">
+
                 <div class="grid-item">
                     <h3>General</h3>
+
                     <label>Handling: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
@@ -36,6 +38,7 @@ class GoalkeeperForm extends React.Component{
                 </div>
                 <div class="grid-item">
                     <h3>Distribution</h3>
+
                     <label>Dead Ball Kicks: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
@@ -51,8 +54,8 @@ class GoalkeeperForm extends React.Component{
                     <label>Kicking When Given Time: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    
                 </div>
+                
                 <div class="grid-item">
                     <h3>Distribution</h3>
                     <label>Dead Ball Kicks: </label>
