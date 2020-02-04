@@ -4,12 +4,14 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var path = require('path');
 const port = process.env.PORT || 5000;
-
+var ip = require('ip');
+ 
+ip = ip.address() // my ip address
 
 var connection = mysql.createConnection({
 	host     : 'localhost',
 	user     : 'root',
-	password : 'SECRET',
+	password : 'alumwelljamie3',
 	database : 'nodelogin'
 });
 
@@ -40,7 +42,8 @@ app.post('/person', function(request, response) {
 			if (results.length > 0) {
 				request.session.loggedin = true;
 				request.session.username = username;
-				response.render(path.join(__dirname + '/homepage.ejs'));
+				// response.render(path.join(__dirname + '/homepage.ejs'));
+				 return response.redirect('http://'+ip+':3000/HomePage')
 			} else {
 				response.send('Incorrect Username and/or Password!');
 			}			
@@ -52,7 +55,21 @@ app.post('/person', function(request, response) {
 	}
 });
 
-app.get('/home', function(request, response) {
+app.get('/LogOut', function(request, response) {
+	if (request.session.loggedin) {
+		request.session.loggedin = false;
+		response.send("Logged out");
+	} else {
+		response.send("You're Not Signed In");
+	}
+	response.end();
+});
+
+app.listen(port, () => console.log(`Listening on port ${port}`));
+
+
+
+app.get('/hello', function(request, response) {
 	if (request.session.loggedin) {
 		response.send('Welcome back, ' + request.session.username + '!');
 	} else {
@@ -61,4 +78,4 @@ app.get('/home', function(request, response) {
 	response.end();
 });
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+
