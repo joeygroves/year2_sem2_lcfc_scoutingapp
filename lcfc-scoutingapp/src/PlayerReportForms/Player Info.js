@@ -24,7 +24,7 @@ class GoalkeeperForm extends React.Component{
                     <input></input>
                     <br></br>
                     <label>Contract: </label>
-                    <input ></input>
+                    <input></input>
                     <br></br>
                     <label>Club: </label>
                     <input></input>

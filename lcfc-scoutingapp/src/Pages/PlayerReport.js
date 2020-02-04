@@ -14,58 +14,40 @@ import wideMidfielder from '../PlayerReportForms/wideMidfielder'
 import Striker from '../PlayerReportForms/Striker'
 // eslint-disable-next-line
 import PlayerInfo from '../PlayerReportForms/Player Info'
-
-var FormChange = Goalkeeper;
-
-
+import "./PlayerReport.css"
+import {BrowserRouter as Router, Link, Switch, Route} from 'react-router-dom'
 
 class PlayerReportPage extends React.Component{
-    runFormChange(SelectedValue){
-        if(SelectedValue.value == "Goalkeeper"){
-            FormChange = Goalkeeper;
-            this.forceUpdate(); 
-        }
-        else if(SelectedValue.value == "centreBack"){
-            FormChange = centreBack;
-            this.forceUpdate(); 
-        } 
-        
-     }
     render(){
         return(
+            <Router>
             <div class= "Player Reports Forms">
-                <NavBar />
                 <div class= "PlayerForms">
                     <h1>
                         Player Report Page
                     </h1>
-                    <label for="PlayerPositions" >Select Player Position</label>
+                    <label for="PlayerPositions" >Select Player Position:</label>
                     <br/>
-                    <select id = "PlayerPositions" onChange = {this.runFormChange(this)} > 
-                        <option value = "Goalkeeper"> Goalkeeper</option>
-                        <option value = "centreBack">Central Defender</option>
-                        <option value = "fallBack">Fall Back </option>
-                        <option value = "centreMidfielder">Central Midfielder</option>
-                        <option value = "wideMidfielder">Wide Midfielder</option>
-                        <option value = "Striker">Striker</option>
-                    </select>
-                    <br/>
-                    <br/>
-                    <label>Scout Name: </label>
-                    <input></input>
-                    <br/>
-                    <br/>
-                    
-                    <PlayerInfo/>
-                    
-                    <FormChange />
-                    
-                    <br/>
-                    <input type="submit"/>
+                        <button><Link to = {"/playerReport/goalkeeper"}>Goalkeeper</Link></button>
+                        <button><Link to = {"/playerReport/centreBack"}>Centre Back</Link></button>
+                        <button><Link to = {"/playerReport/fallBack"}>Fall Back</Link></button>
+                        <button><Link to = {"/playerReport/centreMid"}>Centre Midfielder</Link></button>
+                        <button><Link to = {"/playerReport/wideMidfielder"}>Wide Midfielder</Link></button>
+                        <button><Link to = {"/playerReport/Striker"}>Striker</Link></button>
+                        <PlayerInfo />
+                        <Switch>
+                            <Route exact path="/playerReport/goalkeeper" component = {Goalkeeper}></Route>
+                            <Route path="/playerReport/centreBack" component = {centreBack}></Route>
+                            <Route path="/playerReport/fallBack" component = {fallBack}></Route>
+                            <Route path="/playerReport/centreMid" component = {centreMid}></Route>
+                            <Route path="/playerReport/wideMidfielder" component = {wideMidfielder}></Route>
+                            <Route path="/playerReport/Striker" component = {Striker}></Route>
+                        </Switch>
                     <br/>
                     <br/>
                 </div>
             </div>
+            </Router>
         );
     }
 }
