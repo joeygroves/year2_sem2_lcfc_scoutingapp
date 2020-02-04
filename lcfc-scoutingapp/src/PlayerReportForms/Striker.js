@@ -5,6 +5,8 @@ class StrikerForm extends React.Component{
     render(){
         return(
             <form>
+                
+            <h2>Striker</h2>
             <div class="grid-container">
 
             <div class="grid-item">

@@ -3,11 +3,11 @@ import NavBar from '../Components/NavigationBar/NavBar'
 // eslint-disable-next-line
 import Goalkeeper from '../PlayerReportForms/Goalkeeper'
 // eslint-disable-next-line
-import Defender from '../PlayerReportForms/Defender'
+import centreBack from '../PlayerReportForms/centreBack'
 // eslint-disable-next-line
 import fallBack from '../PlayerReportForms/fallBack'
 // eslint-disable-next-line
-import Midfielder from '../PlayerReportForms/Midfielder'
+import centreMid from '../PlayerReportForms/centreMid'
 // eslint-disable-next-line
 import wideMidfielder from '../PlayerReportForms/wideMidfielder'
 // eslint-disable-next-line
@@ -23,10 +23,12 @@ class PlayerReportPage extends React.Component{
     runFormChange(SelectedValue){
         if(SelectedValue.value == "Goalkeeper"){
             FormChange = Goalkeeper;
+            this.forceUpdate(); 
         }
-        else if(SelectedValue.value == "Defender"){
-            FormChange = Defender;
-        }
+        else if(SelectedValue.value == "centreBack"){
+            FormChange = centreBack;
+            this.forceUpdate(); 
+        } 
         
      }
     render(){
@@ -39,11 +41,11 @@ class PlayerReportPage extends React.Component{
                     </h1>
                     <label for="PlayerPositions" >Select Player Position</label>
                     <br/>
-                    <select id = "PlayerPositions" onChange={this.runFormChange(this)}> 
-                        <option value = "Goalkeeper">Goalkeeper</option>
-                        <option value = "Defender" >Defender</option>
+                    <select id = "PlayerPositions" onChange = {this.runFormChange(this)} > 
+                        <option value = "Goalkeeper"> Goalkeeper</option>
+                        <option value = "centreBack">Central Defender</option>
                         <option value = "fallBack">Fall Back </option>
-                        <option value = "Midfielder">Midfielder</option>
+                        <option value = "centreMidfielder">Central Midfielder</option>
                         <option value = "wideMidfielder">Wide Midfielder</option>
                         <option value = "Striker">Striker</option>
                     </select>
@@ -58,6 +60,9 @@ class PlayerReportPage extends React.Component{
                     
                     <FormChange />
                     
+                    <br/>
+                    <input type="submit"/>
+                    <br/>
                     <br/>
                 </div>
             </div>
