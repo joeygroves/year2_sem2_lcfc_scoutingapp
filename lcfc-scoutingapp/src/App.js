@@ -7,7 +7,7 @@ import NavBar from './Components/NavigationBar/NavBar'
 // eslint-disable-next-line
 import PlayerReportP from './Pages/PlayerReport'
 import Home from './Pages/HomePage'
-import {BrowserRouter as Router, Link, Switch, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
  
 
 function App() {

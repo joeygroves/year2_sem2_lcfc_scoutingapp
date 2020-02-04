@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from '../Components/NavigationBar/NavBar'
 // eslint-disable-next-line
 import Goalkeeper from '../PlayerReportForms/Goalkeeper'
 // eslint-disable-next-line
@@ -28,12 +27,12 @@ class PlayerReportPage extends React.Component{
                     </h1>
                     <label for="PlayerPositions" >Select Player Position:</label>
                     <br/>
-                        <button><Link to = {"/playerReport/goalkeeper"}>Goalkeeper</Link></button>
-                        <button><Link to = {"/playerReport/centreBack"}>Centre Back</Link></button>
-                        <button><Link to = {"/playerReport/fallBack"}>Fall Back</Link></button>
-                        <button><Link to = {"/playerReport/centreMid"}>Centre Midfielder</Link></button>
-                        <button><Link to = {"/playerReport/wideMidfielder"}>Wide Midfielder</Link></button>
-                        <button><Link to = {"/playerReport/Striker"}>Striker</Link></button>
+                        <Link to = {"/playerReport/goalkeeper"}><button>Goalkeeper</button></Link>
+                        <Link to = {"/playerReport/centreBack"}><button>Centre Back</button></Link>
+                        <Link to = {"/playerReport/fallBack"}><button>Fall Back</button></Link>
+                        <Link to = {"/playerReport/centreMid"}><button>Centre Midfielder</button></Link>
+                        <Link to = {"/playerReport/wideMidfielder"}><button>Wide Midfielder</button></Link>
+                        <Link to = {"/playerReport/Striker"}><button>Striker</button></Link>
                         <PlayerInfo />
                         <Switch>
                             <Route exact path="/playerReport/goalkeeper" component = {Goalkeeper}></Route>

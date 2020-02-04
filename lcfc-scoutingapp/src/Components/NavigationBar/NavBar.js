@@ -7,7 +7,7 @@ import PLayerReports from '../../Pages/PlayerReport'
 import HomePage from '../../Pages/HomePage'
 // eslint-disable-next-line
 import {BrowserRouter as Router, Link, Switch, Route} from 'react-router-dom'
-import PlayerReports from '../../Pages/PlayerReport';
+
 class navBar extends React.Component{
     myFunction = () =>{
         var x = document.getElementById("myTopnav");

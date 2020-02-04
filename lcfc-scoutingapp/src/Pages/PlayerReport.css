@@ -1,10 +1,12 @@
-.Buttons{
-    display: block;
-}
-.Buttons button{
+button{
     font-weight: bold;
     width: 40%;
-    height: 100px;
-    background-color: rgb(0, 128, 202);
+    height: 60px;
     font: inherit;
+    text-decoration: none;
+    color: black;
+}
+button :visited{
+    text-decoration: none;
+    color: black;
 }

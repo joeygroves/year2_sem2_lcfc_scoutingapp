@@ -1,5 +1,5 @@
 import React from 'react'
-import './Goalkeeper.css'
+import './PlayerPos.css'
 class centreBackForm extends React.Component{
     
     render(){

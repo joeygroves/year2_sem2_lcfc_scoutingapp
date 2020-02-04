@@ -1,5 +1,5 @@
 import React from 'react'
-import './Goalkeeper.css'
+import './PlayerPos.css'
 class fullBackForm extends React.Component{
     
     render(){
