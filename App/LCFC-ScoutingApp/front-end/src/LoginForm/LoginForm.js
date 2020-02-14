@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from '../Images/LCFC-Print.png';
 import './LoginForm.css';
 import ReactDOM from 'react-dom';
-import HomePage from '../HomePage';
+import HomePage from '../App';
 class App extends Component {
 
   state = {
@@ -67,7 +67,6 @@ class App extends Component {
       this.setState({ username: this.state.post });
 
       ReactDOM.render(<HomePage />, document.getElementById('root'));
-      
 
     } else if (this.state.responseToPost == "IncorrectUsernameOrPassword") {
 
@@ -141,17 +140,19 @@ class App extends Component {
 
             <p></p>
 
-            <label for="uname"><b>Username</b></label>
+            <label><b>Username</b></label>
 
             <input type="text" placeholder="Enter Username" value={this.state.post} onChange={e => this.setState({ post: e.target.value })} />
 
             <br></br>
 
+            <label><b>Password</b></label>
+
             <input type="password" placeholder="Enter Password" value={this.state.password} onChange={x => this.setState({ password: x.target.value })} />
 
             <br></br>
 
-            <button type="submit">Submit</button>
+            <button type="submit"class="button">Submit</button>
 
           </form>
 
@@ -159,13 +160,13 @@ class App extends Component {
 
           <form onSubmit={this.logoutfunction}  >
 
-            <button type="submit" >Log Out</button>
+            <button type="submit" class="button">Log Out</button>
 
           </form>
 
           <form onSubmit={this.playerreport}>
 
-            <button type="submit" >Player Report</button>
+            <button type="submit" class="button">Player Report</button>
 
             <p>{this.state.jamie}</p>
 
