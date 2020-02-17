@@ -44,6 +44,19 @@ class PlayerReportPage extends React.Component{
                         </Switch>
                     <br/>
                     <br/>
+<<<<<<< HEAD
+                    <select id = "PlayerPositions" >
+                        <option value = "Goalkeeper">Goalkeeper</option>
+                        <option value = "Defender">Defender</option>
+                        <option value = "fullBack">Full Back</option>
+                        <option value = "Midfielder">Midfielder</option>
+                        <option value = "wideMidfielder">Wide Midfielder</option>
+                        <option value = "Striker">Striker</option>
+                    </select>
+                    
+                    <FormChange />
+=======
+>>>>>>> c23602d81c18a5f3ff51425f10fdd2ac8c6beed6
                 </div>
             </div>
             </Router>
