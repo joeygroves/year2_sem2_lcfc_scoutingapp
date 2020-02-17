@@ -4,7 +4,7 @@ import Goalkeeper from '../PlayerReportForms/Goalkeeper'
 // eslint-disable-next-line
 import centreBack from '../PlayerReportForms/centreBack'
 // eslint-disable-next-line
-import fallBack from '../PlayerReportForms/fallBack'
+import fullBack from '../PlayerReportForms/fullBack'
 // eslint-disable-next-line
 import centreMid from '../PlayerReportForms/centreMid'
 // eslint-disable-next-line
@@ -29,15 +29,15 @@ class PlayerReportPage extends React.Component{
                     <br/>
                         <Link to = {"/playerReport/goalkeeper"}><button>Goalkeeper</button></Link>
                         <Link to = {"/playerReport/centreBack"}><button>Centre Back</button></Link>
-                        <Link to = {"/playerReport/fallBack"}><button>Fall Back</button></Link>
+                        <Link to = {"/playerReport/fullBack"}><button>Full Back</button></Link>
                         <Link to = {"/playerReport/centreMid"}><button>Centre Midfielder</button></Link>
                         <Link to = {"/playerReport/wideMidfielder"}><button>Wide Midfielder</button></Link>
                         <Link to = {"/playerReport/Striker"}><button>Striker</button></Link>
                         <PlayerInfo />
                         <Switch>
-                            <Route exact path="/playerReport/goalkeeper" component = {Goalkeeper}></Route>
+                            <Route path="/playerReport/goalkeeper" component = {Goalkeeper}></Route>
                             <Route path="/playerReport/centreBack" component = {centreBack}></Route>
-                            <Route path="/playerReport/fallBack" component = {fallBack}></Route>
+                            <Route path="/playerReport/fallBack" component = {fullBack}></Route>
                             <Route path="/playerReport/centreMid" component = {centreMid}></Route>
                             <Route path="/playerReport/wideMidfielder" component = {wideMidfielder}></Route>
                             <Route path="/playerReport/Striker" component = {Striker}></Route>
