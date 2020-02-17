@@ -1,19 +1,13 @@
 import React from 'react'
-<<<<<<< HEAD
 import './PlayerPos.css'
-=======
-import './Goalkeeper.css'
->>>>>>> d0fd623ddcf0c98fc86f5592b2f31c9b10b96ab9
 class fullBackForm extends React.Component{
     
     render(){
         return(
             <form>
-<<<<<<< HEAD
                 
             <h2>Full Back</h2>
-=======
->>>>>>> d0fd623ddcf0c98fc86f5592b2f31c9b10b96ab9
+
             <div class="grid-container">
                 
             <div class="grid-item">
