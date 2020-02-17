@@ -3,11 +3,11 @@ import NavBar from '../Components/NavigationBar/NavBar'
 // eslint-disable-next-line
 import Goalkeeper from '../PlayerReportForms/Goalkeeper'
 // eslint-disable-next-line
-import Defender from '../PlayerReportForms/Defender'
+import centreBack from '../PlayerReportForms/centreBack'
 // eslint-disable-next-line
-import fallBack from '../PlayerReportForms/fallBack'
+import fullBack from '../PlayerReportForms/fullBack'
 // eslint-disable-next-line
-import Midfielder from '../PlayerReportForms/Midfielder'
+import centreMid from '../PlayerReportForms/centreMid'
 // eslint-disable-next-line
 import wideMidfielder from '../PlayerReportForms/wideMidfielder'
 // eslint-disable-next-line
@@ -36,7 +36,7 @@ class PlayerReportPage extends React.Component{
                     <select id = "PlayerPositions" >
                         <option value = "Goalkeeper">Goalkeeper</option>
                         <option value = "Defender">Defender</option>
-                        <option value = "fallBack">Fall Back</option>
+                        <option value = "fullBack">Full Back</option>
                         <option value = "Midfielder">Midfielder</option>
                         <option value = "wideMidfielder">Wide Midfielder</option>
                         <option value = "Striker">Striker</option>
