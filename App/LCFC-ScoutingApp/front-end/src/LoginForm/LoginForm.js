@@ -3,46 +3,22 @@ import logo from '../Images/LCFC-Print.png';
 import './LoginForm.css';
 import ReactDOM from 'react-dom';
 import HomePage from '../App';
+
 class App extends Component {
 
   state = {
     response: '',
     username: '',
-    post: '',
     password: '',
     responseToPost: '',
-    jamie: '',
     message: '',
   };
-
-  componentDidMount() {
-    this.callApi()
-
-      .then(res => this.setState({ response: res.express }))
-
-      .catch(err => console.log(err));
-
-  }
-
-  callApi = async () => {
-
-    const response = await fetch('/api/hello');
-
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
-
-  };
-
-
 
   handleSubmit = async (e) => {
 
     e.preventDefault();
 
-    const response = await fetch('/api/world', {
+    const response = await fetch('/api/LogInAuthentication', {
 
       method: 'POST',
 
@@ -52,7 +28,7 @@ class App extends Component {
 
       },
 
-      body: JSON.stringify({ post: this.state.post, password: this.state.password }),
+      body: JSON.stringify({ username: this.state.username, password: this.state.password }),
 
     });
 
@@ -62,7 +38,7 @@ class App extends Component {
 
     if (this.state.responseToPost == "LoggedIn") {
 
-      this.setState({ message:"Logged In" });
+      this.setState({ message: "Logged In" });
 
       this.setState({ username: this.state.post });
 
@@ -79,55 +55,8 @@ class App extends Component {
 
   };
 
-  logoutfunction = async () => {
-
-    const response = await fetch('/api/logout');
-
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
-
-  }
-
-
-  playerreport = async (e) => {
-
-    e.preventDefault();
-
-    const response = await fetch('/api/hello', {
-
-      method: 'POST',
-
-      headers: {
-
-        'Content-Type': 'application/json',
-
-      },
-
-    });
-
-    const body = await response.text();
-
-    this.setState({ jamie: body });
-
-  };
-
-
-  logoutfunction = async () => {
-
-    const response = await fetch('/api/logout');
-
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
-
-  }
-
   render() {
+    
     return (
 
       <div className="Login">
@@ -142,7 +71,7 @@ class App extends Component {
 
             <label><b>Username</b></label>
 
-            <input type="text" placeholder="Enter Username" value={this.state.post} onChange={e => this.setState({ post: e.target.value })} />
+            <input type="text" placeholder="Enter Username" value={this.state.username} onChange={e => this.setState({ username: e.target.value })} />
 
             <br></br>
 
@@ -152,25 +81,11 @@ class App extends Component {
 
             <br></br>
 
-            <button type="submit"class="button">Submit</button>
+            <button type="submit" class="button">Submit</button>
 
           </form>
 
           <p>{this.state.message}</p>
-
-          <form onSubmit={this.logoutfunction}  >
-
-            <button type="submit" class="button">Log Out</button>
-
-          </form>
-
-          <form onSubmit={this.playerreport}>
-
-            <button type="submit" class="button">Player Report</button>
-
-            <p>{this.state.jamie}</p>
-
-          </form>
 
         </header>
 

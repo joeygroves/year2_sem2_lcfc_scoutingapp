@@ -13,20 +13,20 @@ class HomePage extends React.Component {
     state = {
 
         username: '',
-        jamie: '',
-
+        JSONStringDataForUsers: '',
+        array: [],
 
 
     };
 
     componentDidMount() {
 
-        this.gotohomepage();
+        this.gatherUserInformation();
     }
 
-    gotohomepage = async () => {
+    gatherUserInformation = async () => {
 
-        const response = await fetch('/api/hello', {
+        const response = await fetch('/api/GetUserInformation', {
 
             method: 'POST',
 
@@ -40,38 +40,22 @@ class HomePage extends React.Component {
 
         const body = await response.text();
 
-        this.setState({ jamie: body });
+        this.setState({ JSONStringDataForUsers: body });
 
-        this.convertingstringintoJSON();
-
+       
     };
 
-    convertingstringintoJSON() {
-
-        var myjson = JSON.parse(this.state.jamie);
-
-        var numericArray = [];
-
-        for (var i = 0; i < myjson.length; i++) {
-           
-            numericArray[i] = myjson.username[i];
-        }
-
-        console.log((numericArray[numericArray.length - 1]).toString());
-
-    }
 
         render() {
+           
             return (
-                <div>
+              
+              <div>
 
-                    <p>{this.state.jamie}</p>
+                    <p>{this.state.JSONStringDataForUsers}</p>
                    
-
-
                 </div>
-
-
+                
             );
 
         }

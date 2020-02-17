@@ -1,50 +1,71 @@
 import React from 'react';
 import './App.css';
-import imageNav from './Images/NavLogo.png'
-// eslint-disable-next-line
 import NavBar from './Components/NavigationBar/NavBar'
-// eslint-disable-next-line
 import PlayerReport from './Pages/PlayerReport'
 import Home from './Pages/HomePage'
+import LogIn from './LoginForm/LoginForm'
+import LogOut from './Pages/LogOutPage'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import ReactDOM from 'react-dom';
 
+class App extends React.Component {
 
-function App() {
+  render() {
 
+    return (
 
-  return (
+      <div className="App">
 
-    <div className="App">
+        <Router>
 
-      <Router>
+          <div>
 
-        <div>
+            <NavBar />
 
-        <NavBar />
+            <Switch>
 
-          <Switch>
+              <Route path="/LogIn">
 
-            <Route path="/PlayerReport">
+                <LogIn />
 
-              <PlayerReport />
+              </Route>
 
-            </Route>
+              <Route path="/HomePage">
 
-            <Route path="/">
+                <Home />
 
-              <Home />
+              </Route>
 
-            </Route>
+              <Route path="/PlayerReport">
 
-          </Switch>
+                <PlayerReport />
 
-        </div>
+              </Route>
 
-      </Router>
+              <Route path="/LogOut">
 
-    </div>
+                <LogOut />
 
-  );
+              </Route>
+
+              <Route exact-path="/">
+
+                <Home />
+
+              </Route>
+
+            </Switch>
+
+          </div>
+
+        </Router>
+
+      </div>
+
+    )
+
+  }
+
 }
 
 export default App;
