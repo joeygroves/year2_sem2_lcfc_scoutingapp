@@ -8,7 +8,15 @@ class wideMidfielderForm extends React.Component{
                 
             <h2>Wide Midfielder</h2>
             <div class="grid-container">
-               
+            <div class="grid-item">    
+                <h3>Player Rating</h3>
+                <select>
+                    <option>A</option>
+                    <option>B+</option>
+                    <option>B</option>
+                    <option>C</option>
+                </select>
+            </div>
             <div class="grid-item">
                     <h3>In Possession</h3>
                     <label>Control: </label>
@@ -138,7 +146,12 @@ class wideMidfielderForm extends React.Component{
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                 </div>
-                
+                <div class = "grid-item">
+                    <h3>Additional Comments</h3>
+                    <textarea class = "commentBox">
+
+                    </textarea>
+                </div>
             </div>
             </form>
         );

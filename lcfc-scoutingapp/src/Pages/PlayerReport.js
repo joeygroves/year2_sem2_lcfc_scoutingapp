@@ -37,7 +37,7 @@ class PlayerReportPage extends React.Component{
                         <Switch>
                             <Route path="/playerReport/goalkeeper" component = {Goalkeeper}></Route>
                             <Route path="/playerReport/centreBack" component = {centreBack}></Route>
-                            <Route path="/playerReport/fallBack" component = {fullBack}></Route>
+                            <Route path="/playerReport/fullBack" component = {fullBack}></Route>
                             <Route path="/playerReport/centreMid" component = {centreMid}></Route>
                             <Route path="/playerReport/wideMidfielder" component = {wideMidfielder}></Route>
                             <Route path="/playerReport/Striker" component = {Striker}></Route>
