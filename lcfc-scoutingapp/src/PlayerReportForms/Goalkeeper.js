@@ -1,10 +1,11 @@
 import React from 'react'
-import './Goalkeeper.css'
+import './PlayerPos.css'
 class GoalkeeperForm extends React.Component{
     
     render(){
         return(
             <form>
+            <h2>Goalkeeper</h2>
             <div class="grid-container">
 
                 <div class="grid-item">
@@ -34,7 +35,6 @@ class GoalkeeperForm extends React.Component{
                     <label>Left Foot: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-
                 </div>
                 <div class="grid-item">
                     <h3>Distribution</h3>
@@ -53,27 +53,61 @@ class GoalkeeperForm extends React.Component{
                     <br></br>
                     <label>Kicking When Given Time: </label>
                     <input type="number" max="10" min= "0"></input>
+                    <br></br>                    
+                </div>
+                <div class="grid-item">
+                    <h3>Decision Making</h3>
+                    <label>Dealing With Crosses: </label>
+                    <input type="number" max="10" min= "0"></input>
                     <br></br>
+                    <label>Tendancy to Punch: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Tendancy to Catch: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Starting Position: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>1v1: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Dealing With Through Ball: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>                    
+
                 </div>
                 
                 <div class="grid-item">
-                    <h3>Distribution</h3>
-                    <label>Dead Ball Kicks: </label>
+                    <h3>Physical</h3>
+                    <label>Agility: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Kicking Our of Hands: </label>
+                    <label>Reactions: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Throwing: </label>
+                    <label>Strength: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Kicking Under Pressure: </label>
+                    <label>Speed: </label>
+                    <input type="number" max="10" min= "0"></input>                    
+                </div>
+                <div class="grid-item">
+                    <h3>Psychological</h3>
+                    <label>Bravery: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Kicking When Given Time: </label>
+                    <label>Leadership: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    
+                    <label>Presence/Aura: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Communication: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Reaction to Mistake: </label>
+                    <input type="number" max="10" min= "0"></input>                    
                 </div>
             </div>
             </form>

@@ -1,10 +1,12 @@
 import React from 'react'
-import './Goalkeeper.css'
+import './PlayerPos.css'
 class centreBackForm extends React.Component{
     
     render(){
         return(
             <form>
+                
+            <h2>Centre Back</h2>
             <div class="grid-container">
                 
             <div class="grid-item">

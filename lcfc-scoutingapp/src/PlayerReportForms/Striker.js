@@ -1,10 +1,12 @@
 import React from 'react'
-import './Goalkeeper.css'
+import './PlayerPos.css'
 class StrikerForm extends React.Component{
     
     render(){
         return(
             <form>
+                
+            <h2>Striker</h2>
             <div class="grid-container">
 
             <div class="grid-item">
