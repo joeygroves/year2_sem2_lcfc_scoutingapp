@@ -1,12 +1,13 @@
 import React from 'react'
 import './PlayerPos.css'
-class centreMidfielderForm extends React.Component{
+class fullBackForm extends React.Component{
     
     render(){
         return(
             <form>
                 
-            <h2>Centre Midfielder</h2>
+            <h2>Full Back</h2>
+
             <div class="grid-container">
             <div class="grid-item">    
                 <h3>Player Rating</h3>
@@ -16,124 +17,127 @@ class centreMidfielderForm extends React.Component{
                     <option>B</option>
                     <option>C</option>
                 </select>
-            </div>
+            </div>    
             <div class="grid-item">
-                    <h4>In Possession</h4>
-
-                    <label>Control under pressure: </label>
+                    <h3>In Possession</h3>
+                    <label>Receiving under pressure: </label>
                     <input type="number" max="10" min= "0"></input>
-                    
-                    <label>Bravery in possession: </label>
-                    <input type="number" max="10" min= "0"></input>
-                    
+                    <br></br>
                     <label>Short passing: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Switching play: </label>
+                    <label>Long passing: </label>
                     <input type="number" max="10" min= "0"></input>
-                    
-                    <label>Running with the ball: </label>
+                    <br></br>
+                    <label>Control: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Right foot: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                     <label>Left foot: </label>
-                    <input type="number" max="10" min= "0"></input>
-                    
-                    <label>Right foot: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>	
                 </div>
 
                 <div class="grid-item">
-                    <h4>Attacking</h4>
-
+                    <h3>Attacking</h3>
                     <label>1v1: </label>
                     <input type="number" max="10" min= "0"></input>
-                    
+                    <br></br>
                     <label>Aerial ability: </label>
                     <input type="number" max="10" min= "0"></input>
-                   
+                    <br></br>
                     <label>Crossing: </label>
-                    <input type="number" max="10" min= "0"></input>
-                   
-                    <label>Shooting: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                 </div>
 
                 <div class="grid-item">
-                    <h4>Defending</h4>
-
+                    <h3>Defending</h3>
                     <label>1v1: </label>
                     <input type="number" max="10" min= "0"></input>
-                    
+                    <br></br>
                     <label>Aerial ability: </label>
                     <input type="number" max="10" min= "0"></input>
-                  
+                    <br></br>
                     <label>Tackling: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Closing down: </label>
+                    <label>Defending far post: </label>
                     <input type="number" max="10" min= "0"></input>
-                   
+                    <br></br>
+                    <label>Stop the cross: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Pressing: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
                     <label>Recovery runs: </label>
                     <input type="number" max="10" min= "0"></input>
-                 
-                    <label>Marking awareness: </label>
+                    <br></br>
+                    <label>Tracking runners: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                 </div>
 
                 <div class="grid-item">
-                    <h4>Tactical</h4>
-
+                    <h3>Tactical</h3>
                     <label>Agility: </label>
                     <input type="number" max="10" min= "0"></input>
-                    
-                    <label>Finding space: </label>
+                    <br></br>
+                    <label>Angles to receive: </label>
                     <input type="number" max="10" min= "0"></input>
-                    
-                    <label>Vision to see a pass: </label>
+                    <br></br>
+                    <label>Link up with winger: </label>
                     <input type="number" max="10" min= "0"></input>
-                   
-                    <label>Creativity: </label>
+                    <br></br>
+                    <label>Covering across: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Willingness to get forward: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                 </div>
 
                 <div class="grid-item">
-                    <h4>Physical</h4>
-
-                    <label>Speed: </label>
+                    <h3>Physical</h3>
+                    <label>Pace: </label>
                     <input type="number" max="10" min= "0"></input>
-                 
-                    <label>Movement skills: </label>
+                    <br></br>
+                    <label>Mobility: </label>
                     <input type="number" max="10" min= "0"></input>
-                 
+                    <br></br>
                     <label>Work rate: </label>
                     <input type="number" max="10" min= "0"></input>
-                   
+                    <br></br>
                     <label>Strength: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Jump/spring: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                 </div>
 
                 
                 <div class="grid-item">
-                    <h4>Pyschological</h4>
-
-                    <label>Communication: </label>
-                    <input type="number" max="10" min= "0"></input>
-                   
-                    <label>Concentration: </label>
-                    <input type="number" max="10" min= "0"></input>
-                    
-                    <label>Commitment: </label>
+                    <h3>Pyschological</h3>
+                    <label>Bravery: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Emotional control: </label>
+                    <label>Leadership: </label>
                     <input type="number" max="10" min= "0"></input>
-                    
-                    <label>Confidence: </label>
+                    <br></br>
+                    <label>Team work: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Communication: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Response to criticism: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Reaction to mistakes: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                 </div>
@@ -148,4 +152,4 @@ class centreMidfielderForm extends React.Component{
         );
     }
 }
-export default centreMidfielderForm;
+export default fullBackForm;
