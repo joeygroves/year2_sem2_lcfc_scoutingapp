@@ -25,7 +25,7 @@ class PlayerReportPage extends React.Component{
                     <h2>
                         Player Report Page
                     </h2>
-                    <label for="PlayerPositions" >Select Player Position:</label>
+                    <h3 for="PlayerPositions" >Select Player Position:</h3>
                     <br/>
                         <Link to = {"/playerReport/goalkeeper"}><button>Goalkeeper</button></Link>
                         <Link to = {"/playerReport/centreBack"}><button>Centre Back</button></Link>
