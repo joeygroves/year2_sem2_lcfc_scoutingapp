@@ -1,0 +1,15 @@
+
+
+button{
+    font-weight: bold;
+    width: 40%;
+    height: 60px;
+    font: inherit;
+    text-decoration: none;
+    color: black;
+}
+button :visited{
+    text-decoration: none;
+    color: black;
+}
+
