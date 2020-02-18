@@ -6,10 +6,11 @@ class wideMidfielderForm extends React.Component{
         return(
             <form>
                 
-            <h2>Wide midfielder</h2>
+            <h2><u>Wide midfielder</u></h2>
             <div class="grid-container">
             <div class="grid-item">    
-                <h3>Player Rating</h3>
+                <h4>Player Rating</h4>
+                <h6>Code reference: A = Sign Player, B+ = Closely monitor/Follow Up, B = Monitor Player, C = Not good enough</h6>
                 <select>
                     <option>A</option>
                     <option>B+</option>
