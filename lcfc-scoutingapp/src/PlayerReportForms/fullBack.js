@@ -1,28 +1,25 @@
 import React from 'react'
-<<<<<<< HEAD
+
 import './PlayerPos.css'
-=======
-<<<<<<< HEAD
-import './PlayerPos.css'
-=======
-import './Goalkeeper.css'
->>>>>>> d0fd623ddcf0c98fc86f5592b2f31c9b10b96ab9
->>>>>>> aea6554fc02e053f47e75f258114d36dc8f8fe7c
+
 class fullBackForm extends React.Component{
     
     render(){
         return(
             <form>
-<<<<<<< HEAD
+
             <h2>Full back</h2>
-=======
-<<<<<<< HEAD
-                
-            <h2>Full Back</h2>
-=======
->>>>>>> d0fd623ddcf0c98fc86f5592b2f31c9b10b96ab9
->>>>>>> aea6554fc02e053f47e75f258114d36dc8f8fe7c
+
             <div class="grid-container">
+            <div class="grid-item">    
+                <h3>Player Rating</h3>
+                <select>
+                    <option>A</option>
+                    <option>B+</option>
+                    <option>B</option>
+                    <option>C</option>
+                </select>
+            </div>
                 
             <div class="grid-item">
                     <h4>In Possession</h4>
@@ -148,7 +145,12 @@ class fullBackForm extends React.Component{
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                 </div>
+                <div class = "grid-item">
+                    <h3>Additional Comments</h3>
+                    <textarea class = "commentBox">
 
+                    </textarea>
+                </div>
             </div>
             </form>
         );

@@ -5,10 +5,20 @@ class GoalkeeperForm extends React.Component{
     render(){
         return(
             <form>
-            <h2>Goalkeeper</h2>
+            <h2><u>Goalkeeper</u></h2>
             <div class="grid-container">
+            <div class="grid-item">    
+                <h3>Player Rating</h3>
+                <select>
+                    <option>A</option>
+                    <option>B+</option>
+                    <option>B</option>
+                    <option>C</option>
+                </select>
+            </div>
 
                 <div class="grid-item">
+                    
                     <h4>General</h4>
 
                     <label>Handling: </label>
@@ -124,6 +134,12 @@ class GoalkeeperForm extends React.Component{
                     
                     <label>Reaction to Mistake: </label>
                     <input type="number" max="10" min= "0"></input>                    
+                </div>
+                <div class = "grid-item">
+                    <h3>Additional Comments</h3>
+                    <textarea class = "commentBox">
+
+                    </textarea>
                 </div>
             </div>
             </form>
