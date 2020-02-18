@@ -3,8 +3,8 @@ import logo from '../Images/LCFC-Print.png';
 import './LoginForm.css';
 import ReactDOM from 'react-dom';
 import HomePage from '../App';
-
-class App extends Component {
+import { withRouter } from 'react-router-dom';
+class LogInForm extends Component {
 
   state = {
     response: '',
@@ -41,6 +41,8 @@ class App extends Component {
       this.setState({ message: "Logged In" });
 
       this.setState({ username: this.state.post });
+
+      this.props.history.push('/HomePage');
 
       ReactDOM.render(<HomePage />, document.getElementById('root'));
 
@@ -93,8 +95,7 @@ class App extends Component {
 
     );
 
-
   }
 }
 
-export default App;
+export default withRouter(LogInForm);

@@ -1,12 +1,13 @@
 import React from 'react'
 import './PlayerPos.css'
-class wideMidfielderForm extends React.Component{
+class fullBackForm extends React.Component{
     
     render(){
         return(
             <form>
                 
-            <h2>Wide Midfielder</h2>
+            <h2>Full Back</h2>
+
             <div class="grid-container">
             <div class="grid-item">    
                 <h3>Player Rating</h3>
@@ -16,25 +17,25 @@ class wideMidfielderForm extends React.Component{
                     <option>B</option>
                     <option>C</option>
                 </select>
-            </div>
+            </div>    
             <div class="grid-item">
                     <h3>In Possession</h3>
-                    <label>Control: </label>
-                    <input type="number" max="10" min= "0"></input>
-                    <br></br>
                     <label>Receiving under pressure: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                     <label>Short passing: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Switching play: </label>
+                    <label>Long passing: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Left foot: </label>
+                    <label>Control: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                     <label>Right foot: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Left foot: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>	
                 </div>
@@ -50,12 +51,6 @@ class wideMidfielderForm extends React.Component{
                     <label>Crossing: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Shooting: </label>
-                    <input type="number" max="10" min= "0"></input>
-                    <br></br>
-                    <label>Dribbling: </label>
-                    <input type="number" max="10" min= "0"></input>
-                    <br></br>
                 </div>
 
                 <div class="grid-item">
@@ -66,16 +61,16 @@ class wideMidfielderForm extends React.Component{
                     <label>Aerial ability: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Supporting full back: </label>
-                    <input type="number" max="10" min= "0"></input>
-                    <br></br>
                     <label>Tackling: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Pressing: </label>
+                    <label>Defending far post: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Positional awareness: </label>
+                    <label>Stop the cross: </label>
+                    <input type="number" max="10" min= "0"></input>
+                    <br></br>
+                    <label>Pressing: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                     <label>Recovery runs: </label>
@@ -91,13 +86,13 @@ class wideMidfielderForm extends React.Component{
                     <label>Agility: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Coming in off the line: </label>
+                    <label>Angles to receive: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Finding space out wide: </label>
+                    <label>Link up with winger: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Link up with full back: </label>
+                    <label>Covering across: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                     <label>Willingness to get forward: </label>
@@ -110,16 +105,16 @@ class wideMidfielderForm extends React.Component{
                     <label>Pace: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Speed when Dribbling: </label>
+                    <label>Mobility: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Agility: </label>
+                    <label>Work rate: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                     <label>Strength: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
-                    <label>Work rate: </label>
+                    <label>Jump/spring: </label>
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                 </div>
@@ -157,4 +152,4 @@ class wideMidfielderForm extends React.Component{
         );
     }
 }
-export default wideMidfielderForm;
+export default fullBackForm;

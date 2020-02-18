@@ -7,7 +7,15 @@ class GoalkeeperForm extends React.Component{
             <form>
             <h2>Goalkeeper</h2>
             <div class="grid-container">
-
+            <div class="grid-item">    
+                <h3>Player Rating</h3>
+                <select>
+                    <option>A</option>
+                    <option>B+</option>
+                    <option>B</option>
+                    <option>C</option>
+                </select>
+            </div>
                 <div class="grid-item">
                     <h3>General</h3>
 
@@ -108,6 +116,12 @@ class GoalkeeperForm extends React.Component{
                     <br></br>
                     <label>Reaction to Mistake: </label>
                     <input type="number" max="10" min= "0"></input>                    
+                </div>
+                <div class = "grid-item">
+                    <h3>Additional Comments</h3>
+                    <textarea class = "commentBox">
+
+                    </textarea>
                 </div>
             </div>
             </form>
