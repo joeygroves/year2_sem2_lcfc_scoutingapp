@@ -1,6 +1,6 @@
 import React from 'react'
 import './PlayerPos.css'
-class GoalkeeperForm extends React.Component{
+class PlayerInfoForm extends React.Component{
     
     render(){
         return(
@@ -10,28 +10,32 @@ class GoalkeeperForm extends React.Component{
                 <div class="grid-item">
                     <label>Name: </label>
                     <input></input>
-                    <br></br>
-                    <label>Height: </label>
-                    <input ></input>
-                    <br></br>
-                    <label>Playing Against: </label>
-                    <input ></input>
-                    <br></br>
-                    <label>Date: </label>
-                    <input ></input>
-                    <br />
+                    
                     <label>Age: </label>
                     <input></input>
-                    <br></br>
-                    <label>Contract: </label>
-                    <input></input>
-                    <br></br>
+
+                    <label>Height: </label>
+                    <input ></input>
+
                     <label>Club: </label>
                     <input></input>
+
                     <br></br>
+                    
+                    <label>Playing Against: </label>
+                    <input ></input>
+                    
+                    
+                    <label>Date: </label>
+                    <input ></input>
+                    
+                
+                    <br></br>
+                    
+                    
                     <label>H/T: </label>
                     <input></input>
-                    <br></br>
+                    
                     <label>F/T: </label>
                     <input></input>
                 </div>
@@ -40,4 +44,4 @@ class GoalkeeperForm extends React.Component{
         );
     }
 }
-export default GoalkeeperForm;
+export default PlayerInfoForm;
