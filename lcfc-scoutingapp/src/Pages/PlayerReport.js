@@ -22,9 +22,9 @@ class PlayerReportPage extends React.Component{
             <Router>
             <div class= "Player Reports Forms">
                 <div class= "PlayerForms">
-                    <h1>
+                    <h2>
                         Player Report Page
-                    </h1>
+                    </h2>
                     <label for="PlayerPositions" >Select Player Position:</label>
                     <br/>
                         <Link to = {"/playerReport/goalkeeper"}><button>Goalkeeper</button></Link>

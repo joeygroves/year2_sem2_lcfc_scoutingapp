@@ -7,22 +7,21 @@
   .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 2px;
-    padding-left: 10px;
+    padding: 2px;;
     font-size: 20px;
-    justify-content: flex-end;
-    float: center;
-
-  
-
-
-    
-   
-    
-    
-
-
+    line-height: 35px;
 }
+.grid-item, label{
+  padding-left: 55px;
+  clear: left;
+  
+  
+}
+.grid-item, input{
+  padding-right: 10px;
+  padding-left: 25px;
+}
+
 
 .commentBox {
   height: 200px;

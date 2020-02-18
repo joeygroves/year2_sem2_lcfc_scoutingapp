@@ -5,7 +5,7 @@ class GoalkeeperForm extends React.Component{
     render(){
         return(
             <form>
-            <h2>Goalkeeper</h2>
+            <h2><u>Goalkeeper</u></h2>
             <div class="grid-container">
             <div class="grid-item">    
                 <h3>Player Rating</h3>
@@ -17,6 +17,7 @@ class GoalkeeperForm extends React.Component{
                 </select>
             </div>
                 <div class="grid-item">
+                    
                     <h4>General</h4>
 
                     <label>Handling: </label>

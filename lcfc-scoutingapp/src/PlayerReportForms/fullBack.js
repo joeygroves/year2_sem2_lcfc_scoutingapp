@@ -7,7 +7,7 @@ class fullBackForm extends React.Component{
         return(
             <form>
 
-            <h2>Full Back</h2>
+            <h2>Full Back</h2> 
             <div class="grid-container">
             <div class="grid-item">    
                 <h3>Player Rating</h3>

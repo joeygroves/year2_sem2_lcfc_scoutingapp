@@ -17,6 +17,10 @@ class StrikerForm extends React.Component{
                     <option>C</option>
                 </select>
             </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branchShiv
             <div class="grid-item">
                     <h4>In Possession</h4>
 
