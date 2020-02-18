@@ -1,35 +1,13 @@
 import React from 'react'
 import './PlayerPos.css'
-<<<<<<< HEAD
-=======
-=======
-<<<<<<< HEAD
-import './PlayerPos.css'
-=======
-import './Goalkeeper.css'
->>>>>>> d0fd623ddcf0c98fc86f5592b2f31c9b10b96ab9
->>>>>>> aea6554fc02e053f47e75f258114d36dc8f8fe7c
->>>>>>> master
+
 class fullBackForm extends React.Component{
     
     render(){
         return(
             <form>
-<<<<<<< HEAD
-                
-            <h2>Full Back</h2>
 
-=======
-<<<<<<< HEAD
-            <h2>Full back</h2>
-=======
-<<<<<<< HEAD
-                
             <h2>Full Back</h2>
-=======
->>>>>>> d0fd623ddcf0c98fc86f5592b2f31c9b10b96ab9
->>>>>>> aea6554fc02e053f47e75f258114d36dc8f8fe7c
->>>>>>> master
             <div class="grid-container">
             <div class="grid-item">    
                 <h3>Player Rating</h3>
