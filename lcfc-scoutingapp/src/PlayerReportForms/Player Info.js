@@ -12,7 +12,7 @@ class PlayerInfoForm extends React.Component{
                     <input></input>
                     
                     <label>Age: </label>
-                    <input></input>
+                    <input type = "number" min="2" max="100"></input>
 
                     <label>Height: </label>
                     <input ></input>

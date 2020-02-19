@@ -25,7 +25,7 @@ class fullBackForm extends React.Component{
             <div class="grid-item">
                     <h4>In Possession</h4>
                     <label>Receiving under pressure: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <input type="number" max="10" min= "0"></input> 
        
                     <label>Short passing: </label>
                     <input type="number" max="10" min= "0"></input>

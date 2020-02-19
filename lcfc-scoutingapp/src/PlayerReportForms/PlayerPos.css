@@ -9,17 +9,17 @@
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 2px;;
     font-size: 20px;
-    line-height: 25px;
+    line-height: 35px;
 } 
 .grid-item, label{
-  padding-left: 100px;
+  padding-left: 70px;
   clear: left;
   text-align: center;
   
   
 }
 .grid-item, input{
-  padding-right: 5px;
+  padding-right: 25px;
   padding-left: 5px;
 }
 
