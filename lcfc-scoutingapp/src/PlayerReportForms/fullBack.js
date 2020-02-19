@@ -1,4 +1,5 @@
 import React from 'react'
+<<<<<<< HEAD
 
 import './PlayerPos.css'
 
@@ -6,17 +7,34 @@ import './PlayerPos.css'
 
 //import './Goalkeeper.css'
 
+=======
+import './PlayerPos.css'
+
+>>>>>>> branchMihir
 class fullBackForm extends React.Component{
     
     render(){
         return(
             <form>
 
+<<<<<<< HEAD
             <h2>Full back</h2>
 
+=======
+            <h2><u>Full back</u></h2>
+>>>>>>> branchMihir
 
             <div class="grid-container">
-                
+            <div class="grid-item">    
+                <h4>Player Rating</h4>
+                <h6>Code reference: A = Sign Player, B+ = Closely monitor/Follow Up, B = Monitor Player, C = Not good enough</h6>
+                <select>
+                    <option>A</option>
+                    <option>B+</option>
+                    <option>B</option>
+                    <option>C</option>
+                </select>
+            </div>    
             <div class="grid-item">
                     <h4>In Possession</h4>
                     <label>Receiving under pressure: </label>
@@ -141,7 +159,12 @@ class fullBackForm extends React.Component{
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                 </div>
+                <div class = "grid-item">
+                    <h3>Additional Comments</h3>
+                    <textarea class = "commentBox">
 
+                    </textarea>
+                </div>
             </div>
             </form>
         );
