@@ -1,9 +1,10 @@
 import React from 'react';
 import '../App.css';
 import ReactDOM from 'react-dom';
-import LogIn from '../LoginForm/LoginForm'
-import { createBrowserHistory } from 'history'
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom";
+import LogInForm from '../LoginForm/LoginForm';
+import NavBar from '../Components/NavigationBar/LogOutNavBar';
+import App from '../App';
 
 
 class LogOut extends React.Component {
@@ -12,38 +13,33 @@ class LogOut extends React.Component {
 
         this.LogOut();
 
-        this.movePage();
     }
 
     LogOut = async () => {
 
         const response = await fetch('/api/LogOutAuthentication');
 
-        const body = await response.json();
+        const body = await response.text();
 
         if (response.status !== 200) throw Error(body.message);
 
+
+
     };
-
-
-    movePage() {
-
-        ReactDOM.render(<LogOut />, document.getElementById('root'));
-
-    }
-
-   
 
     render() {
 
         return (
+            <div>
+                <div><NavBar /></div>
 
-            <header className="Login-header">
+                <header className="LogOut-header">
 
-                <p>Logged Out</p>
+                    <p>Logged Out!</p>
+                    
+                </header>
 
-            </header>
-
+            </div>
         );
 
     }

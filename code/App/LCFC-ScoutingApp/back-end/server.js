@@ -70,6 +70,7 @@ app.post('/api/LogInAuthentication', (req, res) => {
 });
 
 // Log Out Function
+
 app.get('/api/LogOutAuthentication', (req, res) => {
 
   if (req.session.loggedin) {
@@ -116,7 +117,9 @@ app.post('/api/GetUserInformation', (req, res) => {
 });
 
 // --------------------------------------------------------------------------------------------------------- Get User Information -----------------------------------------------------------------------
+
 // Get Username Of the Session
+
 app.post('/api/getUsername', (req, res) => {
 
   res.send(req.session.username);

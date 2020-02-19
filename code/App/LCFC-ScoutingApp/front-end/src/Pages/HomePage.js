@@ -22,6 +22,7 @@ class HomePage extends React.Component {
     componentDidMount() {
 
         this.gatherUserInformation();
+
     }
 
     gatherUserInformation = async () => {
@@ -42,24 +43,26 @@ class HomePage extends React.Component {
 
         this.setState({ JSONStringDataForUsers: body });
 
-       
+
     };
 
+    render() {
 
-        render() {
-           
-            return (
-              
-              <div>
+        return (
+            <div>
+                <div>
 
-                    <p>{this.state.JSONStringDataForUsers}</p>
-                   
+                    <NavBar />
                 </div>
-                
-            );
+                <div>
+                    <p>{this.state.JSONStringDataForUsers}</p>
 
-        }
+                </div>
+            </div>
+        );
+
     }
+}
 
 
-    export default HomePage
+export default HomePage

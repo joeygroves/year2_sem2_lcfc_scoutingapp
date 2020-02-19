@@ -19,10 +19,6 @@ class navBar extends React.Component {
     
     };
 
-    componentDidMount() {
-
-        this.getUsername();
-    }
 
     myFunction = () => {
       
@@ -39,28 +35,6 @@ class navBar extends React.Component {
         }
     }
 
-    getUsername = async () => {
-
-        const response = await fetch('/api/getUsername', {
-
-            method: 'POST',
-
-            headers: {
-
-                'Content-Type': 'application/json',
-
-            },
-
-            body: JSON.stringify({ post: this.state.post, password: this.state.password }),
-
-        });
-
-        const body = await response.text();
-
-        this.setState({ username: body });
-
-
-    }
  
     render() {
 
@@ -82,16 +56,10 @@ class navBar extends React.Component {
                    
                     </a>
                   
-                    {/* eslint-disable-next-line */}
-                    <a><Link to={"/HomePage"}>Home</Link></a>
                    
                     {/* eslint-disable-next-line */}
-                    <a><Link to={"/PlayerReport"}>Player Reports</Link></a>
-                   
-                    {/* eslint-disable-next-line */}
-                    <a class="right"><Link to={"/LogOut"}>Logout</Link></a>
+                    <a class="right"><Link to={"/LogBackIn"}>Log Back In</Link></a>
 
-                    <p class="username"> User : {this.state.username}</p>
               
                 </div>
           

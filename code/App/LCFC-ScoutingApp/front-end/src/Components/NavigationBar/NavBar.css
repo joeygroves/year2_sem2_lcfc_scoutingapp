@@ -28,6 +28,8 @@ body {
 }
 
 
+
+
 .topnav a:hover {
     background-color: #003090;
     color: rgb(255, 255, 255);
@@ -68,5 +70,14 @@ body {
     margin:0;
   }
   
+  
+}
+
+p.username {
+    color: white;
+    font-weight: bold;
+    font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+    font-size: large;
+    text-align: center;
 }
  
