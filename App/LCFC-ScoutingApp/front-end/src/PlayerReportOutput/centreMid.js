@@ -10,105 +10,100 @@ class centreMidfielderForm extends React.Component{
             <div class="grid-container">
             <div class="grid-item">    
                 <h3>Player Rating</h3>
-                <select>
-                    <option>A</option>
-                    <option>B+</option>
-                    <option>B</option>
-                    <option>C</option>
-                </select>
+                <label class = "rating"></label>
             </div>
             <div class="grid-item">
                     <h3>In Possession</h3>
                     <label>Control under pressure: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "control_under_pressure"> </label>
                     <br></br>
                     <label>Bravery in possession: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "bravery_in_possession"> </label>
                     <br></br>
                     <label>Short passing: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "short_passing"> </label>
                     <br></br>
                     <label>Switching play: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "switching_play"> </label>
                     <br></br>
                     <label>Running with the ball: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "running_with_the_ball"> </label>
                     <br></br>
                     <label>Left foot: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "left_foot"> </label>
                     <br></br>
                     <label>Right foot: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "right_foot"> </label>
                     <br></br>	
                 </div>
 
                 <div class="grid-item">
                     <h3>Attacking</h3>
                     <label>1v1: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "1v1"> </label>
                     <br></br>
                     <label>Aerial ability: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "aerial ability"> </label>
                     <br></br>
                     <label>Crossing: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "crossing"> </label>
                     <br></br>
                     <label>Shooting: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "shooting"> </label>
                     <br></br>
                 </div>
 
                 <div class="grid-item">
                     <h3>Defending</h3>
                     <label>1v1: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "1v1"> </label>
                     <br></br>
                     <label>Aerial ability: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "aerial_ability"> </label>
                     <br></br>
                     <label>Tackling: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "tackling"> </label>
                     <br></br>
                     <label>Closing down: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "closing_down"> </label>
                     <br></br>
                     <label>Recovery runs: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "recovery_runs"> </label>
                     <br></br>
                     <label>Marking awareness: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "marking_awareness"> </label>
                     <br></br>
                 </div>
 
                 <div class="grid-item">
                     <h3>Tactical</h3>
                     <label>Agility: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "agility"> </label>
                     <br></br>
                     <label>Finding space: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "finding_space"> </label>
                     <br></br>
                     <label>Vision to see a pass: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "vision_to_see_a_pass"> </label>
                     <br></br>
                     <label>Creativity: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "creativity"> </label>
                     <br></br>
                 </div>
 
                 <div class="grid-item">
                     <h3>Physical</h3>
                     <label>Speed: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "speed"> </label>
                     <br></br>
                     <label>Movement skills: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "movement_skills"> </label>
                     <br></br>
                     <label>Work rate: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "work_rate"> </label>
                     <br></br>
                     <label>Strength: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "strength"> </label>
                     <br></br>
                 </div>
 
@@ -116,24 +111,24 @@ class centreMidfielderForm extends React.Component{
                 <div class="grid-item">
                     <h3>Pyschological</h3>
                     <label>Communication: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "communication"> </label>
                     <br></br>
                     <label>Concentration: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "concentration"> </label>
                     <br></br>
                     <label>Commitment: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "commitment"> </label>
                     <br></br>
                     <label>Emotional control: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "emotional_control"> </label>
                     <br></br>
                     <label>Confidence: </label>
-                    <input type="number" max="10" min= "0"></input>
+                  <label class = "confidence"> </label>
                     <br></br>
                 </div>
                 <div class = "grid-item">
                     <h3>Additional Comments</h3>
-                    <textarea class = "commentBox">
+                    <textarea class = "notes">
 
                     </textarea>
                 </div>
