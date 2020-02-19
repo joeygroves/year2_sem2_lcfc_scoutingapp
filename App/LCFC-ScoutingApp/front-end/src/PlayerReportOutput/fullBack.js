@@ -11,111 +11,106 @@ class fullBackForm extends React.Component{
             <div class="grid-container">
             <div class="grid-item">    
                 <h3>Player Rating</h3>
-                <select>
-                    <option>A</option>
-                    <option>B+</option>
-                    <option>B</option>
-                    <option>C</option>
-                </select>
+               <label class = "rating"></label>
             </div>    
             <div class="grid-item">
                     <h3>In Possession</h3>
                     <label>Receiving under pressure: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "recieving_under_pressure"></label>
                     <br></br>
                     <label>Short passing: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "short_passing"></label>
                     <br></br>
                     <label>Long passing: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "long_passing"></label>
                     <br></br>
                     <label>Control: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "control"></label>
                     <br></br>
                     <label>Right foot: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "right_foot"></label>
                     <br></br>
                     <label>Left foot: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "left_foot"></label>
                     <br></br>	
                 </div>
 
                 <div class="grid-item">
                     <h3>Attacking</h3>
                     <label>1v1: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "attacking_one_v_one"></label>
                     <br></br>
                     <label>Aerial ability: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "attacking_aerial_ability"></label>
                     <br></br>
                     <label>Crossing: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "crossing"></label>
                     <br></br>
                 </div>
 
                 <div class="grid-item">
                     <h3>Defending</h3>
                     <label>1v1: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "defending_one_v_one"></label>
                     <br></br>
                     <label>Aerial ability: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "defending_ariel_ability"></label>
                     <br></br>
                     <label>Tackling: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "tackling"></label>
                     <br></br>
                     <label>Defending far post: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "defending_far_post"></label>
                     <br></br>
                     <label>Stop the cross: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "stopping_the_cross"></label>
                     <br></br>
                     <label>Pressing: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "pressing"></label>
                     <br></br>
                     <label>Recovery runs: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "recovery_runs"></label>
                     <br></br>
                     <label>Tracking runners: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "tracking_runners"></label>
                     <br></br>
                 </div>
 
                 <div class="grid-item">
                     <h3>Tactical</h3>
                     <label>Agility: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "agility"></label>
                     <br></br>
                     <label>Angles to receive: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "angles_to_recieve"></label>
                     <br></br>
                     <label>Link up with winger: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "link_up_with_winger"></label>
                     <br></br>
                     <label>Covering across: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "covering_across"></label>
                     <br></br>
                     <label>Willingness to get forward: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "willlingness_to_get_forward"></label>
                     <br></br>
                 </div>
 
                 <div class="grid-item">
                     <h3>Physical</h3>
                     <label>Pace: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "pace"></label>
                     <br></br>
                     <label>Mobility: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "mobility"></label>
                     <br></br>
                     <label>Work rate: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "work_rate"></label>
                     <br></br>
                     <label>Strength: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "strength"></label>
                     <br></br>
                     <label>Jump/spring: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "jump"></label>
                     <br></br>
                 </div>
 
@@ -123,27 +118,27 @@ class fullBackForm extends React.Component{
                 <div class="grid-item">
                     <h3>Pyschological</h3>
                     <label>Bravery: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "bravery"></label>
                     <br></br>
                     <label>Leadership: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "leadership"></label>
                     <br></br>
                     <label>Team work: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "team_work"></label>
                     <br></br>
                     <label>Communication: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "communicaton"></label>
                     <br></br>
                     <label>Response to criticism: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "reponse_to_criticism"></label>
                     <br></br>
                     <label>Reaction to mistakes: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class = "reaction_to_mistake"></label>
                     <br></br>
                 </div>
                 <div class = "grid-item">
                     <h3>Additional Comments</h3>
-                    <textarea class = "commentBox">
+                    <textarea class = "notes" readOnly>
 
                     </textarea>
                 </div>

@@ -37,7 +37,7 @@ class GoalkeeperForm extends React.Component {
         notes: ''
     }
 
-
+    
     handleSubmit = async (e) => {
 
         e.preventDefault();
@@ -213,20 +213,19 @@ class GoalkeeperForm extends React.Component {
                         <h4>Psychological</h4>
 
                         <label>Bravery: </label>
-                        <input type="number" max="10" min="0" value={this.state.bravery} onChange={e => this.setState({ bravery: e.target.value })}></input>
+                        <input type="number" max="10" min="0"></input>
 
                         <label>Leadership: </label>
-                        <input type="number" max="10" min="0" value={this.state.leadership} onChange={e => this.setState({ leadership: e.target.value })}></input>
+                        <input type="number" max="10" min="0"></input>
 
                         <label>Presence/Aura: </label>
-                        <input type="number" max="10" min="0" value={this.state.presence} onChange={e => this.setState({ presence: e.target.value })}></input>
+                        <input type="number" max="10" min="0"></input>
                         <br></br>
                         <label>Communication: </label>
-                        <input type="number" max="10" min="0" value={this.state.communication} onChange={e => this.setState({ communication: e.target.value })}></input>
+                        <input type="number" max="10" min="0"></input>
 
                         <label>Reaction to Mistake: </label>
-                        <input type="number" max="10" min="0" value={this.state.reaction_to_mistake} onChange={e => this.setState({ reaction_to_mistake: e.target.value })}></input>
-
+                        <input type="number" max="10" min="0"></input>
                     </div>
                     <div class="grid-item">
                         <h3>Additional Comments</h3>
