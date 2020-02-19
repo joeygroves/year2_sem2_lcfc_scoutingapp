@@ -6,8 +6,18 @@ class centreMidfielderForm extends React.Component{
         return(
             <form>
                 
-            <h2>Centre Midfielder</h2>
+            <h2><u>Centre Midfielder</u></h2>
             <div class="grid-container">
+            <div class="grid-item">    
+                <h4>Player Rating</h4>
+                <h6>Code reference: A = Sign Player, B+ = Closely monitor/Follow Up, B = Monitor Player, C = Not good enough</h6>
+                <select>
+                    <option>A</option>
+                    <option>B+</option>
+                    <option>B</option>
+                    <option>C</option>
+                </select>
+            </div>
 
             <div class="grid-item">
                     <h4>In Possession</h4>
@@ -129,7 +139,12 @@ class centreMidfielderForm extends React.Component{
                     <input type="number" max="10" min= "0"></input>
                     <br></br>
                 </div>
+                <div class = "grid-item">
+                    <h3>Additional Comments</h3>
+                    <textarea class = "commentBox">
 
+                    </textarea>
+                </div>
             </div>
             </form>
         );

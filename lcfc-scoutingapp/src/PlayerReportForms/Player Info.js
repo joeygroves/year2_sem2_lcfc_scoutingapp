@@ -25,8 +25,16 @@ class PlayerInfoForm extends React.Component{
                     <label>First Name: </label>
                     <input value={this.state.first_name} onChange={e => this.setState({ first_name: e.target.value })}></input>
                     
+<<<<<<< HEAD
                     <label>Last Name: </label>
                     <input value={this.state.last_name} onChange={e => this.setState({ last_name: e.target.value })}></input>
+=======
+                    <label>Age: </label>
+                    <input type = "number" min="2" max="100"></input>
+
+                    <label>Height: </label>
+                    <input ></input>
+>>>>>>> branchShiv
 
                     <label>Club: </label>
                     <input value={this.state.club_name} onChange={e => this.setState({ club_name: e.target.value })}></input>
