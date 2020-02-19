@@ -10,7 +10,7 @@ class GoalkeeperForm extends React.Component{
             <div class="grid-item">    
                 <h4>Player Rating</h4>
                 <h6>Code reference: A = Sign Player, B+ = Closely monitor/Follow Up, B = Monitor Player, C = Not good enough</h6>
-                <select>
+                <select class = "rating">
                     <option>A</option>
                     <option>B+</option>
                     <option>B</option>
@@ -137,7 +137,7 @@ class GoalkeeperForm extends React.Component{
                 </div>
                 <div class = "grid-item">
                     <h3>Additional Comments</h3>
-                    <textarea class = "commentBox">
+                    <textarea class = "notes">
 
                     </textarea>
                 </div>

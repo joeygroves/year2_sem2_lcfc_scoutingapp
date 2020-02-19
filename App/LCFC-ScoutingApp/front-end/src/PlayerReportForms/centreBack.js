@@ -153,7 +153,7 @@ class centreBackForm extends React.Component{
                 </div>
                 <div class = "grid-item">
                     <h3>Additional Comments</h3>
-                    <textarea class = "commentBox">
+                    <textarea class = "notes">
 
                     </textarea>
                 </div>
