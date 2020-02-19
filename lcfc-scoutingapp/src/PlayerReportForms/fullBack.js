@@ -3,14 +3,22 @@ import React from 'react'
 
 import './PlayerPos.css'
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ff523ac4d3496ffd4a016f17525dad0a8c48c046
 //import './PlayerPos.css'
 
 //import './Goalkeeper.css'
 
 =======
+<<<<<<< HEAD
+>>>>>>> branchShiv
+=======
 import './PlayerPos.css'
 
 >>>>>>> branchMihir
+>>>>>>> ff523ac4d3496ffd4a016f17525dad0a8c48c046
 class fullBackForm extends React.Component{
     
     render(){
@@ -22,7 +30,11 @@ class fullBackForm extends React.Component{
 
 =======
             <h2><u>Full back</u></h2>
+<<<<<<< HEAD
+>>>>>>> branchShiv
+=======
 >>>>>>> branchMihir
+>>>>>>> ff523ac4d3496ffd4a016f17525dad0a8c48c046
 
             <div class="grid-container">
             <div class="grid-item">    
@@ -38,7 +50,7 @@ class fullBackForm extends React.Component{
             <div class="grid-item">
                     <h4>In Possession</h4>
                     <label>Receiving under pressure: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <input type="number" max="10" min= "0"></input> 
        
                     <label>Short passing: </label>
                     <input type="number" max="10" min= "0"></input>
