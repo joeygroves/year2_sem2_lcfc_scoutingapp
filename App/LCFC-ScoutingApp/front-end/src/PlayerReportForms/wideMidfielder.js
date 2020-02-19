@@ -10,7 +10,7 @@ class wideMidfielderForm extends React.Component{
             <div class="grid-container">
             <div class="grid-item">    
                 <h3>Player Rating</h3>
-                <select>
+                <select class = "rating">
                     <option>A</option>
                     <option>B+</option>
                     <option>B</option>
@@ -148,7 +148,7 @@ class wideMidfielderForm extends React.Component{
                 </div>
                 <div class = "grid-item">
                     <h3>Additional Comments</h3>
-                    <textarea class = "commentBox">
+                    <textarea class = "notes">
 
                     </textarea>
                 </div>
