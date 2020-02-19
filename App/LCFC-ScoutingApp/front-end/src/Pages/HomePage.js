@@ -56,7 +56,7 @@ class HomePage extends React.Component {
                 </div>
                 <div>
                     <p>{this.state.JSONStringDataForUsers}</p>
-
+                    
                 </div>
             </div>
         );
