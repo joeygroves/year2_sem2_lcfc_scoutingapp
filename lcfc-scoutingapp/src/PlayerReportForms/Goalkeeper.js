@@ -19,7 +19,6 @@ class GoalkeeperForm extends React.Component{
                     <option>C</option>
                 </select>
             </div>
-
                 <div class="grid-item">
                     
                     <h4>General</h4>

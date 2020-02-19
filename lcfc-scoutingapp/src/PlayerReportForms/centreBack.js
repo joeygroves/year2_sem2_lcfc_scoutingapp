@@ -21,11 +21,11 @@ class centreBackForm extends React.Component{
             <div class="grid-item">
 
                     <h4>In Possession</h4>
-                    <label>Receiving under pressure: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label for = "RUP">Receiving under pressure: </label>
+                    <input class = "RUP" type="number" max="10" min= "0"></input>
 
-                    <label>Short passing: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label for = "SHORTP">Short passing: </label>
+                    <input class = "SHORTP" type="number" max="10" min= "0"></input>
                    
                     <label>Long passing: </label>
                     <input type="number" max="10" min= "0"></input>

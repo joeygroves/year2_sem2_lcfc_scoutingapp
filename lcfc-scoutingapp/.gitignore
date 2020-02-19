@@ -24,4 +24,8 @@ yarn-error.log*
 
 desktop.ini
 
+<<<<<<< HEAD
+degbug.log
+=======
 debug.log
+>>>>>>> branchShiv

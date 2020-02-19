@@ -18,7 +18,6 @@ class centreMidfielderForm extends React.Component{
                     <option>C</option>
                 </select>
             </div>
-
             <div class="grid-item">
                     <h4>In Possession</h4>
 
