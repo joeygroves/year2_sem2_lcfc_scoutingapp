@@ -2,6 +2,8 @@ import React from 'react'
 import './PlayerPos.css'
 class GoalkeeperForm extends React.Component{
     
+
+    
     render(){
         return(
             <form>
