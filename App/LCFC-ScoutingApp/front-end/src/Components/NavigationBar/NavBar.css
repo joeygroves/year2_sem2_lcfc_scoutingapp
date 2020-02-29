@@ -55,9 +55,6 @@ body {
     
   }
   .topnav p.username{display: none;}
-
-
-  
 }
 
 @media screen and (max-width: 900px) {
@@ -82,6 +79,7 @@ p.username {
     font-weight: bold;
     font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
     font-size: large;
-    text-align: center;
+    margin-right: 15%;
+  
 }
  

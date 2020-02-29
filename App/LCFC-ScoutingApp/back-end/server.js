@@ -9,13 +9,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var connection = mysql.createConnection({
-  
+
   host: 'localhost',
-  
+
   user: 'root',
-  
+
   password: 'alumwelljamie3',
-  
+
   database: 'LCFC_Scouting'
 
 });
@@ -38,33 +38,33 @@ app.post('/api/LogInAuthentication', (req, res) => {
   console.log(req.body);
 
   var username = req.body.username;
- 
+
   var password = req.body.password;
 
   if (username && password) {
- 
+
     connection.query('SELECT * FROM staff WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
- 
+
       if (results.length > 0) {
- 
+
         req.session.loggedin = true;
- 
+
         req.session.username = username;
- 
+
         res.send("LoggedIn");
- 
+
       } else {
- 
+
         res.send("IncorrectUsernameOrPassword");
- 
+
       }
- 
+
     });
- 
-  }else{
- 
+
+  } else {
+
     res.send("Empty");
- 
+
   }
 
 });
@@ -78,13 +78,13 @@ app.get('/api/LogOutAuthentication', (req, res) => {
     req.session.loggedin = false;
 
     res.send("LoggedOut");
- 
+
   } else {
- 
+
     res.send("NotSignedIn");
- 
+
   }
- 
+
   res.end();
 
 });
@@ -94,24 +94,29 @@ app.get('/api/LogOutAuthentication', (req, res) => {
 
 // Retrievng all Users 
 
-app.post('/api/GetUserInformation', (req, res) => {
+app.post('/api/GetScoutsReports', (req, res) => {
 
   if (req.session.loggedin) {
-   
-    connection.query('SELECT * FROM staff', function (error, results, fields) {
-   
-      console.log('Right');
-   
-      res.send(JSON.stringify(results));
-   
-    });
- 
+
+    connection.query("select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age' from goalkeeper_reports inner join player where goalkeeper_reports.player_id = player.player_id and goalkeeper_reports.scouted_by = ?",
+      [req.session.username], function (error, results, fields) {
+
+        
+
+        res.send(results);
+
+
+        console.log(results);
+        
+
+      });
+
   } else {
- 
+
     console.log('Wrong');
- 
+
     res.send("Not Logged In");
- 
+
   }
 
 });
@@ -129,50 +134,20 @@ app.post('/api/getUsername', (req, res) => {
 
 // -------------------------------------------------------------------------------------------------------- Insert Into ---------------------------------------------------------------------------------
 
-// app.post('/api/goalkeeper', (req, res) => {
-
-//   var handling = req.body.handling;
- 
-//   var shot_stopping = req.body.shot_stopping;
-
-//   var sql = "INSERT INTO Test (username, password) VALUES ?";
-//   var values = [[handling,shot_stopping]];
-//   connection.query(sql, [values], function (err, result) {
-//     if (err) throw err;
-//     console.log("Number of records inserted: " + result.affectedRows);
-//   });
-  
-// });
 
 app.post('/api/goalkeeper', (req, res) => {
 
-  // var first_name = req.body.first_name;
-  // var last_name = req.body.last_name;
-  // var club_name = req.body.club_name;
-  // var height = req.body.height;
-  // var age = req.body.age;
-  // var position = 'Goalkeeper';
-
-
-  // var sql = "INSERT INTO player VALUES ?";
-  // var values = [[1,first_name,last_name,club_name,height,age,position]];
-  // connection.query(sql, [values], function (err, result) {
-  //   if (err) throw err;
-  //   console.log("Number of records inserted: " + result.affectedRows);
-  // });
-
-  // var sql = "INSERT INTO club VALUES ?";
-  // var values = [[1,club_name]];
-  // connection.query(sql, [values], function (err, result) {
-  //   if (err) throw err;
-  //   console.log("Number of records inserted: " + result.affectedRows);
-  // });
-
-
+  var first_name = req.body.first_name;
+  var last_name = req.body.last_name;
+  var club_name = req.body.club_name;
+  var height = req.body.height;
+  var age = req.body.age
   var date_played = req.body.date_played;
   var club_played = req.body.club_played;
   var ht_score = req.body.ht_score;
   var ft_score = req.body.ft_score;
+  var position = 'Goalkeeper'
+
   var scouted_by = req.session.username
   var handling = req.body.handling;
   var shot_stopping = req.body.shot_stopping;
@@ -189,7 +164,7 @@ app.post('/api/goalkeeper', (req, res) => {
   var kicking_under_pressure = req.body.kicking_under_pressure;
   var kicking_when_given_time = req.body.kicking_when_given_time;
   var dealing_with_crosses = req.body.dealing_with_crosses;
-  // var starting_position = req.body.starting_position;
+  var starting_position = req.body.starting_position;
   var one_v_one = req.body.one_v_one;
   var dealing_with_through_ball = req.body.dealing_with_through_ball;
   var agility = req.body.agility;
@@ -203,31 +178,50 @@ app.post('/api/goalkeeper', (req, res) => {
   var reaction_to_mistake = req.body.reaction_to_mistake;
   var rating = req.body.rating;
   var notes = req.body.notes;
+  var playerID;
 
 
-  
-//Add Starting Position to SQL
+  var PlayerSQL = "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position) VALUES ?";
+  var PlayerValues = [[first_name, last_name, club_name, height, age, position]]
 
-  var sql = "INSERT INTO lcfc_scouting.goalkeeper_reports VALUES ?";
-  var values = [[1,1,1,'01/02/12',1,1,scouted_by,handling,shot_stopping,tendancy_to_punch,tendancy_to_catch,positioning,recovery_saves,control_when_recieving,right_foot,left_foot,dead_ball_kicks,kicking_out_of_hands,throwing,kicking_under_pressure,kicking_when_given_time,dealing_with_crosses,one_v_one,dealing_with_through_ball,agility,reactions,strength,speed,bravery,leadership,presence,communication,reaction_to_mistake,rating,notes]];
-  connection.query(sql, [values], function (err, result) {
+  connection.query(PlayerSQL, [PlayerValues], function (err, result) {
     if (err) throw err;
-    console.log("Number of records inserted: " + result.affectedRows);
   });
-  
-});
 
+  var PlayerIDSQL = "SELECT player_id FROM player where first_name = ? AND last_name = ?";
+  connection.query(PlayerIDSQL, [first_name, last_name], function (err, results) {
+    if (err) {
+      throw err;
+    } else {
+      
+      console.log(results.length);
+      console.log();
+
+      var sql = "INSERT INTO lcfc_scouting.goalkeeper_reports (player_id,scouted_by,handling,shot_stopping,tendancy_to_punch,tendancy_to_catch,positioning,recovery_saves,control_when_recieving,right_foot,left_foot,dead_ball_kicks,kicking_out_of_hands,throwing,kicking_under_pressure,kicking_when_given_time,dealing_with_crosses,starting_position,one_v_one,dealing_with_through_ball,agility,reactions,strength,speed,bravery,leadership,presence,communication,reaction_to_mistake,rating,notes) VALUES ?";
+      var values = [[results[0].player_id, scouted_by, handling, shot_stopping, tendancy_to_punch, tendancy_to_catch, positioning, recovery_saves, control_when_recieving, right_foot, left_foot, dead_ball_kicks, kicking_out_of_hands, throwing, kicking_under_pressure, kicking_when_given_time, dealing_with_crosses, starting_position, one_v_one, dealing_with_through_ball, agility, reactions, strength, speed, bravery, leadership, presence, communication, reaction_to_mistake, rating, notes]];
+
+      connection.query(sql, [values], function (err, result) {
+        if (err) throw err;
+        console.log("Number of records inserted: " + result.affectedRows);
+      });
+
+    };
+
+
+})
+  }
+);
 
 // --------------------------------------------------------------------------------------------------------------------- Server --------------------------------------------------------------------------
 
 if (process.env.NODE_ENV === 'production') {
-  
+
   app.use(express.static(path.join(__dirname, 'client/build')));
-  
+
   app.get('*', function (req, res) {
-  
+
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  
+
   });
 
 }

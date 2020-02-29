@@ -2,42 +2,15 @@ import React from 'react'
 import './PlayerPos.css'
 class GoalkeeperForm extends React.Component {
 
-
-
     state = {
 
-        response: '',
-        handling: '',
-        shot_stopping: '',
-        tendancy_to_punch: '',
-        tendancy_to_catch: '',
-        positioning: '',
-        recovery_saves: '',
-        control_when_recieving: '',
-        right_foot: '',
-        left_foot: '',
-        dead_ball_kicks: '',
-        kicking_out_of_hands: '',
-        throwing: '',
-        kicking_under_pressure: '',
-        kicking_when_given_time: '',
-        dealing_with_crosses: '',
-        one_v_one: '',
-        dealing_with_through_ball: '',
-        agility: '',
-        reactions: '',
-        strength: '',
-        speed: '',
-        bravery: '',
-        leadership: '',
-        presence: '',
-        communication: '',
-        reaction_to_mistake: '',
-        rating: '',
-        notes: ''
+        response: '', handling: '', shot_stopping: '', tendancy_to_punch: '', tendancy_to_catch: '', positioning: '', recovery_saves: '',
+        control_when_recieving: '', right_foot: '', left_foot: '', dead_ball_kicks: '', kicking_out_of_hands: '', throwing: '',
+        kicking_under_pressure: '', kicking_when_given_time: '', dealing_with_crosses: '', starting_position: '', one_v_one: '', dealing_with_through_ball: '',
+        agility: '', reactions: '', strength: '', speed: '', bravery: '', leadership: '', presence: '', communication: '', reaction_to_mistake: '', rating: '',
+        notes: '', first_name: '', last_name: '', club_name: '', height: '', age: '', date_played: '', club_played: '', ht_score: '', ft_score: '',
     }
 
-    
     handleSubmit = async (e) => {
 
         e.preventDefault();
@@ -53,34 +26,12 @@ class GoalkeeperForm extends React.Component {
             },
 
             body: JSON.stringify({
-                handling: this.state.handling,
-                shot_stopping: this.state.shot_stopping,
-                tendancy_to_punch: this.state.tendancy_to_punch,
-                tendancy_to_catch: this.state.tendancy_to_catch,
-                positioning: this.state.positioning,
-                recovery_saves: this.state.recovery_saves,
-                control_when_recieving: this.state.control_when_recieving,
-                right_foot: this.state.right_foot,
-                left_foot: this.state.left_foot,
-                dead_ball_kicks: this.state.dead_ball_kicks,
-                kicking_out_of_hands: this.state.kicking_out_of_hands,
-                throwing: this.state.throwing,
-                kicking_under_pressure: this.state.kicking_under_pressure,
-                kicking_when_given_time: this.state.kicking_when_given_time,
-                dealing_with_crosses: this.state.dealing_with_crosses,
-                one_v_one: this.state.one_v_one,
-                dealing_with_through_ball: this.state.dealing_with_through_ball,
-                agility: this.state.agility,
-                reactions: this.state.reactions,
-                strength: this.state.strength,
-                speed: this.state.speed,
-                bravery: this.state.bravery,
-                leadership: this.state.leadership,
-                presence: this.state.presence,
-                communication: this.state.communication,
-                reaction_to_mistake: this.state.reaction_to_mistake,
-                rating: this.state.rating,
-                notes: this.state.notes
+                handling: this.state.handling, shot_stopping: this.state.shot_stopping, tendancy_to_punch: this.state.tendancy_to_punch, tendancy_to_catch: this.state.tendancy_to_catch, positioning: this.state.positioning, recovery_saves: this.state.recovery_saves,
+                control_when_recieving: this.state.control_when_recieving, right_foot: this.state.right_foot, left_foot: this.state.left_foot, dead_ball_kicks: this.state.dead_ball_kicks, kicking_out_of_hands: this.state.kicking_out_of_hands,
+                throwing: this.state.throwing, kicking_under_pressure: this.state.kicking_under_pressure, kicking_when_given_time: this.state.kicking_when_given_time, dealing_with_crosses: this.state.dealing_with_crosses, starting_position: this.state.starting_position,
+                one_v_one: this.state.one_v_one, dealing_with_through_ball: this.state.dealing_with_through_ball, agility: this.state.agility, reactions: this.state.reactions, strength: this.state.strength, speed: this.state.speed, bravery: this.state.bravery, leadership: this.state.leadership,
+                presence: this.state.presence, communication: this.state.communication, reaction_to_mistake: this.state.reaction_to_mistake, rating: this.state.rating,
+                notes: this.state.notes, first_name: this.state.first_name, last_name: this.state.last_name ,club_name: this.state.club_name, height: this.state.height, age: this.state.age, date_played: this.state.date_played, club_played: this.state.club_played, ht_score: this.state.ht_score ,ft_score: this.state.ft_score
 
             }),
 
@@ -93,24 +44,78 @@ class GoalkeeperForm extends React.Component {
     };
 
 
+
     render() {
         return (
-            <form>
-                <h2><u>Goalkeeper</u></h2>
+            <form onSubmit={this.handleSubmit}>
+                <h2>Goalkeeper</h2>
                 <div class="grid-container">
+
                     <div class="grid-item">
-                        <h4>Player Rating</h4>
-                        <h6>Code reference: A = Sign Player, B+ = Closely monitor/Follow Up, B = Monitor Player, C = Not good enough</h6>
-                        <select>
-                            <option>A</option>
-                            <option>B+</option>
-                            <option>B</option>
-                            <option>C</option>
+
+                        <label>First Name: </label>
+                        <input value={this.state.first_name} onChange={e => this.setState({ first_name: e.target.value })}></input>
+
+                        <label>Last Name: </label>
+                        <input value={this.state.last_name} onChange={e => this.setState({ last_name: e.target.value })}></input>
+
+                        <label>Club: </label>
+                        <input value={this.state.club_name} onChange={e => this.setState({ club_name: e.target.value })}></input>
+
+
+                        <br></br>
+
+                        <label>Height: </label>
+                        <input value={this.state.height} onChange={e => this.setState({ height: e.target.value })}></input>
+
+                        <label>Age: </label>
+                        <input value={this.state.age} onChange={e => this.setState({ age: e.target.value })}></input>
+
+
+
+                        <br></br>
+
+                        <label>Date Scouted: </label>
+                        <input value={this.state.date_played} onChange={e => this.setState({ date_played: e.target.value })}></input>
+
+                        <label>Playing Against: </label>
+                        <input value={this.state.club_played} onChange={e => this.setState({ club_played: e.target.value })}></input>
+
+
+
+                        <br></br>
+
+
+                        <label>H/T: </label>
+                        <input value={this.state.ht_score} onChange={e => this.setState({ ht_score: e.target.value })}></input>
+
+                        <label>F/T: </label>
+                        <input value={this.state.ft_score} onChange={e => this.setState({ ft_score: e.target.value })}></input>
+
+
+                        <h4>Grade</h4>
+
+                        <label>Grade (A-C): </label>
+
+
+                        <select value={this.state.rating} onChange={e => this.setState({ rating: e.target.value })}>
+                            <option>
+                                A
+                            </option>
+                            <option>
+                                B+
+                            </option>
+                            <option>
+                                B
+                            </option>
+                            <option>
+                                C
+                            </option>
                         </select>
+
                     </div>
 
                     <div class="grid-item">
-
                         <h4>General</h4>
 
                         <label>Handling: </label>
@@ -119,11 +124,12 @@ class GoalkeeperForm extends React.Component {
                         <label>Shot Stopping: </label>
                         <input type="number" max="10" min="0" value={this.state.shot_stopping} onChange={e => this.setState({ shot_stopping: e.target.value })}></input>
 
+
+                        <br></br>
+
                         <label>Positioning: </label>
                         <input type="number" max="10" min="0" value={this.state.positioning} onChange={e => this.setState({ positioning: e.target.value })}></input>
 
-
-                        <br></br>
                         <label>Recovery Saves: </label>
                         <input type="number" max="10" min="0" value={this.state.recovery_saves} onChange={e => this.setState({ recovery_saves: e.target.value })}></input>
 
@@ -138,13 +144,11 @@ class GoalkeeperForm extends React.Component {
                         <label>Right Foot: </label>
                         <input type="number" max="10" min="0" value={this.state.right_foot} onChange={e => this.setState({ right_foot: e.target.value })}></input>
                         <br></br>
-
                     </div>
 
                     <div class="grid-item">
 
                         <h4>Distribution</h4>
-
 
                         <label>Dead Ball Kicks: </label>
                         <input type="number" max="10" min="0" value={this.state.dead_ball_kicks} onChange={e => this.setState({ dead_ball_kicks: e.target.value })}></input>
@@ -208,32 +212,36 @@ class GoalkeeperForm extends React.Component {
                         <input type="number" max="10" min="0" value={this.state.speed} onChange={e => this.setState({ speed: e.target.value })}></input>
                     </div>
 
-
                     <div class="grid-item">
                         <h4>Psychological</h4>
 
                         <label>Bravery: </label>
-                        <input type="number" max="10" min="0"></input>
+                        <input type="number" max="10" min="0" value={this.state.bravery} onChange={e => this.setState({ bravery: e.target.value })}></input>
 
                         <label>Leadership: </label>
-                        <input type="number" max="10" min="0"></input>
+                        <input type="number" max="10" min="0" value={this.state.leadership} onChange={e => this.setState({ leadership: e.target.value })}></input>
 
                         <label>Presence/Aura: </label>
-                        <input type="number" max="10" min="0"></input>
+                        <input type="number" max="10" min="0" value={this.state.presence} onChange={e => this.setState({ presence: e.target.value })}></input>
                         <br></br>
                         <label>Communication: </label>
-                        <input type="number" max="10" min="0"></input>
+                        <input type="number" max="10" min="0" value={this.state.communication} onChange={e => this.setState({ communication: e.target.value })}></input>
 
                         <label>Reaction to Mistake: </label>
-                        <input type="number" max="10" min="0"></input>
+                        <input type="number" max="10" min="0" value={this.state.reaction_to_mistake} onChange={e => this.setState({ reaction_to_mistake: e.target.value })}></input>
+
                     </div>
+
+
                     <div class="grid-item">
                         <h3>Additional Comments</h3>
-                        <textarea class="commentBox" value={this.state.notes} onChange={e => this.setState({ notes: e.target.value })}>
+                        <textarea class="notes">
 
                         </textarea>
                     </div>
+
                 </div>
+                <button type="submit">Submit</button>
             </form>
         );
     }

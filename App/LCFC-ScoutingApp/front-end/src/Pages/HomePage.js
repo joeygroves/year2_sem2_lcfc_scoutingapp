@@ -1,33 +1,25 @@
 import React from 'react';
 import '../App.css';
-// eslint-disable-next-line
 import NavBar from '../Components/NavigationBar/NavBar'
-// eslint-disable-next-line
-import PlayerReport from './PlayerReport'
-import Home from './HomePage'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-
 class HomePage extends React.Component {
 
 
     state = {
 
-        username: '',
-        JSONStringDataForUsers: '',
-        array: [],
+        JSONStringDataForUsers: [],
 
-
-    };
+    }
 
     componentDidMount() {
 
         this.gatherUserInformation();
 
+
     }
 
     gatherUserInformation = async () => {
 
-        const response = await fetch('/api/GetUserInformation', {
+        const response = await fetch('/api/GetScoutsReports', {
 
             method: 'POST',
 
@@ -39,27 +31,61 @@ class HomePage extends React.Component {
 
         });
 
-        const body = await response.text();
+        const body = await response.json();
 
         this.setState({ JSONStringDataForUsers: body });
 
+        console.log(this.state.JSONStringDataForUsers);
 
     };
 
     render() {
 
         return (
+
             <div>
+
                 <div>
 
                     <NavBar />
+
                 </div>
-                <div>
-                    <p>{this.state.JSONStringDataForUsers}</p>
-                    
-                </div>
+
+                <h1> Player Reports </h1>
+
+                <table>
+
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                        <th>Club</th>
+                    </tr>
+
+                </table>
+
+                {this.state.JSONStringDataForUsers.map((values, index) => {
+
+                    return <div>
+
+                        <table>
+
+                            <tr>
+                                <td>{values.FirstName}</td>
+                                <td>{values.LastName}</td>
+                                <td>{values.Age} </td>
+                                <td>{values.Club} </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                })}
+
             </div>
-        );
+
+        )
 
     }
 }
