@@ -14,12 +14,18 @@ var connection = mysql.createConnection({
 
   user: 'root',
 
-  password: 'alumwelljamie3',
+  password: 'Ruby.22031997',
 
-  database: 'LCFC_Scouting'
+  database: 'lcfc_scouting'
 
 });
 
+connection.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected");
+
+
+});
 
 app.use(session({
 
