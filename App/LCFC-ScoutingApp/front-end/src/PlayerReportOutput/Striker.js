@@ -10,30 +10,27 @@ class StrikerForm extends React.Component{
             <div class="grid-container">
             <div class="grid-item">    
                 <h3>Player Rating</h3>
-                <select>
-                    <option>A</option>
-                    <option>B+</option>
-                    <option>B</option>
-                    <option>C</option>
-                </select>
+                <label>Grade: </label>
+                    <label class ="rating"></label>
+                
             </div>
             <div class="grid-item">
                     <h3>In Possession</h3>
 
                     <label>Hold up play: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="hold_up_play"></label>
                     <br></br>
                     <label>Receiving under pressure: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="recieving_under_pressure"></label>
                     <br></br>
                     <label>Link up play: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="link_up_play"></label>
                     <br></br>
                     <label>Left foot: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="right_foot"></label>
                     <br></br>
                     <label>Right foot: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="left_foot"></label>
                     <br></br>	
                 </div>
 
@@ -41,22 +38,22 @@ class StrikerForm extends React.Component{
                     <h3>Attacking</h3>
 
                     <label>1v1: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="one_v_one"></label>
                     <br></br>
                     <label>Aerial ability: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="ariel_ability"></label>
                     <br></br>
                     <label>Crossing: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="crossing"></label>
                     <br></br>
                     <label>Finishing: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="finishing"></label>
                     <br></br>
                     <label>Right foot shooting: </label>
-                    <input type="number" max="10" min= "0"></input>
-                    <br></br>
+                    <label></label>
+                    <br class ="right_foot_shooting"></br>
                     <label>Left foot shooting: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="left_foot_shooting"></label>
                     <br></br>
                 </div>
 
@@ -64,16 +61,16 @@ class StrikerForm extends React.Component{
                     <h3>Defending</h3>
 
                     <label>1v2: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="one_v_two"></label>
                     <br></br>
                     <label>Tackling: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="tackling"></label>
                     <br></br>
                     <label>Pressing: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="pressing"></label>
                     <br></br>
                     <label>Recovering into shape: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="recovering_into_shape"></label>
                     <br></br>
                    
                 </div>
@@ -82,19 +79,19 @@ class StrikerForm extends React.Component{
                     <h3>Tactical</h3>
 
                     <label>Agility: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="agility"></label>
                     <br></br>
                     <label>Dropping into space </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="dropping_into_space"></label>
                     <br></br>
                     <label>Runs off the shoulder </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="runs_off_the_shoulder"></label>
                     <br></br>
                     <label>Running the channels: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="running_into_channels"></label>
                     <br></br>
                     <label>Movement off the ball: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="movement_off_the_ball"></label>
                     <br></br>
                 </div>
 
@@ -102,19 +99,19 @@ class StrikerForm extends React.Component{
                     <h3>Physical</h3>
 
                     <label>Pace: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="pace"></label>
                     <br></br>
                     <label>Mobility: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="mobility"></label>
                     <br></br>
                     <label>Jump/spring: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="jump"></label>
                     <br></br>
                     <label>Strength/pinning: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="strength"></label>
                     <br></br>
                     <label>Work rate: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="work_rate"></label>
                     <br></br>
                 </div>
 
@@ -123,27 +120,27 @@ class StrikerForm extends React.Component{
                     <h3>Pyschological</h3>
 
                     <label>Bravery: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="bravery"></label>
                     <br></br>
                     <label>Leadership: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="leadership"></label>
                     <br></br>
                     <label>Team work: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="team_work"></label>
                     <br></br>
                     <label>Communication: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="communication"></label>
                     <br></br>
                     <label>Response to criticism: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="response_to_criticism"></label>
                     <br></br>
                     <label>Reaction to mistakes: </label>
-                    <input type="number" max="10" min= "0"></input>
+                    <label class ="reaction_to_mistakes"></label>
                     <br></br>
                 </div>
                 <div class = "grid-item">
                     <h3>Additional Comments</h3>
-                    <textarea class = "commentBox">
+                    <textarea class = "notes">
 
                     </textarea>
                 </div>

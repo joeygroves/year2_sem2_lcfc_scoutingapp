@@ -48,8 +48,7 @@ class PlayerReport extends React.Component {
                         <Link to={"/playerReport/wideMidfielder"}><button>Wide Midfielder</button></Link>
                        
                         <Link to={"/playerReport/Striker"}><button>Striker</button></Link>
-                       
-                        <PlayerInfo />
+                    
                        
                         <Switch>
                        

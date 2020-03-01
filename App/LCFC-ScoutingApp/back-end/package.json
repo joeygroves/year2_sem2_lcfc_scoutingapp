@@ -13,8 +13,12 @@
     "mysql": "^2.18.1",
     "react-json-table": "^0.1.1",
     "react-router": "^5.1.2"
+<<<<<<< HEAD
 
     },
+=======
+  },
+>>>>>>> master
   "devDependencies": {
     "concurrently": "^4.0.1"
   }
