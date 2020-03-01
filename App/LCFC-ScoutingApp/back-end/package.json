@@ -12,19 +12,9 @@
     "express-session": "^1.17.0",
     "mysql": "^2.18.1",
     "react-json-table": "^0.1.1",
-    "react-router": "^5.1.2",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "react-router-config": "^5.1.1"
-=======
-    "react-router-config": "^5.1.1",
-    "yarn": "^1.22.0"
->>>>>>> branchShiv
-=======
-    "react-router-config": "^5.1.1",
-    "yarn": "^1.22.0"
->>>>>>> ff523ac4d3496ffd4a016f17525dad0a8c48c046
-  },
+    "react-router": "^5.1.2"
+
+    },
   "devDependencies": {
     "concurrently": "^4.0.1"
   }
