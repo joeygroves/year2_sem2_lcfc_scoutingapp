@@ -117,7 +117,7 @@ CREATE TABLE full_back_reports(
 report_id int NOT NULL AUTO_INCREMENT,
 player_id int NOT NULL,
 scouted_by VARCHAR(25) NOT NULL,
-recieving_under_pressure INTEGER,
+receiving_under_pressure INTEGER,
 short_passing INTEGER,
 long_passing INTEGER,
 control INTEGER,
