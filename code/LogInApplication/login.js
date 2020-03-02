@@ -6,7 +6,7 @@ var path = require('path');
 const port = process.env.PORT || 5000;
 var ip = require('ip');
  
-ip = ip.address() // my ip address
+ip = ip.address()
 
 var connection = mysql.createConnection({
 	host     : 'localhost',
