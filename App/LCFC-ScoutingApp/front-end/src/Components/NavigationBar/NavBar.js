@@ -86,7 +86,7 @@ class navBar extends React.Component {
                     <a><Link to={"/HomePage"}>Home</Link></a>
                    
                     {/* eslint-disable-next-line */}
-                    <a><Link to={"/PlayerReport"}>Player Reports</Link></a>
+                    <a><Link to={"/PlayerReport"}>Create Player Reports</Link></a>
                    
                     {/* eslint-disable-next-line */}
                     <a class="right"><Link to={"/LogOut"}>Logout</Link></a>

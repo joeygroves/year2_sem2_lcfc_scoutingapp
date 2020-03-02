@@ -1,8 +1,15 @@
 import React from "react";
 import "./PlayerPos.css";
+import NavBar from '../Components/NavigationBar/NavBar'
 class centreBackForm extends React.Component {
   render() {
     return (
+      <div>
+      <div> 
+
+        <NavBar />
+
+      </div>
       <form>
         <h2>Centre Back</h2>
         <div class="grid-container">
@@ -143,6 +150,7 @@ class centreBackForm extends React.Component {
           </div>
         </div>
       </form>
+      </div>
     );
   }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import NavBar from '../Components/NavigationBar/NavBar'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 class HomePage extends React.Component {
 
 
@@ -14,7 +15,6 @@ class HomePage extends React.Component {
     componentDidMount() {
 
         this.gatherUserInformation();
-
 
     }
 
@@ -30,6 +30,7 @@ class HomePage extends React.Component {
 
             },
 
+
         });
 
         const body = await response.json();
@@ -39,6 +40,10 @@ class HomePage extends React.Component {
         console.log(this.state.JSONStringDataForUsers);
 
     };
+
+   
+    
+
 
     render() {
 
@@ -81,7 +86,7 @@ class HomePage extends React.Component {
                                 <td>{values.Club} </td>
                                 <td>{values.Grade} </td>
                                 <td>{values.Height} </td>
-                                <td><a>Report</a></td>
+                                <td><a><Link to={"/ViewPlayerReport"}>View Reports</Link></a></td>
                             </tr>
 
                         </table>
@@ -98,4 +103,4 @@ class HomePage extends React.Component {
 }
 
 
-export default HomePage
+export default withRouter(HomePage);
