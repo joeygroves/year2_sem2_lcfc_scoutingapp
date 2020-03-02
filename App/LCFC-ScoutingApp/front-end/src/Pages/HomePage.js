@@ -60,6 +60,8 @@ class HomePage extends React.Component {
                         <th>Last Name</th>
                         <th>Age</th>
                         <th>Club</th>
+                        <th>Grade</th>
+                        <th>Height</th>
                     </tr>
 
                 </table>
@@ -75,6 +77,8 @@ class HomePage extends React.Component {
                                 <td>{values.LastName}</td>
                                 <td>{values.Age} </td>
                                 <td>{values.Club} </td>
+                                <td>{values.Grade} </td>
+                                <td>{values.Height} </td>
                             </tr>
 
                         </table>
