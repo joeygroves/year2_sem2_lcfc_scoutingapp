@@ -8,7 +8,7 @@ class GoalkeeperForm extends React.Component {
         control_when_recieving: '', right_foot: '', left_foot: '', dead_ball_kicks: '', kicking_out_of_hands: '', throwing: '',
         kicking_under_pressure: '', kicking_when_given_time: '', dealing_with_crosses: '', starting_position: '', one_v_one: '', dealing_with_through_ball: '',
         agility: '', reactions: '', strength: '', speed: '', bravery: '', leadership: '', presence: '', communication: '', reaction_to_mistake: '', rating: '',
-        notes: '', first_name: '', last_name: '', club_name: '', height: '', age: '', date_played: '', club_played: '', ht_score: '', ft_score: '',
+        notes: '', first_name: '', last_name: '', club_name: '', height: '', age: '', date_played: '', club_played: '', ht_score: '', ft_score: '',shirt_number : '',
     }
 
     handleSubmit = async (e) => {
@@ -30,7 +30,7 @@ class GoalkeeperForm extends React.Component {
                 control_when_recieving: this.state.control_when_recieving, right_foot: this.state.right_foot, left_foot: this.state.left_foot, dead_ball_kicks: this.state.dead_ball_kicks, kicking_out_of_hands: this.state.kicking_out_of_hands,
                 throwing: this.state.throwing, kicking_under_pressure: this.state.kicking_under_pressure, kicking_when_given_time: this.state.kicking_when_given_time, dealing_with_crosses: this.state.dealing_with_crosses, starting_position: this.state.starting_position,
                 one_v_one: this.state.one_v_one, dealing_with_through_ball: this.state.dealing_with_through_ball, agility: this.state.agility, reactions: this.state.reactions, strength: this.state.strength, speed: this.state.speed, bravery: this.state.bravery, leadership: this.state.leadership,
-                presence: this.state.presence, communication: this.state.communication, reaction_to_mistake: this.state.reaction_to_mistake, rating: this.state.rating,
+                presence: this.state.presence, communication: this.state.communication, reaction_to_mistake: this.state.reaction_to_mistake, rating: this.state.rating,shirt_number: this.state.shirt_number,
                 notes: this.state.notes, first_name: this.state.first_name, last_name: this.state.last_name ,club_name: this.state.club_name, height: this.state.height, age: this.state.age, date_played: this.state.date_played, club_played: this.state.club_played, ht_score: this.state.ht_score ,ft_score: this.state.ft_score
 
             }),
@@ -62,6 +62,8 @@ class GoalkeeperForm extends React.Component {
                         <label>Club: </label>
                         <input value={this.state.club_name} onChange={e => this.setState({ club_name: e.target.value })}></input>
 
+                        <label>Shirt Number: </label>
+                        <input value={this.state.shirt_number} onChange={e => this.setState({ shirt_number: e.target.value })}></input>
 
                         <br></br>
 

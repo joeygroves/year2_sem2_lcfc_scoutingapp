@@ -29,11 +29,11 @@ class wideMidfielderForm extends React.Component {
 
         // Additional Information
 
-        notes: '', rating : '',
+        notes: '', rating : '', 
 
         // Player Information
 
-        first_name: '', last_name: '', club_name: '', height: '', age: '', date_played: '', club_played: '', ht_score: '', ft_score: '', 
+        first_name: '', last_name: '', club_name: '', height: '', age: '', date_played: '', club_played: '', ht_score: '', ft_score: '', shirt_number : '',
     
     }
     handleSubmit = async (e) => {
@@ -80,7 +80,7 @@ class wideMidfielderForm extends React.Component {
         
                 // Player Information
         
-                first_name: this.state.first_name, last_name: this.state.last_name, club_name: this.state.club_name, height: this.state.height, age: this.state.age, date_played: this.state.date_played, club_played: this.state.club_played, ht_score: this.state.ht_score, ft_score: this.state.ft_score,
+                first_name: this.state.first_name, last_name: this.state.last_name, club_name: this.state.club_name, height: this.state.height, age: this.state.age, date_played: this.state.date_played, club_played: this.state.club_played, ht_score: this.state.ht_score, ft_score: this.state.ft_score, shirt_number: this.state.shirt_number,
             
 
             }),
@@ -112,6 +112,9 @@ class wideMidfielderForm extends React.Component {
 
                         <label>Club: </label>
                         <input value={this.state.club_name} onChange={e => this.setState({ club_name: e.target.value })}></input>
+
+                        <label>Shirt Number: </label>
+                        <input value={this.state.shirt_number} onChange={e => this.setState({ shirt_number: e.target.value })}></input>
 
 
                         <br></br>
@@ -204,10 +207,10 @@ class wideMidfielderForm extends React.Component {
                         <h4>Defending</h4>
 
                         <label>1v1: </label>
-                        <input type="number" max="10" min="0" value={this.state.defending_aerial_ability} onChange={e => this.setState({ defending_ariel_ability: e.target.value })}></input>
+                        <input type="number" max="10" min="0" value={this.state.one_vs_one_defending} onChange={e => this.setState({ one_vs_one_defending: e.target.value })}></input>
 
                         <label>Aerial ability: </label>
-                        <input type="number" max="10" min="0" value={this.state.one_vs_one_defending} onChange={e => this.setState({ one_vs_one_defending: e.target.value })}></input>
+                        <input type="number" max="10" min="0" value={this.state.defending_aerial_ability} onChange={e => this.setState({ defending_aerial_ability: e.target.value })}></input>
 
                         <label>Supporting full back: </label>
                         <input type="number" max="10" min="0" value={this.state.supporting_full_back} onChange={e => this.setState({ supporting_full_back: e.target.value })}></input>

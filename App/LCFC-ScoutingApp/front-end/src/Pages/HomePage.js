@@ -1,12 +1,13 @@
 import React from 'react';
 import '../App.css';
 import NavBar from '../Components/NavigationBar/NavBar'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 class HomePage extends React.Component {
 
 
     state = {
 
-        JSONStringDataForUsers: [],
+        JSONStringDataForUsers: [], FirstName: '',
 
     }
 
@@ -62,6 +63,7 @@ class HomePage extends React.Component {
                         <th>Club</th>
                         <th>Grade</th>
                         <th>Height</th>
+                        <th>View</th>
                     </tr>
 
                 </table>
@@ -79,6 +81,7 @@ class HomePage extends React.Component {
                                 <td>{values.Club} </td>
                                 <td>{values.Grade} </td>
                                 <td>{values.Height} </td>
+                                <td><a>Report</a></td>
                             </tr>
 
                         </table>

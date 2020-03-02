@@ -14,18 +14,12 @@ var connection = mysql.createConnection({
 
   user: 'root',
 
-  password: 'Ruby.22031997',
+  password: 'alumwelljamie3',
 
-  database: 'lcfc_scouting'
-
-});
-
-connection.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected");
-
+  database: 'LCFC_Scouting'
 
 });
+
 
 app.use(session({
 
@@ -104,8 +98,8 @@ app.post('/api/GetScoutsReports', (req, res) => {
 
   if (req.session.loggedin) {
 
-    connection.query("select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age' from player inner join goalkeeper_reports on goalkeeper_reports.player_id = player.player_id and goalkeeper_reports.scouted_by = ? union select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age' from player inner join wide_midfielder_reports on wide_midfielder_reports.player_id = player.player_id and wide_midfielder_reports.scouted_by = ? union select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age' from player inner join centre_back_reports on centre_back_reports.player_id = player.player_id and centre_back_reports.scouted_by = ? union select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age' from player inner join centre_midfielder_reports on centre_midfielder_reports.player_id = player.player_id and centre_midfielder_reports.scouted_by = ? union select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age' from player inner join full_back_reports on full_back_reports.player_id = player.player_id and full_back_reports.scouted_by = ? union select player.first_name AS 'FirstName' ,player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age' from player inner join striker_reports on striker_reports.player_id = player.player_id and striker_reports.scouted_by = ?",
-      [req.session.username,req.session.username,req.session.username,req.session.username,req.session.username,req.session.username], function (error, results, fields) {
+    connection.query("select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age',goalkeeper_reports.rating AS 'Grade', player.height AS 'Height' from player inner join goalkeeper_reports on goalkeeper_reports.player_id = player.player_id and goalkeeper_reports.scouted_by = ? union select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age',wide_midfielder_reports.rating AS 'Grade', player.height AS 'Height' from player inner join wide_midfielder_reports on wide_midfielder_reports.player_id = player.player_id and wide_midfielder_reports.scouted_by = ? union select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age',centre_back_reports.rating AS 'Grade', player.height AS 'Height' from player inner join centre_back_reports on centre_back_reports.player_id = player.player_id and centre_back_reports.scouted_by = ? union select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age',centre_midfielder_reports.rating AS 'Grade', player.height AS 'Height' from player inner join centre_midfielder_reports on centre_midfielder_reports.player_id = player.player_id and centre_midfielder_reports.scouted_by = ? union select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age',full_back_reports.rating AS 'Grade', player.height AS 'Height' from player inner join full_back_reports on full_back_reports.player_id = player.player_id and full_back_reports.scouted_by = ? union select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age',striker_reports.rating AS 'Grade', player.height AS 'Height' from player inner join striker_reports on striker_reports.player_id = player.player_id and striker_reports.scouted_by = ?",
+      [req.session.username, req.session.username, req.session.username, req.session.username, req.session.username, req.session.username], function (error, results, fields) {
 
 
 
@@ -138,7 +132,7 @@ app.post('/api/getUsername', (req, res) => {
 });
 
 
-// -------------------------------------------------------------------------------------------------------- Insert Into ---------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------- Insert Into Goalkeeper  ---------------------------------------------------------------------------------
 
 
 app.post('/api/goalkeeper', (req, res) => {
@@ -153,6 +147,7 @@ app.post('/api/goalkeeper', (req, res) => {
   var ht_score = req.body.ht_score;
   var ft_score = req.body.ft_score;
   var position = 'Goalkeeper'
+  var shirt_number = req.body.shirt_number;
 
   var scouted_by = req.session.username
   var handling = req.body.handling;
@@ -184,18 +179,18 @@ app.post('/api/goalkeeper', (req, res) => {
   var reaction_to_mistake = req.body.reaction_to_mistake;
   var rating = req.body.rating;
   var notes = req.body.notes;
+  var playerID;
 
 
-
-  var PlayerSQL = "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position) VALUES ?";
-  var PlayerValues = [[first_name, last_name, club_name, height, age, position]]
+  var PlayerSQL = "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position,shirt_number) VALUES ?";
+  var PlayerValues = [[first_name, last_name, club_name, height, age, position, shirt_number]]
 
   connection.query(PlayerSQL, [PlayerValues], function (err, result) {
     if (err) throw err;
   });
 
-  var PlayerIDSQL = "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST(? AS DECIMAL) AND age = ? AND position = ?";
-  connection.query(PlayerIDSQL, [first_name, last_name, club_name, height, age, position], function (err, results) {
+  var PlayerIDSQL = "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST(? AS DECIMAL) AND age = ? AND position = ? AND shirt_number = ?";
+  connection.query(PlayerIDSQL, [first_name, last_name, club_name, height, age, position, shirt_number], function (err, results) {
     if (err) {
       throw err;
     } else {
@@ -203,7 +198,7 @@ app.post('/api/goalkeeper', (req, res) => {
       console.log(results.length);
       console.log();
 
-      var sql = "INSERT INTO lcfc_scouting.goalkeeper_reports (player_id,scouted_by,handling,shot_stopping,tendancy_to_punch,tendancy_to_catch,positioning,recovery_saves,control_when_recieving,right_foot,left_foot,dead_ball_kicks,kicking_out_of_hands,throwing,kicking_under_pressure,kicking_when_given_time,dealing_with_crosses,starting_position,one_v_one,dealing_with_through_ball,agility,reactions,strength,speed,bravery,leadership,presence,communication,reaction_to_mistake,rating,notes) VALUES ?";
+      var sql = "INSERT INTO lcfc_scouting.goalkeeper_reports (player_id,scouted_by,handling,shot_stopping,tendancy_to_punch,tendancy_to_catch,positioning,recovery_saves,control_when_receiving,right_foot,left_foot,dead_ball_kicks,kicking_out_of_hands,throwing,kicking_under_pressure,kicking_when_given_time,dealing_with_crosses,starting_position,one_v_one,dealing_with_through_ball,agility,reactions,strength,speed,bravery,leadership,presence,communication,reaction_to_mistake,rating,notes) VALUES ?";
       var values = [[results[0].player_id, scouted_by, handling, shot_stopping, tendancy_to_punch, tendancy_to_catch, positioning, recovery_saves, control_when_recieving, right_foot, left_foot, dead_ball_kicks, kicking_out_of_hands, throwing, kicking_under_pressure, kicking_when_given_time, dealing_with_crosses, starting_position, one_v_one, dealing_with_through_ball, agility, reactions, strength, speed, bravery, leadership, presence, communication, reaction_to_mistake, rating, notes]];
 
       connection.query(sql, [values], function (err, result) {
@@ -218,7 +213,122 @@ app.post('/api/goalkeeper', (req, res) => {
 }
 );
 
-// ------------------------------------------------------------------------------------------------------------------------------------------------ Insert Wide Fielder -------------------------------------
+// --------------------------------------------------------------------------------------------------------------------- Insert into Fullback ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+app.post('/api/fullback', (req, res) => {
+
+  var first_name = req.body.first_name;
+  var last_name = req.body.last_name;
+  var club_name = req.body.club_name;
+  var height = req.body.height;
+  var age = req.body.age
+  var date_played = req.body.date_played;
+  var club_played = req.body.club_played;
+  var ht_score = req.body.ht_score;
+  var ft_score = req.body.ft_score;
+  var position = 'fullBack'
+  var shirt_number = req.body.shirt_number;
+
+  var scouted_by = req.session.username
+
+  //In Possession
+  var receiving_under_pressure = req.body.receiving_under_pressure;
+  var short_passing = req.body.short_passing;
+  var long_passing = req.body.long_passing;
+  var control = req.body.control;
+  var right_foot = req.body.right_foot;
+  var left_foot = req.body.left_foot;
+
+  //Attacking
+  var attacking_one_v_one = req.body.attacking_one_v_one;
+  var attacking_ariel_ability = req.body.attacking_ariel_ability;
+  var crossing = req.body.crossing;
+
+  //Defending
+  var defending_one_v_one = req.body.defending_one_v_one;
+  var defending_ariel_ability = req.body.defending_ariel_ability;
+  var tackling = req.body.tackling;
+  var defending_far_post = req.body.defending_far_post;
+  var stopping_the_cross = req.body.stopping_the_cross;
+  var pressing = req.body.pressing;
+  var recovery_runs = req.body.recovery_runs;
+  var tracking_runners = req.body.tracking_runners;
+
+  //Tactical
+  var agility = req.body.agility;
+  var angles_to_recieve = req.body.angles_to_recieve;
+  var link_up_with_winger = req.body.link_up_with_winger;
+  var covering_across = req.body.covering_across;
+  var willlingness_to_get_forward = req.body.willlingness_to_get_forward;
+
+  //Physical
+  var pace = req.body.pace;
+  var mobility = req.body.mobility;
+  var work_rate = req.body.work_rate;
+  var strength = req.body.strength;
+  var jump = req.body.jump;
+
+  //Psychological
+  var bravery = req.body.bravery;
+  var leadership = req.body.leadership;
+  var team_work = req.body.team_work;
+  var communicaton = req.body.communicaton;
+  var reponse_to_criticism = req.body.reponse_to_criticism;
+  var reaction_to_mistake = req.body.reaction_to_mistake;
+
+  //Rating
+  var rating = req.body.rating;
+
+  //Additional Comments
+  var notes = req.body.notes;
+
+  //Player Information
+  var playerID;
+
+
+  var PlayerSQL = "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position,shirt_number) VALUES ?";
+  var PlayerValues = [[first_name, last_name, club_name, height, age, position, shirt_number]]
+
+  connection.query(PlayerSQL, [PlayerValues], function (err, result) {
+    if (err) throw err;
+  });
+
+  var PlayerIDSQL = "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST(? AS DECIMAL) AND age = ? AND position = ? AND shirt_number = ?";
+  connection.query(PlayerIDSQL, [first_name, last_name, club_name, height, age, position, shirt_number], function (err, results) {
+    if (err) {
+      throw err;
+    } else {
+
+      console.log(results.length);
+      console.log();
+
+      var sql = "INSERT INTO lcfc_scouting.full_back_reports (player_id, scouted_by, receiving_under_pressure, short_passing, long_passing, control, right_foot, left_foot, attacking_one_v_one, attacking_ariel_ability, crossing, defending_one_v_one, defending_ariel_ability, tackling, defending_far_post, stopping_the_cross, pressing, recovery_runs, tracking_runners, agility, angles_to_receive, link_up_with_winger, covering_across, willlingness_to_get_forward, pace, mobility, work_rate, strength, jump, bravery,leadership, team_work, communicaton, response_to_criticism, reaction_to_mistake,rating, notes) VALUES ?";
+
+      var values = [[results[0].player_id, scouted_by, receiving_under_pressure,
+        short_passing, long_passing, control, right_foot, left_foot,
+        attacking_one_v_one, attacking_ariel_ability, crossing, defending_one_v_one,
+        defending_ariel_ability, tackling, defending_far_post, stopping_the_cross,
+        pressing, recovery_runs, tracking_runners,
+        agility, angles_to_recieve, link_up_with_winger,
+        covering_across, willlingness_to_get_forward,
+        pace, mobility, work_rate, strength, jump, bravery,
+        leadership, team_work, communicaton, reponse_to_criticism,
+        reaction_to_mistake,
+        rating, notes]];
+
+      connection.query(sql, [values], function (err, result) {
+        if (err) throw err;
+        console.log("Number of records inserted: " + result.affectedRows);
+      });
+
+    };
+
+
+  })
+}
+);
+
+// -------------------------------------------------------------------------------------------------------------------------- Insert Wide Midfielder------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 app.post('/api/widemidfielder', (req, res) => {
 
@@ -231,6 +341,7 @@ app.post('/api/widemidfielder', (req, res) => {
   var club_played = req.body.club_played;
   var ht_score = req.body.ht_score;
   var ft_score = req.body.ft_score;
+  var shirt_number = req.body.shirt_number;
   var position = 'Wide Midfielder'
 
   var scouted_by = req.session.username;
@@ -272,8 +383,8 @@ app.post('/api/widemidfielder', (req, res) => {
   var notes = req.body.notes;
 
 
-  var PlayerSQL = "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position) VALUES ?";
-  var PlayerValues = [[first_name, last_name, club_name, height, age, position]]
+  var PlayerSQL = "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position,shirt_number) VALUES ?";
+  var PlayerValues = [[first_name, last_name, club_name, height, age, position, shirt_number]]
 
   connection.query(PlayerSQL, [PlayerValues], function (err, result) {
     if (err) throw err;
@@ -288,7 +399,7 @@ app.post('/api/widemidfielder', (req, res) => {
       console.log(wmresults.length);
       console.log();
 
-      var sql = "INSERT INTO lcfc_scouting.wide_midfielder_reports (player_id,scouted_by,control,recieving_under_pressure,short_passing,switching_play,right_foot,left_foot,attacking_one_v_one,attacking_ariel_ability,dribbling,shooting,crossing,defending_one_v_one,defending_ariel_ability,supporting_full_back,tackling,pressing,positional_awareness,recovery_runs,tracking_runners,agility,coming_in_off_the_line,finding_space_out_wide,link_up_with_full_back,willingness_to_get_forward,pace,speed_when_dribbling,strength,work_rate,bravery,leadership,teamwork,communication,response_to_criticism,reaction_to_mistakes,rating,notes)  VALUES ?";
+      var sql = "INSERT INTO lcfc_scouting.wide_midfielder_reports (player_id,scouted_by,control,receiving_under_pressure,short_passing,switching_play,right_foot,left_foot,attacking_one_v_one,attacking_ariel_ability,dribbling,shooting,crossing,defending_one_v_one,defending_ariel_ability,supporting_full_back,tackling,pressing,positional_awareness,recovery_runs,tracking_runners,agility,coming_in_off_the_line,finding_space_out_wide,link_up_with_full_back,willingness_to_get_forward,pace,speed_when_dribbling,strength,work_rate,bravery,leadership,teamwork,communication,response_to_criticism,reaction_to_mistakes,rating,notes)  VALUES ?";
       var values = [[wmresults[0].player_id, scouted_by, control, receiving_under_pressure, short_passing, switching_play, right_foot, left_foot, attacking_one_v_one, attacking_ariel_ability, dribbling, shooting, crossing, defending_one_v_one, defending_ariel_ability, supporting_full_back, tackling, pressing, positional_awareness, recovery_runs, tracking_runners, agility, coming_in_off_the_line, finding_space_out_wide, link_up_with_full_back, willingness_to_get_forward, pace,
         speed_when_dribbling, strength, work_rate, bravery, leadership, teamwork, communication, response_to_criticism, reaction_to_mistakes, rating, notes]];
 
@@ -304,7 +415,186 @@ app.post('/api/widemidfielder', (req, res) => {
 }
 );
 
-// --------------------------------------------------------------------------------------------------------------------- Server --------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------------------------------------Insert Into CB----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+app.post('/api/centreBack', (req, res) => {
+
+  var first_name = req.body.first_name;
+  var last_name = req.body.last_name;
+  var club_name = req.body.club_name;
+  var height = req.body.height;
+  var age = req.body.age
+  var date_played = req.body.date_played;
+  var club_played = req.body.club_played;
+  var ht_score = req.body.ht_score;
+  var ft_score = req.body.ft_score;
+  var shirt_number = req.body.shirt_number;
+  var position = 'Centre Back'
+
+  var scouted_by = req.session.username
+  var recieving_under_pressure = req.body.recieving_under_pressure;
+  var short_passing = req.body.short_passing;
+  var long_passing = req.body.long_passing;
+  var carrying_the_ball_forward = req.body.carrying_the_ball_forward;
+  var right_foot = req.body.right_foot;
+  var left_foot = req.body.left_foot;
+  var threat_at_set_plays = req.body.threat_at_set_plays;
+  var attacking_ariel_ability = req.body.attacking_ariel_ability;
+  var one_v_one = req.body.one_v_one;
+  var defending_ariel_ability = req.body.defending_ariel_ability;
+  var tackling = req.body.tackling;
+  var marking = req.body.marking;
+  var interceptions = req.body.interceptions;
+  var sensing_danger = req.body.sensing_danger;
+  var defending_crosses = req.body.defending_crosses;
+  var pressing = req.body.pressing;
+  var recovery_runs = req.body.recovery_runs;
+  var tracking_runners = req.body.tracking_runners;
+  var agility = req.body.agility;
+  var angles_to_recieve = req.body.angles_to_recieve;
+  var distances = req.body.distances;
+  var recovering_to_shape = req.body.recovering_to_shape;
+  var pace_when_turning = req.body.pace_when_turning;
+  var jump = req.body.jump;
+  var mobility = req.body.mobility;
+  var strength = req.body.strength;
+  var aggression = req.body.aggression;
+  var bravery = req.body.bravery;
+  var leadership = req.body.leadership;
+  var team_work = req.body.team_work;
+  var communication = req.body.communication;
+  var response_to_criticism = req.body.response_to_criticism;
+  var reaction_to_mistake = req.body.reaction_to_mistake;
+  var rating = req.body.rating;
+  var notes = req.body.notes;
+  var playerID;
+
+
+  var PlayerSQL = "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position,shirt_number) VALUES ?";
+  var PlayerValues = [[first_name, last_name, club_name, height, age, position, shirt_number]]
+
+  connection.query(PlayerSQL, [PlayerValues], function (err, result) {
+    if (err) throw err;
+  });
+
+  var PlayerIDSQL = "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST(? AS DECIMAL) AND age = ? AND position = ?"; connection.query(PlayerIDSQL, [first_name, last_name, club_name, height, age, position], function (err, results) {
+    if (err) {
+      throw err;
+    } else {
+
+      console.log(results.length);
+      console.log();
+
+      var sql = "INSERT INTO lcfc_scouting.centre_back_reports (player_id,scouted_by,receiving_under_pressure, short_passing, long_passing, carrying_the_ball_forward, right_foot, left_foot, threat_at_set_plays, attacking_ariel_ability, one_v_one, defending_ariel_ability, tackling, marking, interceptions, sensing_danger, defending_crosses, pressing, recovery_runs, tracking_runners, agility, angles_to_receive, distances, recovering_to_shape, pace_when_turning, jump, mobility, strength, aggression, bravery, leadership, team_work, communication, response_to_criticism, reaction_to_mistake, rating, notes) VALUES ?";
+      var values = [[results[0].player_id, scouted_by, recieving_under_pressure, short_passing, long_passing, carrying_the_ball_forward, right_foot, left_foot, threat_at_set_plays, attacking_ariel_ability, one_v_one, defending_ariel_ability, tackling, marking, interceptions, sensing_danger, defending_crosses, pressing, recovery_runs, tracking_runners, agility, angles_to_recieve, distances, recovering_to_shape, pace_when_turning, jump, mobility, strength, aggression, bravery, leadership, team_work, communication, response_to_criticism, reaction_to_mistake, rating, notes]];
+
+      connection.query(sql, [values], function (err, result) {
+        if (err) throw err;
+        console.log("Number of records inserted: " + result.affectedRows);
+      });
+
+    };
+
+
+  })
+}
+);
+
+// ------------------------------------------------------------------------
+
+app.post("/api/centreMid", (req, res) => {
+  var first_name = req.body.first_name;
+  var last_name = req.body.last_name;
+  var club_name = req.body.club_name;
+  var height = req.body.height;
+  var age = req.body.age;
+  var date_played = req.body.date_played;
+  var club_played = req.body.club_played;
+  var ht_score = req.body.ht_score;
+  var ft_score = req.body.ft_score;
+  var position = "Centre Midfielder";
+
+  var scouted_by = req.session.username;
+  var control_under_pressure = req.body.control_under_pressure;
+  var bravery_in_posession = req.body.bravery_in_posession;
+  var short_passing = req.body.short_passing;
+  var switching_play = req.body.switching_play;
+  var running_with_the_ball = req.body.running_with_the_ball;
+  var right_foot = req.body.right_foot;
+  var left_foot = req.body.left_foot;
+  var attacking_one_v_one = req.body.attacking_one_v_one;
+  var attacking_ariel_ability = req.body.attacking_ariel_ability;
+  var shooting = req.body.shooting;
+  var crossing = req.body.crossing;
+  var defending_one_v_one = req.body.defending_one_v_one;
+  var defending_ariel_ability = req.body.defending_ariel_ability;
+  var tackling = req.body.tackling;
+  var closing_down = req.body.closing_down;
+  var recovery_runs = req.body.recovery_runs;
+  var marking = req.body.marking;
+  var agility = req.body.agility;
+  var finding_space = req.body.finding_space;
+  var vision = req.body.vision;
+  var creativity = req.body.creativity;
+  var speed = req.body.speed;
+  var movement_skills = req.body.movement_skills;
+  var work_rate = req.body.work_rate;
+  var strength = req.body.strength;
+  var communication = req.body.communication;
+  var concentration = req.body.concentration;
+  var commitment = req.body.commitment;
+  var emotional_control = req.body.emotional_control;
+  var confidence = req.body.confidence;
+  var rating = req.body.rating;
+  var notes = req.body.notes;
+  var shirt_number = req.body.shirt_number;
+  var playerID;
+
+  var PlayerSQL =
+    "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position,shirt_number) VALUES ?";
+  var PlayerValues = [
+    [first_name, last_name, club_name, height, age, position, shirt_number]
+  ];
+
+  connection.query(PlayerSQL, [PlayerValues], function (err, result) {
+    if (err) throw err;
+  });
+
+  var PlayerIDSQL =
+    "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST( ? AS DECIMAL) AND age = ? AND position = ?";
+  connection.query(
+    PlayerIDSQL,
+    [first_name, last_name, club_name, height, age, position],
+    function (err, results) {
+      if (err) {
+        throw err;
+      } else {
+        console.log(results.length);
+        console.log();
+
+        var sql =
+          "INSERT INTO lcfc_scouting.centre_midfielder_reports(player_id, scouted_by, control_under_pressure, bravery_in_posession, short_passing, switching_play, running_with_the_ball, right_foot, left_foot, attacking_one_v_one, attacking_ariel_ability, shooting, crossing, defending_one_v_one, defending_ariel_ability, tackling, closing_down, recovery_runs, marking, agility, finding_space, vision, creativity, speed, movement_skills, work_rate, strength, communication, concentration, commitment, emotional_control, confidence, rating, notes) VALUES ?";
+        var values = [
+          [
+            results[0].player_id, scouted_by, control_under_pressure, bravery_in_posession, short_passing, switching_play, running_with_the_ball, right_foot, left_foot, attacking_one_v_one, attacking_ariel_ability, shooting, crossing, defending_one_v_one,
+            defending_ariel_ability, tackling, closing_down, recovery_runs, marking, agility, finding_space, vision, creativity, speed, movement_skills, work_rate,
+            strength, communication, concentration, commitment, emotional_control, confidence, rating, notes
+          ]
+        ];
+
+        connection.query(sql, [values], function (err, result) {
+          if (err) throw err;
+          console.log("Number of records inserted: " + result.affectedRows);
+        });
+      }
+    }
+  );
+});
+
+
+
+// --------------------------------------------------------------------------------------------------------------------- Server ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 if (process.env.NODE_ENV === 'production') {
 

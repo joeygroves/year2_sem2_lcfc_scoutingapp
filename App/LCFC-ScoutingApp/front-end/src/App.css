@@ -113,9 +113,9 @@ table {
 
 td, th {
   border: 1px solid #dddddd;
-  text-align: left;
+  text-align: center;
   padding: 8px;
-  width: 25%;
+  width: 14.2857%;
 }
 
 tr:nth-child(even) {
