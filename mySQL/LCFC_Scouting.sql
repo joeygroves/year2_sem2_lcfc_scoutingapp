@@ -1,5 +1,5 @@
-Create DATABASE LCFC_Scouting;
 
+-- CREATE DATABASE LCFC_Scouting;
 
 CREATE TABLE staff(
 username VARCHAR(25) NOT NULL,
@@ -17,25 +17,21 @@ PRIMARY KEY (club_id)
 );
 
 CREATE TABLE player(
-player_id VARCHAR(10) NOT NULL,
+player_id INT auto_increment NOT NULL,
 first_name VARCHAR(20) NOT NULL,
 last_name VARCHAR(20) NOT NULL,
-club INTEGER,
+club VARCHAR(20) NOT NULL,
 height FLOAT,
 age INTEGER,
 position VARCHAR(25) NOT NULL,
-PRIMARY KEY (player_id),
-FOREIGN KEY (club) REFERENCES club(club_id)
+shirt_number INT NOT NULL,
+PRIMARY KEY (player_id)
 );
 
 
 CREATE TABLE goalkeeper_reports(
-report_id VARCHAR(10) NOT NULL,
-player VARCHAR(20) NOT NULL,
-club_played INTEGER NOT NULL,
-date_played DATE,
-ht_score VARCHAR(10),
-ft_score VARCHAR(10),
+report_id int NOT NULL AUTO_INCREMENT,
+player_id int NOT NULL,
 scouted_by VARCHAR(25) NOT NULL,
 handling INTEGER,
 shot_stopping INTEGER,
@@ -43,7 +39,7 @@ tendancy_to_punch INTEGER,
 tendancy_to_catch INTEGER,
 positioning INTEGER,
 recovery_saves INTEGER,
-control_when_recieving INTEGER,
+control_when_receiving INTEGER,
 right_foot INTEGER,
 left_foot INTEGER,
 dead_ball_kicks INTEGER,
@@ -52,6 +48,7 @@ throwing INTEGER,
 kicking_under_pressure INTEGER,
 kicking_when_given_time INTEGER,
 dealing_with_crosses INTEGER,
+starting_position INTEGER,
 one_v_one INTEGER,
 dealing_with_through_ball INTEGER,
 agility INTEGER,
@@ -66,21 +63,16 @@ reaction_to_mistake INTEGER,
 rating VARCHAR(2),
 notes VARCHAR(1000),
 PRIMARY KEY (report_id),
-FOREIGN KEY (player) REFERENCES player(player_id),
-FOREIGN KEY (scouted_by) REFERENCES staff(username),
-FOREIGN KEY (club_played) REFERENCES club(club_id)
+FOREIGN KEY (player_id) REFERENCES player(player_id),
+FOREIGN KEY (scouted_by) REFERENCES staff(username)
 );
 
 
 CREATE TABLE centre_back_reports(
-report_id VARCHAR(10) NOT NULL,
-player VARCHAR(20) NOT NULL,
-club_played INTEGER NOT NULL,
-date_played DATE,
-ht_score VARCHAR(10),
-ft_score VARCHAR(10),
+report_id int NOT NULL AUTO_INCREMENT,
+player_id int NOT NULL,
 scouted_by VARCHAR(25) NOT NULL,
-recieving_under_pressure INTEGER,
+receiving_under_pressure INTEGER,
 short_passing INTEGER,
 long_passing INTEGER,
 carrying_the_ball_forward INTEGER,
@@ -99,7 +91,7 @@ pressing INTEGER,
 recovery_runs INTEGER,
 tracking_runners INTEGER,
 agility INTEGER,
-angles_to_recieve INTEGER,
+angles_to_receive INTEGER,
 distances INTEGER,
 recovering_to_shape INTEGER,
 pace_when_turning INTEGER,
@@ -110,27 +102,22 @@ aggression INTEGER,
 bravery INTEGER,
 leadership INTEGER,
 team_work INTEGER,
-communicaton INTEGER,
-reponse_to_criticism INTEGER,
+communication INTEGER,
+response_to_criticism INTEGER,
 reaction_to_mistake INTEGER,
 rating VARCHAR(2),
 notes VARCHAR(1000),
 PRIMARY KEY (report_id),
-FOREIGN KEY (player) REFERENCES player(player_id),
-FOREIGN KEY (scouted_by) REFERENCES staff(username),
-FOREIGN KEY (club_played) REFERENCES club(club_id)
+FOREIGN KEY (player_id) REFERENCES player(player_id),
+FOREIGN KEY (scouted_by) REFERENCES staff(username)
 );
 
 
 CREATE TABLE full_back_reports(
-report_id VARCHAR(10) NOT NULL,
-player VARCHAR(20) NOT NULL,
-club_played INTEGER NOT NULL,
-date_played DATE,
-ht_score VARCHAR(10),
-ft_score VARCHAR(10),
+report_id int NOT NULL AUTO_INCREMENT,
+player_id int NOT NULL,
 scouted_by VARCHAR(25) NOT NULL,
-recieving_under_pressure INTEGER,
+receiving_under_pressure INTEGER,
 short_passing INTEGER,
 long_passing INTEGER,
 control INTEGER,
@@ -148,7 +135,7 @@ pressing INTEGER,
 recovery_runs INTEGER,
 tracking_runners INTEGER,
 agility INTEGER,
-angles_to_recieve INTEGER,
+angles_to_receive INTEGER,
 link_up_with_winger INTEGER,
 covering_across INTEGER,
 willlingness_to_get_forward INTEGER,
@@ -161,24 +148,19 @@ bravery INTEGER,
 leadership INTEGER,
 team_work INTEGER,
 communicaton INTEGER,
-reponse_to_criticism INTEGER,
+response_to_criticism INTEGER,
 reaction_to_mistake INTEGER,
 rating VARCHAR(2),
 notes VARCHAR(1000),
 PRIMARY KEY (report_id),
-FOREIGN KEY (player) REFERENCES player(player_id),
-FOREIGN KEY (scouted_by) REFERENCES staff(username),
-FOREIGN KEY (club_played) REFERENCES club(club_id)
+FOREIGN KEY (player_id) REFERENCES player(player_id),
+FOREIGN KEY (scouted_by) REFERENCES staff(username)
 );
 
 
 CREATE TABLE centre_midfielder_reports(
-report_id VARCHAR(10) NOT NULL,
-player VARCHAR(20) NOT NULL,
-club_played INTEGER NOT NULL,
-date_played DATE,
-ht_score VARCHAR(10),
-ft_score VARCHAR(10),
+report_id int NOT NULL AUTO_INCREMENT,
+player_id int NOT NULL,
 scouted_by VARCHAR(25) NOT NULL,
 control_under_pressure INTEGER,
 bravery_in_posession INTEGER,
@@ -205,7 +187,7 @@ speed INTEGER,
 movement_skills INTEGER,
 work_rate INTEGER,
 strength INTEGER,
-communicaton INTEGER,
+communication INTEGER,
 concentration INTEGER,
 commitment INTEGER,
 emotional_control INTEGER,
@@ -213,23 +195,18 @@ confidence INTEGER,
 rating VARCHAR(2),
 notes VARCHAR(1000),
 PRIMARY KEY (report_id),
-FOREIGN KEY (player) REFERENCES player(player_id),
-FOREIGN KEY (scouted_by) REFERENCES staff(username),
-FOREIGN KEY (club_played) REFERENCES club(club_id)
+FOREIGN KEY (player_id) REFERENCES player(player_id),
+FOREIGN KEY (scouted_by) REFERENCES staff(username)
 );
 
 
 
 CREATE TABLE wide_midfielder_reports(
-report_id VARCHAR(10) NOT NULL,
-player VARCHAR(20) NOT NULL,
-club_played INTEGER NOT NULL,
-date_played DATE,
-ht_score VARCHAR(10),
-ft_score VARCHAR(10),
+report_id int NOT NULL AUTO_INCREMENT,
+player_id int NOT NULL,
 scouted_by VARCHAR(25) NOT NULL,
 control INTEGER,
-recieving_under_pressure INTEGER,
+receiving_under_pressure INTEGER,
 short_passing INTEGER,
 switching_play INTEGER,
 right_foot INTEGER,
@@ -265,22 +242,17 @@ reaction_to_mistakes INTEGER,
 rating VARCHAR(2),
 notes VARCHAR(1000),
 PRIMARY KEY (report_id),
-FOREIGN KEY (player) REFERENCES player(player_id),
-FOREIGN KEY (scouted_by) REFERENCES staff(username),
-FOREIGN KEY (club_played) REFERENCES club(club_id)
+FOREIGN KEY (player_id) REFERENCES player(player_id),
+FOREIGN KEY (scouted_by) REFERENCES staff(username)
 );
 
 
 CREATE TABLE striker_reports(
-report_id VARCHAR(10) NOT NULL,
-player VARCHAR(20) NOT NULL,
-club_played INTEGER NOT NULL,
-date_played DATE,
-ht_score VARCHAR(10),
-ft_score VARCHAR(10),
+report_id int NOT NULL AUTO_INCREMENT,
+player_id int NOT NULL,
 scouted_by VARCHAR(25) NOT NULL,
 hold_up_play INTEGER,
-recieving_under_pressure INTEGER,
+receiving_under_pressure INTEGER,
 link_up_play INTEGER,
 right_foot INTEGER,
 left_foot INTEGER,
@@ -313,7 +285,7 @@ reaction_to_mistakes INTEGER,
 rating VARCHAR(2),
 notes VARCHAR(1000),
 PRIMARY KEY (report_id),
-FOREIGN KEY (player) REFERENCES player(player_id),
-FOREIGN KEY (scouted_by) REFERENCES staff(username),
-FOREIGN KEY (club_played) REFERENCES club(club_id)
+FOREIGN KEY (player_id) REFERENCES player(player_id),
+FOREIGN KEY (scouted_by) REFERENCES staff(username)
 );
+
