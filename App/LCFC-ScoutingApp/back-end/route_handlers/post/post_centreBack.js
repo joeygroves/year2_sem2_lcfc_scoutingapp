@@ -1,0 +1,99 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+var session = require('express-session');
+const app = express();
+const port = process.env.PORT || 5000;
+var mysql = require('mysql');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+var connect = require('../../mysql_connection/mysql_create_connection');
+
+
+module.exports = function(app) {
+
+    app.post('/api/centreBack', (req, res) => {
+
+        var first_name = req.body.first_name;
+        var last_name = req.body.last_name;
+        var club_name = req.body.club_name;
+        var height = req.body.height;
+        var age = req.body.age
+        var date_played = req.body.date_played;
+        var club_played = req.body.club_played;
+        var ht_score = req.body.ht_score;
+        var ft_score = req.body.ft_score;
+        var shirt_number = req.body.shirt_number;
+        var position = 'Centre Back'
+      
+        var scouted_by = req.session.username
+        var recieving_under_pressure = req.body.recieving_under_pressure;
+        var short_passing = req.body.short_passing;
+        var long_passing = req.body.long_passing;
+        var carrying_the_ball_forward = req.body.carrying_the_ball_forward;
+        var right_foot = req.body.right_foot;
+        var left_foot = req.body.left_foot;
+        var threat_at_set_plays = req.body.threat_at_set_plays;
+        var attacking_ariel_ability = req.body.attacking_ariel_ability;
+        var one_v_one = req.body.one_v_one;
+        var defending_ariel_ability = req.body.defending_ariel_ability;
+        var tackling = req.body.tackling;
+        var marking = req.body.marking;
+        var interceptions = req.body.interceptions;
+        var sensing_danger = req.body.sensing_danger;
+        var defending_crosses = req.body.defending_crosses;
+        var pressing = req.body.pressing;
+        var recovery_runs = req.body.recovery_runs;
+        var tracking_runners = req.body.tracking_runners;
+        var agility = req.body.agility;
+        var angles_to_recieve = req.body.angles_to_recieve;
+        var distances = req.body.distances;
+        var recovering_to_shape = req.body.recovering_to_shape;
+        var pace_when_turning = req.body.pace_when_turning;
+        var jump = req.body.jump;
+        var mobility = req.body.mobility;
+        var strength = req.body.strength;
+        var aggression = req.body.aggression;
+        var bravery = req.body.bravery;
+        var leadership = req.body.leadership;
+        var team_work = req.body.team_work;
+        var communication = req.body.communication;
+        var response_to_criticism = req.body.response_to_criticism;
+        var reaction_to_mistake = req.body.reaction_to_mistake;
+        var rating = req.body.rating;
+        var notes = req.body.notes;
+        var playerID;
+      
+      
+        var PlayerSQL = "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position,shirt_number) VALUES ?";
+        var PlayerValues = [[first_name, last_name, club_name, height, age, position, shirt_number]]
+      
+        connect.connection.query(PlayerSQL, [PlayerValues], function (err, result) {
+          if (err) throw err;
+        });
+      
+        var PlayerIDSQL = "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST(? AS DECIMAL) AND age = ? AND position = ?"; connection.query(PlayerIDSQL, [first_name, last_name, club_name, height, age, position], function (err, results) {
+          if (err) {
+            throw err;
+          } else {
+      
+            console.log(results.length);
+            console.log();
+      
+            var sql = "INSERT INTO lcfc_scouting.centre_back_reports (player_id,scouted_by,receiving_under_pressure, short_passing, long_passing, carrying_the_ball_forward, right_foot, left_foot, threat_at_set_plays, attacking_ariel_ability, one_v_one, defending_ariel_ability, tackling, marking, interceptions, sensing_danger, defending_crosses, pressing, recovery_runs, tracking_runners, agility, angles_to_receive, distances, recovering_to_shape, pace_when_turning, jump, mobility, strength, aggression, bravery, leadership, team_work, communication, response_to_criticism, reaction_to_mistake, rating, notes) VALUES ?";
+            var values = [[results[0].player_id, scouted_by, recieving_under_pressure, short_passing, long_passing, carrying_the_ball_forward, right_foot, left_foot, threat_at_set_plays, attacking_ariel_ability, one_v_one, defending_ariel_ability, tackling, marking, interceptions, sensing_danger, defending_crosses, pressing, recovery_runs, tracking_runners, agility, angles_to_recieve, distances, recovering_to_shape, pace_when_turning, jump, mobility, strength, aggression, bravery, leadership, team_work, communication, response_to_criticism, reaction_to_mistake, rating, notes]];
+      
+            connect.connection.query(sql, [values], function (err, result) {
+              if (err) throw err;
+              console.log("Number of records inserted: " + result.affectedRows);
+            });
+      
+          };
+      
+      
+        })
+      }
+      );
+
+}
