@@ -24,7 +24,7 @@ module.exports = function(app) {
         var club_played = req.body.club_played;
         var ht_score = req.body.ht_score;
         var ft_score = req.body.ft_score;
-        var position = 'fullBack'
+        var position = 'Full Back'
         var shirt_number = req.body.shirt_number;
       
         var scouted_by = req.session.username

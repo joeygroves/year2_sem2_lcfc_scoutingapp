@@ -4,10 +4,11 @@ import NavBar from './Components/NavigationBar/NavBar'
 import PlayerReport from './Pages/PlayerReport'
 import Home from './Pages/HomePage'
 import LogOut from './Pages/LogOutPage'
+import ViewReport from './PlayerReportOutput/centreBack'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import LogInForm from './LoginForm/LoginForm';
 class App extends React.Component {
-  
+
   render() {
 
     return (
@@ -38,6 +39,12 @@ class App extends React.Component {
 
               </Route>
 
+              <Route path="/ViewPlayerReport">
+
+                <ViewReport />
+
+              </Route>
+
               <Route path="/PlayerReport">
 
                 <PlayerReport />
@@ -49,6 +56,8 @@ class App extends React.Component {
                 <LogOut />
 
               </Route>
+
+
 
             </Switch>
 

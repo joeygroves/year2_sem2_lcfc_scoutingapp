@@ -7,7 +7,7 @@ class GoalkeeperForm extends React.Component {
         response: '', handling: '', shot_stopping: '', tendancy_to_punch: '', tendancy_to_catch: '', positioning: '', recovery_saves: '',
         control_when_recieving: '', right_foot: '', left_foot: '', dead_ball_kicks: '', kicking_out_of_hands: '', throwing: '',
         kicking_under_pressure: '', kicking_when_given_time: '', dealing_with_crosses: '', starting_position: '', one_v_one: '', dealing_with_through_ball: '',
-        agility: '', reactions: '', strength: '', speed: '', bravery: '', leadership: '', presence: '', communication: '', reaction_to_mistake: '', rating: '',
+        agility: '', reactions: '', strength: '', speed: '', bravery: '', leadership: '', presence: '', communication: '', reaction_to_mistake: '', rating: 'A',
         notes: '', first_name: '', last_name: '', club_name: '', height: '', age: '', date_played: '', club_played: '', ht_score: '', ft_score: '',shirt_number : '',
     }
 
