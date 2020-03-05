@@ -7,6 +7,7 @@
   height: 40vmin;
   pointer-events: none;
   align-items: center;
+  
 }
 
 .Login-header {
@@ -32,6 +33,11 @@ input[type=text], input[type=password] {
   font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
 }
 
+label {
+  align-items: center;
+  padding: 12px 20px;
+
+}
 
 .button {
   background-color: #0B56A4;
