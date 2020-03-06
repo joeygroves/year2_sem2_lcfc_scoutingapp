@@ -155,12 +155,78 @@ app.post('/api/getPlayerData', (req, res) => {
             throw err;
 
           } else {
+            console.log(result)
+
+            res.send(result)
+          }
+
+        })
+      } else if (result[0].Position == 'Full Back') {
+
+        var CentreBackSQL = "SELECT * FROM full_back_reports where full_back_reports.player_id = ?"
+        var CentreBackSQLID = [[req.body.playerID]]
+
+        connection.query(CentreBackSQL, [CentreBackSQLID], function (err, result) {
+          if (err) {
+
+            throw err;
+
+          } else {
+
+            res.send(result)
+          }
+
+        })
+      } else if (result[0].Position == 'Wide Midfielder') {
+
+        var CentreBackSQL = "SELECT * FROM wide_midfielder_reports where wide_midfielder_reports.player_id = ?"
+        var CentreBackSQLID = [[req.body.playerID]]
+
+        connection.query(CentreBackSQL, [CentreBackSQLID], function (err, result) {
+          if (err) {
+
+            throw err;
+
+          } else {
+
+            res.send(result)
+          }
+
+        })
+      } else if (result[0].Position == 'Centre Midfielder') {
+
+        var CentreBackSQL = "SELECT * FROM centre_midfielder_reports where centre_midfielder_reports.player_id = ?"
+        var CentreBackSQLID = [[req.body.playerID]]
+
+        connection.query(CentreBackSQL, [CentreBackSQLID], function (err, result) {
+          if (err) {
+
+            throw err;
+
+          } else {
+
+            res.send(result)
+          }
+
+        })
+      }else if (result[0].Position == 'Striker') {
+
+        var CentreBackSQL = "SELECT * FROM striker_reports where striker_reports.player_id = ?"
+        var CentreBackSQLID = [[req.body.playerID]]
+
+        connection.query(CentreBackSQL, [CentreBackSQLID], function (err, result) {
+          if (err) {
+
+            throw err;
+
+          } else {
 
             res.send(result)
           }
 
         })
       }
+
     }
   });
 

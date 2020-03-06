@@ -28,3 +28,15 @@ grid-template-rows: repeat(3, 100px);
   float:left;
   max-width: 20%;
 }
+
+
+.TypeNames {
+
+  max-width: 100%;
+}
+
+.InPossession,.Attacking,.Psychological,.Defending,.Tactical,.Physical{
+
+  max-width: 10%;
+  float: left;
+}
