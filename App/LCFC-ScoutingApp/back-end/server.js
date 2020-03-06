@@ -91,12 +91,12 @@ app.get('/api/LogOutAuthentication', (req, res) => {
 
 // ---------------------------------------------------------------------------------------------------------- Get Player Data --------------------------------------------------------------------------------------
 
-app.post('/api/getPosition', (req, res) => {
+app.post('/api/getPlayerDataFromPlayer', (req, res) => {
 
   var id = req.body.playerID;
   console.log(id)
 
-  var PlayerSQL = "SELECT player.position AS 'Position' from lcfc_scouting.player where player.player_id = ?";
+  var PlayerSQL = "SELECT * from lcfc_scouting.player where player.player_id = ?";
   var PlayerValues = [[id]]
 
   connection.query(PlayerSQL, [PlayerValues], function (err, result) {
@@ -104,8 +104,8 @@ app.post('/api/getPosition', (req, res) => {
       throw err;
 
     } else {
-
-      res.send(result[0].Position)
+      console.log(result)
+      res.send(result)
     }
 
   })
