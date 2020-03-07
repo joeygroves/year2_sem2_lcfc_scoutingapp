@@ -58,7 +58,7 @@ module.exports = function(app) {
         var rating = req.body.rating;
         var notes = req.body.notes;
         var summary = "";
-        var average = 0;
+        var average = 0.0;
         var points =0;
         var threshold=1;
         var playerID;
@@ -75,26 +75,30 @@ module.exports = function(app) {
 
         // // create and insert summary for the player report
         // // how do I get variable label from array?S
-        // var attributes = [handling, shot_stopping, tendancy_to_punch, tendancy_to_catch, positioning, recovery_saves, control_when_recieving, right_foot, left_foot, dead_ball_kicks, kicking_out_of_hands, throwing, kicking_under_pressure, kicking_when_given_time, dealing_with_crosses, starting_position, one_v_one, dealing_with_through_ball, agility, reactions, strength, speed, bravery, leadership, presence, communication, reaction_to_mistake]; 
-        // var i;
-        // for (i = 0; i < attributes.length; i++) {
-        //   points += attributes[i];
+        var attributes = [handling, shot_stopping, tendancy_to_punch, tendancy_to_catch, positioning, recovery_saves, control_when_recieving, right_foot, left_foot, dead_ball_kicks, kicking_out_of_hands, throwing, kicking_under_pressure, kicking_when_given_time, dealing_with_crosses, starting_position, one_v_one, dealing_with_through_ball, agility, reactions, strength, speed, bravery, leadership, presence, communication, reaction_to_mistake]; 
+        var attributenames = ['handling', 'shot stopping', 'tendancy to punch', 'tendancy to catch', 'positioning', 'recovery saves', 'control when recieving', 'right foot', 'left foot', 'dead ball kicks', 'kicking out of hands', 'throwing', 'kicking under pressure', 'kicking when given time', 'dealing with crosses', 'starting position', 'one v one', 'dealing with through ball', 'agility', 'reactions', 'strength', 'speed', 'bravery', 'leadership', 'presence', 'communication', 'reaction to mistake']; 
+        var outstandinglabel=[];
+        var outstandingscore=[];
+        var i;
+        for (i = 0; i <= (attributes.length -1); i++) {
+          points = points + Math.round(attributes[i]);
           
-        // };
-        // average = points / attributes.length;
-
-        // var summary = firstname + lastname +" was scouted playing for "+club_name+" on "+date_played+". "+firstname+lastname+" performed to grade "+rating+" with an average score of "+average+"+ showing some outstanding attributes";
-     
-        // for (i = 0; i < attributes.length; i++) {
-        //   if ((attributes[i] + threshold) > average){
-        //     outstandinglabel[i] = attributes[i];
-        //     outstandingscore[i] = attributes[i];
-        //     summary += ", "+outstandinglabel[i] + " ("+outstandingscore[i]+")"
-        //   };
-        //   summary += "."
-          
-        // };
+        };
+        average = Math.round(points / attributes.length);
         
+        
+        console.log(points, average)
+        var summary = last_name + ", " +first_name +" was scouted playing for "+club_name+" on "+date_played+". "+last_name+", "+first_name+" performed to grade "+rating+" with an average score of "+average+" showing some outstanding attributes";
+     
+        for (i = 0; i <= (attributes.length -1); i++) {
+          if ((attributes[i] - threshold) > average){
+            outstandinglabel[i] = attributenames[i];
+            outstandingscore[i] = attributes[i];
+            summary += ", "+outstandinglabel[i] + " ("+outstandingscore[i]+")"
+          };
+                   
+        };
+        summary += "."
         
 
 
