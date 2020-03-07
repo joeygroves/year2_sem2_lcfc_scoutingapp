@@ -57,8 +57,7 @@ module.exports = function(app) {
         attachments: [
           {
             filename: "test.csv",
-            content: "Name",
-            content: "Club"
+            content: results
           }
         ]
       };
