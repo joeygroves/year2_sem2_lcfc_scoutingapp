@@ -57,6 +57,10 @@ module.exports = function(app) {
         var reaction_to_mistake = req.body.reaction_to_mistake;
         var rating = req.body.rating;
         var notes = req.body.notes;
+        var summary = "";
+        var average = 0;
+        var points =0;
+        var threshold=1;
         var playerID;
       
       
@@ -67,6 +71,35 @@ module.exports = function(app) {
           if (err) throw err;
         });
       
+
+
+        // create and insert summary for the player report
+        var attributes = [handling, shot_stopping, tendancy_to_punch, tendancy_to_catch, positioning, recovery_saves, control_when_recieving, right_foot, left_foot, dead_ball_kicks, kicking_out_of_hands, throwing, kicking_under_pressure, kicking_when_given_time, dealing_with_crosses, starting_position, one_v_one, dealing_with_through_ball, agility, reactions, strength, speed, bravery, leadership, presence, communication, reaction_to_mistake]; 
+        var i;
+        for (i = 0; i < attributes.length; i++) {
+          points += attributes[i];
+          
+        };
+        average = points / attributes.length;
+
+        var summary = firstname + lastname +" was scouted playing for "+club_name+" on "+date_played+". "+firstname+lastname+" performed to grade "+rating+" with an average score of "+average+"+ showing some outstanding attributes";
+     
+        for (i = 0; i < attributes.length; i++) {
+          if ((attributes[i] + threshold) > average){
+            outstandinglabel[i] = attributes[i];
+            outstandingscore[i] = attributes[i];
+            summary += ", "+outstandinglabel[i] + " ("+outstandingscore[i]+")"
+          };
+          summary += "."
+          
+        };
+        
+        
+
+
+
+
+
         var PlayerIDSQL = "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST(? AS DECIMAL) AND age = ? AND position = ? AND shirt_number = ?";
         connect.connection.query(PlayerIDSQL, [first_name, last_name, club_name, height, age, position, shirt_number], function (err, results) {
           if (err) {
@@ -76,8 +109,8 @@ module.exports = function(app) {
             console.log(results.length);
             console.log();
       
-            var sql = "INSERT INTO lcfc_scouting.goalkeeper_reports (player_id,scouted_by,handling,shot_stopping,tendancy_to_punch,tendancy_to_catch,positioning,recovery_saves,control_when_receiving,right_foot,left_foot,dead_ball_kicks,kicking_out_of_hands,throwing,kicking_under_pressure,kicking_when_given_time,dealing_with_crosses,starting_position,one_v_one,dealing_with_through_ball,agility,reactions,strength,speed,bravery,leadership,presence,communication,reaction_to_mistake,rating,notes) VALUES ?";
-            var values = [[results[0].player_id, scouted_by, handling, shot_stopping, tendancy_to_punch, tendancy_to_catch, positioning, recovery_saves, control_when_recieving, right_foot, left_foot, dead_ball_kicks, kicking_out_of_hands, throwing, kicking_under_pressure, kicking_when_given_time, dealing_with_crosses, starting_position, one_v_one, dealing_with_through_ball, agility, reactions, strength, speed, bravery, leadership, presence, communication, reaction_to_mistake, rating, notes]];
+            var sql = "INSERT INTO lcfc_scouting.goalkeeper_reports (player_id,scouted_by,handling,shot_stopping,tendancy_to_punch,tendancy_to_catch,positioning,recovery_saves,control_when_receiving,right_foot,left_foot,dead_ball_kicks,kicking_out_of_hands,throwing,kicking_under_pressure,kicking_when_given_time,dealing_with_crosses,starting_position,one_v_one,dealing_with_through_ball,agility,reactions,strength,speed,bravery,leadership,presence,communication,reaction_to_mistake,rating,notes,summary) VALUES ?";
+            var values = [[results[0].player_id, scouted_by, handling, shot_stopping, tendancy_to_punch, tendancy_to_catch, positioning, recovery_saves, control_when_recieving, right_foot, left_foot, dead_ball_kicks, kicking_out_of_hands, throwing, kicking_under_pressure, kicking_when_given_time, dealing_with_crosses, starting_position, one_v_one, dealing_with_through_ball, agility, reactions, strength, speed, bravery, leadership, presence, communication, reaction_to_mistake, rating, notes, summary]];
       
             connect.connection.query(sql, [values], function (err, result) {
               if (err) throw err;
