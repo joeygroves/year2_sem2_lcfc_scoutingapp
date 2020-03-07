@@ -73,26 +73,27 @@ module.exports = function(app) {
       
 
 
-        // create and insert summary for the player report
-        var attributes = [handling, shot_stopping, tendancy_to_punch, tendancy_to_catch, positioning, recovery_saves, control_when_recieving, right_foot, left_foot, dead_ball_kicks, kicking_out_of_hands, throwing, kicking_under_pressure, kicking_when_given_time, dealing_with_crosses, starting_position, one_v_one, dealing_with_through_ball, agility, reactions, strength, speed, bravery, leadership, presence, communication, reaction_to_mistake]; 
-        var i;
-        for (i = 0; i < attributes.length; i++) {
-          points += attributes[i];
+        // // create and insert summary for the player report
+        // // how do I get variable label from array?S
+        // var attributes = [handling, shot_stopping, tendancy_to_punch, tendancy_to_catch, positioning, recovery_saves, control_when_recieving, right_foot, left_foot, dead_ball_kicks, kicking_out_of_hands, throwing, kicking_under_pressure, kicking_when_given_time, dealing_with_crosses, starting_position, one_v_one, dealing_with_through_ball, agility, reactions, strength, speed, bravery, leadership, presence, communication, reaction_to_mistake]; 
+        // var i;
+        // for (i = 0; i < attributes.length; i++) {
+        //   points += attributes[i];
           
-        };
-        average = points / attributes.length;
+        // };
+        // average = points / attributes.length;
 
-        var summary = firstname + lastname +" was scouted playing for "+club_name+" on "+date_played+". "+firstname+lastname+" performed to grade "+rating+" with an average score of "+average+"+ showing some outstanding attributes";
+        // var summary = firstname + lastname +" was scouted playing for "+club_name+" on "+date_played+". "+firstname+lastname+" performed to grade "+rating+" with an average score of "+average+"+ showing some outstanding attributes";
      
-        for (i = 0; i < attributes.length; i++) {
-          if ((attributes[i] + threshold) > average){
-            outstandinglabel[i] = attributes[i];
-            outstandingscore[i] = attributes[i];
-            summary += ", "+outstandinglabel[i] + " ("+outstandingscore[i]+")"
-          };
-          summary += "."
+        // for (i = 0; i < attributes.length; i++) {
+        //   if ((attributes[i] + threshold) > average){
+        //     outstandinglabel[i] = attributes[i];
+        //     outstandingscore[i] = attributes[i];
+        //     summary += ", "+outstandinglabel[i] + " ("+outstandingscore[i]+")"
+        //   };
+        //   summary += "."
           
-        };
+        // };
         
         
 
