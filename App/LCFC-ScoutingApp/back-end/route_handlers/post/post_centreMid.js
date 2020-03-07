@@ -59,6 +59,10 @@ module.exports = function(app) {
         var rating = req.body.rating;
         var notes = req.body.notes;
         var shirt_number = req.body.shirt_number;
+        var summary = "";
+        var average = 0.0;
+        var points =0;
+        var threshold=1;
         var playerID;
       
         var PlayerSQL =
@@ -71,6 +75,48 @@ module.exports = function(app) {
           if (err) throw err;
         });
       
+
+
+        // // create and insert summary for the player report
+        // // 
+        var attributes = [control_under_pressure, bravery_in_posession, short_passing, switching_play, running_with_the_ball, right_foot, left_foot, attacking_one_v_one, attacking_ariel_ability, shooting, crossing, defending_one_v_one,
+          defending_ariel_ability, tackling, closing_down, recovery_runs, marking, agility, finding_space, vision, creativity, speed, movement_skills, work_rate,
+          strength, communication, concentration, commitment, emotional_control, confidence]; 
+        var attributenames = ['control under pressure', 'bravery in posession', 'short passing', 'switching play', 'running with the ball', 'right foot', 'left foot', 'attacking one v one', 'attacking ariel ability', 'shooting', 'crossing', 'defending one v one',
+          'defending ariel ability', 'tackling', 'closing down', 'recovery runs', 'marking', 'agility', 'finding space', 'vision', 'creativity', 'speed', 'movement skills', 'work rate',
+          'strength', 'communication', 'concentration', 'commitment', 'emotional control', 'confidence']; 
+        var outstandinglabel=[];
+        var outstandingscore=[];
+        var i;
+        for (i = 0; i <= (attributes.length -1); i++) {
+          points = points + Math.round(attributes[i]);
+          
+        };
+        average = Math.round(points / attributes.length);
+        
+        
+        console.log(points, average)
+        var summary = last_name + ", " +first_name +" was scouted playing for "+club_name+" on "+date_played+". "+last_name+", "+first_name+" performed to grade "+rating+" with an average score of "+average+" showing some outstanding attributes";
+     
+        for (i = 0; i <= (attributes.length -1); i++) {
+          if ((attributes[i] - threshold) > average){
+            outstandinglabel[i] = attributenames[i];
+            outstandingscore[i] = attributes[i];
+            summary += ", "+outstandinglabel[i] + " ("+outstandingscore[i]+")"
+          };
+                   
+        };
+        summary += "."
+        
+
+
+
+
+
+
+
+
+
         var PlayerIDSQL =
           "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST( ? AS DECIMAL) AND age = ? AND position = ?";
         connect.connection.query(
@@ -84,12 +130,12 @@ module.exports = function(app) {
               console.log();
       
               var sql =
-                "INSERT INTO lcfc_scouting.centre_midfielder_reports(player_id, scouted_by, control_under_pressure, bravery_in_posession, short_passing, switching_play, running_with_the_ball, right_foot, left_foot, attacking_one_v_one, attacking_ariel_ability, shooting, crossing, defending_one_v_one, defending_ariel_ability, tackling, closing_down, recovery_runs, marking, agility, finding_space, vision, creativity, speed, movement_skills, work_rate, strength, communication, concentration, commitment, emotional_control, confidence, rating, notes) VALUES ?";
+                "INSERT INTO lcfc_scouting.centre_midfielder_reports(player_id, scouted_by, control_under_pressure, bravery_in_posession, short_passing, switching_play, running_with_the_ball, right_foot, left_foot, attacking_one_v_one, attacking_ariel_ability, shooting, crossing, defending_one_v_one, defending_ariel_ability, tackling, closing_down, recovery_runs, marking, agility, finding_space, vision, creativity, speed, movement_skills, work_rate, strength, communication, concentration, commitment, emotional_control, confidence, rating, notes, summary) VALUES ?";
               var values = [
                 [
                   results[0].player_id, scouted_by, control_under_pressure, bravery_in_posession, short_passing, switching_play, running_with_the_ball, right_foot, left_foot, attacking_one_v_one, attacking_ariel_ability, shooting, crossing, defending_one_v_one,
                   defending_ariel_ability, tackling, closing_down, recovery_runs, marking, agility, finding_space, vision, creativity, speed, movement_skills, work_rate,
-                  strength, communication, concentration, commitment, emotional_control, confidence, rating, notes
+                  strength, communication, concentration, commitment, emotional_control, confidence, rating, notes, summary
                 ]
               ];
       
