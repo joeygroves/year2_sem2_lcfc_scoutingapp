@@ -63,6 +63,10 @@ module.exports = function(app) {
         var reaction_to_mistake = req.body.reaction_to_mistake;
         var rating = req.body.rating;
         var notes = req.body.notes;
+        var summary = "";
+        var average = 0.0;
+        var points =0;
+        var threshold=1;
         var playerID;
       
       
@@ -73,7 +77,40 @@ module.exports = function(app) {
           if (err) throw err;
         });
       
-        var PlayerIDSQL = "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST(? AS DECIMAL) AND age = ? AND position = ?"; connection.query(PlayerIDSQL, [first_name, last_name, club_name, height, age, position], function (err, results) {
+
+
+        // // create and insert summary for the player report
+        // // 
+        var attributes = [recieving_under_pressure, short_passing, long_passing, carrying_the_ball_forward, right_foot, left_foot, threat_at_set_plays, attacking_ariel_ability, one_v_one, defending_ariel_ability, tackling, marking, interceptions, sensing_danger, defending_crosses, pressing, recovery_runs, tracking_runners, agility, angles_to_recieve, distances, recovering_to_shape, pace_when_turning, jump, mobility, strength, aggression, bravery, leadership, team_work, communication, response_to_criticism, reaction_to_mistake]; 
+        var attributenames = ['recieving under pressure', 'short passing', 'long passing', 'carrying the ball forward', 'right foot', 'left foot', 'threat at set plays', 'attacking ariel ability', 'one v one', 'defending ariel ability', 'tackling', 'marking', 'interceptions', 'sensing danger', 'defending crosses', 'pressing', 'recovery runs', 'tracking runners', 'agility', 'angles to recieve', 'distances', 'recovering to shape', 'pace when turning', 'jump', 'mobility', 'strength', 'aggression', 'bravery', 'leadership', 'team work', 'communication', 'response to criticism', 'reaction to mistake']; 
+        var outstandinglabel=[];
+        var outstandingscore=[];
+        var i;
+        for (i = 0; i <= (attributes.length -1); i++) {
+          points = points + Math.round(attributes[i]);
+          
+        };
+        average = Math.round(points / attributes.length);
+        
+        
+        console.log(points, average)
+        var summary = last_name + ", " +first_name +" was scouted playing for "+club_name+" on "+date_played+". "+last_name+", "+first_name+" performed to grade "+rating+" with an average score of "+average+" showing some outstanding attributes";
+     
+        for (i = 0; i <= (attributes.length -1); i++) {
+          if ((attributes[i] - threshold) > average){
+            outstandinglabel[i] = attributenames[i];
+            outstandingscore[i] = attributes[i];
+            summary += ", "+outstandinglabel[i] + " ("+outstandingscore[i]+")"
+          };
+                   
+        };
+        summary += "."
+        
+
+
+        var PlayerIDSQL = "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST(? AS DECIMAL) AND age = ? AND position = ? AND shirt_number = ?";
+        connect.connection.query(PlayerIDSQL, [first_name, last_name, club_name, height, age, position, shirt_number], function (err, results) {
+        
           if (err) {
             throw err;
           } else {
@@ -81,8 +118,8 @@ module.exports = function(app) {
             console.log(results.length);
             console.log();
       
-            var sql = "INSERT INTO lcfc_scouting.centre_back_reports (player_id,scouted_by,receiving_under_pressure, short_passing, long_passing, carrying_the_ball_forward, right_foot, left_foot, threat_at_set_plays, attacking_ariel_ability, one_v_one, defending_ariel_ability, tackling, marking, interceptions, sensing_danger, defending_crosses, pressing, recovery_runs, tracking_runners, agility, angles_to_receive, distances, recovering_to_shape, pace_when_turning, jump, mobility, strength, aggression, bravery, leadership, team_work, communication, response_to_criticism, reaction_to_mistake, rating, notes) VALUES ?";
-            var values = [[results[0].player_id, scouted_by, recieving_under_pressure, short_passing, long_passing, carrying_the_ball_forward, right_foot, left_foot, threat_at_set_plays, attacking_ariel_ability, one_v_one, defending_ariel_ability, tackling, marking, interceptions, sensing_danger, defending_crosses, pressing, recovery_runs, tracking_runners, agility, angles_to_recieve, distances, recovering_to_shape, pace_when_turning, jump, mobility, strength, aggression, bravery, leadership, team_work, communication, response_to_criticism, reaction_to_mistake, rating, notes]];
+            var sql = "INSERT INTO lcfc_scouting.centre_back_reports (player_id,scouted_by,receiving_under_pressure, short_passing, long_passing, carrying_the_ball_forward, right_foot, left_foot, threat_at_set_plays, attacking_ariel_ability, one_v_one, defending_ariel_ability, tackling, marking, interceptions, sensing_danger, defending_crosses, pressing, recovery_runs, tracking_runners, agility, angles_to_receive, distances, recovering_to_shape, pace_when_turning, jump, mobility, strength, aggression, bravery, leadership, team_work, communication, response_to_criticism, reaction_to_mistake, rating, notes, summary) VALUES ?";
+            var values = [[results[0].player_id, scouted_by, recieving_under_pressure, short_passing, long_passing, carrying_the_ball_forward, right_foot, left_foot, threat_at_set_plays, attacking_ariel_ability, one_v_one, defending_ariel_ability, tackling, marking, interceptions, sensing_danger, defending_crosses, pressing, recovery_runs, tracking_runners, agility, angles_to_recieve, distances, recovering_to_shape, pace_when_turning, jump, mobility, strength, aggression, bravery, leadership, team_work, communication, response_to_criticism, reaction_to_mistake, rating, notes, summary]];
       
             connect.connection.query(sql, [values], function (err, result) {
               if (err) throw err;
