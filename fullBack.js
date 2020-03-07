@@ -1,21 +1,23 @@
-import React from "react";
-import NavBar from '../Components/NavigationBar/NavBar'
+import React from 'react'
 import './PlayerPos.css'
+import NavBar from '../Components/NavigationBar/NavBar'
 class fullBackForm extends React.Component {
 
     state = {
 
         id: 0,
         data: [],
-        position: '',
+        player_data: [],
+
 
     }
 
     componentDidMount() {
 
+
         this.setState({ id: this.props.match.params.userId })
 
-        this.getPosition();
+        this.getPlayerData();
 
         this.getData();
 
@@ -39,15 +41,16 @@ class fullBackForm extends React.Component {
 
         const body = await response.json();
 
-        console.log(this.state.position)
+        console.log(body)
 
         this.setState({ data: body });
 
     };
 
-    getPosition = async () => {
 
-        const response = await fetch('/api/getPosition', {
+    getPlayerData = async () => {
+
+        const response = await fetch('/api/getPlayerDataFromPlayer', {
 
             method: 'POST',
 
@@ -61,12 +64,13 @@ class fullBackForm extends React.Component {
 
         });
 
-        const body = await response.text();
+        const body = await response.json();
 
-        this.setState({ position: body });
+
+
+        this.setState({ player_data: body });
 
     };
-
     render() {
 
         return (
@@ -102,27 +106,27 @@ class fullBackForm extends React.Component {
                             </div>
 
                             <table>
-                                <tr>
+                                <tr class="Data">
                                     <th>Receiving Under Pressure</th>
                                     <td>{values.receiving_under_pressure}</td>
                                 </tr>
-                                <tr>
+                                <tr class="Data">
                                     <th>Short Passing</th>
                                     <td>{values.short_passing}</td>
                                 </tr>
-                                <tr>
+                                <tr class="Data">
                                     <th>Long Passing</th>
                                     <td>{values.long_passing}</td>
                                 </tr>
-                                <tr>
+                                <tr class="Data">
                                     <th>Control</th>
                                     <td>{values.control}</td>
                                 </tr>
-                                <tr>
+                                <tr class="Data">
                                     <th>Left Foot</th>
                                     <td>{values.left_foot}</td>
                                 </tr>
-                                <tr>
+                                <tr class="Data">
                                     <th>Right Foot</th>
                                     <td>{values.right_foot}</td>
                                 </tr>
@@ -147,17 +151,17 @@ class fullBackForm extends React.Component {
                             </div>
 
                             <table>
-                                <tr>
+                                <tr class="Data">
                                     <th>1v1</th>
-                                    <td>{values.one_v_one}</td>
+                                    <td>{values.attacking_one_v_one}</td>
                                 </tr>
 
-                                <tr>
+                                <tr class="Data">
                                     <th>Aerial ability</th>
                                     <td>{values.attacking_ariel_ability}</td>
                                 </tr>
 
-                                <tr>
+                                <tr class="Data">
                                     <th>Crossing</th>
                                     <td>{values.crossing}</td>
                                 </tr>
@@ -179,11 +183,11 @@ class fullBackForm extends React.Component {
                             <table>
                                 <tr class="Data">
                                     <th>One Vs One</th>
-                                    <td>{values.one_v_one}</td>
+                                    <td>{values.defending_one_v_one}</td>
                                 </tr>
                                 <tr class="Data">
                                     <th>Aerial Ability</th>
-                                    <td>{values.ariel_ability}</td>
+                                    <td>{values.defending_ariel_ability}</td>
                                 </tr>
                                 <tr class="Data">
                                     <th>Tackling</th>
@@ -291,56 +295,121 @@ class fullBackForm extends React.Component {
 
                         </div>
 
-                            <div class="Psychological">
+                        <div class="Psychological">
 
-                                <div class="TypeNames">
-
-                                    <table>
-                                        <tr>
-                                            <th>Psychological</th>
-                                        </tr>
-                                    </table>
-
-                                </div>
+                            <div class="TypeNames">
 
                                 <table>
-                                    <tr class="Data">
-                                        <th>Bravery</th>
-                                        <td>{values.bravery}</td>
+                                    <tr>
+                                        <th>Psychological</th>
                                     </tr>
-                                    <tr class="Data">
-                                        <th>Leadership</th>
-                                        <td>{values.leadership}</td>
-                                    </tr>
-                                    <tr class="Data">
-                                        <th>Team Work</th>
-                                        <td>{values.team_work}</td>
-                                    </tr>
-                                    <tr class="Data">
-                                        <th>Communication</th>
-                                        <td>{values.communication}</td>
-                                    </tr>
-                                    <tr class="Data">
-                                        <th>Response To Criticism</th>
-                                        <td>{values.response_to_criticism}</td>
-                                    </tr>
-                                    <tr class="Data">
-                                        <th>Reaction To Mistakes</th>
-                                        <td>{values.reaction_to_mistake}</td>
-                                    </tr>
-
                                 </table>
+
                             </div>
+
+                            <table>
+                                <tr class="Data">
+                                    <th>Bravery</th>
+                                    <td>{values.bravery}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Leadership</th>
+                                    <td>{values.leadership}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Team Work</th>
+                                    <td>{values.team_work}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Communication</th>
+                                    <td>{values.communicaton}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Response To Criticism</th>
+                                    <td>{values.response_to_criticism}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Reaction To Mistakes</th>
+                                    <td>{values.reaction_to_mistake}</td>
+                                </tr>
+
+                            </table>
                         </div>
+                        <div class="PlayerInformation">
+                            <div class="TypeNames">
+
+                                <table>
+                                    <tr>
+                                        <th>Player Information</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            {this.state.player_data.map((playervalues, index) => {
+
+                                return <div>
+
+                                    <table>
+                                        <tr class="Data">
+                                            <th>First Name</th>
+                                            <td>{playervalues.first_name}</td>
+                                        </tr>
+                                        <tr class="Data">
+                                            <th>Last Name</th>
+                                            <td>{playervalues.last_name}</td>
+                                        </tr>
+                                        <tr class="Data">
+                                            <th>Age</th>
+                                            <td>{playervalues.age}</td>
+                                        </tr>
+                                        <tr class="Data">
+                                            <th>Club</th>
+                                            <td>{playervalues.club}</td>
+                                        </tr>
+                                        <tr class="Data">
+                                            <th>Height</th>
+                                            <td>{playervalues.height}</td>
+                                        </tr>
+                                        <tr class="Data">
+                                            <th>Grade</th>
+                                            <td>{values.rating}</td>
+                                        </tr>
+
+                                    </table>
+                                </div>
+
+                            })}
+
+                        </div>
+
+
+                        {this.state.data.map((values, index) => {
+
+                            return <div class="NotesTag">
+                                <table>
+                                    <tr class="NotesHeader">
+                                        <th>Notes</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="NotesBody">{values.notes}</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                        })}
+
+                    </div>
 
                 })}
 
             </div>
 
+
+
         );
-        
-        
     };
 }
-        
-export default fullBackForm;
+
+export default fullBackForm
