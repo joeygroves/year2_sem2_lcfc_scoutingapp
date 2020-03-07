@@ -1,5 +1,11 @@
 
 -- CREATE DATABASE LCFC_Scouting;
+INSERT INTO staff VALUES ("gclemm", "Ruby.22031997", "Gary", "Clemm", "Developer");
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Ruby.22031997';
+FLUSH PRIVILEGES;
+
+
 
 CREATE TABLE staff(
 username VARCHAR(25) NOT NULL,
@@ -62,6 +68,7 @@ communication INTEGER,
 reaction_to_mistake INTEGER,
 rating VARCHAR(2),
 notes VARCHAR(1000),
+summary VARCHAR(2500),
 PRIMARY KEY (report_id),
 FOREIGN KEY (player_id) REFERENCES player(player_id),
 FOREIGN KEY (scouted_by) REFERENCES staff(username)
@@ -107,6 +114,7 @@ response_to_criticism INTEGER,
 reaction_to_mistake INTEGER,
 rating VARCHAR(2),
 notes VARCHAR(1000),
+summary VARCHAR(2500),
 PRIMARY KEY (report_id),
 FOREIGN KEY (player_id) REFERENCES player(player_id),
 FOREIGN KEY (scouted_by) REFERENCES staff(username)
@@ -152,6 +160,7 @@ response_to_criticism INTEGER,
 reaction_to_mistake INTEGER,
 rating VARCHAR(2),
 notes VARCHAR(1000),
+summary VARCHAR(2500),
 PRIMARY KEY (report_id),
 FOREIGN KEY (player_id) REFERENCES player(player_id),
 FOREIGN KEY (scouted_by) REFERENCES staff(username)
@@ -194,6 +203,7 @@ emotional_control INTEGER,
 confidence INTEGER,
 rating VARCHAR(2),
 notes VARCHAR(1000),
+summary VARCHAR(2500),
 PRIMARY KEY (report_id),
 FOREIGN KEY (player_id) REFERENCES player(player_id),
 FOREIGN KEY (scouted_by) REFERENCES staff(username)
@@ -241,6 +251,7 @@ response_to_criticism INTEGER,
 reaction_to_mistakes INTEGER,
 rating VARCHAR(2),
 notes VARCHAR(1000),
+summary VARCHAR(2500),
 PRIMARY KEY (report_id),
 FOREIGN KEY (player_id) REFERENCES player(player_id),
 FOREIGN KEY (scouted_by) REFERENCES staff(username)
@@ -284,6 +295,7 @@ response_to_criticism INTEGER,
 reaction_to_mistakes INTEGER,
 rating VARCHAR(2),
 notes VARCHAR(1000),
+summary VARCHAR(2500),
 PRIMARY KEY (report_id),
 FOREIGN KEY (player_id) REFERENCES player(player_id),
 FOREIGN KEY (scouted_by) REFERENCES staff(username)

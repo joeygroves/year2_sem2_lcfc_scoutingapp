@@ -17,7 +17,7 @@ var connection = mysql.createConnection({
     user: 'root',
   
     //Enter your mySQL password here
-    password: 'alumwelljamie3',  
+    password: 'Ruby.22031997',  
   
     database: 'LCFC_Scouting'
   
