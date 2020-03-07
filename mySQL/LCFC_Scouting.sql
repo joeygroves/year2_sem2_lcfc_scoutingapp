@@ -1,8 +1,9 @@
-
--- CREATE DATABASE LCFC_Scouting;
 INSERT INTO staff VALUES ("gclemm", "Ruby.22031997", "Gary", "Clemm", "Developer");
+-- CREATE DATABASE LCFC_Scouting;
+
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Ruby.22031997';
+
 FLUSH PRIVILEGES;
 
 
@@ -21,6 +22,7 @@ club_id INTEGER NOT NULL,
 club_name VARCHAR(50) NOT NULL,
 PRIMARY KEY (club_id)
 );
+
 
 CREATE TABLE player(
 player_id INT auto_increment NOT NULL,
