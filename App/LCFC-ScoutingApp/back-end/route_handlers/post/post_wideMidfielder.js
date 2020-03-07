@@ -64,6 +64,11 @@ module.exports = function(app) {
         var reaction_to_mistakes = req.body.reaction_to_mistakes;
         var rating = req.body.rating;
         var notes = req.body.notes;
+        //Auto Generated Summary
+        var summary = "";
+        var average = 0.0;
+        var points =0;
+        var threshold=1;
       
       
         var PlayerSQL = "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position,shirt_number) VALUES ?";
@@ -72,6 +77,45 @@ module.exports = function(app) {
         connect.connection.query(PlayerSQL, [PlayerValues], function (err, result) {
           if (err) throw err;
         });
+
+
+
+        // // create and insert summary for the player report
+        // // 
+        var attributes = [control, receiving_under_pressure, short_passing, switching_play, right_foot, left_foot, attacking_one_v_one, attacking_ariel_ability, dribbling, shooting, crossing, defending_one_v_one, defending_ariel_ability, supporting_full_back, tackling, pressing, positional_awareness, recovery_runs, tracking_runners, agility, coming_in_off_the_line, finding_space_out_wide, link_up_with_full_back, willingness_to_get_forward, pace,
+          speed_when_dribbling, strength, work_rate, bravery, leadership, teamwork, communication, response_to_criticism, reaction_to_mistakes]; 
+        var attributenames = ['control', 'receiving under pressure', 'short passing', 'switching play', 'right foot', 'left foot', 'attacking one v one', 'attacking ariel ability', 'dribbling', 'shooting', 'crossing', 'defending one v one', 'defending ariel ability', 'supporting full back', 'tackling', 'pressing', 'positional awareness', 'recovery runs', 'tracking runners', 'agility', 'coming in off the line', 'finding space out wide', 'link up with full back', 'willingness to get forward', 'pace',
+          'speed when dribbling', 'strength', 'work rate', 'bravery', 'leadership', 'teamwork', 'communication', 'response to criticism', 'reaction to mistakes']; 
+        var outstandinglabel=[];
+        var outstandingscore=[];
+        var i;
+        for (i = 0; i <= (attributes.length -1); i++) {
+          points = points + Math.round(attributes[i]);
+          
+        };
+        average = Math.round(points / attributes.length);
+        
+        
+        console.log(points, average)
+        var summary = last_name + ", " +first_name +" was scouted playing for "+club_name+" on "+date_played+". "+last_name+", "+first_name+" performed to grade "+rating+" with an average score of "+average+" showing some outstanding attributes";
+     
+        for (i = 0; i <= (attributes.length -1); i++) {
+          if ((attributes[i] - threshold) > average){
+            outstandinglabel[i] = attributenames[i];
+            outstandingscore[i] = attributes[i];
+            summary += ", "+outstandinglabel[i] + " ("+outstandingscore[i]+")"
+          };
+                   
+        };
+        summary += "."
+        
+
+
+
+
+
+
+
       
         var PlayerIDSQL = "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST(? AS DECIMAL) AND age = ? AND position = ?";
         connect.connection.query(PlayerIDSQL, [first_name, last_name, club_name, height, age, position], function (err, wmresults) {
@@ -82,9 +126,9 @@ module.exports = function(app) {
             console.log(wmresults.length);
             console.log();
       
-            var sql = "INSERT INTO lcfc_scouting.wide_midfielder_reports (player_id,scouted_by,control,receiving_under_pressure,short_passing,switching_play,right_foot,left_foot,attacking_one_v_one,attacking_ariel_ability,dribbling,shooting,crossing,defending_one_v_one,defending_ariel_ability,supporting_full_back,tackling,pressing,positional_awareness,recovery_runs,tracking_runners,agility,coming_in_off_the_line,finding_space_out_wide,link_up_with_full_back,willingness_to_get_forward,pace,speed_when_dribbling,strength,work_rate,bravery,leadership,teamwork,communication,response_to_criticism,reaction_to_mistakes,rating,notes)  VALUES ?";
+            var sql = "INSERT INTO lcfc_scouting.wide_midfielder_reports (player_id,scouted_by,control,receiving_under_pressure,short_passing,switching_play,right_foot,left_foot,attacking_one_v_one,attacking_ariel_ability,dribbling,shooting,crossing,defending_one_v_one,defending_ariel_ability,supporting_full_back,tackling,pressing,positional_awareness,recovery_runs,tracking_runners,agility,coming_in_off_the_line,finding_space_out_wide,link_up_with_full_back,willingness_to_get_forward,pace,speed_when_dribbling,strength,work_rate,bravery,leadership,teamwork,communication,response_to_criticism,reaction_to_mistakes,rating,notes,summary)  VALUES ?";
             var values = [[wmresults[0].player_id, scouted_by, control, receiving_under_pressure, short_passing, switching_play, right_foot, left_foot, attacking_one_v_one, attacking_ariel_ability, dribbling, shooting, crossing, defending_one_v_one, defending_ariel_ability, supporting_full_back, tackling, pressing, positional_awareness, recovery_runs, tracking_runners, agility, coming_in_off_the_line, finding_space_out_wide, link_up_with_full_back, willingness_to_get_forward, pace,
-              speed_when_dribbling, strength, work_rate, bravery, leadership, teamwork, communication, response_to_criticism, reaction_to_mistakes, rating, notes]];
+              speed_when_dribbling, strength, work_rate, bravery, leadership, teamwork, communication, response_to_criticism, reaction_to_mistakes, rating, notes, summary]];
       
             connect.connection.query(sql, [values], function (err, result) {
               if (err) throw err;
