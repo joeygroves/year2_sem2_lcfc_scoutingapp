@@ -251,7 +251,7 @@ class fullBackForm extends React.Component {
 
                                 <tr class="Data">
                                     <th>Willingness to get forward</th>
-                                    <td>{values.willingness_to_get_forward}</td>
+                                    <td>{values.willlingness_to_get_forward}</td>
                                 </tr>
                             </table>
                         </div>
