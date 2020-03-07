@@ -172,7 +172,7 @@ app.post('/api/getPlayerData', (req, res) => {
             throw err;
 
           } else {
-
+            console.log(result)
             res.send(result)
           }
 
@@ -188,7 +188,7 @@ app.post('/api/getPlayerData', (req, res) => {
             throw err;
 
           } else {
-
+            console.log(result)
             res.send(result)
           }
 
@@ -204,7 +204,7 @@ app.post('/api/getPlayerData', (req, res) => {
             throw err;
 
           } else {
-
+            console.log(result)
             res.send(result)
           }
 
@@ -220,7 +220,7 @@ app.post('/api/getPlayerData', (req, res) => {
             throw err;
 
           } else {
-
+            console.log(result)
             res.send(result)
           }
 
