@@ -32,6 +32,12 @@ input[type=text], input[type=password] {
   font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
 }
 
+.Login-header, label {
+  align-items: center;
+  margin-left: -50px;
+  padding-top: 10px;
+
+}
 
 .button {
   background-color: #0B56A4;
