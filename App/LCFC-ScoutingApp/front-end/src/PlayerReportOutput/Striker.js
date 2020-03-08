@@ -1,152 +1,445 @@
-import React from 'react'
+import React from "react";
+import NavBar from '../Components/NavigationBar/NavBar'
 import './PlayerPos.css'
 class StrikerForm extends React.Component{
+
+    state = {
+
+        id: 0,
+        data: [],
+        player_data: [],
+    
+    
+      }
+    
+      componentDidMount() {
+    
+    
+        this.setState({ id: this.props.match.params.userId })
+    
+        this.getPlayerData();
+    
+        this.getData();
+    
+      }
+    
+      getData = async () => {
+    
+        const response = await fetch('/api/getPlayerData', {
+    
+          method: 'POST',
+    
+          headers: {
+    
+            'Content-Type': 'application/json',
+    
+          },
+    
+          body: JSON.stringify({ playerID: this.props.match.params.userId })
+    
+        });
+    
+        const body = await response.json();
+    
+        this.setState({ data: body });
+    
+      };
+    
+    
+      getPlayerData = async () => {
+    
+        const response = await fetch('/api/getPlayerDataFromPlayer', {
+    
+          method: 'POST',
+    
+          headers: {
+    
+            'Content-Type': 'application/json',
+    
+          },
+    
+          body: JSON.stringify({ playerID: this.props.match.params.userId })
+    
+        });
+    
+        const body = await response.json();
+    
+    
+        this.setState({ player_data: body });
+    
+      };
     
     render(){
+
+
         return(
-            <form>
+
+            <div>
+                <div>
+
+                    <NavBar />
+
+                </div>
+
+
+                {this.state.data.map((values, index) => {
+
+                    return <div>
+
+                        <div class="PlayerInformation">
+
+                        </div>
+            
+            
                 
-            <h2>Striker</h2>
-            <div class="grid-container">
-            <div class="grid-item">    
-                <h3>Player Rating</h3>
-                <label>Grade: </label>
-                    <label class ="rating"></label>
+          
+      
+            
                 
+                        <div class="InPossession">
+
+                            <div class="TypeNames">
+
+                                <table>
+                                    <tr>
+                                        <th>In Possession</th>
+                                    </tr>
+                                </table>
+
+
+                            </div>
+
+                            <table>
+                            <tr class="Data">
+                                    <th>Hold up play</th>
+                                    <td>{values.hold_up_play}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Receiving under pressure </th>
+                                    <td>{values.receiving_under_pressure}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th> Link up play </th>
+                                    <td>{values.link_up_play}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Left foot</th>
+                                    <td>{values.left_foot}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Right foot</th>
+                                    <td>{values.right_foot}</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                        <div class="Attacking">
+
+                            <div class="TypeNames">
+
+                                <table>
+                                    <tr>
+                                        <th>Attacking</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            <table>
+                            <tr class="Data">
+                                    <th>1v1</th>
+                                    <td>{values.one_v_one}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Aerial ability</th>
+                                    <td>{values.aerial_ability}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Crossing</th>
+                                    <td>{values.crossing}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Finishing</th>
+                                    <td>{values.finishing}</td>
+                                </tr>
+
+
+
+                                <tr class="Data">
+                                    <th>Left foot shooting</th>
+                                    <td>{values.left_foot_shooting}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Right foot shooting</th>
+                                    <td>{values.right_foot_shooting}</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="Defending">
+
+                            <div class="TypeNames">
+
+                                <table>
+
+                                    <tr>
+                                        <th>Defending</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            <table>
+                            <tr class="Data">
+                                    <th>1v2</th>
+                                    <td>{values.one_v_two}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Tackling</th>
+                                    <td>{values.tackling}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Pressing</th>
+                                    <td>{values.pressing}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Recovering into shape</th>
+                                    <td>{values.recovering_into_shape}</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                        <div class="Tactical">
+
+                            <div class="TypeNames">
+
+                                <table>
+
+                                    <tr>
+                                        <th>Tactical</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            <table>
+                            <tr class="Data">
+                                    <th>Agility</th>
+                                    <td>{values.agility}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Dropping into space</th>
+                                    <td>{values.dropping_into_space}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Running the channels</th>
+                                    <td>{values.running_the_channels}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Movement off the ball</th>
+                                    <td>{values.movement_off_the_ball}</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="Physical">
+
+                            <div class="TypeNames">
+
+                                <table>
+
+                                    <tr>
+                                    <th>Physical</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            <table>
+                            <tr class="Data">
+                                    <th>Pace</th>
+                                    <td>{values.pace}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Mobility</th>
+                                    <td>{values.mobility}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Jump/spring</th>
+                                    <td>{values.jump}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Strength/pinning</th>
+                                    <td>{values.strength}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Work rate</th>
+                                    <td>{values.work_rate}</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                        <div class="Psychological">
+
+                            <div class="TypeNames">
+
+                                <table>
+
+                                    <tr>
+                                        <th>Pyschological</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            <table>
+                            <tr class="Data">
+                                    <th>Bravery</th>
+                                    <td>{values.bravery}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Leadership</th>
+                                    <td>{values.leadership}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Team work</th>
+                                    <td>{values.team_work}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Communication</th>
+                                    <td>{values.communication}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Response to criticism</th>
+                                    <td>{values.response_to_criticism}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Reaction to mistakes</th>
+                                    <td>{values.reaction_to_mistakes}</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+                        <div class="PlayerInformation">
+                <div class="TypeNames">
+
+                  <table>
+                    <tr>
+                      <th>Player Information</th>
+                    </tr>
+                  </table>
+
+                </div>
+
+                {this.state.player_data.map((playervalues, index) => {
+
+                  return <div>
+
+                    <table>
+                      <tr class="Data">
+                        <th>First Name</th>
+                        <td>{playervalues.first_name}</td>
+                      </tr>
+                      <tr class="Data">
+                        <th>Last Name</th>
+                        <td>{playervalues.last_name}</td>
+                      </tr>
+                      <tr class="Data">
+                        <th>Age</th>
+                        <td>{playervalues.age}</td>
+                      </tr>
+                      <tr class="Data">
+                        <th>Club</th>
+                        <td>{playervalues.club}</td>
+                      </tr>
+                      <tr class="Data">
+                        <th>Height</th>
+                        <td>{playervalues.height}</td>
+                      </tr>
+                      <tr class="Data">
+                        <th>Grade</th>
+                        <td>{values.rating}</td>
+                      </tr>
+
+                    </table>
+                  </div>
+
+                })}
+
+              </div>
+
+
+              {this.state.data.map((values, index) => {
+
+                return <div class="NotesTag">
+                  <table>
+                    <tr class="NotesHeader">
+                      <th>Notes</th>
+                    </tr>
+                    <tr>
+                      <td class="NotesBody">{values.notes}</td>
+                    </tr>
+                    <tr class="NotesHeader">
+                      <th>Summary</th>
+                    </tr>
+                    <tr>
+                      <td class="NotesBody">{values.summary}</td>
+                    </tr>
+                  </table>
+
+                </div>
+
+              })}
+
             </div>
-            <div class="grid-item">
-                    <h3>In Possession</h3>
 
-                    <label>Hold up play: </label>
-                    <label class ="hold_up_play"></label>
-                    <br></br>
-                    <label>Receiving under pressure: </label>
-                    <label class ="recieving_under_pressure"></label>
-                    <br></br>
-                    <label>Link up play: </label>
-                    <label class ="link_up_play"></label>
-                    <br></br>
-                    <label>Left foot: </label>
-                    <label class ="right_foot"></label>
-                    <br></br>
-                    <label>Right foot: </label>
-                    <label class ="left_foot"></label>
-                    <br></br>	
-                </div>
+          })}
 
-                <div class="grid-item">
-                    <h3>Attacking</h3>
+        </div>
 
-                    <label>1v1: </label>
-                    <label class ="one_v_one"></label>
-                    <br></br>
-                    <label>Aerial ability: </label>
-                    <label class ="ariel_ability"></label>
-                    <br></br>
-                    <label>Crossing: </label>
-                    <label class ="crossing"></label>
-                    <br></br>
-                    <label>Finishing: </label>
-                    <label class ="finishing"></label>
-                    <br></br>
-                    <label>Right foot shooting: </label>
-                    <label></label>
-                    <br class ="right_foot_shooting"></br>
-                    <label>Left foot shooting: </label>
-                    <label class ="left_foot_shooting"></label>
-                    <br></br>
-                </div>
-
-                <div class="grid-item">
-                    <h3>Defending</h3>
-
-                    <label>1v2: </label>
-                    <label class ="one_v_two"></label>
-                    <br></br>
-                    <label>Tackling: </label>
-                    <label class ="tackling"></label>
-                    <br></br>
-                    <label>Pressing: </label>
-                    <label class ="pressing"></label>
-                    <br></br>
-                    <label>Recovering into shape: </label>
-                    <label class ="recovering_into_shape"></label>
-                    <br></br>
-                   
-                </div>
-
-                <div class="grid-item">
-                    <h3>Tactical</h3>
-
-                    <label>Agility: </label>
-                    <label class ="agility"></label>
-                    <br></br>
-                    <label>Dropping into space </label>
-                    <label class ="dropping_into_space"></label>
-                    <br></br>
-                    <label>Runs off the shoulder </label>
-                    <label class ="runs_off_the_shoulder"></label>
-                    <br></br>
-                    <label>Running the channels: </label>
-                    <label class ="running_into_channels"></label>
-                    <br></br>
-                    <label>Movement off the ball: </label>
-                    <label class ="movement_off_the_ball"></label>
-                    <br></br>
-                </div>
-
-                <div class="grid-item">
-                    <h3>Physical</h3>
-
-                    <label>Pace: </label>
-                    <label class ="pace"></label>
-                    <br></br>
-                    <label>Mobility: </label>
-                    <label class ="mobility"></label>
-                    <br></br>
-                    <label>Jump/spring: </label>
-                    <label class ="jump"></label>
-                    <br></br>
-                    <label>Strength/pinning: </label>
-                    <label class ="strength"></label>
-                    <br></br>
-                    <label>Work rate: </label>
-                    <label class ="work_rate"></label>
-                    <br></br>
-                </div>
-
-                
-                <div class="grid-item">
-                    <h3>Pyschological</h3>
-
-                    <label>Bravery: </label>
-                    <label class ="bravery"></label>
-                    <br></br>
-                    <label>Leadership: </label>
-                    <label class ="leadership"></label>
-                    <br></br>
-                    <label>Team work: </label>
-                    <label class ="team_work"></label>
-                    <br></br>
-                    <label>Communication: </label>
-                    <label class ="communication"></label>
-                    <br></br>
-                    <label>Response to criticism: </label>
-                    <label class ="response_to_criticism"></label>
-                    <br></br>
-                    <label>Reaction to mistakes: </label>
-                    <label class ="reaction_to_mistakes"></label>
-                    <br></br>
-                </div>
-                <div class = "grid-item">
-                    <h3>Additional Comments</h3>
-                    <textarea class = "notes">
-
-                    </textarea>
-                </div>
-            </div>
-            </form>
-        );
-    }
+    );
+  };
 }
+
+
+
+
+
+            
 export default StrikerForm;

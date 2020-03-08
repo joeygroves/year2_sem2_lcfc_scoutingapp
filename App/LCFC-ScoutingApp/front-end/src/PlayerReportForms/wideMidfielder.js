@@ -29,7 +29,7 @@ class wideMidfielderForm extends React.Component {
 
         // Additional Information
 
-        notes: '', rating : '', 
+        notes: '', rating : 'A', 
 
         // Player Information
 

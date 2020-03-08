@@ -11,8 +11,6 @@
   font-size: 20px;
   line-height: 35px;
 } 
-
-input 
 .grid-item, label{
 padding-left: 70px;
 clear: left;
@@ -20,7 +18,6 @@ text-align: center;
 
 
 }
-
 .grid-item, input{
 padding-right: 25px;
 padding-left: 5px;

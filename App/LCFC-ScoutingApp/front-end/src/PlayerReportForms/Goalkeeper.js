@@ -54,34 +54,34 @@ class GoalkeeperForm extends React.Component {
                     <div class="grid-item">
 
                         <label>First Name: </label>
-                        <input type="text" value={this.state.first_name} onChange={e => this.setState({ first_name: e.target.value })}></input>
+                        <input value={this.state.first_name} onChange={e => this.setState({ first_name: e.target.value })}></input>
 
                         <label>Last Name: </label>
-                        <input type="text" value={this.state.last_name} onChange={e => this.setState({ last_name: e.target.value })}></input>
+                        <input value={this.state.last_name} onChange={e => this.setState({ last_name: e.target.value })}></input>
 
                         <label>Club: </label>
-                        <input type="text" value={this.state.club_name} onChange={e => this.setState({ club_name: e.target.value })}></input>
+                        <input value={this.state.club_name} onChange={e => this.setState({ club_name: e.target.value })}></input>
 
                         <label>Shirt Number: </label>
-                        <input type="number" value={this.state.shirt_number} onChange={e => this.setState({ shirt_number: e.target.value })}></input>
+                        <input value={this.state.shirt_number} onChange={e => this.setState({ shirt_number: e.target.value })}></input>
 
                         <br></br>
 
                         <label>Height: </label>
-                        <input type="decimal"value={this.state.height} onChange={e => this.setState({ height: e.target.value })}></input>
+                        <input value={this.state.height} onChange={e => this.setState({ height: e.target.value })}></input>
 
                         <label>Age: </label>
-                        <input  type="number" value={this.state.age} onChange={e => this.setState({ age: e.target.value })}></input>
+                        <input value={this.state.age} onChange={e => this.setState({ age: e.target.value })}></input>
 
 
 
                         <br></br>
 
                         <label>Date Scouted: </label>
-                        <input type="date" value={this.state.date_played} onChange={e => this.setState({ date_played: e.target.value })}></input>
+                        <input value={this.state.date_played} onChange={e => this.setState({ date_played: e.target.value })}></input>
 
                         <label>Playing Against: </label>
-                        <input type="text" value={this.state.club_played} onChange={e => this.setState({ club_played: e.target.value })}></input>
+                        <input value={this.state.club_played} onChange={e => this.setState({ club_played: e.target.value })}></input>
 
 
 
@@ -89,10 +89,10 @@ class GoalkeeperForm extends React.Component {
 
 
                         <label>H/T: </label>
-                        <input  type="text" value={this.state.ht_score} onChange={e => this.setState({ ht_score: e.target.value })}></input>
+                        <input value={this.state.ht_score} onChange={e => this.setState({ ht_score: e.target.value })}></input>
 
                         <label>F/T: </label>
-                        <input   type="text" value={this.state.ft_score} onChange={e => this.setState({ ft_score: e.target.value })}></input>
+                        <input value={this.state.ft_score} onChange={e => this.setState({ ft_score: e.target.value })}></input>
 
 
                         <h4>Grade</h4>
@@ -100,8 +100,8 @@ class GoalkeeperForm extends React.Component {
                         <label>Grade (A-C): </label>
 
 
-                        <select defaultValue={{ label: "A", value: 0 }} value={this.state.rating} onChange={e => this.setState({ rating: e.target.value }) }>
-                            <option selected>
+                        <select value={this.state.rating} onChange={e => this.setState({ rating: e.target.value })}>
+                            <option>
                                 A
                             </option>
                             <option>

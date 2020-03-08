@@ -1,5 +1,5 @@
 .Login {
-  align-items: center;
+  text-align: center;
   font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
 }
 
@@ -7,8 +7,6 @@
   height: 40vmin;
   pointer-events: none;
   align-items: center;
-  
-  
 }
 
 .Login-header {
@@ -20,7 +18,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  align-items: center;
 }
 
 input[type=text], input[type=password] {
@@ -35,11 +32,6 @@ input[type=text], input[type=password] {
   font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
 }
 
-label {
-  align-items: center;
-  padding: 12px 20px;
-
-}
 
 .button {
   background-color: #0B56A4;

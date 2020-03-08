@@ -5,7 +5,7 @@ class centreMidfielderForm extends React.Component {
         first_name: "", last_name: "", club_name: "", height: "", age: "", date_played: "", club_played: "", ht_score: "", ft_score: "", control_under_pressure: "", bravery_in_posession: "", short_passing: "", switching_play: "", running_with_the_ball: "", right_foot: "",
         left_foot: "", attacking_one_v_one: "", attacking_ariel_ability: "", shooting: "", crossing: "", defending_one_v_one: "", defending_ariel_ability: "", tackling: "",
         closing_down: "", recovery_runs: "", marking: "", agility: "", finding_space: "", vision: "", creativity: "", speed: "", movement_skills: "", work_rate: "", strength: "",
-        communication: "", concentration: "", commitment: "", emotional_control: "", confidence: "", rating: "",
+        communication: "", concentration: "", commitment: "", emotional_control: "", confidence: "", rating: "A",
         shirt_number: "", notes: ""
     };
 

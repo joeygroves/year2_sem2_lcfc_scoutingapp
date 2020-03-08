@@ -1,150 +1,421 @@
 import React from 'react'
 import './PlayerPos.css'
-class fullBackForm extends React.Component{
-    
-    render(){
-        return(
-            <form>
-                
-            <h2>Full Back</h2>
+import NavBar from '../Components/NavigationBar/NavBar'
+class fullBackForm extends React.Component {
 
-            <div class="grid-container">
-            <div class="grid-item">    
-                <h3>Player Rating</h3>
-               <label class = "rating"></label>
-            </div>    
-            <div class="grid-item">
-                    <h3>In Possession</h3>
-                    <label>Receiving under pressure: </label>
-                    <label class = "recieving_under_pressure"></label>
-                    <br></br>
-                    <label>Short passing: </label>
-                    <label class = "short_passing"></label>
-                    <br></br>
-                    <label>Long passing: </label>
-                    <label class = "long_passing"></label>
-                    <br></br>
-                    <label>Control: </label>
-                    <label class = "control"></label>
-                    <br></br>
-                    <label>Right foot: </label>
-                    <label class = "right_foot"></label>
-                    <br></br>
-                    <label>Left foot: </label>
-                    <label class = "left_foot"></label>
-                    <br></br>	
-                </div>
+    state = {
 
-                <div class="grid-item">
-                    <h3>Attacking</h3>
-                    <label>1v1: </label>
-                    <label class = "attacking_one_v_one"></label>
-                    <br></br>
-                    <label>Aerial ability: </label>
-                    <label class = "attacking_aerial_ability"></label>
-                    <br></br>
-                    <label>Crossing: </label>
-                    <label class = "crossing"></label>
-                    <br></br>
-                </div>
+        id: 0,
+        data: [],
+        player_data: [],
 
-                <div class="grid-item">
-                    <h3>Defending</h3>
-                    <label>1v1: </label>
-                    <label class = "defending_one_v_one"></label>
-                    <br></br>
-                    <label>Aerial ability: </label>
-                    <label class = "defending_ariel_ability"></label>
-                    <br></br>
-                    <label>Tackling: </label>
-                    <label class = "tackling"></label>
-                    <br></br>
-                    <label>Defending far post: </label>
-                    <label class = "defending_far_post"></label>
-                    <br></br>
-                    <label>Stop the cross: </label>
-                    <label class = "stopping_the_cross"></label>
-                    <br></br>
-                    <label>Pressing: </label>
-                    <label class = "pressing"></label>
-                    <br></br>
-                    <label>Recovery runs: </label>
-                    <label class = "recovery_runs"></label>
-                    <br></br>
-                    <label>Tracking runners: </label>
-                    <label class = "tracking_runners"></label>
-                    <br></br>
-                </div>
 
-                <div class="grid-item">
-                    <h3>Tactical</h3>
-                    <label>Agility: </label>
-                    <label class = "agility"></label>
-                    <br></br>
-                    <label>Angles to receive: </label>
-                    <label class = "angles_to_recieve"></label>
-                    <br></br>
-                    <label>Link up with winger: </label>
-                    <label class = "link_up_with_winger"></label>
-                    <br></br>
-                    <label>Covering across: </label>
-                    <label class = "covering_across"></label>
-                    <br></br>
-                    <label>Willingness to get forward: </label>
-                    <label class = "willlingness_to_get_forward"></label>
-                    <br></br>
-                </div>
-
-                <div class="grid-item">
-                    <h3>Physical</h3>
-                    <label>Pace: </label>
-                    <label class = "pace"></label>
-                    <br></br>
-                    <label>Mobility: </label>
-                    <label class = "mobility"></label>
-                    <br></br>
-                    <label>Work rate: </label>
-                    <label class = "work_rate"></label>
-                    <br></br>
-                    <label>Strength: </label>
-                    <label class = "strength"></label>
-                    <br></br>
-                    <label>Jump/spring: </label>
-                    <label class = "jump"></label>
-                    <br></br>
-                </div>
-
-                
-                <div class="grid-item">
-                    <h3>Pyschological</h3>
-                    <label>Bravery: </label>
-                    <label class = "bravery"></label>
-                    <br></br>
-                    <label>Leadership: </label>
-                    <label class = "leadership"></label>
-                    <br></br>
-                    <label>Team work: </label>
-                    <label class = "team_work"></label>
-                    <br></br>
-                    <label>Communication: </label>
-                    <label class = "communicaton"></label>
-                    <br></br>
-                    <label>Response to criticism: </label>
-                    <label class = "reponse_to_criticism"></label>
-                    <br></br>
-                    <label>Reaction to mistakes: </label>
-                    <label class = "reaction_to_mistake"></label>
-                    <br></br>
-                </div>
-                <div class = "grid-item">
-                    <h3>Additional Comments</h3>
-                    <textarea class = "notes" readOnly>
-
-                    </textarea>
-                </div>
-            </div>
-            </form>
-        );
     }
+
+    componentDidMount() {
+
+
+        this.setState({ id: this.props.match.params.userId })
+
+        this.getPlayerData();
+
+        this.getData();
+
+    }
+
+    getData = async () => {
+
+        const response = await fetch('/api/getPlayerData', {
+
+            method: 'POST',
+
+            headers: {
+
+                'Content-Type': 'application/json',
+
+            },
+
+            body: JSON.stringify({ playerID: this.props.match.params.userId })
+
+        });
+
+        const body = await response.json();
+
+        console.log(body)
+
+        this.setState({ data: body });
+
+    };
+
+
+    getPlayerData = async () => {
+
+        const response = await fetch('/api/getPlayerDataFromPlayer', {
+
+            method: 'POST',
+
+            headers: {
+
+                'Content-Type': 'application/json',
+
+            },
+
+            body: JSON.stringify({ playerID: this.props.match.params.userId })
+
+        });
+
+        const body = await response.json();
+
+
+
+        this.setState({ player_data: body });
+
+    };
+    render() {
+
+        return (
+
+            <div>
+
+                <div>
+
+                    <NavBar />
+
+                </div>
+
+                {this.state.data.map((values, index) => {
+
+                    return <div>
+
+                        <div class="PlayerInformation">
+
+                        </div>
+
+                        <div class="InPossession">
+
+                            <div class="TypeNames">
+
+                                <table>
+                                    <tr>
+                                        <th>In Possession</th>
+
+                                    </tr>
+
+                                </table>
+
+                            </div>
+
+                            <table>
+                                <tr class="Data">
+                                    <th>Receiving Under Pressure</th>
+                                    <td>{values.receiving_under_pressure}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Short Passing</th>
+                                    <td>{values.short_passing}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Long Passing</th>
+                                    <td>{values.long_passing}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Control</th>
+                                    <td>{values.control}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Left Foot</th>
+                                    <td>{values.left_foot}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Right Foot</th>
+                                    <td>{values.right_foot}</td>
+                                </tr>
+
+
+                            </table>
+
+                        </div>
+
+
+
+                        <div class="Attacking">
+
+                            <div class="TypeNames">
+
+                                <table>
+                                    <tr>
+                                        <th>Attacking</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            <table>
+                                <tr class="Data">
+                                    <th>1v1</th>
+                                    <td>{values.attacking_one_v_one}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Aerial ability</th>
+                                    <td>{values.attacking_ariel_ability}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Crossing</th>
+                                    <td>{values.crossing}</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="Defending">
+
+                            <div class="TypeNames">
+
+                                <table>
+                                    <tr>
+                                        <th>Defending</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            <table>
+                                <tr class="Data">
+                                    <th>One Vs One</th>
+                                    <td>{values.defending_one_v_one}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Aerial Ability</th>
+                                    <td>{values.defending_ariel_ability}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Tackling</th>
+                                    <td>{values.tackling}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Defending far post</th>
+                                    <td>{values.defending_far_post}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Stop the cross</th>
+                                    <td>{values.stopping_the_cross}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Pressing</th>
+                                    <td>{values.pressing}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Recovery Runs</th>
+                                    <td>{values.recovery_runs}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Tracking Runners</th>
+                                    <td>{values.tracking_runners}</td>
+                                </tr>
+
+                            </table>
+                        </div>
+
+                        <div class="Tactical">
+
+                            <div class="TypeNames">
+
+                                <table>
+                                    <tr>
+                                        <th>Tactical</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            <table>
+                                <tr class="Data">
+                                    <th>Agility</th>
+                                    <td>{values.agility}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Angles To Recieve</th>
+                                    <td>{values.angles_to_receive}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Link up with winger </th>
+                                    <td>{values.link_up_with_winger}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Covering across</th>
+                                    <td>{values.covering_across}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Willingness to get forward</th>
+                                    <td>{values.willlingness_to_get_forward}</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="Physical">
+
+                            <div class="TypeNames">
+
+                                <table>
+                                    <tr>
+                                        <th>Physical</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            <table>
+                                <tr class="Data">
+                                    <th>Pace</th>
+                                    <td>{values.pace}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Mobility</th>
+                                    <td>{values.mobility}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Work rate</th>
+                                    <td>{values.work_rate}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Strength</th>
+                                    <td>{values.strength}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Jump/spring</th>
+                                    <td>{values.jump}</td>
+                                </tr>
+
+
+                            </table>
+
+                        </div>
+
+                        <div class="Psychological">
+
+                            <div class="TypeNames">
+
+                                <table>
+                                    <tr>
+                                        <th>Psychological</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            <table>
+                                <tr class="Data">
+                                    <th>Bravery</th>
+                                    <td>{values.bravery}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Leadership</th>
+                                    <td>{values.leadership}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Team Work</th>
+                                    <td>{values.team_work}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Communication</th>
+                                    <td>{values.communicaton}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Response To Criticism</th>
+                                    <td>{values.response_to_criticism}</td>
+                                </tr>
+                                <tr class="Data">
+                                    <th>Reaction To Mistakes</th>
+                                    <td>{values.reaction_to_mistake}</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <div class="PlayerInformation">
+                            <div class="TypeNames">
+
+                                <table>
+                                    <tr>
+                                        <th>Player Information</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            {this.state.player_data.map((playervalues, index) => {
+
+                                return <div>
+
+                                    <table>
+                                        <tr class="Data">
+                                            <th>First Name</th>
+                                            <td>{playervalues.first_name}</td>
+                                        </tr>
+                                        <tr class="Data">
+                                            <th>Last Name</th>
+                                            <td>{playervalues.last_name}</td>
+                                        </tr>
+                                        <tr class="Data">
+                                            <th>Age</th>
+                                            <td>{playervalues.age}</td>
+                                        </tr>
+                                        <tr class="Data">
+                                            <th>Club</th>
+                                            <td>{playervalues.club}</td>
+                                        </tr>
+                                        <tr class="Data">
+                                            <th>Height</th>
+                                            <td>{playervalues.height}</td>
+                                        </tr>
+                                        <tr class="Data">
+                                            <th>Grade</th>
+                                            <td>{values.rating}</td>
+                                        </tr>
+
+                                    </table>
+                                </div>
+
+                            })}
+
+                        </div>
+
+
+                        {this.state.data.map((values, index) => {
+
+                            return <div class="NotesTag">
+                                <table>
+                                    <tr class="NotesHeader">
+                                        <th>Notes</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="NotesBody">{values.notes}</td>
+                                    </tr>
+                                    <tr class="NotesHeader">
+                                        <th>Summary</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="NotesBody">{values.summary}</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                        })}
+
+                    </div>
+
+                })}
+
+            </div>
+
+
+
+        );
+    };
 }
-export default fullBackForm;
+
+export default fullBackForm

@@ -24,7 +24,7 @@ class fullBackForm extends React.Component {
         bravery: '', leadership: '', team_work: '', communicaton: '', reponse_to_criticism: '', reaction_to_mistake: '',
 
         //Rating
-        rating: '',
+        rating: 'A',
 
         //Additional Comments
         notes: '',

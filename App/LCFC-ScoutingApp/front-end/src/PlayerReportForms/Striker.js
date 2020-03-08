@@ -7,7 +7,7 @@ class StrikerForm extends React.Component {
         finishing: '', right_foot_shooting: '', left_foot_shooting: '', crossing: '', one_v_two: '', tackling: '', pressing: '',
         recovering_into_shape: '', agility: '', dropping_into_space: '', runs_off_the_shoulder: '', running_the_channels: '', movement_off_the_ball: '',
         pace: '', mobility: '', strength: '', work_rate: '', jump: '', bravery: '', leadership: '', team_work: '', communication: '',
-        response_to_criticism: '', reaction_to_mistakes: '', rating: '', notes: '',aerial_ability : '',
+        response_to_criticism: '', reaction_to_mistakes: '', rating: 'A', notes: '',aerial_ability : '',
         first_name: '', last_name: '', club_name: '', height: '', age: '', date_played: '', club_played: '', ht_score: '', ft_score: '', shirt_number: ''
     }
 

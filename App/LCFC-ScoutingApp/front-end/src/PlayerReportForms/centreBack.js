@@ -7,7 +7,7 @@ class centreBackForm extends React.Component {
         threat_at_set_plays: '', attacking_ariel_ability: '', one_v_one: '', defending_ariel_ability: '', tackling: '', marking: '',
         interceptions: '', sensing_danger: '', defending_crosses: '', pressing: '', recovery_runs: '', tracking_runners: '',
         agility: '', angles_to_recieve: '', distances: '', recovering_to_shape: '', pace_when_turning: '', jump: '', mobility: '', strength: '', aggression: '', bravery: '',
-        leadership: '', team_work: '', communication: '', response_to_criticism: '', reaction_to_mistake: '', rating: '', shirt_number: '',
+        leadership: '', team_work: '', communication: '', response_to_criticism: '', reaction_to_mistake: '', rating: 'A', shirt_number: '',
         notes: '', first_name: '', last_name: '', club_name: '', height: '', age: '', date_played: '', club_played: '', ht_score: '', ft_score: '',
     }
 
