@@ -23,7 +23,7 @@ module.exports = function(app) {
  
     var mailOptions = {
       from: "lcfcapp.scrum13@gmail.com",
-      to: "jwcg2@student.le.ac.uk, tsr10@student.le.ac.uk'",
+      to: "jwcg2@student.le.ac.uk, tsr10@student.le.ac.uk",
       subject: "Sending Email using Node.js",
       text: "That was easy!",
       attachments: [
