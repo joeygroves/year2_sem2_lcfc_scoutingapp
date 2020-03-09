@@ -152,6 +152,10 @@ module.exports = function(app) {
       
       
         })
+
+        //Email scout report function
+        require('../../email/email_app')(app);
+
       }
       );
 
