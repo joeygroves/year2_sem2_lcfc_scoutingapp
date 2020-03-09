@@ -1,0 +1,47 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const exphbs = require('express-handlebars');
+const nodemailer = require('nodemailer');
+
+const app = express();
+
+module.exports = function(app) {
+
+
+    var to_list = [];
+
+    var transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false,
+      requireTLS: true,
+      auth: {
+        user: 'lcfcapp.scrum13@gmail.com',
+        pass: 'liv3rp00lsux'
+      }
+    });
+ 
+    var mailOptions = {
+      from: "lcfcapp.scrum13@gmail.com",
+      to: "jwcg2@student.le.ac.uk, tsr10@student.le.ac.uk'",
+      subject: "Sending Email using Node.js",
+      text: "That was easy!",
+      attachments: [
+        {
+          filename: "test.csv",
+          content: "Name",
+          content: "Club"
+        }
+      ]
+    };
+
+    transporter.sendMail(mailOptions, function(error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
+
+
+}
