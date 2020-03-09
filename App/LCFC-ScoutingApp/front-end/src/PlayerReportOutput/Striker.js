@@ -252,6 +252,11 @@ class StrikerForm extends React.Component{
                                 </tr>
 
                                 <tr class="Data">
+                                    <th>Run Off The Shoulder</th>
+                                    <td>{values.runs_off_the_shoulder}</td>
+                                </tr>
+
+                                <tr class="Data">
                                     <th>Running the channels</th>
                                     <td>{values.running_the_channels}</td>
                                 </tr>
