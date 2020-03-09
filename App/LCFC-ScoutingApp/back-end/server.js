@@ -59,6 +59,11 @@ require('../back-end/route_handlers/post/post_centreMid')(app);
 
 require('../back-end/route_handlers/post/post_striker')(app);
 
+// --------------------------------------------------------------------------------------------- Get Player Info ------------------------------------------------------
+
+
+require('../back-end/view_reports/view_reports')(app);
+
 // --------------------------------------------------------------------------------------------------------- Get User Information -----------------------------------------------------------------------
 
 // Get Username Of the Session

@@ -41,8 +41,8 @@ class HomePage extends React.Component {
 
     };
 
-   
-    
+
+
 
 
     render() {
@@ -70,6 +70,7 @@ class HomePage extends React.Component {
                         <th>Height</th>
                         <th>Position</th>
                         <th>View</th>
+
                     </tr>
 
                 </table>
@@ -87,8 +88,10 @@ class HomePage extends React.Component {
                                 <td>{values.Club} </td>
                                 <td>{values.Grade} </td>
                                 <td>{values.Height} </td>
-                                <td>{values.Position} </td>
-                                <td><a><Link to={"/ViewPlayerReport"}>View Reports</Link></a></td>
+                                <td>{values.Position}</td>
+                                
+
+                                <td><a><Link to={`/ViewPlayerReport/${values.Position.replace(/\s/g, "")}/${values.player_id}`}>Report</Link></a></td>
                             </tr>
 
                         </table>

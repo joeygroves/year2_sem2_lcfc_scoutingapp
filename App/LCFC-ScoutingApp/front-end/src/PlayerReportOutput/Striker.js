@@ -1,306 +1,450 @@
-import React from 'react'
+import React from "react";
+import NavBar from '../Components/NavigationBar/NavBar'
 import './PlayerPos.css'
-class StrikerForm extends React.Component {
+class StrikerForm extends React.Component{
+
     state = {
 
-        hold_up_play: '', receiving_under_pressure: '', link_up_play: '', right_foot: '', left_foot: '', one_v_one: '', ariel_ability: '',
-        finishing: '', right_foot_shooting: '', left_foot_shooting: '', crossing: '', one_v_two: '', tackling: '', pressing: '',
-        recovering_into_shape: '', agility: '', dropping_into_space: '', runs_off_the_shoulder: '', running_the_channels: '', movement_off_the_ball: '',
-        pace: '', mobility: '', strength: '', work_rate: '', jump: '', bravery: '', leadership: '', teamwork: '', communication: '',
-        response_to_criticism: '', reaction_to_mistakes: '', rating: '', notes: '',
-        first_name: '', last_name: '', club_name: '', height: '', age: '', date_played: '', club_played: '', ht_score: '', ft_score: '', shirt_number: ''
-    }
-
-    handleSubmit = async (e) => {
-
-        e.preventDefault();
-
-        const response = await fetch('/api/striker', {
-
-            method: 'POST',
-
-            headers: {
-
-                'Content-Type': 'application/json',
-
-            },
-
-            body: JSON.stringify({
-                first_name: this.state.first_name,
-                last_name: this.state.last_name,
-                club_name: this.state.club_name,
-                height: this.state.height,
-                age: this.state.age,
-                date_played: this.state.date_played,
-                club_played: this.state.club_played,
-                ht_score: this.state.ht_score,
-                ft_score: this.state.ft_score,
-                shirt_number: this.state.shirt_number,
-
-                hold_up_play: this.state.hold_up_play,
-                receiving_under_pressure: this.state.receiving_under_pressure,
-                link_up_play: this.state.link_up_play,
-                right_foot: this.state.right_foot,
-                left_foot: this.state.left_foot,
-                one_v_one: this.state.one_v_one,
-                ariel_ability: this.state.ariel_ability,
-                finishing: this.state.finishing,
-                right_foot_shooting: this.state.right_foot_shooting,
-                left_foot_shooting: this.state.left_foot_shooting,
-                crossing: this.state.crossing,
-                one_v_two: this.state.one_v_two,
-                tackling: this.state.tackling,
-                pressing: this.state.pressing,
-                recovering_into_shape: this.state.recovering_into_shape,
-                agility: this.state.agility,
-                dropping_into_space: this.state.dropping_into_space,
-                runs_off_the_shoulder: this.state.runs_off_shoulder,
-                running_the_channels: this.state.running_the_channels,
-                movement_off_the_ball: this.state.movement_off_the_ball,
-                pace: this.state.pace,
-                mobility: this.state.mobility,
-                strength: this.state.strength,
-                work_rate: this.state.work_rate,
-                jump: this.state.jump,
-                bravery: this.state.bravery,
-                leadership: this.state.leadership,
-                teamwork: this.state.teamwork,
-                communication: this.state.communication,
-                response_to_criticism: this.state.response_to_criticism,
-                reaction_to_mistakes: this.state.reaction_to_mistakes,
-                rating: this.state.rating,
-                notes: this.state.notes
-
-            }),
-
+        id: 0,
+        data: [],
+        player_data: [],
+    
+    
+      }
+    
+      componentDidMount() {
+    
+    
+        this.setState({ id: this.props.match.params.userId })
+    
+        this.getPlayerData();
+    
+        this.getData();
+    
+      }
+    
+      getData = async () => {
+    
+        const response = await fetch('/api/getPlayerData', {
+    
+          method: 'POST',
+    
+          headers: {
+    
+            'Content-Type': 'application/json',
+    
+          },
+    
+          body: JSON.stringify({ playerID: this.props.match.params.userId })
+    
         });
-
-        const body = await response.text();
-
-        this.setState({ response: body });
-
-    };
-
-    render() {
-        return (
-            <form onSubmit={this.handleSubmit}>
-
-                <h2><u>Striker</u></h2>
-
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <label>First Name: </label>
-                        <input
-                            value={this.state.first_name}
-                            onChange={e => this.setState({ first_name: e.target.value })}
-                        ></input>
-
-                        <label>Last Name: </label>
-                        <input
-                            value={this.state.last_name}
-                            onChange={e => this.setState({ last_name: e.target.value })}
-                        ></input>
-
-                        <label>Club: </label>
-                        <input
-                            value={this.state.club_name}
-                            onChange={e => this.setState({ club_name: e.target.value })}
-                        ></input>
-
-                        <label>Shirt Number: </label>
-                        <input
-                            value={this.state.shirt_number}
-                            onChange={e => this.setState({ shirt_number: e.target.value })}
-                        ></input>
-
-                        <br></br>
-
-                        <label>Height: </label>
-                        <input
-                            value={this.state.height}
-                            onChange={e => this.setState({ height: e.target.value })}
-                        ></input>
-
-                        <label>Age: </label>
-                        <input
-                            value={this.state.age}
-                            onChange={e => this.setState({ age: e.target.value })}
-                        ></input>
-
-                        <br></br>
-
-                        <label>Date Scouted: </label>
-                        <input
-                            value={this.state.date_played}
-                            onChange={e => this.setState({ date_played: e.target.value })}
-                        ></input>
-
-                        <label>Playing Against: </label>
-                        <input
-                            value={this.state.club_played}
-                            onChange={e => this.setState({ club_played: e.target.value })}
-                        ></input>
-
-                        <br></br>
-
-                        <label>H/T: </label>
-                        <input
-                            value={this.state.ht_score}
-                            onChange={e => this.setState({ ht_score: e.target.value })}
-                        ></input>
-
-                        <label>F/T: </label>
-                        <input
-                            value={this.state.ft_score}
-                            onChange={e => this.setState({ ft_score: e.target.value })}
-                        ></input>
+    
+        const body = await response.json();
+    
+        this.setState({ data: body });
+    
+      };
+    
+    
+      getPlayerData = async () => {
+    
+        const response = await fetch('/api/getPlayerDataFromPlayer', {
+    
+          method: 'POST',
+    
+          headers: {
+    
+            'Content-Type': 'application/json',
+    
+          },
+    
+          body: JSON.stringify({ playerID: this.props.match.params.userId })
+    
+        });
+    
+        const body = await response.json();
+    
+    
+        this.setState({ player_data: body });
+    
+      };
+    
+    render(){
 
 
-                        <h4>Player Rating</h4>
-                        <h6>Code reference: A = Sign Player, B+ = Closely monitor/Follow Up, B = Monitor Player, C = Not good enough</h6>
-                        <select value={this.state.rating} onChange={e => this.setState({ rating: e.target.value })}>
-                            <option>A</option>
-                            <option>B+</option>
-                            <option>B</option>
-                            <option>C</option>
-                        </select>
-                    </div>
+        return(
 
-                    <div class="grid-item">
-                        <h4>In Possession</h4>
+            <div>
+                <div>
 
-                        <label>Hold up play: </label>
-                        <input type="number" max="10" min="0" value={this.state.hold_up_play} onChange={e => this.setState({ hold_up_play: e.target.value })}></input>
+                    <NavBar />
 
-                        <label>Receiving under pressure: </label>
-                        <input type="number" max="10" min="0" value={this.state.recieving_under_pressure} onChange={e => this.setState({ recieving_under_pressure: e.target.value })}></input>
-
-                        <label>Link up play: </label>
-                        <input type="number" max="10" min="0"> value={this.state.link_up_play} onChange={e => this.setState({ link_up_play: e.target.value })}></input>
-                        <br></br>
-                        <label>Left foot: </label>
-                        <input type="number" max="10" min="0" value={this.state.left_foot} onChange={e => this.setState({ left_foot: e.target.value })}></input>
-
-                        <label>Right foot: </label>
-                        <input type="number" max="10" min="0" value={this.state.right_foot} onChange={e => this.setState({ right_foot: e.target.value })}></input>
-                        <br></br>
-                    </div>
-
-                    <div class="grid-item">
-                        <h4>Attacking</h4>
-
-                        <label>1v1: </label>
-                        <input type="number" max="10" min="0" value={this.state.one_v_one} onChange={e => this.setState({ one_v_one: e.target.value })}></input>
-
-                        <label>Aerial ability: </label>
-                        <input type="number" max="10" min="0" value={this.state.aerial_ability} onChange={e => this.setState({ aerial_ability: e.target.value })}></input>
-
-                        <label>Crossing: </label>
-                        <input type="number" max="10" min="0" value={this.state.crossing} onChange={e => this.setState({ crossing: e.target.value })}></input>
-                        <br></br>
-                        <label>Finishing: </label>
-                        <input type="number" max="10" min="0" value={this.state.finishing} onChange={e => this.setState({ finishing: e.target.value })}></input>
-
-                        <label>Left foot shooting: </label>
-                        <input type="number" max="10" min="0" value={this.state.left_foot_shooting} onChange={e => this.setState({ left_foot_shooting: e.target.value })}></input>
-
-                        <label>Right foot shooting: </label>
-                        <input type="number" max="10" min="0" value={this.state.right_foot_shooting} onChange={e => this.setState({ right_foot_shooting: e.target.value })}></input>
-                        <br></br>
-                    </div>
-
-                    <div class="grid-item">
-                        <h4>Defending</h4>
-
-                        <label>1v2: </label>
-                        <input type="number" max="10" min="0" value={this.state.one_v_two} onChange={e => this.setState({ one_v_two: e.target.value })}></input>
-
-                        <label>Tackling: </label>
-                        <input type="number" max="10" min="0" value={this.state.tackling} onChange={e => this.setState({ tackling: e.target.value })}></input>
-
-                        <label>Pressing: </label>
-                        <input type="number" max="10" min="0" value={this.state.pressing} onChange={e => this.setState({ pressing: e.target.value })}></input>
-
-                        <label>Recovering into shape: </label>
-                        <input type="number" max="10" min="0" value={this.state.recovering_into_shape} onChange={e => this.setState({ recovering_into_shape: e.target.value })}></input>
-                        <br></br>
-
-                    </div>
-
-                    <div class="grid-item">
-                        <h4>Tactical</h4>
-
-                        <label>Agility: </label>
-                        <input type="number" max="10" min="0" value={this.state.agility} onChange={e => this.setState({ agility: e.target.value })}></input>
-
-                        <label>Dropping into space </label>
-                        <input type="number" max="10" min="0" value={this.state.dropping_into_space} onChange={e => this.setState({ dropping_into_space: e.target.value })}></input>
-
-                        <label>Runs off the shoulder </label>
-                        <input type="number" max="10" min="0" value={this.state.runs_off_shoulder} onChange={e => this.setState({ runs_off_shoulder: e.target.value })}></input>
-                        <br></br>
-                        <label>Running the channels: </label>
-                        <input type="number" max="10" min="0" value={this.state.running_into_channels} onChange={e => this.setState({ running_into_channels: e.target.value })}></input>
-
-                        <label>Movement off the ball: </label>
-                        <input type="number" max="10" min="0" value={this.state.movement_off_the_ball} onChange={e => this.setState({ movement_off_the_ball: e.target.value })}></input>
-                        <br></br>
-                    </div>
-
-                    <div class="grid-item">
-                        <h4>Physical</h4>
-
-                        <label>Pace: </label>
-                        <input type="number" max="10" min="0" value={this.state.pace} onChange={e => this.setState({ pace: e.target.value })}></input>
-
-                        <label>Mobility: </label>
-                        <input type="number" max="10" min="0" value={this.state.mobility} onChange={e => this.setState({ mobility: e.target.value })}></input>
-
-                        <label>Jump/spring: </label>
-                        <input type="number" max="10" min="0" value={this.state.jump} onChange={e => this.setState({ jump: e.target.value })}></input>
-                        <br></br>
-                        <label>Strength/pinning: </label>
-                        <input type="number" max="10" min="0" value={this.state.strength} onChange={e => this.setState({ strength: e.target.value })}></input>
-
-                        <label>Work rate: </label>
-                        <input type="number" max="10" min="0" value={this.state.work_rate} onChange={e => this.setState({ work_rate: e.target.value })}></input>
-                        <br></br>
-                    </div>
-
-
-                    <div class="grid-item">
-                        <h4>Pyschological</h4>
-
-                        <label>Bravery: </label>
-                        <input type="number" max="10" min="0" value={this.state.bravery} onChange={e => this.setState({ bravery: e.target.value })}></input>
-
-                        <label>Leadership: </label>
-                        <input type="number" max="10" min="0" value={this.state.leadership} onChange={e => this.setState({ leadership: e.target.value })}></input>
-
-                        <label>Team work: </label>
-                        <input type="number" max="10" min="0" value={this.state.team_work} onChange={e => this.setState({ team_work: e.target.value })}></input>
-                        <br></br>
-                        <label>Communication: </label>
-                        <input type="number" max="10" min="0" value={this.state.communication} onChange={e => this.setState({ communication: e.target.value })}></input>
-
-                        <label>Response to criticism: </label>
-                        <input type="number" max="10" min="0" value={this.state.response_to_criticiscm} onChange={e => this.setState({ response_to_criticiscm: e.target.value })}></input>
-
-                        <label>Reaction to mistakes: </label>
-                        <input type="number" max="10" min="0" value={this.state.reaction_to_mistakes} onChange={e => this.setState({ reaction_to_mistakes: e.target.value })}></input>
-                        <br></br>
-                    </div>
-
-                    <div class="grid-item">
-                        <h3>Additional Comments</h3>
-                        <textarea class="notes">
-
-                        </textarea>
-                    </div>
                 </div>
-                <button type="submit">Submit</button>
-            </form>
-        );
-    }
+
+
+                {this.state.data.map((values, index) => {
+
+                    return <div>
+
+                        <div class="PlayerInformation">
+
+                        </div>
+            
+            
+                
+          
+      
+            
+                
+                        <div class="InPossession">
+
+                            <div class="TypeNames">
+
+                                <table>
+                                    <tr>
+                                        <th>In Possession</th>
+                                    </tr>
+                                </table>
+
+
+                            </div>
+
+                            <table>
+                            <tr class="Data">
+                                    <th>Hold up play</th>
+                                    <td>{values.hold_up_play}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Receiving under pressure </th>
+                                    <td>{values.receiving_under_pressure}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th> Link up play </th>
+                                    <td>{values.link_up_play}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Left foot</th>
+                                    <td>{values.left_foot}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Right foot</th>
+                                    <td>{values.right_foot}</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                        <div class="Attacking">
+
+                            <div class="TypeNames">
+
+                                <table>
+                                    <tr>
+                                        <th>Attacking</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            <table>
+                            <tr class="Data">
+                                    <th>1v1</th>
+                                    <td>{values.one_v_one}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Aerial ability</th>
+                                    <td>{values.ariel_ability}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Crossing</th>
+                                    <td>{values.crossing}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Finishing</th>
+                                    <td>{values.finishing}</td>
+                                </tr>
+
+
+
+                                <tr class="Data">
+                                    <th>Left foot shooting</th>
+                                    <td>{values.left_foot_shooting}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Right foot shooting</th>
+                                    <td>{values.right_foot_shooting}</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="Defending">
+
+                            <div class="TypeNames">
+
+                                <table>
+
+                                    <tr>
+                                        <th>Defending</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            <table>
+                            <tr class="Data">
+                                    <th>1v2</th>
+                                    <td>{values.one_v_two}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Tackling</th>
+                                    <td>{values.tackling}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Pressing</th>
+                                    <td>{values.pressing}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Recovering into shape</th>
+                                    <td>{values.recovering_into_shape}</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                        <div class="Tactical">
+
+                            <div class="TypeNames">
+
+                                <table>
+
+                                    <tr>
+                                        <th>Tactical</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            <table>
+                            <tr class="Data">
+                                    <th>Agility</th>
+                                    <td>{values.agility}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Dropping into space</th>
+                                    <td>{values.dropping_into_space}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Run Off The Shoulder</th>
+                                    <td>{values.runs_off_the_shoulder}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Running the channels</th>
+                                    <td>{values.running_the_channels}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Movement off the ball</th>
+                                    <td>{values.movement_off_the_ball}</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="Physical">
+
+                            <div class="TypeNames">
+
+                                <table>
+
+                                    <tr>
+                                    <th>Physical</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            <table>
+                            <tr class="Data">
+                                    <th>Pace</th>
+                                    <td>{values.pace}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Mobility</th>
+                                    <td>{values.mobility}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Jump/spring</th>
+                                    <td>{values.jump}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Strength/pinning</th>
+                                    <td>{values.strength}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Work rate</th>
+                                    <td>{values.work_rate}</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                        <div class="Psychological">
+
+                            <div class="TypeNames">
+
+                                <table>
+
+                                    <tr>
+                                        <th>Pyschological</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            <table>
+                            <tr class="Data">
+                                    <th>Bravery</th>
+                                    <td>{values.bravery}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Leadership</th>
+                                    <td>{values.leadership}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Team work</th>
+                                    <td>{values.teamwork}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Communication</th>
+                                    <td>{values.communication}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Response to criticism</th>
+                                    <td>{values.response_to_criticism}</td>
+                                </tr>
+
+                                <tr class="Data">
+                                    <th>Reaction to mistakes</th>
+                                    <td>{values.reaction_to_mistakes}</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+                        <div class="PlayerInformation">
+                <div class="TypeNames">
+
+                  <table>
+                    <tr>
+                      <th>Player Information</th>
+                    </tr>
+                  </table>
+
+                </div>
+
+                {this.state.player_data.map((playervalues, index) => {
+
+                  return <div>
+
+                    <table>
+                      <tr class="Data">
+                        <th>First Name</th>
+                        <td>{playervalues.first_name}</td>
+                      </tr>
+                      <tr class="Data">
+                        <th>Last Name</th>
+                        <td>{playervalues.last_name}</td>
+                      </tr>
+                      <tr class="Data">
+                        <th>Age</th>
+                        <td>{playervalues.age}</td>
+                      </tr>
+                      <tr class="Data">
+                        <th>Club</th>
+                        <td>{playervalues.club}</td>
+                      </tr>
+                      <tr class="Data">
+                        <th>Height</th>
+                        <td>{playervalues.height}</td>
+                      </tr>
+                      <tr class="Data">
+                        <th>Grade</th>
+                        <td>{values.rating}</td>
+                      </tr>
+
+                    </table>
+                  </div>
+
+                })}
+
+              </div>
+
+
+              {this.state.data.map((values, index) => {
+
+                return <div class="NotesTag">
+                  <table>
+                    <tr class="NotesHeader">
+                      <th>Notes</th>
+                    </tr>
+                    <tr>
+                      <td class="NotesBody">{values.notes}</td>
+                    </tr>
+                    <tr class="NotesHeader">
+                      <th>Summary</th>
+                    </tr>
+                    <tr>
+                      <td class="NotesBody">{values.summary}</td>
+                    </tr>
+                  </table>
+
+                </div>
+
+              })}
+
+            </div>
+
+          })}
+
+        </div>
+
+    );
+  };
 }
+
+
+
+
+
+            
 export default StrikerForm;
