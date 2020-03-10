@@ -85,6 +85,167 @@ module.exports = function(app) {
         //Player Info
         var playerID;
       
+
+        ////null input to database if no value entered by scout
+        
+        if (hold_up_play == ''){
+          var hold_up_play = null
+          }
+          
+        if (receiving_under_pressure == ''){
+          var receiving_under_pressure = null
+          }
+
+          
+        if (link_up_play == ''){
+          var link_up_play = null
+          }
+
+        if (right_foot == ''){
+            var right_foot = null
+        }
+    
+
+        if (left_foot == ''){
+            var left_foot = null
+          }
+    
+        
+        if (one_v_one == ''){
+            var one_v_one = null
+        }
+    
+        if (aerial_ability == ''){
+          var aerial_ability = null
+          }
+
+        if (finishing == ''){
+            var finishing = null
+          }
+
+        if (right_foot_shooting == ''){
+        var right_foot_shooting = null
+        }
+      
+        if (left_foot_shooting == ''){
+          var left_foot_shooting = null
+          }
+
+        if (crossing == ''){
+        var crossing = null
+        }
+
+        
+        if (one_v_two == ''){
+          var one_v_two = null
+          }
+
+          
+        if (tackling == ''){
+          var tackling = null
+          }
+
+          
+        if (pressing == ''){
+          var pressing = null
+          }
+
+          
+        if (recovering_into_shape == ''){
+          var recovering_into_shape = null
+          }
+
+          
+        if (agility == ''){
+          var agility = null
+          }
+
+          
+        if (dropping_into_space == ''){
+          var dropping_into_space = null
+          }
+
+          
+        if (runs_off_the_shoulder == ''){
+          var runs_off_the_shoulder = null
+          }
+
+          
+        if (running_the_channels == ''){
+          var running_the_channels = null
+          }
+
+          
+        if (movement_off_the_ball == ''){
+          var movement_off_the_ball = null
+          }
+  
+  
+0
+        if (pace == ''){
+        var pace = null
+        }
+        
+        if (mobility == ''){
+          var mobility = null
+          }
+
+          
+        if (strength == ''){
+          var strength = null
+          }
+
+          
+        if (work_rate == ''){
+          var work_rate = null
+          }
+
+          
+        if (jump == ''){
+          var jump = null
+          }
+
+          
+        if (bravery == ''){
+          var bravery = null
+          }
+
+          
+        if (leadership == ''){
+          var leadership = null
+          }
+  
+          
+        if (teamwork == ''){
+          var teamwork = null
+          }
+  
+          
+          
+        if (communication == ''){
+          var communication = null
+          }
+
+        
+          
+        if (response_to_criticism == ''){
+            var response_to_criticism = null
+          }
+
+            
+          
+        if (reaction_to_mistakes == ''){
+          var reaction_to_mistakes = null
+          }
+
+        ////
+      
+
+
+
+
+
+
       
         var PlayerSQL = "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position,shirt_number) VALUES ?";
         var PlayerValues = [[first_name, last_name, club_name, height, age, position, shirt_number]];
@@ -152,10 +313,6 @@ module.exports = function(app) {
       
       
         })
-
-        //Email scout report function
-        require('../../email/email_app')(app);
-
       }
       );
 

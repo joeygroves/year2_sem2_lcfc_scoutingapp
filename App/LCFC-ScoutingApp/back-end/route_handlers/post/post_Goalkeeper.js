@@ -154,7 +154,6 @@ module.exports = function(app) {
             }
     
     
-  0
           if (reactions == ''){
           var reactions = null
           }
@@ -195,7 +194,7 @@ module.exports = function(app) {
     
   
           ////
-          
+
         var PlayerSQL = "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position,shirt_number) VALUES ?";
         var PlayerValues = [[first_name, last_name, club_name, height, age, position, shirt_number]]
       
