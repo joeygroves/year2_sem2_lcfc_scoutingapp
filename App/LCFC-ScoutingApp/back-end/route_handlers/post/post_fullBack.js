@@ -88,6 +88,167 @@ module.exports = function(app) {
       
         //Player Information
         var playerID;
+
+
+        //// Test for null input to database
+        
+        if (receiving_under_pressure == ''){
+          var receiving_under_pressure = null
+          }
+          
+        if (short_passing == ''){
+          var short_passing = null
+          }
+
+          
+        if (long_passing == ''){
+          var long_passing = null
+          }
+
+        if (control == ''){
+            var control = null
+          }
+    
+        
+        if (right_foot == ''){
+            var right_foot = null
+        }
+    
+        if (left_foot == ''){
+          var left_foot = null
+          }
+
+        if (attacking_one_v_one == ''){
+            var attacking_one_v_one = null
+          }
+
+        if (attacking_ariel_ability == ''){
+        var attacking_ariel_ability = null
+        }
+      
+        if (crossing == ''){
+          var crossing = null
+          }
+
+        if (defending_one_v_one == ''){
+        var defending_one_v_one = null
+        }
+
+        
+        if (defending_ariel_ability == ''){
+          var defending_ariel_ability = null
+          }
+
+          
+        if (tackling == ''){
+          var tackling = null
+          }
+
+          
+        if (defending_far_post == ''){
+          var defending_far_post = null
+          }
+
+          
+        if (stopping_the_cross == ''){
+          var stopping_the_cross = null
+          }
+
+          
+        if (pressing == ''){
+          var pressing = null
+          }
+
+          
+        if (recovery_runs == ''){
+          var recovery_runs = null
+          }
+
+          
+        if (tracking_runners == ''){
+          var tracking_runners = null
+          }
+
+          
+        if (agility == ''){
+          var agility = null
+          }
+
+          
+        if (angles_to_recieve == ''){
+          var angles_to_recieve = null
+          }
+  
+  
+        if (link_up_with_winger == ''){
+        var link_up_with_winger = null
+        }
+        
+        if (covering_across == ''){
+          var covering_across = null
+          }
+
+          
+        if (willlingness_to_get_forward == ''){
+          var willlingness_to_get_forward = null
+          }
+
+          
+        if (pace == ''){
+          var pace = null
+          }
+
+          
+        if (mobility == ''){
+          var mobility = null
+          }
+
+          
+        if (work_rate == ''){
+          var work_rate = null
+          }
+
+          
+        if (strength == ''){
+          var strength = null
+          }
+  
+          
+        if (jump == ''){
+          var jump = null
+          }
+
+
+        if (bravery == ''){
+          var bravery = null
+          }
+
+
+        if (leadership == ''){
+          var leadership = null
+          }
+
+
+        if (team_work == ''){
+          var team_work = null
+         }
+
+
+        if (communication == ''){
+          var communication = null
+         }
+
+
+        if (response_to_criticism == ''){
+          var response_to_criticism = null
+         }
+
+        if (reaction_to_mistake == ''){
+          var reaction_to_mistake = null
+        }
+
+
+        ////
       
       
         var PlayerSQL = "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position,shirt_number) VALUES ?";

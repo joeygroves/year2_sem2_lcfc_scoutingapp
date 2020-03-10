@@ -423,9 +423,6 @@ module.exports = function(app) {
 
         setTimeout(() => {  require('../../email/email_app')(app) }, 10000);
 
-        
-        
-      
 
 }
 
