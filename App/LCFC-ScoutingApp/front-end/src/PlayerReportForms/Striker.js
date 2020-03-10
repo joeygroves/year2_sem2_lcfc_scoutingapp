@@ -275,9 +275,12 @@ class StrikerForm extends React.Component {
 
                     <div class="grid-item">
                         <h3>Additional Comments</h3>
-                        <textarea class="notes">
+                        <textarea
+                            class="notes"
+                            value={this.state.notes}
+                            onChange={e => this.setState({ notes: e.target.value })}
+                        ></textarea>
 
-                        </textarea>
                     </div>
                 </div>
                 <button type="submit">Submit</button>
