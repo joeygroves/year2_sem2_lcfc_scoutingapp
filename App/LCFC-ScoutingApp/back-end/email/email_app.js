@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const nodemailer = require('nodemailer');
-
+var fs  = require('fs');
 const app = express();
 
 module.exports = function(app) {
@@ -23,14 +23,13 @@ module.exports = function(app) {
  
     var mailOptions = {
       from: "lcfcapp.scrum13@gmail.com",
-      to: "jwcg2@student.le.ac.uk, tsr10@student.le.ac.uk",
+      to: "jwcg2@student.le.ac.uk, tsr10@student.le.ac.uk, jrb43@student.le.ac.uk",
       subject: "Sending Email using Node.js",
       text: "That was easy!",
       attachments: [
         {
-          filename: "test.csv",
-          content: "Name",
-          content: "Club"
+          filename: 'ScoutReport.xlsx',
+          content: fs.createReadStream('/Users/jamie/Documents/Year2/Software Engineering/LCFC Scouting App Development/myBranch/scrum-13/App/LCFC-ScoutingApp/back-end/email/Test.xlsx'),
         }
       ]
     };
