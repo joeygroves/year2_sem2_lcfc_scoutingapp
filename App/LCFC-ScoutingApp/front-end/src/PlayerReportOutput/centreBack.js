@@ -145,11 +145,11 @@ class centreBack extends React.Component {
 
                 <table>
                   <tr>
-                    <th>Receiving Under Pressure</th>
+                    <th>Threat At Set Plays</th>
                     <td>{values.threat_at_set_plays}</td>
                   </tr>
                   <tr>
-                    <th>Short Passing</th>
+                    <th>Aerial Ability</th>
                     <td>{values.attacking_ariel_ability}</td>
                   </tr>
 

@@ -64,6 +64,138 @@ module.exports = function(app) {
         var playerID;
       
       
+          //// Test for null input to database
+        
+          if (handling == ''){
+            var handling = null
+            }
+            
+          if (shot_stopping == ''){
+            var shot_stopping = null
+            }
+  
+            
+          if (tendancy_to_punch == ''){
+            var tendancy_to_punch = null
+            }
+  
+          if (tendancy_to_catch == ''){
+              var tendancy_to_catch = null
+            }
+      
+          
+          if (positioning == ''){
+              var positioning = null
+          }
+      
+          if (recovery_saves == ''){
+            var recovery_saves = null
+            }
+  
+          if (control_when_receiving == ''){
+              var control_when_receiving = null
+            }
+  
+          if (right_foot == ''){
+          var right_foot = null
+          }
+        
+          if (left_foot == ''){
+            var left_foot = null
+            }
+  
+          if (dead_ball_kicks == ''){
+          var dead_ball_kicks = null
+          }
+  
+          
+          if (kicking_out_of_hands == ''){
+            var kicking_out_of_hands = null
+            }
+  
+            
+          if (throwing == ''){
+            var throwing = null
+            }
+  
+            
+          if (kicking_under_pressure == ''){
+            var kicking_under_pressure = null
+            }
+  
+            
+          if (kicking_when_given_time == ''){
+            var kicking_when_given_time = null
+            }
+  
+            
+          if (dealing_with_crosses == ''){
+            var dealing_with_crosses = null
+            }
+  
+            
+          if (starting_position == ''){
+            var starting_position = null
+            }
+  
+            
+          if (one_v_one == ''){
+            var one_v_one = null
+            }
+  
+            
+          if (dealing_with_through_ball == ''){
+            var dealing_with_through_ball = null
+            }
+  
+            
+          if (agility == ''){
+            var agility = null
+            }
+    
+    
+  0
+          if (reactions == ''){
+          var reactions = null
+          }
+          
+          if (strength == ''){
+            var strength = null
+            }
+  
+            
+          if (speed == ''){
+            var speed = null
+            }
+  
+            
+          if (bravery == ''){
+            var bravery = null
+            }
+  
+            
+          if (leadership == ''){
+            var leadership = null
+            }
+  
+            
+          if (presence == ''){
+            var presence = null
+            }
+  
+            
+          if (communication == ''){
+            var communication = null
+            }
+    
+            
+          if (reaction_to_mistake == ''){
+            var reaction_to_mistake = null
+            }
+    
+  
+          ////
+          
         var PlayerSQL = "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position,shirt_number) VALUES ?";
         var PlayerValues = [[first_name, last_name, club_name, height, age, position, shirt_number]]
       

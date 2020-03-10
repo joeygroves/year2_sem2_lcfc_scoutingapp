@@ -108,27 +108,27 @@ class goalkeeper extends React.Component {
                                     </tr>
                                     <tr class="Data">
                                         <th>Shot Stopping</th>
-                                        <td>{values.handling}</td>
+                                        <td>{values.shot_stopping}</td>
                                     </tr>
                                     <tr class="Data">
                                         <th>Positioning</th>
-                                        <td>{values.handling}</td>
+                                        <td>{values.positioning}</td>
                                     </tr>
                                     <tr class="Data">
                                         <th>Recovery Saves</th>
-                                        <td>{values.handling}</td>
+                                        <td>{values.recovery_saves}</td>
                                     </tr>
                                     <tr class="Data">
                                         <th>Control When Receiving</th>
-                                        <td>{values.handling}</td>
+                                        <td>{values.control_when_receiving}</td>
                                     </tr>
                                     <tr class="Data">
                                         <th>Right Foot</th>
-                                        <td>{values.handling}</td>
+                                        <td>{values.right_foot}</td>
                                     </tr>
                                     <tr class="Data">
                                         <th>Left Foot</th>
-                                        <td>{values.handling}</td>
+                                        <td>{values.left_foot}</td>
                                     </tr>
                                 </table>
 
