@@ -148,7 +148,7 @@ class goalkeeper extends React.Component {
                                 </div>
 
                                 <table>
-                                <tr class="Data">
+                                    <tr class="Data">
                                         <th>Dead Ball</th>
                                         <td>{values.dead_ball_kicks}</td>
                                     </tr>
@@ -184,7 +184,7 @@ class goalkeeper extends React.Component {
                                 </div>
 
                                 <table>
-                                <tr class="Data">
+                                    <tr class="Data">
                                         <th>Dealing With Crosses </th>
                                         <td>{values.dealing_with_crosses}</td>
                                     </tr>
@@ -224,7 +224,7 @@ class goalkeeper extends React.Component {
                                 </div>
 
                                 <table>
-                                <tr class="Data">
+                                    <tr class="Data">
                                         <th>Agility</th>
                                         <td>{values.agility}</td>
                                     </tr>
@@ -249,7 +249,7 @@ class goalkeeper extends React.Component {
                                 <div class="TypeNames">
 
                                     <table>
-                                    <tr >
+                                        <tr >
                                             <th>Psychological</th>
                                         </tr>
                                     </table>
@@ -257,7 +257,7 @@ class goalkeeper extends React.Component {
                                 </div>
 
                                 <table>
-                                <tr class="Data">
+                                    <tr class="Data">
                                         <th>Bravery</th>
                                         <td>{values.bravery}</td>
                                     </tr>
@@ -338,6 +338,12 @@ class goalkeeper extends React.Component {
                                         </tr>
                                         <tr>
                                             <td class="NotesBody">{values.notes}</td>
+                                        </tr>
+                                        <tr class="NotesHeader">
+                                            <th>Summary</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="NotesBody">{values.summary}</td>
                                         </tr>
                                     </table>
 
