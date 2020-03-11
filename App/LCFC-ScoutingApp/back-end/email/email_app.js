@@ -24,8 +24,8 @@ module.exports = function(app) {
     var mailOptions = {
       from: "lcfcapp.scrum13@gmail.com",
       to: "jwcg2@student.le.ac.uk, tsr10@student.le.ac.uk, jrb43@student.le.ac.uk",
-      subject: "Sending Email using Node.js",
-      text: "That was easy!",
+      subject: "Player Report",
+      text: "New Scout Report In The Attachment",
       attachments: [
         {
           filename: 'ScoutReport.xlsx',
