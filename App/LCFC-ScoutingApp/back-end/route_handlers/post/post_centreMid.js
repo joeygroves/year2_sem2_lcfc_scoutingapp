@@ -70,14 +70,16 @@ module.exports = function(app) {
         var threshold=1;
         var playerID;
 
-
-
         ////null input to database if no value entered by scout
         
         if (control_under_pressure == ''){
-          var bravery_in_posession = null
+          var control_under_pressure = null
           }
           
+        if (bravery_in_posession == ''){
+          var bravery_in_posession = null
+        }
+        
         if (short_passing == ''){
           var short_passing = null
           }
@@ -219,6 +221,7 @@ module.exports = function(app) {
 
             
         ////
+
       
         var PlayerSQL =
           "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position,shirt_number) VALUES ?";
@@ -411,8 +414,7 @@ module.exports = function(app) {
                   worksheet.cell(30, 4, 30, 7, true).string('Player Rating');
                   worksheet.cell(30, 8).string(rating);
 
-            
-                  // Set value of cell A3 to true as a boolean type styled with paramaters of style but with an adjustment to the font size.
+          
                   workbook.write('/Users/jamie/Documents/Year2/Software Engineering/LCFC Scouting App Development/myBranch/scrum-13/App/LCFC-ScoutingApp/back-end/email/Test.xlsx');
               
                 }
@@ -423,6 +425,9 @@ module.exports = function(app) {
 
         setTimeout(() => {  require('../../email/email_app')(app) }, 10000);
 
+        
+        
+      
 
 }
 
