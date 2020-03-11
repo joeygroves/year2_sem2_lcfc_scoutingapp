@@ -286,8 +286,13 @@ module.exports = function(app) {
         var outstandingscore=[];
         var i;
         for (i = 0; i <= (attributes.length -1); i++) {
-          points = points + Math.round(attributes[i]);
-          
+          if (!(isNaN(attributes[i]))){
+            if ((attributes[i] - threshold) > average){
+              outstandinglabel[i] = attributenames[i];
+              outstandingscore[i] = attributes[i];
+              summary += ", "+outstandinglabel[i] + " ("+outstandingscore[i]+")"
+            };
+          };    
         };
         average = Math.round(points / attributes.length);
         
@@ -304,6 +309,8 @@ module.exports = function(app) {
                    
         };
         summary += "."
+
+
         
         var PlayerIDSQL = "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST(? AS DECIMAL) AND age = ? AND position = ? AND shirt_number = ?";
         connect.connection.query(PlayerIDSQL, [first_name, last_name, club_name, height, age, position, shirt_number], function (err, results) {

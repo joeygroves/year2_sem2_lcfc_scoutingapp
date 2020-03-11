@@ -263,14 +263,18 @@ module.exports = function(app) {
         var summary = last_name + ", " +first_name +" was scouted playing for "+club_name+" on "+date_played+". "+last_name+", "+first_name+" performed to grade "+rating+" with an average score of "+average+" showing some outstanding attributes";
      
         for (i = 0; i <= (attributes.length -1); i++) {
-          if ((attributes[i] - threshold) > average){
-            outstandinglabel[i] = attributenames[i];
-            outstandingscore[i] = attributes[i];
-            summary += ", "+outstandinglabel[i] + " ("+outstandingscore[i]+")"
-          };
-                   
+          if (!(isNaN(attributes[i]))){
+            if ((attributes[i] - threshold) > average){
+              outstandinglabel[i] = attributenames[i];
+              outstandingscore[i] = attributes[i];
+              summary += ", "+outstandinglabel[i] + " ("+outstandingscore[i]+")"
+            };
+          };    
         };
         summary += "."
+
+        summary += "."
+
         
 
 

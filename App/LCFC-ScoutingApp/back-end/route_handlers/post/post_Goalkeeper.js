@@ -91,8 +91,8 @@ module.exports = function(app) {
           var recovery_saves = null
           }
 
-        if (control_when_receiving == ''){
-            var control_when_receiving = null
+        if (control_when_recieving == ''){
+            var control_when_recieving = null
           }
 
         if (right_foot == ''){
@@ -233,6 +233,7 @@ module.exports = function(app) {
           };    
         };
         summary += "."
+
         
 
         var PlayerIDSQL = "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST(? AS DECIMAL) AND age = ? AND position = ? AND shirt_number = ?";
