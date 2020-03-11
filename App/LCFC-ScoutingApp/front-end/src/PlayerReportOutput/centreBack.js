@@ -74,7 +74,7 @@ class centreBack extends React.Component {
 
     return (
 
-      <div class ="Out">
+      <div class="Out">
 
         <div>
 
@@ -393,6 +393,12 @@ class centreBack extends React.Component {
                     </tr>
                     <tr>
                       <td class="NotesBody">{values.notes}</td>
+                    </tr>
+                    <tr class="NotesHeader">
+                      <th>Summary</th>
+                    </tr>
+                    <tr>
+                      <td class="NotesBody">{values.summary}</td>
                     </tr>
                   </table>
 
