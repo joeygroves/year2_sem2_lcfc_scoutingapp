@@ -4,7 +4,7 @@ import Goalkeeper from '../PlayerReportForms/Goalkeeper'
 // eslint-disable-next-line
 import centreBack from '../PlayerReportForms/centreBack'
 // eslint-disable-next-line
-import fallBack from '../PlayerReportForms/fullBack'
+import fullBack from '../PlayerReportForms/fullBack'
 // eslint-disable-next-line
 import centreMid from '../PlayerReportForms/centreMid'
 // eslint-disable-next-line
@@ -41,7 +41,7 @@ class PlayerReport extends React.Component {
                        
                         <Link to={"/playerReport/centreBack"}><button>Centre Back</button></Link>
                        
-                        <Link to={"/playerReport/fallBack"}><button>Full Back</button></Link>
+                        <Link to={"/playerReport/fullBack"}><button>Full Back</button></Link>
                        
                         <Link to={"/playerReport/centreMid"}><button>Centre Midfielder</button></Link>
                        
@@ -56,7 +56,7 @@ class PlayerReport extends React.Component {
                        
                             <Route path="/playerReport/centreBack" component={centreBack}></Route>
                        
-                            <Route path="/playerReport/fallBack" component={fallBack}></Route>
+                            <Route path="/playerReport/fullBack" component={fullBack}></Route>
                        
                             <Route path="/playerReport/centreMid" component={centreMid}></Route>
                        
