@@ -6,10 +6,13 @@ class centreMidfielderForm extends React.Component {
         left_foot: "", attacking_one_v_one: "", attacking_ariel_ability: "", shooting: "", crossing: "", defending_one_v_one: "", defending_ariel_ability: "", tackling: "",
         closing_down: "", recovery_runs: "", marking: "", agility: "", finding_space: "", vision: "", creativity: "", speed: "", movement_skills: "", work_rate: "", strength: "",
         communication: "", concentration: "", commitment: "", emotional_control: "", confidence: "", rating: "A",
-        shirt_number: "", notes: ""
+        shirt_number: "", notes: "",confirmation : '',
     };
 
     handleSubmit = async e => {
+        
+        this.setState({confirmation : 'Player Report Has Been Succesfully Been Created, Please Go To Home Page To View Report' });
+
         e.preventDefault();
 
         const response = await fetch("/api/centreMid", {
@@ -68,6 +71,8 @@ class centreMidfielderForm extends React.Component {
         const body = await response.text();
 
         this.setState({ response: body });
+
+        
     };
 
     render() {
@@ -473,7 +478,9 @@ class centreMidfielderForm extends React.Component {
                             onChange={e => this.setState({ confidence: e.target.value })}
                         ></input>
                         <br></br>
+                        
                     </div>
+                    
                     <div class="grid-item">
                         <h3>Additional Comments</h3>
                         <textarea
@@ -481,9 +488,12 @@ class centreMidfielderForm extends React.Component {
                             value={this.state.notes}
                             onChange={e => this.setState({ notes: e.target.value })}
                         ></textarea>
+                       
                     </div>
-                </div>
+                </div> 
+                
                 <button type="submit">Submit</button>
+                <p>{this.state.confirmation}</p>
             </form>
         );
     }

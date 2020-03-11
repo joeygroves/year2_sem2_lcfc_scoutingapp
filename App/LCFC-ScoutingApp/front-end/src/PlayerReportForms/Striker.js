@@ -7,11 +7,14 @@ class StrikerForm extends React.Component {
         finishing: '', right_foot_shooting: '', left_foot_shooting: '', crossing: '', one_v_two: '', tackling: '', pressing: '',
         recovering_into_shape: '', agility: '', dropping_into_space: '', runs_off_the_shoulder: '', running_the_channels: '', movement_off_the_ball: '',
         pace: '', mobility: '', strength: '', work_rate: '', jump: '', bravery: '', leadership: '', team_work: '', communication: '',
-        response_to_criticism: '', reaction_to_mistakes: '', rating: 'A', notes: '',aerial_ability : '',
+        response_to_criticism: '', reaction_to_mistakes: '', rating: 'A', notes: '', aerial_ability: '', confirmation: '',
         first_name: '', last_name: '', club_name: '', height: '', age: '', date_played: '', club_played: '', ht_score: '', ft_score: '', shirt_number: ''
     }
 
     handleSubmit = async (e) => {
+
+
+        this.setState({ confirmation: 'Player Report Has Been Succesfully Been Created, Please Go To Home Page To View Report' });
 
         e.preventDefault();
 
@@ -75,10 +78,13 @@ class StrikerForm extends React.Component {
             }),
 
         });
-
+        
+        
         const body = await response.text();
 
         this.setState({ response: body });
+
+       
 
     };
 
@@ -102,7 +108,7 @@ class StrikerForm extends React.Component {
                         <input value={this.state.club_name} onChange={e => this.setState({ club_name: e.target.value })}  ></input>
 
                         <label>Shirt Number: </label>
-                        <input  value={this.state.shirt_number} onChange={e => this.setState({ shirt_number: e.target.value })}  ></input>
+                        <input value={this.state.shirt_number} onChange={e => this.setState({ shirt_number: e.target.value })}  ></input>
 
                         <br></br>
 
@@ -126,7 +132,7 @@ class StrikerForm extends React.Component {
                         <br></br>
 
                         <label>H/T: </label>
-                        <input  value={this.state.ht_score} onChange={e => this.setState({ ht_score: e.target.value })}
+                        <input value={this.state.ht_score} onChange={e => this.setState({ ht_score: e.target.value })}
                         ></input>
 
                         <label>F/T: </label>
@@ -271,6 +277,7 @@ class StrikerForm extends React.Component {
                         <label>Reaction to mistakes: </label>
                         <input type="number" max="10" min="0" value={this.state.reaction_to_mistakes} onChange={e => this.setState({ reaction_to_mistakes: e.target.value })}></input>
                         <br></br>
+
                     </div>
 
                     <div class="grid-item">
@@ -280,10 +287,11 @@ class StrikerForm extends React.Component {
                             value={this.state.notes}
                             onChange={e => this.setState({ notes: e.target.value })}
                         ></textarea>
-
+                        
                     </div>
                 </div>
                 <button type="submit">Submit</button>
+                <p>{this.state.confirmation}</p>
             </form>
         );
     }
