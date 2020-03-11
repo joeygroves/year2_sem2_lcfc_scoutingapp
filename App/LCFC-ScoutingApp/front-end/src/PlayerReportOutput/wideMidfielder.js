@@ -143,23 +143,23 @@ class wideMidfielderForm extends React.Component {
                 </div>
 
                 <table>
-                  <tr>
-                    <th>1 v 1e</th>
+                  <tr class="Data">
+                    <th>1 v 1</th>
                     <td>{values.attacking_one_v_one}</td>
                   </tr>
-                  <tr>
+                  <tr class="Data">
                     <th>Crossing</th>
                     <td>{values.crossing}</td>
                   </tr>
-                  <tr>
+                  <tr class="Data">
                     <th>Shooting</th>
                     <td>{values.shooting}</td>
                   </tr>
-                  <tr>
+                  <tr class="Data">
                     <th>Dribbling</th>
                     <td>{values.dribbling}</td>
                   </tr>
-                  <tr>
+                  <tr class="Data">
                     <th>Aerial Ability</th>
                     <td>{values.attacking_ariel_ability}</td>
                   </tr>

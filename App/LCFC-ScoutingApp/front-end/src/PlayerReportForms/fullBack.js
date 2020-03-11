@@ -37,7 +37,7 @@ class fullBackForm extends React.Component {
 
     handleSubmit = async (e) => {
 
-        this.setState({confirmation : 'Player Report Has Been Succesfully Been Created, Please Go To Home Page To View Report' });
+        this.setState({confirmation : 'Player Report Has Been Succesfully Created, Please Go To Home Page To View Report' });
 
         e.preventDefault();
 
