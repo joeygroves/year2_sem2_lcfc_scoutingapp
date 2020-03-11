@@ -74,7 +74,7 @@ class centreBack extends React.Component {
 
     return (
 
-      <div class ="Out">
+      <div class="Out">
 
         <div>
 
@@ -102,27 +102,27 @@ class centreBack extends React.Component {
                 </div>
 
                 <table>
-                  <tr>
+                  <tr class="Data">
                     <th>Receiving Under Pressure</th>
                     <td>{values.receiving_under_pressure}</td>
                   </tr>
-                  <tr>
+                  <tr class="Data">
                     <th>Short Passing</th>
                     <td>{values.short_passing}</td>
                   </tr>
-                  <tr>
+                  <tr class="Data">
                     <th>Long Passing</th>
                     <td>{values.long_passing}</td>
                   </tr>
-                  <tr>
+                  <tr class="Data">
                     <th>Carrying The Ball Forward</th>
                     <td>{values.carrying_the_ball_forward}</td>
                   </tr>
-                  <tr>
+                  <tr class="Data">
                     <th>Left Foot</th>
                     <td>{values.right_foot}</td>
                   </tr>
-                  <tr>
+                  <tr class="Data">
                     <th>Right Foot</th>
                     <td>{values.left_foot}</td>
                   </tr>
@@ -144,12 +144,12 @@ class centreBack extends React.Component {
                 </div>
 
                 <table>
-                  <tr>
-                    <th>Receiving Under Pressure</th>
+                  <tr class="Data">
+                    <th>Threat At Set Plays</th>
                     <td>{values.threat_at_set_plays}</td>
                   </tr>
-                  <tr>
-                    <th>Short Passing</th>
+                  <tr class="Data">
+                    <th>Aerial Ability</th>
                     <td>{values.attacking_ariel_ability}</td>
                   </tr>
 
@@ -393,6 +393,12 @@ class centreBack extends React.Component {
                     </tr>
                     <tr>
                       <td class="NotesBody">{values.notes}</td>
+                    </tr>
+                    <tr class="NotesHeader">
+                      <th>Summary</th>
+                    </tr>
+                    <tr>
+                      <td class="NotesBody">{values.summary}</td>
                     </tr>
                   </table>
 

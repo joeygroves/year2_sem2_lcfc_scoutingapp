@@ -27,7 +27,7 @@ class fullBackForm extends React.Component {
         rating: 'A',
 
         //Additional Comments
-        notes: '',
+        notes: '',confirmation : '',
 
 
         //Player Information
@@ -36,6 +36,8 @@ class fullBackForm extends React.Component {
 
 
     handleSubmit = async (e) => {
+
+        this.setState({confirmation : 'Player Report Has Been Succesfully Created, Please Go To Home Page To View Report' });
 
         e.preventDefault();
 
@@ -86,6 +88,7 @@ class fullBackForm extends React.Component {
 
         this.setState({ response: body });
 
+        
     };
 
 
@@ -273,14 +276,18 @@ class fullBackForm extends React.Component {
                         <label>Reaction to mistakes: </label>
                         <input type="number" max="10" min="0" value={this.state.reaction_to_mistake} onChange={e => this.setState({ reaction_to_mistake: e.target.value })}></input>
                         <br></br>
+
+                       
                     </div>
                     <div class="grid-item">
                         <h3>Additional Comments</h3>
                         <textarea class="notes" value={this.state.notes} onChange={e => this.setState({ notes: e.target.value })}>
 
                         </textarea>
+                       
                     </div>
-                </div>
+                </div> 
+                <p>{this.state.confirmation}</p>
                 <button type="submit">Submit</button>
             </form>
         );
