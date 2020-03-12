@@ -1,5 +1,4 @@
 @media only screen and (max-width: 760px)  {
-
 	/* Force table to not be like tables anymore */
 	.homepage table, .homepage thead, .homepage tbody, .homepage th, .homepage td, .homepage tr { 
 		display: block; 
@@ -18,8 +17,8 @@
 		/* Behave  like a "row" */
 		border: none;
 		border-bottom: 1px solid #eee; 
-		position: relative;
-		padding-left: 50%; 
+        position: relative;
+		padding-left: 70%; 
 	}
 	
 	.homepage td:before { 
@@ -29,7 +28,8 @@
 		top: 6px;
 		left: 6px;
 		width: 45%; 
-		padding-right: 10px; 
+        padding-right: 10px; 
+        font-weight: bold;
 		white-space: nowrap;
 	}
 	
@@ -46,24 +46,14 @@
 	.homepage td:nth-of-type(8):before { content: "View"; }
 }
 
-
-@media screen and (max-width: 900px) {
-
-    .Values table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    
+/* 
+Generic Styling, for Desktops/Laptops 
+*/
+  /* Zebra striping */
+  .homepage tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+  .homepage tr:nth-child(even) {
+    background-color: #DEECFA;
   }
   
-    .Values td, th {
-      border: 1px solid #dddddd;
-      text-align: center;
-      padding: 8px;
-      width: 12.5%;
-      /* position: sticky; */
-      /* position: -webkit-sticky; */
-      
-  }
-  
-  }

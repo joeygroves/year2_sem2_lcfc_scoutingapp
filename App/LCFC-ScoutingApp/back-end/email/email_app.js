@@ -23,7 +23,7 @@ module.exports = function(app) {
  
     var mailOptions = {
       from: "lcfcapp.scrum13@gmail.com",
-      to: "gc223@student.le.ac.uk",
+      to: "mp610@student.le.ac.uk",
       subject: "Player Report",
       text: "New Scout Report In The Attachment",
       attachments: [
