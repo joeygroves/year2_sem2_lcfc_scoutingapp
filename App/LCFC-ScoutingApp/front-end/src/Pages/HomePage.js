@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import './HomePage.css;;
 import NavBar from '../Components/NavigationBar/NavBar'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom';
@@ -67,7 +67,7 @@ class HomePage extends React.Component {
                         <th>Age</th>
                         <th>Club</th>
                         <th>Grade</th>
-                        <th>Height</th>
+                        <th class = "mobile">Height</th>
                         <th>Position</th>
                         <th>View</th>
 
@@ -87,7 +87,7 @@ class HomePage extends React.Component {
                                 <td>{values.Age} </td>
                                 <td>{values.Club} </td>
                                 <td>{values.Grade} </td>
-                                <td>{values.Height} </td>
+                                <td class = "mobile">{values.Height} </td>
                                 <td>{values.Position}</td>
                                 
 
