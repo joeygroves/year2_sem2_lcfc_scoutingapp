@@ -9,9 +9,12 @@ class centreBackForm extends React.Component {
         agility: '', angles_to_recieve: '', distances: '', recovering_to_shape: '', pace_when_turning: '', jump: '', mobility: '', strength: '', aggression: '', bravery: '',
         leadership: '', team_work: '', communication: '', response_to_criticism: '', reaction_to_mistake: '', rating: 'A', shirt_number: '',
         notes: '', first_name: '', last_name: '', club_name: '', height: '', age: '', date_played: '', club_played: '', ht_score: '', ft_score: '',
+        confirmation : '',
     }
 
     handleSubmit = async (e) => {
+
+        this.setState({confirmation : 'Player Report Has Been Succesfully Created, Please Go To Home Page To View Report' });
 
         e.preventDefault();
 
@@ -238,14 +241,20 @@ class centreBackForm extends React.Component {
                         <label>Reaction to mistakes: </label>
                         <input type="number" max="10" min="0" value={this.state.reaction_to_mistake} onChange={e => this.setState({ reaction_to_mistake: e.target.value })}></input>
                         <br></br>
+
+                        
                     </div>
                     <div class="grid-item">
                         <h3>Additional Comments</h3>
-                        <textarea class="notes" value={this.state.notes} onChange={e => this.setState({ notes: e.target.value })}>
 
+                        <textarea class="notes" value={this.state.notes} onChange={e => this.setState({ notes: e.target.value })}>
+                        
                         </textarea>
+                        
                     </div>
-                </div>
+                   
+                </div> 
+                <p>{this.state.confirmation}</p>
                 <button type="submit">Submit</button>
 
             </form>

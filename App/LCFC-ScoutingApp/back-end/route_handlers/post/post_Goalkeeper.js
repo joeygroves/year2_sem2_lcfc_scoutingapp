@@ -34,7 +34,7 @@ module.exports = function(app) {
         var tendancy_to_catch = req.body.tendancy_to_catch;
         var positioning = req.body.positioning;
         var recovery_saves = req.body.recovery_saves;
-        var control_when_recieving = req.body.control_when_recieving;
+        var control_when_receiving = req.body.control_when_receiving;
         var right_foot = req.body.right_foot;
         var left_foot = req.body.left_foot;
         var dead_ball_kicks = req.body.dead_ball_kicks;
@@ -63,6 +63,138 @@ module.exports = function(app) {
         var threshold=1;
         var playerID;
       
+
+        ////null input to database if no value entered by scout
+        
+        if (handling == ''){
+          var handling = null
+          }
+          
+        if (shot_stopping == ''){
+          var shot_stopping = null
+          }
+
+          
+        if (tendancy_to_punch == ''){
+          var tendancy_to_punch = null
+          }
+
+        if (tendancy_to_catch == ''){
+            var tendancy_to_catch = null
+          }
+    
+        
+        if (positioning == ''){
+            var positioning = null
+        }
+    
+        if (recovery_saves == ''){
+          var recovery_saves = null
+          }
+
+        if (control_when_recieving == ''){
+            var control_when_recieving = null
+          }
+
+        if (right_foot == ''){
+        var right_foot = null
+        }
+      
+        if (left_foot == ''){
+          var left_foot = null
+          }
+
+        if (dead_ball_kicks == ''){
+        var dead_ball_kicks = null
+        }
+
+        
+        if (kicking_out_of_hands == ''){
+          var kicking_out_of_hands = null
+          }
+
+          
+        if (throwing == ''){
+          var throwing = null
+          }
+
+          
+        if (kicking_under_pressure == ''){
+          var kicking_under_pressure = null
+          }
+
+          
+        if (kicking_when_given_time == ''){
+          var kicking_when_given_time = null
+          }
+
+          
+        if (dealing_with_crosses == ''){
+          var dealing_with_crosses = null
+          }
+
+          
+        if (starting_position == ''){
+          var starting_position = null
+          }
+
+          
+        if (one_v_one == ''){
+          var one_v_one = null
+          }
+
+          
+        if (dealing_with_through_ball == ''){
+          var dealing_with_through_ball = null
+          }
+
+          
+        if (agility == ''){
+          var agility = null
+          }
+  
+  
+0
+        if (reactions == ''){
+        var reactions = null
+        }
+        
+        if (strength == ''){
+          var strength = null
+          }
+
+          
+        if (speed == ''){
+          var speed = null
+          }
+
+          
+        if (bravery == ''){
+          var bravery = null
+          }
+
+          
+        if (leadership == ''){
+          var leadership = null
+          }
+
+          
+        if (presence == ''){
+          var presence = null
+          }
+
+          
+        if (communication == ''){
+          var communication = null
+          }
+  
+          
+        if (reaction_to_mistake == ''){
+          var reaction_to_mistake = null
+          }
+  
+
+        ////
       
         var PlayerSQL = "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position,shirt_number) VALUES ?";
         var PlayerValues = [[first_name, last_name, club_name, height, age, position, shirt_number]]
@@ -75,8 +207,8 @@ module.exports = function(app) {
 
         // // create and insert summary for the player report
         // //
-        var attributes = [handling, shot_stopping, tendancy_to_punch, tendancy_to_catch, positioning, recovery_saves, control_when_recieving, right_foot, left_foot, dead_ball_kicks, kicking_out_of_hands, throwing, kicking_under_pressure, kicking_when_given_time, dealing_with_crosses, starting_position, one_v_one, dealing_with_through_ball, agility, reactions, strength, speed, bravery, leadership, presence, communication, reaction_to_mistake]; 
-        var attributenames = ['handling', 'shot stopping', 'tendancy to punch', 'tendancy to catch', 'positioning', 'recovery saves', 'control when recieving', 'right foot', 'left foot', 'dead ball kicks', 'kicking out of hands', 'throwing', 'kicking under pressure', 'kicking when given time', 'dealing with crosses', 'starting position', 'one v one', 'dealing with through ball', 'agility', 'reactions', 'strength', 'speed', 'bravery', 'leadership', 'presence', 'communication', 'reaction to mistake']; 
+        var attributes = [handling, shot_stopping, tendancy_to_punch, tendancy_to_catch, positioning, recovery_saves, control_when_receiving, right_foot, left_foot, dead_ball_kicks, kicking_out_of_hands, throwing, kicking_under_pressure, kicking_when_given_time, dealing_with_crosses, starting_position, one_v_one, dealing_with_through_ball, agility, reactions, strength, speed, bravery, leadership, presence, communication, reaction_to_mistake]; 
+        var attributenames = ['handling', 'shot stopping', 'tendancy to punch', 'tendancy to catch', 'positioning', 'recovery saves', 'control when receiving', 'right foot', 'left foot', 'dead ball kicks', 'kicking out of hands', 'throwing', 'kicking under pressure', 'kicking when given time', 'dealing with crosses', 'starting position', 'one v one', 'dealing with through ball', 'agility', 'reactions', 'strength', 'speed', 'bravery', 'leadership', 'presence', 'communication', 'reaction to mistake']; 
         var outstandinglabel=[];
         var outstandingscore=[];
         var i;
@@ -102,6 +234,7 @@ module.exports = function(app) {
           };    
         };
         summary += "."
+
         
 
 
@@ -118,7 +251,7 @@ module.exports = function(app) {
             console.log();
       
             var sql = "INSERT INTO lcfc_scouting.goalkeeper_reports (player_id,scouted_by,handling,shot_stopping,tendancy_to_punch,tendancy_to_catch,positioning,recovery_saves,control_when_receiving,right_foot,left_foot,dead_ball_kicks,kicking_out_of_hands,throwing,kicking_under_pressure,kicking_when_given_time,dealing_with_crosses,starting_position,one_v_one,dealing_with_through_ball,agility,reactions,strength,speed,bravery,leadership,presence,communication,reaction_to_mistake,rating,notes,summary) VALUES ?";
-            var values = [[results[0].player_id, scouted_by, handling, shot_stopping, tendancy_to_punch, tendancy_to_catch, positioning, recovery_saves, control_when_recieving, right_foot, left_foot, dead_ball_kicks, kicking_out_of_hands, throwing, kicking_under_pressure, kicking_when_given_time, dealing_with_crosses, starting_position, one_v_one, dealing_with_through_ball, agility, reactions, strength, speed, bravery, leadership, presence, communication, reaction_to_mistake, rating, notes, summary]];
+            var values = [[results[0].player_id, scouted_by, handling, shot_stopping, tendancy_to_punch, tendancy_to_catch, positioning, recovery_saves, control_when_receiving, right_foot, left_foot, dead_ball_kicks, kicking_out_of_hands, throwing, kicking_under_pressure, kicking_when_given_time, dealing_with_crosses, starting_position, one_v_one, dealing_with_through_ball, agility, reactions, strength, speed, bravery, leadership, presence, communication, reaction_to_mistake, rating, notes, summary]];
       
             connect.connection.query(sql, [values], function (err, result) {
               if (err) throw err;
