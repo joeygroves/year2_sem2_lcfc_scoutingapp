@@ -7,7 +7,7 @@ const port = process.env.PORT || 5000;
 var mysql = require('mysql');
 const exphbs = require('express-handlebars');
 const nodemailer = require('nodemailer');
-const delay = require('delay');
+//const delay = require('delay');
 var fs  = require('fs');
 
 app.use(bodyParser.json());
@@ -422,7 +422,7 @@ module.exports = function(app) {
                   worksheet.cell(30, 8).string(rating);
 
           
-                  workbook.write('/Users/jamie/Documents/Year2/Software Engineering/LCFC Scouting App Development/myBranch/scrum-13/App/LCFC-ScoutingApp/back-end/email/Test.xlsx');
+                  workbook.write('Report.xlsx');
               
                 }
               });
