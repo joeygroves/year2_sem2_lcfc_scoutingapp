@@ -1,0 +1,69 @@
+@media only screen and (max-width: 760px)  {
+
+	/* Force table to not be like tables anymore */
+	.homepage table, .homepage thead, .homepage tbody, .homepage th, .homepage td, .homepage tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	.homepage thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	.homepage tr { border: 1px solid #ccc; }
+	
+	.homepage td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	.homepage td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	.homepage td:nth-of-type(1):before { content: "First Name"; }
+	.homepage td:nth-of-type(2):before { content: "Last Name"; }
+	.homepage td:nth-of-type(3):before { content: "Age"; }
+	.homepage td:nth-of-type(4):before { content: "Club"; }
+	.homepage td:nth-of-type(5):before { content: "Grade"; }
+	.homepage td:nth-of-type(6):before { content: "Height"; }
+	.homepage td:nth-of-type(7):before { content: "Positiion"; }
+	.homepage td:nth-of-type(8):before { content: "View"; }
+}
+
+
+@media screen and (max-width: 900px) {
+
+    .Values table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    
+  }
+  
+    .Values td, th {
+      border: 1px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+      width: 12.5%;
+      /* position: sticky; */
+      /* position: -webkit-sticky; */
+      
+  }
+  
+  }

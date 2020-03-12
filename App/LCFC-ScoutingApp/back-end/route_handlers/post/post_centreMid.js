@@ -7,7 +7,7 @@ const port = process.env.PORT || 5000;
 var mysql = require('mysql');
 const exphbs = require('express-handlebars');
 const nodemailer = require('nodemailer');
-const delay = require('delay');
+//const delay = require('delay');
 var fs  = require('fs');
 
 app.use(bodyParser.json());
