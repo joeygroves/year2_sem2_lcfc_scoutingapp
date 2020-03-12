@@ -249,18 +249,12 @@ module.exports = function(app) {
           speed_when_dribbling, strength, work_rate, bravery, leadership, teamwork, communication, response_to_criticism, reaction_to_mistakes]; 
         var attributenames = ['control', 'receiving under pressure', 'short passing', 'switching play', 'right foot', 'left foot', 'attacking one v one', 'attacking ariel ability', 'dribbling', 'shooting', 'crossing', 'defending one v one', 'defending ariel ability', 'supporting full back', 'tackling', 'pressing', 'positional awareness', 'recovery runs', 'tracking runners', 'agility', 'coming in off the line', 'finding space out wide', 'link up with full back', 'willingness to get forward', 'pace',
           'speed when dribbling', 'strength', 'work rate', 'bravery', 'leadership', 'teamwork', 'communication', 'response to criticism', 'reaction to mistakes']; 
-        var outstandinglabel=[];
-        var outstandingscore=[];
-        var i;
-        for (i = 0; i <= (attributes.length -1); i++) {
-          if (!(isNaN(attributes[i]))){
-            if ((attributes[i] - threshold) > average){
-              outstandinglabel[i] = attributenames[i];
-              outstandingscore[i] = attributes[i];
-              summary += ", "+outstandinglabel[i] + " ("+outstandingscore[i]+")"
-            };
-          };    
-        };
+          for (i = 0; i <= (attributes.length -1); i++) {
+            if (!(isNaN(attributes[i])))
+            {
+              points = points + Math.round(attributes[i]);
+            }
+          };
         average = Math.round(points / attributes.length);
         
         
@@ -427,7 +421,7 @@ module.exports = function(app) {
                   worksheet.cell(30, 8).string(rating);
 
           
-                  workbook.write('/Users/jamie/Documents/Year2/Software Engineering/LCFC Scouting App Development/myBranch/scrum-13/App/LCFC-ScoutingApp/back-end/email/Test.xlsx');
+                  workbook.write('Report.xlsx');
               
                 }
               });

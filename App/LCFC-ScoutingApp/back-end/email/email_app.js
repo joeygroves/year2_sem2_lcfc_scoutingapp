@@ -23,13 +23,13 @@ module.exports = function(app) {
  
     var mailOptions = {
       from: "lcfcapp.scrum13@gmail.com",
-      to: "jwcg2@student.le.ac.uk, tsr10@student.le.ac.uk, jrb43@student.le.ac.uk, mp610@student.le.ac.uk",
+      to: "gc223@student.le.ac.uk",
       subject: "Player Report",
       text: "New Scout Report In The Attachment",
       attachments: [
         {
           filename: 'ScoutReport.xlsx',
-          content: fs.createReadStream('/Users/jamie/Documents/Year2/Software Engineering/LCFC Scouting App Development/myBranch/scrum-13/App/LCFC-ScoutingApp/back-end/email/Test.xlsx'),
+          content: fs.createReadStream('Report.xlsx'),
         }
       ]
     };
