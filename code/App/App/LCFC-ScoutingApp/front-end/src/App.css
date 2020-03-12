@@ -1,0 +1,148 @@
+.App {
+  text-align: center;
+  font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+}
+
+
+.Login {
+  text-align: center;
+  font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+}
+
+.Login-logo {
+  height: 40vmin;
+  pointer-events: none;
+  align-items: center;
+}
+
+.Login-header {
+  background-color: #0B56A4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  align-items: center;
+  font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #0B56A4;
+}
+
+.topLogo{
+  float: right;
+  display: block;
+  height:20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.topnav a a{
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 19px 30px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight:bold;
+}
+
+
+.topnav a:hover {
+    background-color: #003090;
+    color: rgb(255, 255, 255);
+}
+
+
+.topnav .icon {
+  display: none;
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 19px 30px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight:bold;
+}
+
+
+
+div.LoggedOutBody{
+  background-color: #0B56A4;
+  text-align: center;
+  font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+  
+}
+
+
+.LogOut-header {
+  background-color: #0B56A4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+  width: 12.5%;
+  /* position: sticky; */
+  /* position: -webkit-sticky; */
+  
+}
+
+tr:nth-child(even) {
+  background-color: #DEECFA;
+}
+
+
+@media screen and (max-width: 900px) {
+
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  
+}
+
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    width: 12.5%;
+    /* position: sticky; */
+    /* position: -webkit-sticky; */
+    
+}
+}
