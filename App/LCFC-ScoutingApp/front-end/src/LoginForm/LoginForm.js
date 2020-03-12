@@ -72,13 +72,13 @@ class LogInForm extends Component {
 
             <p></p>
 
-            <label><b>Username</b></label>
+            <label class = "label"><b>Username</b></label>
 
             <input type="text" placeholder="Enter Username" value={this.state.username} onChange={e => this.setState({ username: e.target.value })} />
 
             <br></br>
 
-            <label><b>Password</b></label>
+            <label class = "label"><b>Password</b></label>
 
             <input type="password" placeholder="Enter Password" value={this.state.password} onChange={x => this.setState({ password: x.target.value })} />
 

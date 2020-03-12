@@ -11,7 +11,10 @@ import Goalkeeper from './PlayerReportOutput/Goalkeeper'
 import Striker from './PlayerReportOutput/Striker'
 import CentreMid from './PlayerReportOutput/centreMid'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import AdminData from './Admin/AdminData'
 import LogInForm from './LoginForm/LoginForm';
+
+
 class App extends React.Component {
 
   render() {
@@ -59,6 +62,12 @@ class App extends React.Component {
               <Route path="/PlayerReport">
 
                 <PlayerReport />
+
+              </Route>
+
+              <Route path="/AdminManageReports">
+
+                <AdminData />
 
               </Route>
 

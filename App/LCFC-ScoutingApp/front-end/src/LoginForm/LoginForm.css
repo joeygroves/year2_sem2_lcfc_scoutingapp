@@ -20,6 +20,10 @@
   color: white;
 }
 
+.label{
+  padding-left: 15px;
+}
+
 input[type=text], input[type=password] {
   width: 100%;
   padding: 12px 20px;
@@ -44,4 +48,18 @@ input[type=text], input[type=password] {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+
+
+@media screen and (max-width: 900px){
+  .Login-header {
+    padding-top: 10px; 
+    align-items: center;
+  }
+
+  .label{
+    padding-left: 11px;
+    align-items: center;
+  }
+
 }

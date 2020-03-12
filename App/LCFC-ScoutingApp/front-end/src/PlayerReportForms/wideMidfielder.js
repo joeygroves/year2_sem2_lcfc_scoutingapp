@@ -29,7 +29,7 @@ class wideMidfielderForm extends React.Component {
 
         // Additional Information
 
-        notes: '', rating : 'A', 
+        notes: '', rating : 'A', confirmation : '',
 
         // Player Information
 
@@ -37,6 +37,9 @@ class wideMidfielderForm extends React.Component {
     
     }
     handleSubmit = async (e) => {
+
+        this.setState({confirmation : 'Player Report Has Been Succesfully Created, Please Go To Home Page To View Report' });
+
 
         e.preventDefault();
 
@@ -292,16 +295,21 @@ class wideMidfielderForm extends React.Component {
                         <label>Reaction to mistakes: </label>
                         <input type="number" max="10" min="0"  value={this.state.reaction_to_mistakes} onChange={e => this.setState({ reaction_to_mistakes: e.target.value })}></input>
                         <br></br>
+                       
                     </div>
                     <div class="grid-item">
                         <h3>Additional Comments</h3>
                         <textarea class="notes"value={this.state.notes} onChange={e => this.setState({ notes: e.target.value })} >
 
                         </textarea>
+                       
                     </div>
                 </div>
 
                 <button type="submit">Submit</button>
+                
+                <p>{this.state.confirmation}</p>
+                
             </form>
         );
     }

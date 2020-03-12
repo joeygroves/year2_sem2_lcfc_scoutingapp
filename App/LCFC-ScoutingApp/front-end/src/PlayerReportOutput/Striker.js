@@ -159,7 +159,7 @@ class StrikerForm extends React.Component{
 
                                 <tr class="Data">
                                     <th>Aerial ability</th>
-                                    <td>{values.aerial_ability}</td>
+                                    <td>{values.ariel_ability}</td>
                                 </tr>
 
                                 <tr class="Data">
@@ -252,6 +252,11 @@ class StrikerForm extends React.Component{
                                 </tr>
 
                                 <tr class="Data">
+                                    <th>Run Off The Shoulder</th>
+                                    <td>{values.runs_off_the_shoulder}</td>
+                                </tr>
+
+                                <tr class="Data">
                                     <th>Running the channels</th>
                                     <td>{values.running_the_channels}</td>
                                 </tr>
@@ -335,7 +340,7 @@ class StrikerForm extends React.Component{
 
                                 <tr class="Data">
                                     <th>Team work</th>
-                                    <td>{values.team_work}</td>
+                                    <td>{values.teamwork}</td>
                                 </tr>
 
                                 <tr class="Data">
