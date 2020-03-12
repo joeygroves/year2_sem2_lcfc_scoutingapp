@@ -253,8 +253,10 @@ module.exports = function(app) {
         var outstandingscore=[];
         var i;
         for (i = 0; i <= (attributes.length -1); i++) {
-          points = points + Math.round(attributes[i]);
-          
+          if (!(isNaN(attributes[i])))
+          {
+            points = points + Math.round(attributes[i]);
+          }
         };
         average = Math.round(points / attributes.length);
         
