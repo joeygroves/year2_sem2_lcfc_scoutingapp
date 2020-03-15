@@ -13,6 +13,7 @@ import CentreMid from './PlayerReportOutput/centreMid'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Admin from './Admin/Admin'
 import LogInForm from './LoginForm/LoginForm';
+import DeleteStaff from './Admin/DeleteStaff';
 class App extends React.Component {
 
   render() {

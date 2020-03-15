@@ -3,47 +3,10 @@ import '../App.css';
 import NavBar from '../Components/NavigationBar/NavBar'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom';
+import ViewStaff from './ViewStaff';
+import AddStaff from './AddStaff';
+import DeleteStaff from './DeleteStaff';
 class HomePage extends React.Component {
-
-
-    state = {
-
-        JSONStringDataForUsers: [], FirstName: '',
-
-    }
-
-    componentDidMount() {
-
-        this.gatherUserInformation();
-
-    }
-
-    gatherUserInformation = async () => {
-
-        const response = await fetch('/api/GetScoutsReports', {
-
-            method: 'POST',
-
-            headers: {
-
-                'Content-Type': 'application/json',
-
-            },
-
-
-        });
-
-        const body = await response.json();
-
-        this.setState({ JSONStringDataForUsers: body });
-
-        console.log(this.state.JSONStringDataForUsers);
-
-    };
-
-
-
-
 
     render() {
 
@@ -75,11 +38,11 @@ class HomePage extends React.Component {
                             
                             <Switch>
 
-                                <Route exact path="/admin/AddStaff" component={Goalkeeper}></Route>
+                                <Route exact path="/admin/AddStaff" component={AddStaff}></Route>
 
-                                <Route path="/admin/ViewStaff" component={centreBack}></Route>
+                                <Route path="/admin/ViewStaff" component={ViewStaff}></Route>
 
-                                <Route path="/admin/deletesStaff" component={fullBack}></Route>
+                                <Route path="/admin/deletesStaff" component={DeleteStaff}></Route>
 
                             </Switch>
 
@@ -89,6 +52,7 @@ class HomePage extends React.Component {
 
                         </div>
                     </div>
+                
                 </Router>
 
 

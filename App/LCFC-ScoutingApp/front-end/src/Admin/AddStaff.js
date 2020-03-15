@@ -17,8 +17,8 @@ class LogInForm extends Component {
             <div>
 
                 <div>
-                    
-                    <h1> View Staff </h1>
+
+                    <h1> Add Staff </h1>
 
                 </div>
 
