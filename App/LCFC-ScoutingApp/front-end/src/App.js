@@ -11,10 +11,8 @@ import Goalkeeper from './PlayerReportOutput/Goalkeeper'
 import Striker from './PlayerReportOutput/Striker'
 import CentreMid from './PlayerReportOutput/centreMid'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import AdminData from './Admin/AdminData'
+import Admin from './Admin/Admin'
 import LogInForm from './LoginForm/LoginForm';
-
-
 class App extends React.Component {
 
   render() {
@@ -65,9 +63,9 @@ class App extends React.Component {
 
               </Route>
 
-              <Route path="/AdminManageReports">
+              <Route path="/Admin">
 
-                <AdminData />
+                <Admin />
 
               </Route>
 

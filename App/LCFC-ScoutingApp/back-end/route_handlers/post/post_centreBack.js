@@ -253,8 +253,10 @@ module.exports = function(app) {
         var outstandingscore=[];
         var i;
         for (i = 0; i <= (attributes.length -1); i++) {
-          points = points + Math.round(attributes[i]);
-          
+          if (!(isNaN(attributes[i])))
+          {
+            points = points + Math.round(attributes[i]);
+          }
         };
         average = Math.round(points / attributes.length);
         
@@ -426,7 +428,7 @@ module.exports = function(app) {
                 worksheet.cell(32, 8).string(rating);
 
         
-                workbook.write('/Users/jamie/Documents/Year2/Software Engineering/LCFC Scouting App Development/myBranch/scrum-13/App/LCFC-ScoutingApp/back-end/email/Test.xlsx');
+                workbook.write('Report.xlsx');
             
               }
             });

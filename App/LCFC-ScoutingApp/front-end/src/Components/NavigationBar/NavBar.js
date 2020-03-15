@@ -78,8 +78,6 @@ class navBar extends React.Component {
 
             },
 
-
-
         });
 
         const body = await response.text();
@@ -121,13 +119,15 @@ class navBar extends React.Component {
                         {/* eslint-disable-next-line */}
                         <a class="right"><Link to={"/LogOut"}>Logout</Link></a>
 
-                        <p class="username"> User : {this.state.username} Role : {this.state.role}</p>
+                        <p class="username"> User : {this.state.username} Scout : {this.state.role}</p>
 
                     </div>
 
                 </div>
 
             );
+
+
 
         } else {
 
@@ -155,13 +155,12 @@ class navBar extends React.Component {
                         {/* eslint-disable-next-line */}
                         <a><Link to={"/PlayerReport"}>Create Player Reports</Link></a>
 
-                        {/* eslint-disable-next-line */}
-                        <a><Link to={"/AdminManageReports"}>Admin</Link></a>
+                        <a><Link to={"/Admin"}>Admin</Link></a>
 
                         {/* eslint-disable-next-line */}
                         <a class="right"><Link to={"/LogOut"}>Logout</Link></a>
 
-                        <p class="username"> User : {this.state.username} Role : {this.state.role}</p>
+                        <p class="username"> User : {this.state.username} Scout : {this.state.role}</p>
 
                     </div>
 
@@ -170,10 +169,11 @@ class navBar extends React.Component {
             );
 
 
-        }
 
+        }
     }
 
 }
+
 
 export default navBar;

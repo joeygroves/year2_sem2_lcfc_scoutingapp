@@ -30,8 +30,6 @@ module.exports = function(app) {
     var username = req.body.username;
   
     var password = req.body.password;
-
-    var SQLStatement = "SELECT role FROM staff where username = ?"
   
     if (username && password) {
   
@@ -42,7 +40,7 @@ module.exports = function(app) {
           req.session.loggedin = true;
   
           req.session.username = username;
-
+  
           res.send("LoggedIn");
   
         } else {

@@ -29,7 +29,7 @@ module.exports = function(app) {
       attachments: [
         {
           filename: 'ScoutReport.xlsx',
-          content: fs.createReadStream('/Users/jamie/Documents/Year2/Software Engineering/LCFC Scouting App Development/myBranch/scrum-13/App/LCFC-ScoutingApp/back-end/email/Test.xlsx'),
+          content: fs.createReadStream('Report.xlsx'),
         }
       ]
     };

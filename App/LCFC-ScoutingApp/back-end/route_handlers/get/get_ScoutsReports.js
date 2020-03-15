@@ -33,10 +33,12 @@ module.exports = function (app) {
 
       console.log(" Role  " + req.session.username)
 
-
       connect.connection.query('SELECT role FROM staff WHERE username = ? ', [req.session.username], function (error, results, fields) {
 
         userRole = results[0].role
+
+
+        console.log(" ROle " + userRole)
 
         if (userRole === "Scout") {
 

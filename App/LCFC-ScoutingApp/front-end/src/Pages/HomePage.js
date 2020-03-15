@@ -89,7 +89,7 @@ class HomePage extends React.Component {
                                 <td>{values.Grade} </td>
                                 <td>{values.Height} </td>
                                 <td>{values.Position}</td>
-    
+
                                 <td><a><Link to={`/ViewPlayerReport/${values.Position.replace(/\s/g, "")}/${values.player_id}`}>Report</Link></a></td>
                             </tr>
 
