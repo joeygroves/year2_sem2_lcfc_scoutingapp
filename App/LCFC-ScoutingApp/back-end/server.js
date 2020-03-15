@@ -70,6 +70,11 @@ require('../back-end/view_reports/view_reports')(app);
 
 require('../back-end/Admin/AdminData')(app);
 
+require('../back-end/Admin/Get/getStaff')(app);
+
+
+require('../back-end/Admin/Get/getScoutData')(app);
+
 
 // --------------------------------------------------------------------------------------------------------- Get User Information -----------------------------------------------------------------------
 
