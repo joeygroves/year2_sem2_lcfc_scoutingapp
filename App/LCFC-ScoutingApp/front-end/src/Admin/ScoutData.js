@@ -7,24 +7,24 @@ import NavBar from '../Components/NavigationBar/NavBar'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom';
 
-class ViewStaff extends Component {
+class ScoutData extends Component {
 
     state = {
 
-        staff_data: []
+        scout_data: []
 
 
     }
 
     componentDidMount() {
 
-        this.getStaff();
+        this.getScoutData();
 
     }
 
-    getStaff = async () => {
+    getScoutData = async () => {
 
-        const response = await fetch('/api/admin/getStaff', {
+        const response = await fetch('/api/admin/getScoutReports', {
 
             method: 'POST',
 
@@ -34,11 +34,13 @@ class ViewStaff extends Component {
 
             },
 
+            body: JSON.stringify({ scoutID: this.props.match.params.scoutID })
+
         });
 
         const body = await response.json();
 
-        this.setState({ staff_data: body });
+        this.setState({ scout_data: body });
 
     };
 
@@ -47,52 +49,50 @@ class ViewStaff extends Component {
 
         return (
 
+           
+
             <div>
 
                 <div>
 
                     <NavBar />
-                    
-                </div>
-
-                <div>
-                    <br></br>
-
-                    <h1> View Staff </h1>
 
                 </div>
 
                 <div>
+
                     <table>
 
                         <tr>
-
                             <th>First Name</th>
                             <th>Last Name</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Role</th>
-                            <th>View Reports</th>
+                            <th>Age</th>
+                            <th>Club</th>
+                            <th>Grade</th>
+                            <th>Height</th>
+                            <th>Position</th>
+                            <th>View</th>
 
                         </tr>
 
                     </table>
 
-                    {this.state.staff_data.map((values, index) => {
+                    {this.state.scout_data.map((values, index) => {
 
                         return <div>
 
                             <table>
 
                                 <tr>
-                                    <td>{values.first_name} </td>
-                                    <td>{values.last_name} </td>
-                                    <td>{values.username}</td>
-                                    <td>{values.password}</td>
-                                    <td>{values.role} </td>
-                                    <td><a><Link to={`/admin/viewScout/${values.username}`}>View Reports</Link></a></td>
+                                    <td>{values.FirstName}</td>
+                                    <td>{values.LastName}</td>
+                                    <td>{values.Age} </td>
+                                    <td>{values.Club} </td>
+                                    <td>{values.Grade} </td>
+                                    <td>{values.Height} </td>
+                                    <td>{values.Position}</td>
 
-
+                                    <td><a><Link to={`/ViewPlayerReport/${values.Position.replace(/\s/g, "")}/${values.player_id}`}>Report</Link></a></td>
                                 </tr>
 
                             </table>
@@ -110,4 +110,4 @@ class ViewStaff extends Component {
     }
 }
 
-export default withRouter(ViewStaff);
+export default ScoutData;
