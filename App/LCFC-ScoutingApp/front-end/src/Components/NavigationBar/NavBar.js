@@ -89,8 +89,7 @@ class navBar extends React.Component {
 
     render() {
 
-        if (this.state.role == "Scout") {
-
+        if (this.state.role == "Scout" || this.state.role == "Senior Scout" ) {
 
             return (
                 <div class="NavigationBar">
@@ -154,8 +153,6 @@ class navBar extends React.Component {
 
                         {/* eslint-disable-next-line */}
                         <a><Link to={"/PlayerReport"}>Create Player Reports</Link></a>
-
-                        <a><Link to={"/Admin"}>Admin</Link></a>
 
                         {/* eslint-disable-next-line */}
                         <a class="right"><Link to={"/LogOut"}>Logout</Link></a>

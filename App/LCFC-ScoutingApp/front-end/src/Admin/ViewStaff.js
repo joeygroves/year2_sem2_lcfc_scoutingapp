@@ -67,12 +67,12 @@ class ViewStaff extends Component {
 
                         <tr>
 
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Role</th>
-                            <th>View Reports</th>
+                            <th className="Admin">First Name</th>
+                            <th className="Admin"> Last Name</th>
+                            <th className="Admin">Username</th>
+                            <th className="Admin">Password</th>
+                            <th className="Admin">Role</th>
+                            <th className="Admin">View Reports</th>
 
                         </tr>
 
@@ -85,12 +85,12 @@ class ViewStaff extends Component {
                             <table>
 
                                 <tr>
-                                    <td>{values.first_name} </td>
-                                    <td>{values.last_name} </td>
-                                    <td>{values.username}</td>
-                                    <td>{values.password}</td>
-                                    <td>{values.role} </td>
-                                    <td><a><Link to={`/admin/viewScout/${values.username}`}>View Reports</Link></a></td>
+                                    <td className="Admin">{values.first_name} </td>
+                                    <td className="Admin">{values.last_name} </td>
+                                    <td className="Admin">{values.username}</td>
+                                    <td className="Admin">{values.password}</td>
+                                    <td className="Admin">{values.role} </td>
+                                    <td className="Admin" ><a><Link to={`/admin/viewScout/${values.username}`}>View Reports</Link></a></td>
 
 
                                 </tr>

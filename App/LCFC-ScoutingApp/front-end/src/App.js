@@ -14,7 +14,7 @@ import Striker from './PlayerReportOutput/Striker'
 import CentreMid from './PlayerReportOutput/centreMid'
 import ScoutData from './Admin/ScoutData';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import Admin from './Admin/Admin'
+import ViewAllReports from './Admin/ViewPlayerReports'
 import LogInForm from './LoginForm/LoginForm';
 import DeleteStaff from './Admin/DeleteStaff';
 
@@ -83,9 +83,9 @@ class App extends React.Component {
 
               </Route>
 
-              <Route path="/Admin">
+              <Route path="/admin/ViewAllReports">
 
-                <Admin />
+                <ViewAllReports />
 
               </Route>
 
