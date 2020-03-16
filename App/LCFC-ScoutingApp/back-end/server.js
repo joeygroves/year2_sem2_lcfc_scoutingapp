@@ -72,7 +72,6 @@ require('../back-end/Admin/AdminData')(app);
 
 require('../back-end/Admin/Get/getStaff')(app);
 
-
 require('../back-end/Admin/Get/getScoutData')(app);
 
 
