@@ -75,11 +75,12 @@ body {
 }
 
 p.username {
-    color: white;
-    font-weight: bold;
-    font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
-    font-size: large;
-    margin-right: 26%;
-  
+  color: white;
+  font-weight: bold;
+  font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+  font-size: large;
+  margin-right: 17.5%;
+
 }
+
  

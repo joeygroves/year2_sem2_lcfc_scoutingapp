@@ -118,7 +118,7 @@ class navBar extends React.Component {
                         {/* eslint-disable-next-line */}
                         <a class="right"><Link to={"/LogOut"}>Logout</Link></a>
 
-                        <p class="username"> User : {this.state.username} Scout : {this.state.role}</p>
+                        <p class="username"> User : {this.state.username.toUpperCase()}</p>
 
                     </div>
 
@@ -157,7 +157,7 @@ class navBar extends React.Component {
                         {/* eslint-disable-next-line */}
                         <a class="right"><Link to={"/LogOut"}>Logout</Link></a>
 
-                        <p class="username"> User : {this.state.username} Scout : {this.state.role}</p>
+                        <p class="username"> User : {this.state.username.toUpperCase()}</p>
 
                     </div>
 
