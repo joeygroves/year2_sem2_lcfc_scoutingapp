@@ -265,11 +265,17 @@ module.exports = function (app) {
             // Add Worksheets to the workbook
             var worksheet = workbook.addWorksheet('Sheet 1');
 
+            var myStyle = workbook.createStyle({
+              alignment: {
+                wrapText: true,
+                horizontal: 'center',
+              },
+            });
 
             worksheet.cell(1, 7).string('Fixture');
             worksheet.cell(1, 8, 1, 12, true).string(club_name + " vs " + club_played);
 
-            worksheet.cell(4, 3, 8, 4, true).string("Goalkeeper");
+            worksheet.cell(4, 3, 8, 4, true).string("Goalkeeper").style(myStyle);;
             worksheet.cell(4, 5, 4, 6, true).string('Name');
             worksheet.cell(4, 7, 4, 9, true).string(first_name + " " + last_name);
             worksheet.cell(5, 5, 5, 6, true).string('Height');
@@ -314,6 +320,27 @@ module.exports = function (app) {
             worksheet.cell(21, 1, 21, 2, true).string('Left Foot');
             worksheet.cell(21, 3).string(left_foot);
 
+            generalattributes = [handling, shot_stopping, tendancy_to_punch, tendancy_to_catch, positioning, recovery_saves, control_when_recieving, right_foot, left_foot]
+
+            general_counter = 0;
+            general_possiblepoints = 0;
+            for (i = 0; i <= (generalattributes.length - 1); i++) {
+              if (!(generalattributes[i] == null)) {
+                general_counter++;
+                general_possiblepoints += Math.round(generalattributes[i]);
+              };
+            };
+
+            general_percentage = (general_possiblepoints / general_counter) * 10
+
+
+            worksheet.cell(23, 2).string("Points")
+            worksheet.cell(24, 2).string("Percentage")
+            worksheet.cell(23, 3).number(general_possiblepoints)
+            worksheet.cell(24, 3).number(general_percentage)
+            worksheet.cell(24, 4).string("%")
+
+
             worksheet.cell(12, 4, 12, 6, true).string('Distribution');
             worksheet.cell(13, 4, 13, 5, true).string('Dead Ball Kicks');
             worksheet.cell(13, 6).string(dead_ball_kicks);
@@ -323,8 +350,28 @@ module.exports = function (app) {
             worksheet.cell(15, 6).string(throwing);
             worksheet.cell(16, 4, 16, 5, true).string('Kicking Under Pressure');
             worksheet.cell(16, 6).string(kicking_under_pressure);
-            worksheet.cell(16, 4, 16, 5, true).string('Kicking When Given Time');
-            worksheet.cell(16, 6).string(kicking_when_given_time);
+            worksheet.cell(17, 4, 17, 5, true).string('Kicking When Given Time');
+            worksheet.cell(17, 6).string(kicking_when_given_time);
+
+            distributionattributes = [dead_ball_kicks, kicking_out_of_hands, throwing, kicking_under_pressure, kicking_when_given_time]
+
+            distribution_counter = 0;
+            distribution_possiblepoints = 0;
+            for (i = 0; i <= (distributionattributes.length - 1); i++) {
+              if (!(distributionattributes[i] == null)) {
+                distribution_counter++;
+                distribution_possiblepoints += Math.round(distributionattributes[i]);
+              };
+            };
+
+            distribution_percentage = (distribution_possiblepoints / distribution_counter) * 10
+
+            worksheet.cell(23, 5).string("Points")
+            worksheet.cell(24, 5).string("Percentage")
+            worksheet.cell(23, 6).number(distribution_possiblepoints)
+            worksheet.cell(24, 6).number(distribution_percentage)
+            worksheet.cell(24, 7).string("%")
+
 
             worksheet.cell(12, 7, 12, 9, true).string('Decision Making');
             worksheet.cell(13, 7, 13, 8, true).string('Dealing With Crosses');
@@ -335,6 +382,30 @@ module.exports = function (app) {
             worksheet.cell(15, 9).string(one_v_one);
             worksheet.cell(16, 7, 16, 8, true).string('Dealing With Through Ball');
             worksheet.cell(16, 9).string(dealing_with_through_ball);
+            worksheet.cell(17, 7, 17, 8, true).string('Tendancy To Punch');
+            worksheet.cell(17, 9).string(tendancy_to_punch);
+            worksheet.cell(18, 7, 18, 8, true).string('Tendancy To Catch');
+            worksheet.cell(18, 9).string(tendancy_to_catch);
+
+            decision_makingattributes = [dealing_with_crosses, starting_position, one_v_one, dealing_with_through_ball,tendancy_to_punch,tendancy_to_catch]
+
+            decision_making_counter = 0;
+            decision_making_possiblepoints = 0;
+            for (i = 0; i <= (decision_makingattributes.length - 1); i++) {
+              if (!(decision_makingattributes[i] == null)) {
+                decision_making_counter++;
+                decision_making_possiblepoints += Math.round(decision_makingattributes[i]);
+              };
+            };
+
+            decision_making_percentage = (decision_making_possiblepoints / decision_making_counter) * 10
+
+            worksheet.cell(23, 8).string("Points")
+            worksheet.cell(24, 8).string("Percentage")
+            worksheet.cell(23, 9).number(decision_making_possiblepoints)
+            worksheet.cell(24, 9).number(decision_making_percentage)
+            worksheet.cell(24, 10).string("%")
+
 
             worksheet.cell(12, 10, 12, 12, true).string('Physical');
             worksheet.cell(13, 10, 13, 11, true).string('Agility');
@@ -345,6 +416,26 @@ module.exports = function (app) {
             worksheet.cell(15, 12).string(strength);
             worksheet.cell(16, 10, 16, 11, true).string('Speed');
             worksheet.cell(16, 12).string(speed);
+
+
+            phsyicalattributes = [agility, reactions, strength, speed]
+
+            phsyical_counter = 0;
+            phsyical_possiblepoints = 0;
+            for (i = 0; i <= (phsyicalattributes.length - 1); i++) {
+              if (!(phsyicalattributes[i] == null)) {
+                phsyical_counter++;
+                phsyical_possiblepoints += Math.round(phsyicalattributes[i]);
+              };
+            };
+
+            phsyical_percentage = (phsyical_possiblepoints / phsyical_counter) * 10
+
+            worksheet.cell(23, 11).string("Points")
+            worksheet.cell(24, 11).string("Percentage")
+            worksheet.cell(23, 12).number(phsyical_possiblepoints)
+            worksheet.cell(24, 12).number(phsyical_percentage)
+            worksheet.cell(24, 13).string("%")
 
             worksheet.cell(12, 13, 12, 15, true).string('Psychological');
             worksheet.cell(13, 13, 13, 14, true).string('Bravery');
@@ -358,18 +449,46 @@ module.exports = function (app) {
             worksheet.cell(17, 13, 17, 14, true).string('Reactions To Mistake');
             worksheet.cell(17, 15).string(reaction_to_mistake);
 
-            worksheet.cell(22, 1, 22, 18, true).string('Notes');
-            worksheet.cell(23, 1, 25, 18, true).string(notes);
+            psychologicalattributes = [bravery, leadership, presence, communication, reaction_to_mistake, reaction_to_mistake]
 
-            worksheet.cell(26, 1, 26, 18, true).string('Summary');
-            worksheet.cell(27, 1, 29, 18, true).string(summary);
+            psychological_counter = 0;
+            psychological_possiblepoints = 0;
+
+            for (i = 0; i <= (psychologicalattributes.length - 1); i++) {
+              if (!(psychologicalattributes[i] == null)) {
+                psychological_counter++;
+                psychological_possiblepoints += Math.round(psychologicalattributes[i]);
+              };
+            };
 
 
-            worksheet.cell(30, 4, 30, 7, true).string('Player Rating');
-            worksheet.cell(30, 8).string(rating);
+            psychological_percentage = ((psychological_possiblepoints / psychological_counter)) * 10
+
+            worksheet.cell(23, 14).string("Points")
+            worksheet.cell(24, 14).string("Percentage")
+            worksheet.cell(23, 15).number(psychological_possiblepoints)
+            worksheet.cell(24, 15).number(psychological_percentage)
+            worksheet.cell(24, 16).string("%")
 
 
-            workbook.write('/Users/jamie/Documents/Year2/Software Engineering/LCFC Scouting App Development/myBranch/scrum-13/App/LCFC-ScoutingApp/back-end/email/Test.xlsx');
+            worksheet.cell(26, 7, 26, 10, true).string('Grand Total Marks (290)');
+            worksheet.cell(26, 11).number(phsyical_possiblepoints+psychological_possiblepoints+decision_making_possiblepoints+distribution_possiblepoints+general_possiblepoints);
+
+            worksheet.cell(28, 7, 28, 10, true).string('Overall % Score');
+            worksheet.cell(28, 11).formula('AVERAGE(C24,F24,I24,L24,O24,R24)');
+            worksheet.cell(28, 12).string("%")
+
+            worksheet.cell(29, 1, 29, 18, true).string('Notes');
+            worksheet.cell(30, 1, 32, 18, true).string(notes);
+
+            worksheet.cell(33, 1, 33, 18, true).string('Summary');
+            worksheet.cell(34, 1, 36, 18, true).string(summary).style(myStyle);
+
+
+            worksheet.cell(37, 4, 37, 7, true).string('Player Rating');
+            worksheet.cell(37, 8).string(rating);
+
+            workbook.write('Report.xlsx');
 
           }
         });
@@ -387,4 +506,3 @@ module.exports = function (app) {
 
   )
 }
-
