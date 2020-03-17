@@ -101,35 +101,35 @@ class fullBackForm extends React.Component {
                 <div class="grid-container">
                     <div class="grid-item">
                         <label>First Name: </label>
-                        <input value={this.state.first_name} onChange={e => this.setState({ first_name: e.target.value })}></input>
+                        <input type = "string" value={this.state.first_name} onChange={e => this.setState({ first_name: e.target.value })} required></input>
 
                         <label>Last Name: </label>
-                        <input value={this.state.last_name} onChange={e => this.setState({ last_name: e.target.value })}></input>
+                        <input type= "string" value={this.state.last_name} onChange={e => this.setState({ last_name: e.target.value })} required></input>
 
                         <label>Club: </label>
-                        <input value={this.state.club_name} onChange={e => this.setState({ club_name: e.target.value })}></input>
+                        <input type= "string" value={this.state.club_name} onChange={e => this.setState({ club_name: e.target.value })} required></input>
 
                         <label>Shirt Number: </label>
-                        <input value={this.state.shirt_number} onChange={e => this.setState({ shirt_number: e.target.value })}></input>
+                        <input type = "number" min="1" max="99" value={this.state.shirt_number} onChange={e => this.setState({ shirt_number: e.target.value })} required></input>
 
 
                         <br></br>
 
                         <label>Height: </label>
-                        <input value={this.state.height} onChange={e => this.setState({ height: e.target.value })}></input>
+                        <input value={this.state.height} onChange={e => this.setState({ height: e.target.value })} required></input>
 
                         <label>Age: </label>
-                        <input value={this.state.age} onChange={e => this.setState({ age: e.target.value })}></input>
+                        <input type = "number" value={this.state.age} onChange={e => this.setState({ age: e.target.value })} required></input>
 
 
 
                         <br></br>
 
                         <label>Date Scouted: </label>
-                        <input value={this.state.date_played} onChange={e => this.setState({ date_played: e.target.value })}></input>
+                        <input type = "date" value={this.state.date_played} onChange={e => this.setState({ date_played: e.target.value })} required></input>
 
                         <label>Playing Against: </label>
-                        <input value={this.state.club_played} onChange={e => this.setState({ club_played: e.target.value })}></input>
+                        <input type="string" value={this.state.club_played} onChange={e => this.setState({ club_played: e.target.value })} required></input>
 
 
 
@@ -137,20 +137,21 @@ class fullBackForm extends React.Component {
 
 
                         <label>H/T: </label>
-                        <input value={this.state.ht_score} onChange={e => this.setState({ ht_score: e.target.value })}></input>
+                        <input value={this.state.ht_score} onChange={e => this.setState({ ht_score: e.target.value })} required></input>
 
                         <label>F/T: </label>
-                        <input value={this.state.ft_score} onChange={e => this.setState({ ft_score: e.target.value })}></input>
+                        <input value={this.state.ft_score} onChange={e => this.setState({ ft_score: e.target.value })} required></input>
 
 
                         <h4>Player Rating</h4>
                         <h6>Code reference: A = Sign Player, B+ = Closely monitor/Follow Up, B = Monitor Player, C = Not good enough</h6>
-                        <select>
+                        <select value={this.state.rating} onChange={e => this.setState({ rating: e.target.value })} required > 
                             <option>A</option>
                             <option>B+</option>
                             <option>B</option>
                             <option>C</option>
                         </select>
+
                     </div>
 
                     <div class="grid-item">
