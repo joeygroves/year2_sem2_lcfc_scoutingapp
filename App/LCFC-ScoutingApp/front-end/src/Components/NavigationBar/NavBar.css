@@ -45,6 +45,7 @@ body {
   text-decoration: none;
   font-size: 18px;
   font-weight:bold;
+  background-color: #0B56A4;
 }
 
 @media screen and (max-width: 900px) {
@@ -54,7 +55,7 @@ body {
     display: block;
     
   }
-  .topnav p.username{display: none;}
+  .topnav .username{display: none;}
 }
 
 @media screen and (max-width: 900px) {
@@ -70,17 +71,21 @@ body {
     text-align: left ;
     margin:0;
   }
+
+  .links{
+
+    padding-top: 15%;
+
+  }
   
   
 }
-
-p.username {
-  color: white;
-  font-weight: bold;
-  font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
-  font-size: large;
-  margin-right: 17.5%;
-
+.username {
+    color: white;
+    font-weight: bold;
+    font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+    font-size: large;
+    margin-right: 26%;
+  
 }
-
  

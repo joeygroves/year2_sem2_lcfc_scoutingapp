@@ -89,7 +89,7 @@ class navBar extends React.Component {
 
     render() {
 
-        if (this.state.role == "Scout" || this.state.role == "Senior Scout" ) {
+        if (this.state.role == "Scout" || this.state.role == "Senior Scout") {
 
             return (
                 <div class="NavigationBar">
@@ -103,23 +103,34 @@ class navBar extends React.Component {
                         <div class="topLogo"><img src={imageNav} alt="navImage"></img></div>
 
                         { /* eslint-disable-next-line */}
-                        <a href="javascript:void(0);" class="icon" onClick={this.myFunction}>
+                            <a href="javascript:void(0);" class="icon" onClick={this.myFunction}>
 
-                            <i class="fa fa-bars"></i>
+                                <i class="fa fa-bars"></i>
 
-                        </a>
+                            </a>
+                        
+                        <div class="links" >
+                           
 
-                        {/* eslint-disable-next-line */}
-                        <a><Link to={"/HomePage"}>Home</Link></a>
+                            {/* eslint-disable-next-line */}
+                            <a><Link to={"/HomePage"}>Home</Link></a>
 
-                        {/* eslint-disable-next-line */}
-                        <a><Link to={"/PlayerReport"}>Create Player Reports</Link></a>
+                            {/* eslint-disable-next-line */}
+                            <a><Link to={"/PlayerReport"}>Create Player Reports</Link></a>
 
-                        {/* eslint-disable-next-line */}
-                        <a class="right"><Link to={"/LogOut"}>Logout</Link></a>
+                            {/* eslint-disable-next-line */}
+                            <a class="right"><Link to={"/LogOut"}>Logout</Link></a>
 
-                        <p class="username"> User : {this.state.username.toUpperCase()}</p>
 
+
+                        </div>
+
+                        <div class="username">
+
+                            <p > User : {this.state.username.toUpperCase()}</p>
+                       
+                        </div>
+                   
                     </div>
 
                 </div>
