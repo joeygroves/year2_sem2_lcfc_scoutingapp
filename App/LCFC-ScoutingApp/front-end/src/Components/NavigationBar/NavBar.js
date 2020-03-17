@@ -159,6 +159,8 @@ class navBar extends React.Component {
 
                         </a>
 
+                        <div class = "links"> 
+
                         {/* eslint-disable-next-line */}
                         <a><Link to={"/HomePage"}>Home</Link></a>
 
@@ -168,7 +170,13 @@ class navBar extends React.Component {
                         {/* eslint-disable-next-line */}
                         <a class="right"><Link to={"/LogOut"}>Logout</Link></a>
 
-                        <p class="username"> User : {this.state.username.toUpperCase()}</p>
+                        </div>
+
+                        <div  class="username">
+                            
+                           <p>User : {this.state.username.toUpperCase()}</p> 
+                            
+                        </div>
 
                     </div>
 
