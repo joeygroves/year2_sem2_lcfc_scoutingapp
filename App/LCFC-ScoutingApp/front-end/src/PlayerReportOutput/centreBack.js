@@ -86,10 +86,10 @@ class centreBack extends React.Component {
 
 
           {this.state.data.map((values, index) => {
-            
+
             return <div>
 
-<div class="PlayerInformation">
+              <div class="PlayerInformation">
                 <div class="TypeNames">
 
                   <table>
@@ -382,7 +382,7 @@ class centreBack extends React.Component {
 
               </div>
 
-              
+
 
 
               {this.state.data.map((values, index) => {

@@ -87,9 +87,53 @@ class fullBackForm extends React.Component {
 
                     return <div>
 
-                        <div class="PlayerInformation">
+<div class="PlayerInformation">
+                <div class="TypeNames">
 
-                        </div>
+                  <table>
+                    <tr>
+                      <th>Player Information</th>
+                    </tr>
+                  </table>
+
+                </div>
+
+                {this.state.player_data.map((playervalues, index) => {
+
+                  return <div>
+
+                    <table>
+                      <tr class="Data">
+                        <th>First Name</th>
+                        <td>{playervalues.first_name}</td>
+                      </tr>
+                      <tr class="Data">
+                        <th>Last Name</th>
+                        <td>{playervalues.last_name}</td>
+                      </tr>
+                      <tr class="Data">
+                        <th>Age</th>
+                        <td>{playervalues.age}</td>
+                      </tr>
+                      <tr class="Data">
+                        <th>Club</th>
+                        <td>{playervalues.club}</td>
+                      </tr>
+                      <tr class="Data">
+                        <th>Height</th>
+                        <td>{playervalues.height}</td>
+                      </tr>
+                      <tr class="Data">
+                        <th>Grade</th>
+                        <td>{values.rating}</td>
+                      </tr>
+
+                    </table>
+                  </div>
+
+                })}
+
+              </div>
 
                         <div class="InPossession">
 
@@ -335,55 +379,7 @@ class fullBackForm extends React.Component {
 
                             </table>
                         </div>
-                        <div class="PlayerInformation">
-                            <div class="TypeNames">
-
-                                <table>
-                                    <tr>
-                                        <th>Player Information</th>
-                                    </tr>
-                                </table>
-
-                            </div>
-
-                            {this.state.player_data.map((playervalues, index) => {
-
-                                return <div>
-
-                                    <table>
-                                        <tr class="Data">
-                                            <th>First Name</th>
-                                            <td>{playervalues.first_name}</td>
-                                        </tr>
-                                        <tr class="Data">
-                                            <th>Last Name</th>
-                                            <td>{playervalues.last_name}</td>
-                                        </tr>
-                                        <tr class="Data">
-                                            <th>Age</th>
-                                            <td>{playervalues.age}</td>
-                                        </tr>
-                                        <tr class="Data">
-                                            <th>Club</th>
-                                            <td>{playervalues.club}</td>
-                                        </tr>
-                                        <tr class="Data">
-                                            <th>Height</th>
-                                            <td>{playervalues.height}</td>
-                                        </tr>
-                                        <tr class="Data">
-                                            <th>Grade</th>
-                                            <td>{values.rating}</td>
-                                        </tr>
-
-                                    </table>
-                                </div>
-
-                            })}
-
-                        </div>
-
-
+                        
                         {this.state.data.map((values, index) => {
 
                             return <div class="NotesTag">
