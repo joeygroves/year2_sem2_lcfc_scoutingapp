@@ -8,25 +8,10 @@ var mysql = require('mysql');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var connect = require('../mysql_connection/mysql_create_connection');
 
 module.exports = function(app) {
 
-
-  var connection = mysql.createConnection({
-
-    host: 'localhost',
-  
-    //Enter your mySQL username here
-    user: 'root',
-  
-    //Enter your mySQL password here
-    password: 'password69%',
-  
-    database: 'LCFC_Scouting'
-  
-  });
-  
-  
   app.use(session({
   
     secret: 'secret',
@@ -48,7 +33,7 @@ module.exports = function(app) {
   
     if (username && password) {
   
-      connection.query('SELECT * FROM staff WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
+      connect.connection.query('SELECT * FROM staff WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
   
         if (results.length > 0) {
   

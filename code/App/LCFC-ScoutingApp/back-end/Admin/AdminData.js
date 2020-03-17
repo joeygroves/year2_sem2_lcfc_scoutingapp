@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var connect = require('../mysql_connection/mysql_create_connection');
 
 module.exports = function(app) {
-  
+
   app.use(session({
   
     secret: 'secret',
@@ -23,22 +23,27 @@ module.exports = function(app) {
   }));
 
 
-  app.get('/api/LogOutAuthentication', (req, res) => {
 
-    if (req.session.loggedin) {
+  app.post('/api/getScoutRole', (req, res) => {
+
+    var SQLStatement = "SELECT role FROM staff where username = ?"
   
-      req.session.loggedin = false;
+    connect.connection.query(SQLStatement, [req.session.username], function (err, result) {
   
-      res.send("LoggedOut");
+      if (err) {
   
-    } else {
+        throw err;
   
-      res.send("NotSignedIn");
+      } else {
+      
+        console.log(result[0].role)
+
+        res.send(result[0].role);
+
+        
+      }
   
-    }
-  
-    res.end();
+    })
   
   });
-
 }

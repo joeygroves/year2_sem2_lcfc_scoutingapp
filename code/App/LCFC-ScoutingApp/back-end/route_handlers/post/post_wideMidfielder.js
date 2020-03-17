@@ -13,7 +13,7 @@ var connect = require('../../mysql_connection/mysql_create_connection');
 
 module.exports = function (app) {
 
-  app.post('/api/fullback', (req, res) => {
+  app.post('/api/widemidfielder', (req, res) => {
 
     var first_name = req.body.first_name;
     var last_name = req.body.last_name;
@@ -24,89 +24,69 @@ module.exports = function (app) {
     var club_played = req.body.club_played;
     var ht_score = req.body.ht_score;
     var ft_score = req.body.ft_score;
-    var position = 'Full Back'
     var shirt_number = req.body.shirt_number;
+    var position = 'Wide Midfielder'
 
-    var scouted_by = req.session.username
-
-    //In Possession
+    var scouted_by = req.session.username;
+    var control = req.body.control;
     var receiving_under_pressure = req.body.receiving_under_pressure;
     var short_passing = req.body.short_passing;
-    var long_passing = req.body.long_passing;
-    var control = req.body.control;
+    var switching_play = req.body.switching_play;
     var right_foot = req.body.right_foot;
     var left_foot = req.body.left_foot;
-
-    //Attacking
-    var attacking_one_v_one = req.body.attacking_one_v_one;
+    var attacking_one_v_one = req.body.one_vs_one_attacking;
     var attacking_ariel_ability = req.body.attacking_ariel_ability;
+    var dribbling = req.body.dribbling;
+    var shooting = req.body.shooting;
     var crossing = req.body.crossing;
-
-    //Defending
-    var defending_one_v_one = req.body.defending_one_v_one;
+    var defending_one_v_one = req.body.one_vs_one_defending;
     var defending_ariel_ability = req.body.defending_ariel_ability;
+    var supporting_full_back = req.body.supporting_full_back;
     var tackling = req.body.tackling;
-    var defending_far_post = req.body.defending_far_post;
-    var stopping_the_cross = req.body.stopping_the_cross;
     var pressing = req.body.pressing;
+    var positional_awareness = req.body.positional_awareness;
     var recovery_runs = req.body.recovery_runs;
     var tracking_runners = req.body.tracking_runners;
-
-    //Tactical
     var agility = req.body.agility;
-    var angles_to_recieve = req.body.angles_to_recieve;
-    var link_up_with_winger = req.body.link_up_with_winger;
-    var covering_across = req.body.covering_across;
-    var willlingness_to_get_forward = req.body.willlingness_to_get_forward;
-
-    //Physical
+    var coming_in_off_the_line = req.body.coming_in_off_the_line;
+    var finding_space_out_wide = req.body.finding_space_out_wide;
+    var link_up_with_full_back = req.body.link_up_with_full_back;
+    var willingness_to_get_forward = req.body.willingness_to_get_forward;
     var pace = req.body.pace;
-    var mobility = req.body.mobility;
-    var work_rate = req.body.work_rate;
+    var speed_when_dribbling = req.body.dribbling;
     var strength = req.body.strength;
-    var jump = req.body.jump;
-
-    //Psychological
+    var work_rate = req.body.work_rate;
     var bravery = req.body.bravery;
     var leadership = req.body.leadership;
-    var team_work = req.body.team_work;
-    var communicaton = req.body.communicaton;
-    var reponse_to_criticism = req.body.reponse_to_criticism;
-    var reaction_to_mistake = req.body.reaction_to_mistake;
-
-    //Rating
+    var teamwork = req.body.team_work;
+    var communication = req.body.communication;
+    var response_to_criticism = req.body.response_to_criticism;
+    var reaction_to_mistakes = req.body.reaction_to_mistakes;
     var rating = req.body.rating;
-
-    //Additional Comments
     var notes = req.body.notes;
-
     //Auto Generated Summary
     var summary = "";
     var average = 0.0;
     var points = 0;
     var threshold = 1;
 
-    //Player Information
-    var playerID;
-
-
     //// Test for null input to database
+
+    if (control == '') {
+      var control = null
+    }
 
     if (receiving_under_pressure == '') {
       var receiving_under_pressure = null
     }
 
+
     if (short_passing == '') {
       var short_passing = null
     }
 
-
-    if (long_passing == '') {
-      var long_passing = null
-    }
-
-    if (control == '') {
-      var control = null
+    if (switching_play == '') {
+      var switching_play = null
     }
 
 
@@ -126,9 +106,19 @@ module.exports = function (app) {
       var attacking_ariel_ability = null
     }
 
+    if (dribbling == '') {
+      var dribbling = null
+    }
+
+    if (shooting == '') {
+      var shooting = null
+    }
+
+
     if (crossing == '') {
       var crossing = null
     }
+
 
     if (defending_one_v_one == '') {
       var defending_one_v_one = null
@@ -140,23 +130,23 @@ module.exports = function (app) {
     }
 
 
+    if (supporting_full_back == '') {
+      var supporting_full_back = null
+    }
+
+
     if (tackling == '') {
       var tackling = null
     }
 
 
-    if (defending_far_post == '') {
-      var defending_far_post = null
-    }
-
-
-    if (stopping_the_cross == '') {
-      var stopping_the_cross = null
-    }
-
-
     if (pressing == '') {
       var pressing = null
+    }
+
+
+    if (positional_awareness == '') {
+      var positional_awareness = null
     }
 
 
@@ -174,23 +164,23 @@ module.exports = function (app) {
       var agility = null
     }
 
-
-    if (angles_to_recieve == '') {
-      var angles_to_recieve = null
+    if (coming_in_off_the_line == '') {
+      var coming_in_off_the_line = null
     }
 
 
-    if (link_up_with_winger == '') {
-      var link_up_with_winger = null
-    }
-
-    if (covering_across == '') {
-      var covering_across = null
+    if (finding_space_out_wide == '') {
+      var finding_space_out_wide = null
     }
 
 
-    if (willlingness_to_get_forward == '') {
-      var willlingness_to_get_forward = null
+    if (link_up_with_full_back == '') {
+      var link_up_with_full_back = null
+    }
+
+
+    if (willingness_to_get_forward == '') {
+      var willingness_to_get_forward = null
     }
 
 
@@ -199,13 +189,8 @@ module.exports = function (app) {
     }
 
 
-    if (mobility == '') {
-      var mobility = null
-    }
-
-
-    if (work_rate == '') {
-      var work_rate = null
+    if (speed_when_dribbling == '') {
+      var speed_when_dribbling = null
     }
 
 
@@ -214,8 +199,8 @@ module.exports = function (app) {
     }
 
 
-    if (jump == '') {
-      var jump = null
+    if (work_rate == '') {
+      var work_rate = null
     }
 
 
@@ -229,8 +214,8 @@ module.exports = function (app) {
     }
 
 
-    if (team_work == '') {
-      var team_work = null
+    if (teamwork == '') {
+      var teamwork = null
     }
 
 
@@ -238,18 +223,15 @@ module.exports = function (app) {
       var communication = null
     }
 
-
     if (response_to_criticism == '') {
       var response_to_criticism = null
     }
 
-    if (reaction_to_mistake == '') {
-      var reaction_to_mistake = null
+    if (reaction_to_mistakes == '') {
+      var reaction_to_mistakes = null
     }
 
-
     ////
-
 
 
     var PlayerSQL = "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position,shirt_number) VALUES ?";
@@ -260,28 +242,13 @@ module.exports = function (app) {
     });
 
 
+
     // // create and insert summary for the player report
     // // 
-    var attributes = [receiving_under_pressure,
-      short_passing, long_passing, control, right_foot, left_foot,
-      attacking_one_v_one, attacking_ariel_ability, crossing, defending_one_v_one,
-      defending_ariel_ability, tackling, defending_far_post, stopping_the_cross,
-      pressing, recovery_runs, tracking_runners,
-      agility, angles_to_recieve, link_up_with_winger,
-      covering_across, willlingness_to_get_forward,
-      pace, mobility, work_rate, strength, jump, bravery,
-      leadership, team_work, communicaton, reponse_to_criticism,
-      reaction_to_mistake];
-    var attributenames = ['receiving under pressure',
-      'short passing', 'long passing', 'control', 'right foot', 'left foot',
-      'attacking one v one', 'attacking ariel ability', 'crossing', 'defending one v one',
-      'defending ariel ability', 'tackling', 'defending far post', 'stopping the cross',
-      'pressing', 'recovery runs', 'tracking runners',
-      'agility', 'angles to recieve', 'link up with winger',
-      'covering across', 'willlingness to get forward',
-      'pace', 'mobility', 'work rate', 'strength', 'jump', 'bravery',
-      'leadership', 'team work', 'communicaton', 'reponse to criticism',
-      'reaction to mistake'];
+    var attributes = [control, receiving_under_pressure, short_passing, switching_play, right_foot, left_foot, attacking_one_v_one, attacking_ariel_ability, dribbling, shooting, crossing, defending_one_v_one, defending_ariel_ability, supporting_full_back, tackling, pressing, positional_awareness, recovery_runs, tracking_runners, agility, coming_in_off_the_line, finding_space_out_wide, link_up_with_full_back, willingness_to_get_forward, pace,
+      speed_when_dribbling, strength, work_rate, bravery, leadership, teamwork, communication, response_to_criticism, reaction_to_mistakes];
+    var attributenames = ['control', 'receiving under pressure', 'short passing', 'switching play', 'right foot', 'left foot', 'attacking one v one', 'attacking ariel ability', 'dribbling', 'shooting', 'crossing', 'defending one v one', 'defending ariel ability', 'supporting full back', 'tackling', 'pressing', 'positional awareness', 'recovery runs', 'tracking runners', 'agility', 'coming in off the line', 'finding space out wide', 'link up with full back', 'willingness to get forward', 'pace',
+      'speed when dribbling', 'strength', 'work rate', 'bravery', 'leadership', 'teamwork', 'communication', 'response to criticism', 'reaction to mistakes'];
     var outstandinglabel = [];
     var outstandingscore = [];
     var i;
@@ -307,29 +274,18 @@ module.exports = function (app) {
     summary += "."
 
 
-
-    var PlayerIDSQL = "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST(? AS DECIMAL) AND age = ? AND position = ? AND shirt_number = ?";
-    connect.connection.query(PlayerIDSQL, [first_name, last_name, club_name, height, age, position, shirt_number], function (err, results) {
+    var PlayerIDSQL = "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST(? AS DECIMAL) AND age = ? AND position = ?";
+    connect.connection.query(PlayerIDSQL, [first_name, last_name, club_name, height, age, position], function (err, wmresults) {
       if (err) {
         throw err;
       } else {
 
-        console.log(results.length);
+        console.log(wmresults.length);
         console.log();
 
-        var sql = "INSERT INTO lcfc_scouting.full_back_reports (player_id, scouted_by, receiving_under_pressure, short_passing, long_passing, control, right_foot, left_foot, attacking_one_v_one, attacking_ariel_ability, crossing, defending_one_v_one, defending_ariel_ability, tackling, defending_far_post, stopping_the_cross, pressing, recovery_runs, tracking_runners, agility, angles_to_receive, link_up_with_winger, covering_across, willlingness_to_get_forward, pace, mobility, work_rate, strength, jump, bravery,leadership, team_work, communicaton, response_to_criticism, reaction_to_mistake,rating, notes, summary) VALUES ?";
-
-        var values = [[results[0].player_id, scouted_by, receiving_under_pressure,
-          short_passing, long_passing, control, right_foot, left_foot,
-          attacking_one_v_one, attacking_ariel_ability, crossing, defending_one_v_one,
-          defending_ariel_ability, tackling, defending_far_post, stopping_the_cross,
-          pressing, recovery_runs, tracking_runners,
-          agility, angles_to_recieve, link_up_with_winger,
-          covering_across, willlingness_to_get_forward,
-          pace, mobility, work_rate, strength, jump, bravery,
-          leadership, team_work, communication, response_to_criticism,
-          reaction_to_mistake,
-          rating, notes, summary]];
+        var sql = "INSERT INTO lcfc_scouting.wide_midfielder_reports (player_id,scouted_by,control,receiving_under_pressure,short_passing,switching_play,right_foot,left_foot,attacking_one_v_one,attacking_ariel_ability,dribbling,shooting,crossing,defending_one_v_one,defending_ariel_ability,supporting_full_back,tackling,pressing,positional_awareness,recovery_runs,tracking_runners,agility,coming_in_off_the_line,finding_space_out_wide,link_up_with_full_back,willingness_to_get_forward,pace,speed_when_dribbling,strength,work_rate,bravery,leadership,teamwork,communication,response_to_criticism,reaction_to_mistakes,rating,notes,summary)  VALUES ?";
+        var values = [[wmresults[0].player_id, scouted_by, control, receiving_under_pressure, short_passing, switching_play, right_foot, left_foot, attacking_one_v_one, attacking_ariel_ability, dribbling, shooting, crossing, defending_one_v_one, defending_ariel_ability, supporting_full_back, tackling, pressing, positional_awareness, recovery_runs, tracking_runners, agility, coming_in_off_the_line, finding_space_out_wide, link_up_with_full_back, willingness_to_get_forward, pace,
+          speed_when_dribbling, strength, work_rate, bravery, leadership, teamwork, communication, response_to_criticism, reaction_to_mistakes, rating, notes, summary]];
 
         connect.connection.query(sql, [values], function (err, result) {
 
@@ -355,7 +311,7 @@ module.exports = function (app) {
             worksheet.cell(1, 7).string('Fixture');
             worksheet.cell(1, 8, 1, 12, true).string(club_name + " vs " + club_played);
 
-            worksheet.cell(4, 3, 8, 4, true).string("Full Back").style(myStyle);;
+            worksheet.cell(4, 3, 8, 4, true).string("Wide Midfield").style(myStyle);
             worksheet.cell(4, 5, 4, 6, true).string('Name');
             worksheet.cell(4, 7, 4, 9, true).string(first_name + " " + last_name);
             worksheet.cell(5, 5, 5, 6, true).string('Height');
@@ -381,21 +337,20 @@ module.exports = function (app) {
 
 
             worksheet.cell(12, 1, 12, 3, true).string('In Possession');
-            worksheet.cell(13, 1, 13, 2, true).string('Receiving Under Pressure');
-            worksheet.cell(13, 3).string(receiving_under_pressure);
-            worksheet.cell(14, 1, 14, 2, true).string('Short Passing');
-            worksheet.cell(14, 3).string(short_passing);
-            worksheet.cell(15, 1, 15, 2, true).string('Long Passing');
-            worksheet.cell(15, 3).string(long_passing);
-            worksheet.cell(16, 1, 16, 2, true).string('Control');
-            worksheet.cell(16, 3).string(control);
+            worksheet.cell(13, 1, 13, 2, true).string('Control');
+            worksheet.cell(13, 3).string(control);
+            worksheet.cell(14, 1, 14, 2, true).string('Recieving Under Pressure');
+            worksheet.cell(14, 3).string(receiving_under_pressure);
+            worksheet.cell(15, 1, 15, 2, true).string('Short Passing');
+            worksheet.cell(15, 3).string(short_passing);
+            worksheet.cell(16, 1, 16, 2, true).string('Switching Play');
+            worksheet.cell(16, 3).string(switching_play);
             worksheet.cell(17, 1, 17, 2, true).string('Right Foot');
             worksheet.cell(17, 3).string(right_foot);
             worksheet.cell(18, 1, 18, 2, true).string('Left Foot');
             worksheet.cell(18, 3).string(left_foot);
 
-
-            generalattributes = [receiving_under_pressure, short_passing, long_passing, control, right_foot, left_foot]
+            generalattributes = [control, receiving_under_pressure, short_passing, switching_play, right_foot, left_foot]
 
             general_counter = 0;
             general_possiblepoints = 0;
@@ -421,10 +376,14 @@ module.exports = function (app) {
             worksheet.cell(13, 6).string(attacking_one_v_one);
             worksheet.cell(14, 4, 14, 5, true).string('Aerial Ability');
             worksheet.cell(14, 6).string(attacking_ariel_ability);
-            worksheet.cell(15, 4, 15, 5, true).string('Crossing');
-            worksheet.cell(15, 6).string(crossing);
+            worksheet.cell(15, 4, 15, 5, true).string('Dribbling');
+            worksheet.cell(15, 6).string(dribbling);
+            worksheet.cell(16, 4, 16, 5, true).string('Shooting');
+            worksheet.cell(16, 6).string(shooting);
+            worksheet.cell(17, 4, 17, 5, true).string('Crossing');
+            worksheet.cell(17, 6).string(crossing);
 
-            attaackingattributes = [attacking_one_v_one, attacking_ariel_ability, crossing]
+            attaackingattributes = [attacking_one_v_one, attacking_ariel_ability, dribbling, shooting, crossing]
 
             attacking_counter = 0;
             attacking_possiblepoints = 0;
@@ -443,26 +402,25 @@ module.exports = function (app) {
             worksheet.cell(24, 6).number(atacking_percentage)
             worksheet.cell(24, 7).string("%")
 
-
             worksheet.cell(12, 7, 12, 9, true).string('Defending');
             worksheet.cell(13, 7, 13, 8, true).string('1v1');
             worksheet.cell(13, 9).string(defending_one_v_one);
             worksheet.cell(14, 7, 14, 8, true).string('Aerial Ability');
             worksheet.cell(14, 9).string(defending_ariel_ability);
-            worksheet.cell(15, 7, 15, 8, true).string('Tackling');
-            worksheet.cell(15, 9).string(tackling);
-            worksheet.cell(16, 7, 16, 8, true).string('Defending Far Post');
-            worksheet.cell(16, 9).string(defending_far_post);
-            worksheet.cell(17, 7, 17, 8, true).string('Stopping The Cross');
-            worksheet.cell(17, 9).string(stopping_the_cross);
-            worksheet.cell(18, 7, 18, 8, true).string('Pressing');
-            worksheet.cell(18, 9).string(pressing);
+            worksheet.cell(15, 7, 15, 8, true).string('Supporting Full Back');
+            worksheet.cell(15, 9).string(supporting_full_back);
+            worksheet.cell(16, 7, 16, 8, true).string('Tackling');
+            worksheet.cell(16, 9).string(tackling);
+            worksheet.cell(17, 7, 17, 8, true).string('Pressing');
+            worksheet.cell(17, 9).string(pressing);
+            worksheet.cell(18, 7, 18, 8, true).string('Positional Awareness');
+            worksheet.cell(18, 9).string(positional_awareness);
             worksheet.cell(19, 7, 19, 8, true).string('Recovery Runs');
             worksheet.cell(19, 9).string(recovery_runs);
             worksheet.cell(20, 7, 20, 8, true).string('Tracking Runners');
             worksheet.cell(20, 9).string(tracking_runners);
 
-            defendingattributes = [defending_one_v_one, defending_ariel_ability, tackling, defending_far_post, stopping_the_cross, pressing, recovery_runs, tracking_runners]
+            defendingattributes = [defending_one_v_one, defending_ariel_ability, , supporting_full_back, tackling, pressing, positional_awareness, recovery_runs, tracking_runners]
 
             defending_counter = 0;
             defending_possiblepoints = 0;
@@ -485,16 +443,16 @@ module.exports = function (app) {
             worksheet.cell(12, 10, 12, 12, true).string('Tactical');
             worksheet.cell(13, 10, 13, 11, true).string('Agility');
             worksheet.cell(13, 12).string(agility);
-            worksheet.cell(14, 10, 14, 11, true).string('Angles To Receive');
-            worksheet.cell(14, 12).string(angles_to_recieve);
-            worksheet.cell(15, 10, 15, 11, true).string('Linking Up With Winger');
-            worksheet.cell(15, 12).string(link_up_with_winger);
-            worksheet.cell(16, 10, 16, 11, true).string('Covering Across');
-            worksheet.cell(16, 12).string(covering_across);
+            worksheet.cell(14, 10, 14, 11, true).string('Coming In Off The Line');
+            worksheet.cell(14, 12).string(coming_in_off_the_line);
+            worksheet.cell(15, 10, 15, 11, true).string('Finding Space Out Wide');
+            worksheet.cell(15, 12).string(finding_space_out_wide);
+            worksheet.cell(16, 10, 16, 11, true).string('Link Up With Full Back');
+            worksheet.cell(16, 12).string(link_up_with_full_back);
             worksheet.cell(17, 10, 17, 11, true).string('Willingness To Get Forward');
-            worksheet.cell(17, 12).string(willlingness_to_get_forward);
+            worksheet.cell(17, 12).string(willingness_to_get_forward);
 
-            tacticalattributes = [agility, angles_to_recieve, link_up_with_winger, covering_across, willlingness_to_get_forward]
+            tacticalattributes = [agility, coming_in_off_the_line, finding_space_out_wide, link_up_with_full_back, willingness_to_get_forward]
 
             tactical_counter = 0;
             tactical_possiblepoints = 0;
@@ -517,16 +475,16 @@ module.exports = function (app) {
             worksheet.cell(12, 13, 12, 15, true).string('Physical');
             worksheet.cell(13, 13, 13, 14, true).string('Pace');
             worksheet.cell(13, 15).string(pace);
-            worksheet.cell(14, 13, 14, 14, true).string('Mobility');
-            worksheet.cell(14, 15).string(mobility);
-            worksheet.cell(15, 13, 15, 14, true).string('Work Rate');
-            worksheet.cell(15, 15).string(work_rate);
+            worksheet.cell(14, 13, 14, 14, true).string('Speed When Dribbling');
+            worksheet.cell(14, 15).string(speed_when_dribbling);
+            worksheet.cell(15, 13, 15, 14, true).string('Agility');
+            worksheet.cell(15, 15).string(agility);
             worksheet.cell(16, 13, 16, 14, true).string('Strength');
             worksheet.cell(16, 15).string(strength);
-            worksheet.cell(17, 13, 17, 14, true).string('Jump/Spring');
-            worksheet.cell(17, 15).string(jump);
+            worksheet.cell(17, 13, 17, 14, true).string('Work Rate');
+            worksheet.cell(17, 15).string(work_rate);
 
-            physicalattributes = [pace, mobility, work_rate, strength, jump]
+            physicalattributes = [pace, speed_when_dribbling, agility, strength, work_rate]
 
             physical_counter = 0;
             physical_possiblepoints = 0;
@@ -551,15 +509,15 @@ module.exports = function (app) {
             worksheet.cell(14, 16, 14, 17, true).string('Leadership');
             worksheet.cell(14, 18).string(leadership);
             worksheet.cell(15, 16, 15, 17, true).string('Team Work');
-            worksheet.cell(15, 18).string(team_work);
+            worksheet.cell(15, 18).string(teamwork);
             worksheet.cell(16, 16, 16, 17, true).string('Communication');
-            worksheet.cell(16, 18).string(communicaton);
-            worksheet.cell(17, 16, 17, 17, true).string('Response To Criticism');
-            worksheet.cell(17, 18).string(reponse_to_criticism);
-            worksheet.cell(18, 16, 18, 17, true).string('Reaction To Mistakes');
-            worksheet.cell(18, 18).string(reaction_to_mistake);
-
-            psychologicalattributes = [bravery,leadership,team_work,communication,response_to_criticism,reaction_to_mistake]
+            worksheet.cell(16, 18).string(communication);
+            worksheet.cell(16, 16, 16, 17, true).string('Response To Criticism');
+            worksheet.cell(16, 18).string(response_to_criticism);
+            worksheet.cell(17, 16, 17, 17, true).string('Reaction To Mistakes');
+            worksheet.cell(17, 18).string(reaction_to_mistakes);
+            
+            psychologicalattributes = [bravery,leadership,teamwork,communication,response_to_criticism,reaction_to_mistakes]
 
             psychological_counter = 0;
             psychological_possiblepoints = 0;
@@ -599,20 +557,19 @@ module.exports = function (app) {
             worksheet.cell(37, 8).string(rating);
 
             workbook.write('Report.xlsx');
-
           }
         });
       }
     }
-    );
+  );
 
-    setTimeout(() => { require('../../email/email_app')(app) }, 10000);
-
-
+  setTimeout(() => { require('../../email/email_app')(app) }, 10000);
 
 
 
-  }
 
-  )
+
+}
+
+)
 }

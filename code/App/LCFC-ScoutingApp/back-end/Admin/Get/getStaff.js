@@ -8,31 +8,40 @@ var mysql = require('mysql');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var connect = require('../../mysql_connection/mysql_create_connection');
 
-var connection = mysql.createConnection({
+module.exports = function (app) {
 
-    host: 'localhost',
-  
-    //Enter your mySQL username here
-    user: 'root',
-  
-    //Enter your mySQL password here
-    password: 'password69%',  
-  
-    database: 'LCFC_Scouting'
-  
-  });
-  
-  
+
   app.use(session({
-  
-    secret: 'secret',
-  
-    resave: true,
-  
-    saveUninitialized: true
-  
-  }));
-  
 
-module.exports.connection = connection;
+    secret: 'secret',
+
+    resave: true,
+
+    saveUninitialized: true
+
+  }));
+
+
+  app.post('/api/admin/getStaff', (req, res) => {
+
+    connect.connection.query('SELECT * FROM staff  ', function (error, results, fields) {
+
+
+      if (error) {
+  
+        throw error;
+  
+      } else {
+      console.log(results)
+        res.send(results);
+
+        
+      }
+
+    });
+    
+
+  });
+}  

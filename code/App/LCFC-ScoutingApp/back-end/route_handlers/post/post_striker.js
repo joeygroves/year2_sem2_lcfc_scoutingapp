@@ -13,8 +13,7 @@ var connect = require('../../mysql_connection/mysql_create_connection');
 
 module.exports = function (app) {
 
-  app.post('/api/fullback', (req, res) => {
-
+  app.post('/api/striker', (req, res) => {
     var first_name = req.body.first_name;
     var last_name = req.body.last_name;
     var club_name = req.body.club_name;
@@ -24,119 +23,120 @@ module.exports = function (app) {
     var club_played = req.body.club_played;
     var ht_score = req.body.ht_score;
     var ft_score = req.body.ft_score;
-    var position = 'Full Back'
     var shirt_number = req.body.shirt_number;
+    var position = 'Striker'
 
     var scouted_by = req.session.username
 
-    //In Possession
+    //In possession
+    var hold_up_play = req.body.hold_up_play;
     var receiving_under_pressure = req.body.receiving_under_pressure;
-    var short_passing = req.body.short_passing;
-    var long_passing = req.body.long_passing;
-    var control = req.body.control;
+    var link_up_play = req.body.link_up_play;
     var right_foot = req.body.right_foot;
     var left_foot = req.body.left_foot;
 
     //Attacking
-    var attacking_one_v_one = req.body.attacking_one_v_one;
-    var attacking_ariel_ability = req.body.attacking_ariel_ability;
+    var one_v_one = req.body.one_v_one;
+    var aerial_ability = req.body.aerial_ability;
+    var finishing = req.body.finishing;
+    var right_foot_shooting = req.body.right_foot_shooting;
+    var left_foot_shooting = req.body.left_foot_shooting;
     var crossing = req.body.crossing;
 
     //Defending
-    var defending_one_v_one = req.body.defending_one_v_one;
-    var defending_ariel_ability = req.body.defending_ariel_ability;
+    var one_v_two = req.body.one_v_two;
     var tackling = req.body.tackling;
-    var defending_far_post = req.body.defending_far_post;
-    var stopping_the_cross = req.body.stopping_the_cross;
     var pressing = req.body.pressing;
-    var recovery_runs = req.body.recovery_runs;
-    var tracking_runners = req.body.tracking_runners;
+    var recovering_into_shape = req.body.recovering_into_shape;
 
     //Tactical
     var agility = req.body.agility;
-    var angles_to_recieve = req.body.angles_to_recieve;
-    var link_up_with_winger = req.body.link_up_with_winger;
-    var covering_across = req.body.covering_across;
-    var willlingness_to_get_forward = req.body.willlingness_to_get_forward;
+    var dropping_into_space = req.body.dropping_into_space;
+    var runs_off_the_shoulder = req.body.runs_off_the_shoulder;
+    var running_the_channels = req.body.running_the_channels;
+    var movement_off_the_ball = req.body.movement_off_the_ball;
 
     //Physical
     var pace = req.body.pace;
     var mobility = req.body.mobility;
-    var work_rate = req.body.work_rate;
     var strength = req.body.strength;
+    var work_rate = req.body.work_rate;
     var jump = req.body.jump;
 
-    //Psychological
+    //Pyschological
     var bravery = req.body.bravery;
     var leadership = req.body.leadership;
-    var team_work = req.body.team_work;
-    var communicaton = req.body.communicaton;
-    var reponse_to_criticism = req.body.reponse_to_criticism;
-    var reaction_to_mistake = req.body.reaction_to_mistake;
+    var teamwork = req.body.teamwork;
+    var communication = req.body.communication;
+    var response_to_criticism = req.body.response_to_criticism;
+    var reaction_to_mistakes = req.body.reaction_to_mistakes;
 
     //Rating
     var rating = req.body.rating;
 
-    //Additional Comments
+    //Comments
     var notes = req.body.notes;
-
     //Auto Generated Summary
     var summary = "";
     var average = 0.0;
     var points = 0;
     var threshold = 1;
 
-    //Player Information
+    //Player Info
     var playerID;
 
+    ////null input to database if no value entered by scout
 
-    //// Test for null input to database
+    if (hold_up_play == '') {
+      var hold_up_play = null
+    }
 
     if (receiving_under_pressure == '') {
       var receiving_under_pressure = null
     }
 
-    if (short_passing == '') {
-      var short_passing = null
+
+    if (link_up_play == '') {
+      var link_up_play = null
     }
-
-
-    if (long_passing == '') {
-      var long_passing = null
-    }
-
-    if (control == '') {
-      var control = null
-    }
-
 
     if (right_foot == '') {
       var right_foot = null
     }
 
+
     if (left_foot == '') {
       var left_foot = null
     }
 
-    if (attacking_one_v_one == '') {
-      var attacking_one_v_one = null
+
+    if (one_v_one == '') {
+      var one_v_one = null
     }
 
-    if (attacking_ariel_ability == '') {
-      var attacking_ariel_ability = null
+    if (aerial_ability == '') {
+      var aerial_ability = null
+    }
+
+    if (finishing == '') {
+      var finishing = null
+    }
+
+    if (right_foot_shooting == '') {
+      var right_foot_shooting = null
+    }
+
+    if (left_foot_shooting == '') {
+      var left_foot_shooting = null
     }
 
     if (crossing == '') {
       var crossing = null
     }
 
-    if (defending_one_v_one == '') {
-      var defending_one_v_one = null
-    }
 
-
-    if (defending_ariel_ability == '') {
-      var defending_ariel_ability = null
+    if (one_v_two == '') {
+      var one_v_two = null
     }
 
 
@@ -145,28 +145,13 @@ module.exports = function (app) {
     }
 
 
-    if (defending_far_post == '') {
-      var defending_far_post = null
-    }
-
-
-    if (stopping_the_cross == '') {
-      var stopping_the_cross = null
-    }
-
-
     if (pressing == '') {
       var pressing = null
     }
 
 
-    if (recovery_runs == '') {
-      var recovery_runs = null
-    }
-
-
-    if (tracking_runners == '') {
-      var tracking_runners = null
+    if (recovering_into_shape == '') {
+      var recovering_into_shape = null
     }
 
 
@@ -175,42 +160,43 @@ module.exports = function (app) {
     }
 
 
-    if (angles_to_recieve == '') {
-      var angles_to_recieve = null
+    if (dropping_into_space == '') {
+      var dropping_into_space = null
     }
 
 
-    if (link_up_with_winger == '') {
-      var link_up_with_winger = null
-    }
-
-    if (covering_across == '') {
-      var covering_across = null
+    if (runs_off_the_shoulder == '') {
+      var runs_off_the_shoulder = null
     }
 
 
-    if (willlingness_to_get_forward == '') {
-      var willlingness_to_get_forward = null
+    if (running_the_channels == '') {
+      var running_the_channels = null
     }
 
 
+    if (movement_off_the_ball == '') {
+      var movement_off_the_ball = null
+    }
+
+
+    0
     if (pace == '') {
       var pace = null
     }
-
 
     if (mobility == '') {
       var mobility = null
     }
 
 
-    if (work_rate == '') {
-      var work_rate = null
+    if (strength == '') {
+      var strength = null
     }
 
 
-    if (strength == '') {
-      var strength = null
+    if (work_rate == '') {
+      var work_rate = null
     }
 
 
@@ -229,9 +215,10 @@ module.exports = function (app) {
     }
 
 
-    if (team_work == '') {
-      var team_work = null
+    if (teamwork == '') {
+      var teamwork = null
     }
+
 
 
     if (communication == '') {
@@ -239,21 +226,23 @@ module.exports = function (app) {
     }
 
 
+
     if (response_to_criticism == '') {
       var response_to_criticism = null
     }
 
-    if (reaction_to_mistake == '') {
-      var reaction_to_mistake = null
-    }
 
+
+    if (reaction_to_mistakes == '') {
+      var reaction_to_mistakes = null
+    }
 
     ////
 
 
 
     var PlayerSQL = "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position,shirt_number) VALUES ?";
-    var PlayerValues = [[first_name, last_name, club_name, height, age, position, shirt_number]]
+    var PlayerValues = [[first_name, last_name, club_name, height, age, position, shirt_number]];
 
     connect.connection.query(PlayerSQL, [PlayerValues], function (err, result) {
       if (err) throw err;
@@ -262,26 +251,8 @@ module.exports = function (app) {
 
     // // create and insert summary for the player report
     // // 
-    var attributes = [receiving_under_pressure,
-      short_passing, long_passing, control, right_foot, left_foot,
-      attacking_one_v_one, attacking_ariel_ability, crossing, defending_one_v_one,
-      defending_ariel_ability, tackling, defending_far_post, stopping_the_cross,
-      pressing, recovery_runs, tracking_runners,
-      agility, angles_to_recieve, link_up_with_winger,
-      covering_across, willlingness_to_get_forward,
-      pace, mobility, work_rate, strength, jump, bravery,
-      leadership, team_work, communicaton, reponse_to_criticism,
-      reaction_to_mistake];
-    var attributenames = ['receiving under pressure',
-      'short passing', 'long passing', 'control', 'right foot', 'left foot',
-      'attacking one v one', 'attacking ariel ability', 'crossing', 'defending one v one',
-      'defending ariel ability', 'tackling', 'defending far post', 'stopping the cross',
-      'pressing', 'recovery runs', 'tracking runners',
-      'agility', 'angles to recieve', 'link up with winger',
-      'covering across', 'willlingness to get forward',
-      'pace', 'mobility', 'work rate', 'strength', 'jump', 'bravery',
-      'leadership', 'team work', 'communicaton', 'reponse to criticism',
-      'reaction to mistake'];
+    var attributes = [hold_up_play, receiving_under_pressure, link_up_play, right_foot, left_foot, one_v_one, aerial_ability, finishing, right_foot_shooting, left_foot_shooting, crossing, one_v_two, tackling, pressing, recovering_into_shape, agility, dropping_into_space, runs_off_the_shoulder, running_the_channels, movement_off_the_ball, pace, mobility, strength, work_rate, jump, bravery, leadership, teamwork, communication, response_to_criticism, reaction_to_mistakes];
+    var attributenames = ['hold up play', 'receiving under pressure', 'link up play', 'right foot', 'left foot', 'one v one', 'aerial ability', 'finishing', 'right foot shooting', 'left foot shooting', 'crossing', 'one v two', 'tackling', 'pressing', 'recovering into shape', 'agility', 'dropping into space', 'runs off the shoulder', 'running the channels', 'movement off the ball', 'pace', 'mobility', 'strength', 'work rate', 'jump', 'bravery', 'leadership', 'teamwork', 'communication', 'response to criticism', 'reaction to mistakes'];
     var outstandinglabel = [];
     var outstandingscore = [];
     var i;
@@ -308,8 +279,9 @@ module.exports = function (app) {
 
 
 
-    var PlayerIDSQL = "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST(? AS DECIMAL) AND age = ? AND position = ? AND shirt_number = ?";
-    connect.connection.query(PlayerIDSQL, [first_name, last_name, club_name, height, age, position, shirt_number], function (err, results) {
+
+    var PlayerIDSQL = "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST( ? AS DECIMAL) AND age = ? AND position = ?";
+    connect.connection.query(PlayerIDSQL, [first_name, last_name, club_name, height, age, position], function (err, results) {
       if (err) {
         throw err;
       } else {
@@ -317,19 +289,8 @@ module.exports = function (app) {
         console.log(results.length);
         console.log();
 
-        var sql = "INSERT INTO lcfc_scouting.full_back_reports (player_id, scouted_by, receiving_under_pressure, short_passing, long_passing, control, right_foot, left_foot, attacking_one_v_one, attacking_ariel_ability, crossing, defending_one_v_one, defending_ariel_ability, tackling, defending_far_post, stopping_the_cross, pressing, recovery_runs, tracking_runners, agility, angles_to_receive, link_up_with_winger, covering_across, willlingness_to_get_forward, pace, mobility, work_rate, strength, jump, bravery,leadership, team_work, communicaton, response_to_criticism, reaction_to_mistake,rating, notes, summary) VALUES ?";
-
-        var values = [[results[0].player_id, scouted_by, receiving_under_pressure,
-          short_passing, long_passing, control, right_foot, left_foot,
-          attacking_one_v_one, attacking_ariel_ability, crossing, defending_one_v_one,
-          defending_ariel_ability, tackling, defending_far_post, stopping_the_cross,
-          pressing, recovery_runs, tracking_runners,
-          agility, angles_to_recieve, link_up_with_winger,
-          covering_across, willlingness_to_get_forward,
-          pace, mobility, work_rate, strength, jump, bravery,
-          leadership, team_work, communication, response_to_criticism,
-          reaction_to_mistake,
-          rating, notes, summary]];
+        var sql = "INSERT INTO lcfc_scouting.striker_reports (player_id,scouted_by,hold_up_play, receiving_under_pressure, link_up_play, right_foot, left_foot, one_v_one, ariel_ability, finishing, right_foot_shooting, left_foot_shooting, crossing, one_v_two,  tackling,  pressing, recovering_into_shape, agility, dropping_into_space, runs_off_the_shoulder, running_the_channels, movement_off_the_ball, pace, mobility, strength, work_rate, jump, bravery, leadership, teamwork, communication, response_to_criticism, reaction_to_mistakes, rating, notes, summary ) VALUES ?";
+        var values = [[results[0].player_id, scouted_by, hold_up_play, receiving_under_pressure, link_up_play, right_foot, left_foot, one_v_one, aerial_ability, finishing, right_foot_shooting, left_foot_shooting, crossing, one_v_two, tackling, pressing, recovering_into_shape, agility, dropping_into_space, runs_off_the_shoulder, running_the_channels, movement_off_the_ball, pace, mobility, strength, work_rate, jump, bravery, leadership, teamwork, communication, response_to_criticism, reaction_to_mistakes, rating, notes, summary]];
 
         connect.connection.query(sql, [values], function (err, result) {
 
@@ -350,12 +311,13 @@ module.exports = function (app) {
                 wrapText: true,
                 horizontal: 'center',
               },
-            });
+            })
+
 
             worksheet.cell(1, 7).string('Fixture');
             worksheet.cell(1, 8, 1, 12, true).string(club_name + " vs " + club_played);
 
-            worksheet.cell(4, 3, 8, 4, true).string("Full Back").style(myStyle);;
+            worksheet.cell(4, 3, 8, 4, true).string("Striker").style(myStyle);
             worksheet.cell(4, 5, 4, 6, true).string('Name');
             worksheet.cell(4, 7, 4, 9, true).string(first_name + " " + last_name);
             worksheet.cell(5, 5, 5, 6, true).string('Height');
@@ -381,21 +343,19 @@ module.exports = function (app) {
 
 
             worksheet.cell(12, 1, 12, 3, true).string('In Possession');
-            worksheet.cell(13, 1, 13, 2, true).string('Receiving Under Pressure');
-            worksheet.cell(13, 3).string(receiving_under_pressure);
-            worksheet.cell(14, 1, 14, 2, true).string('Short Passing');
-            worksheet.cell(14, 3).string(short_passing);
-            worksheet.cell(15, 1, 15, 2, true).string('Long Passing');
-            worksheet.cell(15, 3).string(long_passing);
-            worksheet.cell(16, 1, 16, 2, true).string('Control');
-            worksheet.cell(16, 3).string(control);
-            worksheet.cell(17, 1, 17, 2, true).string('Right Foot');
-            worksheet.cell(17, 3).string(right_foot);
-            worksheet.cell(18, 1, 18, 2, true).string('Left Foot');
-            worksheet.cell(18, 3).string(left_foot);
+            worksheet.cell(13, 1, 13, 2, true).string('Hold Up Play');
+            worksheet.cell(13, 3).string(hold_up_play);
+            worksheet.cell(14, 1, 14, 2, true).string('Receiving Under Pressure');
+            worksheet.cell(14, 3).string(receiving_under_pressure);
+            worksheet.cell(15, 1, 15, 2, true).string('Link Up Play');
+            worksheet.cell(15, 3).string(link_up_play);
+            worksheet.cell(16, 1, 16, 2, true).string('Right Foot');
+            worksheet.cell(16, 3).string(right_foot);
+            worksheet.cell(17, 1, 17, 2, true).string('Left Foot');
+            worksheet.cell(17, 3).string(left_foot);
 
 
-            generalattributes = [receiving_under_pressure, short_passing, long_passing, control, right_foot, left_foot]
+            generalattributes = [hold_up_play, receiving_under_pressure, link_up_play, right_foot, left_foot]
 
             general_counter = 0;
             general_possiblepoints = 0;
@@ -415,21 +375,26 @@ module.exports = function (app) {
             worksheet.cell(24, 3).number(general_percentage)
             worksheet.cell(24, 4).string("%")
 
-
             worksheet.cell(12, 4, 12, 6, true).string('Attacking');
             worksheet.cell(13, 4, 13, 5, true).string('1v1');
-            worksheet.cell(13, 6).string(attacking_one_v_one);
+            worksheet.cell(13, 6).string(one_v_one);
             worksheet.cell(14, 4, 14, 5, true).string('Aerial Ability');
-            worksheet.cell(14, 6).string(attacking_ariel_ability);
-            worksheet.cell(15, 4, 15, 5, true).string('Crossing');
-            worksheet.cell(15, 6).string(crossing);
+            worksheet.cell(14, 6).string(aerial_ability);
+            worksheet.cell(15, 4, 15, 5, true).string('Finishing');
+            worksheet.cell(15, 6).string(finishing);
+            worksheet.cell(16, 4, 16, 5, true).string('Right Foot Shooting');
+            worksheet.cell(16, 6).string(right_foot_shooting);
+            worksheet.cell(17, 4, 17, 5, true).string('Left Foot Shooting');
+            worksheet.cell(17, 6).string(left_foot_shooting);
+            worksheet.cell(18, 4, 18, 5, true).string('Crossing');
+            worksheet.cell(18, 6).string(crossing);
 
-            attaackingattributes = [attacking_one_v_one, attacking_ariel_ability, crossing]
+            attaackingattributes = [one_v_one, aerial_ability, finishing, right_foot_shooting,left_foot_shooting,crossing]
 
             attacking_counter = 0;
             attacking_possiblepoints = 0;
             for (i = 0; i <= (attaackingattributes.length - 1); i++) {
-              if (!(attaackingattributes[i] == null)) {
+              if (!(attaackingattributes[i] == null)){
                 attacking_counter++;
                 attacking_possiblepoints += Math.round(attaackingattributes[i]);
               };
@@ -445,29 +410,21 @@ module.exports = function (app) {
 
 
             worksheet.cell(12, 7, 12, 9, true).string('Defending');
-            worksheet.cell(13, 7, 13, 8, true).string('1v1');
-            worksheet.cell(13, 9).string(defending_one_v_one);
-            worksheet.cell(14, 7, 14, 8, true).string('Aerial Ability');
-            worksheet.cell(14, 9).string(defending_ariel_ability);
-            worksheet.cell(15, 7, 15, 8, true).string('Tackling');
-            worksheet.cell(15, 9).string(tackling);
-            worksheet.cell(16, 7, 16, 8, true).string('Defending Far Post');
-            worksheet.cell(16, 9).string(defending_far_post);
-            worksheet.cell(17, 7, 17, 8, true).string('Stopping The Cross');
-            worksheet.cell(17, 9).string(stopping_the_cross);
-            worksheet.cell(18, 7, 18, 8, true).string('Pressing');
-            worksheet.cell(18, 9).string(pressing);
-            worksheet.cell(19, 7, 19, 8, true).string('Recovery Runs');
-            worksheet.cell(19, 9).string(recovery_runs);
-            worksheet.cell(20, 7, 20, 8, true).string('Tracking Runners');
-            worksheet.cell(20, 9).string(tracking_runners);
+            worksheet.cell(13, 7, 13, 8, true).string('1v2');
+            worksheet.cell(13, 9).string(one_v_two);
+            worksheet.cell(14, 7, 14, 8, true).string('Tackling');
+            worksheet.cell(14, 9).string(tackling);
+            worksheet.cell(15, 7, 15, 8, true).string('Pressing');
+            worksheet.cell(15, 9).string(pressing);
+            worksheet.cell(16, 7, 16, 8, true).string('Recovering Into Shape');
+            worksheet.cell(16, 9).string(recovering_into_shape);
 
-            defendingattributes = [defending_one_v_one, defending_ariel_ability, tackling, defending_far_post, stopping_the_cross, pressing, recovery_runs, tracking_runners]
+            defendingattributes = [one_v_two, tackling, pressing, recovering_into_shape]
 
             defending_counter = 0;
             defending_possiblepoints = 0;
             for (i = 0; i <= (defendingattributes.length - 1); i++) {
-              if (!(defendingattributes[i] == null)) {
+              if (!(defendingattributes[i] == null)){
                 defending_counter++;
                 defending_possiblepoints += Math.round(defendingattributes[i]);
               };
@@ -485,21 +442,21 @@ module.exports = function (app) {
             worksheet.cell(12, 10, 12, 12, true).string('Tactical');
             worksheet.cell(13, 10, 13, 11, true).string('Agility');
             worksheet.cell(13, 12).string(agility);
-            worksheet.cell(14, 10, 14, 11, true).string('Angles To Receive');
-            worksheet.cell(14, 12).string(angles_to_recieve);
-            worksheet.cell(15, 10, 15, 11, true).string('Linking Up With Winger');
-            worksheet.cell(15, 12).string(link_up_with_winger);
-            worksheet.cell(16, 10, 16, 11, true).string('Covering Across');
-            worksheet.cell(16, 12).string(covering_across);
-            worksheet.cell(17, 10, 17, 11, true).string('Willingness To Get Forward');
-            worksheet.cell(17, 12).string(willlingness_to_get_forward);
+            worksheet.cell(14, 10, 14, 11, true).string('Dropping Into Space');
+            worksheet.cell(14, 12).string(dropping_into_space);
+            worksheet.cell(15, 10, 15, 11, true).string('Runs Off The Shoulder');
+            worksheet.cell(15, 12).string(runs_off_the_shoulder);
+            worksheet.cell(16, 10, 16, 11, true).string('Running The Channels');
+            worksheet.cell(16, 12).string(running_the_channels);
+            worksheet.cell(17, 10, 17, 11, true).string('Movement Off The Ball');
+            worksheet.cell(17, 12).string(movement_off_the_ball);
 
-            tacticalattributes = [agility, angles_to_recieve, link_up_with_winger, covering_across, willlingness_to_get_forward]
+            tacticalattributes = [agility, dropping_into_space, runs_off_the_shoulder, running_the_channels,movement_off_the_ball]
 
             tactical_counter = 0;
             tactical_possiblepoints = 0;
             for (i = 0; i <= (tacticalattributes.length - 1); i++) {
-              if (!(tacticalattributes[i] == null)) {
+              if (!(tacticalattributes[i] == null)){
                 tactical_counter++;
                 tactical_possiblepoints += Math.round(tacticalattributes[i]);
               };
@@ -519,19 +476,18 @@ module.exports = function (app) {
             worksheet.cell(13, 15).string(pace);
             worksheet.cell(14, 13, 14, 14, true).string('Mobility');
             worksheet.cell(14, 15).string(mobility);
-            worksheet.cell(15, 13, 15, 14, true).string('Work Rate');
-            worksheet.cell(15, 15).string(work_rate);
-            worksheet.cell(16, 13, 16, 14, true).string('Strength');
-            worksheet.cell(16, 15).string(strength);
+            worksheet.cell(15, 13, 15, 14, true).string('Stength/Planning');
+            worksheet.cell(15, 15).string(strength);
+            worksheet.cell(16, 13, 16, 14, true).string('Work Rate');
+            worksheet.cell(16, 15).string(work_rate);
             worksheet.cell(17, 13, 17, 14, true).string('Jump/Spring');
             worksheet.cell(17, 15).string(jump);
 
-            physicalattributes = [pace, mobility, work_rate, strength, jump]
-
+            physicalattributes = [pace, mobility, strength, work_rate,jump]
             physical_counter = 0;
             physical_possiblepoints = 0;
             for (i = 0; i <= (physicalattributes.length - 1); i++) {
-              if (!(physicalattributes[i] == null)) {
+              if (!(physicalattributes[i] == null)){
                 physical_counter++;
                 physical_possiblepoints += Math.round(physicalattributes[i]);
               };
@@ -545,21 +501,22 @@ module.exports = function (app) {
             worksheet.cell(24, 15).number(phsyical_percentage)
             worksheet.cell(24, 16).string("%")
 
+
             worksheet.cell(12, 16, 12, 18, true).string('Psychological');
             worksheet.cell(13, 16, 13, 17, true).string('Bravery');
             worksheet.cell(13, 18).string(bravery);
             worksheet.cell(14, 16, 14, 17, true).string('Leadership');
             worksheet.cell(14, 18).string(leadership);
             worksheet.cell(15, 16, 15, 17, true).string('Team Work');
-            worksheet.cell(15, 18).string(team_work);
+            worksheet.cell(15, 18).string(teamwork);
             worksheet.cell(16, 16, 16, 17, true).string('Communication');
-            worksheet.cell(16, 18).string(communicaton);
-            worksheet.cell(17, 16, 17, 17, true).string('Response To Criticism');
-            worksheet.cell(17, 18).string(reponse_to_criticism);
+            worksheet.cell(16, 18).string(communication);
+            worksheet.cell(17, 16, 17, 17, true).string('Response To Criticsm');
+            worksheet.cell(17, 18).string(response_to_criticism);
             worksheet.cell(18, 16, 18, 17, true).string('Reaction To Mistakes');
-            worksheet.cell(18, 18).string(reaction_to_mistake);
+            worksheet.cell(18, 18).string(reaction_to_mistakes);
 
-            psychologicalattributes = [bravery,leadership,team_work,communication,response_to_criticism,reaction_to_mistake]
+            psychologicalattributes = [bravery,leadership,teamwork,communication,response_to_criticism,reaction_to_mistakes]
 
             psychological_counter = 0;
             psychological_possiblepoints = 0;
@@ -599,20 +556,19 @@ module.exports = function (app) {
             worksheet.cell(37, 8).string(rating);
 
             workbook.write('Report.xlsx');
-
           }
         });
       }
     }
-    );
+  );
 
-    setTimeout(() => { require('../../email/email_app')(app) }, 10000);
-
-
+  setTimeout(() => { require('../../email/email_app')(app) }, 10000);
 
 
 
-  }
 
-  )
+
+}
+
+)
 }

@@ -1,0 +1,55 @@
+.App {
+    text-align: center;
+    font-family: 'Centruy Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+  }
+
+  body {
+    margin: 0;
+    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  }
+
+
+  
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    width: 16.7%;
+    /* position: sticky; */
+    /* position: -webkit-sticky; */
+    
+  }
+  
+  
+  tr:nth-child(even) {
+    background-color: #DEECFA;
+  }
+  
+  
+  @media screen and (max-width: 900px) {
+  
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    
+  }
+  
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+      width: 12.5%;
+      /* position: sticky; */
+      /* position: -webkit-sticky; */
+      
+  }
+  }
+  
