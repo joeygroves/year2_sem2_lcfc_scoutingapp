@@ -66,7 +66,7 @@ require('../back-end/route_handlers/post/post_striker')(app);
 
 require('../back-end/view_reports/view_reports')(app);
 
-require('../back-end/email/email_app')(app);
+//require('../back-end/email/email_app')(app);
 
 
 
