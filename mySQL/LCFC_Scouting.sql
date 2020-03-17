@@ -10,29 +10,29 @@ FLUSH PRIVILEGES;
 
 CREATE TABLE staff(
 username VARCHAR(25) NOT NULL,
-password VARCHAR(25) NOT NULL,
-first_name VARCHAR(20) NOT NULL,
-last_name VARCHAR(20) NOT NULL,
+password VARCHAR(45) NOT NULL,
+first_name VARCHAR(30) NOT NULL,
+last_name VARCHAR(30) NOT NULL,
 role VARCHAR(40) NOT NULL,
 PRIMARY KEY (username)
 );
 
 CREATE TABLE club(
 club_id INTEGER NOT NULL,
-club_name VARCHAR(50) NOT NULL,
+club_name VARCHAR(70) NOT NULL,
 PRIMARY KEY (club_id)
 );
 
 
 CREATE TABLE player(
 player_id INT auto_increment NOT NULL,
-first_name VARCHAR(20) NOT NULL,
-last_name VARCHAR(20) NOT NULL,
-club VARCHAR(20) NOT NULL,
-height FLOAT,
+first_name VARCHAR(30),
+last_name VARCHAR(30) ,
+club VARCHAR(70),
+height VARCHAR(40),
 age INTEGER,
-position VARCHAR(25) NOT NULL,
-shirt_number INT NOT NULL,
+position VARCHAR(45) NOT NULL,
+shirt_number INT,
 PRIMARY KEY (player_id)
 );
 

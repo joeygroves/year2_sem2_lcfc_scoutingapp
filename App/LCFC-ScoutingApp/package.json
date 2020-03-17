@@ -1,0 +1,26 @@
+{
+  "name": "lcfc-scoutingapp",
+  "version": "1.0.0",
+  "scripts": {
+    "client": "cd ../front-end && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "delay": "^4.3.0",
+    "excel4node": "^1.7.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.0",
+    "json": "^9.0.6",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.4.4",
+    "nodemon": "^2.0.2",
+    "react-json-table": "^0.1.1",
+    "react-router": "^5.1.2"
+  },
+  "devDependencies": {
+    "concurrently": "^4.0.1"
+  }
+}
