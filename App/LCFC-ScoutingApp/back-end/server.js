@@ -74,6 +74,8 @@ require('../back-end/Admin/Get/getStaff')(app);
 
 require('../back-end/Admin/Get/getScoutData')(app);
 
+require('../back-end/Admin/Post/postStaff')(app);
+
 
 // --------------------------------------------------------------------------------------------------------- Get User Information -----------------------------------------------------------------------
 
