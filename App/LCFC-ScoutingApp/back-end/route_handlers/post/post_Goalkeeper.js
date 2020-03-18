@@ -330,8 +330,15 @@ module.exports = function (app) {
                 general_possiblepoints += Math.round(generalattributes[i]);
               };
             };
+            if ((general_counter) == 0) {
 
-            general_percentage = (general_possiblepoints / general_counter) * 10
+              general_percentage = 0;
+
+            } else {
+
+              general_percentage = (general_possiblepoints / general_counter) * 10
+
+            }
 
 
             worksheet.cell(23, 2).string("Points")
@@ -364,7 +371,15 @@ module.exports = function (app) {
               };
             };
 
-            distribution_percentage = (distribution_possiblepoints / distribution_counter) * 10
+            if ((distribution_counter) == 0) {
+
+              distribution_percentage = 0;
+
+            } else {
+
+              distribution_percentage = (distribution_possiblepoints / distribution_counter) * 10
+
+            }
 
             worksheet.cell(23, 5).string("Points")
             worksheet.cell(24, 5).string("Percentage")
@@ -387,7 +402,7 @@ module.exports = function (app) {
             worksheet.cell(18, 7, 18, 8, true).string('Tendancy To Catch');
             worksheet.cell(18, 9).string(tendancy_to_catch);
 
-            decision_makingattributes = [dealing_with_crosses, starting_position, one_v_one, dealing_with_through_ball,tendancy_to_punch,tendancy_to_catch]
+            decision_makingattributes = [dealing_with_crosses, starting_position, one_v_one, dealing_with_through_ball, tendancy_to_punch, tendancy_to_catch]
 
             decision_making_counter = 0;
             decision_making_possiblepoints = 0;
@@ -398,7 +413,14 @@ module.exports = function (app) {
               };
             };
 
-            decision_making_percentage = (decision_making_possiblepoints / decision_making_counter) * 10
+            if ((decision_making_counter) == 0) {
+
+              decision_making_percentage = 0;
+            } else {
+
+              decision_making_percentage = (decision_making_possiblepoints / decision_making_counter) * 10
+
+            }
 
             worksheet.cell(23, 8).string("Points")
             worksheet.cell(24, 8).string("Percentage")
@@ -420,16 +442,24 @@ module.exports = function (app) {
 
             phsyicalattributes = [agility, reactions, strength, speed]
 
-            phsyical_counter = 0;
-            phsyical_possiblepoints = 0;
-            for (i = 0; i <= (phsyicalattributes.length - 1); i++) {
-              if (!(phsyicalattributes[i] == null)) {
-                phsyical_counter++;
-                phsyical_possiblepoints += Math.round(phsyicalattributes[i]);
+            physical_counter = 0;
+            physical_possiblepoints = 0;
+            for (i = 0; i <= (physicalattributes.length - 1); i++) {
+              if (!(physicalattributes[i] == null)) {
+                physical_counter++;
+                physical_possiblepoints += Math.round(physicalattributes[i]);
               };
             };
 
-            phsyical_percentage = (phsyical_possiblepoints / phsyical_counter) * 10
+            if ((physical_counter) == 0) {
+
+              phsyical_percentage = 0;
+
+            } else {
+
+              phsyical_percentage = (physical_possiblepoints / physical_counter) * 10
+
+            }
 
             worksheet.cell(23, 11).string("Points")
             worksheet.cell(24, 11).string("Percentage")
@@ -453,7 +483,6 @@ module.exports = function (app) {
 
             psychological_counter = 0;
             psychological_possiblepoints = 0;
-
             for (i = 0; i <= (psychologicalattributes.length - 1); i++) {
               if (!(psychologicalattributes[i] == null)) {
                 psychological_counter++;
@@ -461,8 +490,15 @@ module.exports = function (app) {
               };
             };
 
+            if ((psychological_counter) == 0) {
 
-            psychological_percentage = ((psychological_possiblepoints / psychological_counter)) * 10
+              psychological_percentage = 0;
+
+            } else {
+
+              psychological_percentage = (psychological_possiblepoints / psychological_counter) * 10
+
+            }
 
             worksheet.cell(23, 14).string("Points")
             worksheet.cell(24, 14).string("Percentage")
@@ -472,7 +508,7 @@ module.exports = function (app) {
 
 
             worksheet.cell(26, 7, 26, 10, true).string('Grand Total Marks (290)');
-            worksheet.cell(26, 11).number(phsyical_possiblepoints+psychological_possiblepoints+decision_making_possiblepoints+distribution_possiblepoints+general_possiblepoints);
+            worksheet.cell(26, 11).number(phsyical_possiblepoints + psychological_possiblepoints + decision_making_possiblepoints + distribution_possiblepoints + general_possiblepoints);
 
             worksheet.cell(28, 7, 28, 10, true).string('Overall % Score');
             worksheet.cell(28, 11).formula('AVERAGE(C24,F24,I24,L24,O24,R24)');

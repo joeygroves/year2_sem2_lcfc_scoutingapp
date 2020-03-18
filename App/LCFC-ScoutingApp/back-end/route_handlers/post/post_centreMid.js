@@ -219,10 +219,6 @@ module.exports = function (app) {
       var confidence = null
     }
 
-
-    ////
-
-
     var PlayerSQL =
       "INSERT INTO lcfc_scouting.player (first_name,last_name,club,height,age,position,shirt_number) VALUES ?";
     var PlayerValues = [
@@ -266,9 +262,6 @@ module.exports = function (app) {
 
     };
     summary += "."
-
-
-
 
     var PlayerIDSQL =
       "SELECT player_id FROM player where first_name = ? AND last_name = ? AND club = ? AND CAST(height AS DECIMAL) = CAST( ? AS DECIMAL) AND age = ? AND position = ?";
@@ -364,13 +357,21 @@ module.exports = function (app) {
               general_counter = 0;
               general_possiblepoints = 0;
               for (i = 0; i <= (generalattributes.length - 1); i++) {
-                if (!(generalattributes[i] == null)){
+                if (!(generalattributes[i] == null)) {
                   general_counter++;
                   general_possiblepoints += Math.round(generalattributes[i]);
                 };
               };
 
-              general_percentage = (general_possiblepoints / general_counter) * 10
+              if ((general_counter) == 0) {
+
+                general_percentage = 0;
+
+              } else {
+
+                general_percentage = (general_possiblepoints / general_counter) * 10
+
+              }
 
 
               worksheet.cell(23, 2).string("Points")
@@ -395,13 +396,21 @@ module.exports = function (app) {
               attacking_counter = 0;
               attacking_possiblepoints = 0;
               for (i = 0; i <= (attaackingattributes.length - 1); i++) {
-                if (!(attaackingattributes[i] == null)){
+                if (!(attaackingattributes[i] == null)) {
                   attacking_counter++;
                   attacking_possiblepoints += Math.round(attaackingattributes[i]);
                 };
               };
 
-              atacking_percentage = (attacking_possiblepoints / attacking_counter) * 10
+              if ((attacking_counter) == 0) {
+
+                atacking_percentage = 0;
+
+              } else {
+
+                atacking_percentage = (attacking_possiblepoints / attacking_counter) * 10
+
+              }
 
               worksheet.cell(23, 5).string("Points")
               worksheet.cell(24, 5).string("Percentage")
@@ -429,13 +438,22 @@ module.exports = function (app) {
               defending_counter = 0;
               defending_possiblepoints = 0;
               for (i = 0; i <= (defendingattributes.length - 1); i++) {
-                if (!(defendingattributes[i] == null)){
+                if (!(defendingattributes[i] == null)) {
                   defending_counter++;
                   defending_possiblepoints += Math.round(defendingattributes[i]);
                 };
               };
 
-              defending_percentage = (defending_possiblepoints / defending_counter) * 10
+              if ((defending_counter) == 0) {
+
+                defending_percentage = 0;
+
+              } else {
+
+                defending_percentage = (defending_possiblepoints / defending_counter) * 10
+
+              }
+
 
               worksheet.cell(23, 8).string("Points")
               worksheet.cell(24, 8).string("Percentage")
@@ -454,17 +472,24 @@ module.exports = function (app) {
               worksheet.cell(16, 12).string(creativity);
 
               tacticalattributes = [agility, finding_space, vision, creativity]
-
               tactical_counter = 0;
               tactical_possiblepoints = 0;
               for (i = 0; i <= (tacticalattributes.length - 1); i++) {
-                if (!(tacticalattributes[i] == null)){
+                if (!(tacticalattributes[i] == null)) {
                   tactical_counter++;
                   tactical_possiblepoints += Math.round(tacticalattributes[i]);
                 };
               };
 
-              tactical_percentage = (tactical_possiblepoints / tactical_counter) * 10
+              if ((tactical_counter) == 0) {
+
+                tactical_percentage = 0;
+
+              } else {
+
+                tactical_percentage = (tactical_possiblepoints / tactical_counter) * 10
+
+              }
 
 
               worksheet.cell(23, 11).string("Points")
@@ -489,14 +514,21 @@ module.exports = function (app) {
               physical_counter = 0;
               physical_possiblepoints = 0;
               for (i = 0; i <= (physicalattributes.length - 1); i++) {
-                if (!(physicalattributes[i] == null)){
+                if (!(physicalattributes[i] == null)) {
                   physical_counter++;
                   physical_possiblepoints += Math.round(physicalattributes[i]);
                 };
               };
 
-              phsyical_percentage = (physical_possiblepoints / physical_counter) * 10
+              if ((physical_counter) == 0) {
 
+                phsyical_percentage = 0;
+
+              } else {
+
+                phsyical_percentage = (physical_possiblepoints / physical_counter) * 10
+
+              }
               worksheet.cell(23, 14).string("Points")
               worksheet.cell(24, 14).string("Percentage")
               worksheet.cell(23, 15).number(physical_possiblepoints)
@@ -515,44 +547,49 @@ module.exports = function (app) {
               worksheet.cell(16, 18).string(emotional_control);
               worksheet.cell(17, 16, 17, 17, true).string('Confidence');
               worksheet.cell(17, 18).string(confidence);
-              
 
-              psychologicalattributes = [communication,concentration,commitment,emotional_control,confidence]
+
+              psychologicalattributes = [communication, concentration, commitment, emotional_control, confidence]
 
               psychological_counter = 0;
               psychological_possiblepoints = 0;
-              
-              for (i = 0; i <= (psychologicalattributes.length -1); i++) {
-                if (!(psychologicalattributes[i] == null)){
+              for (i = 0; i <= (psychologicalattributes.length - 1); i++) {
+                if (!(psychologicalattributes[i] == null)) {
                   psychological_counter++;
                   psychological_possiblepoints += Math.round(psychologicalattributes[i]);
-                };    
+                };
               };
-       
 
-              psychological_percentage = ((psychological_possiblepoints/psychological_counter))*10
+              if ((psychological_counter) == 0) {
 
-              worksheet.cell(23,17).string("Points")
-              worksheet.cell(24,17).string("Percentage")
-              worksheet.cell(23,18).number(psychological_possiblepoints)
-              worksheet.cell(24,18).number(psychological_percentage)
-              worksheet.cell(24,19).string("%")
+                psychological_percentage = 0;
+
+              } else {
+
+                psychological_percentage = (psychological_possiblepoints / psychological_counter) * 10
+
+              }
+              worksheet.cell(23, 17).string("Points")
+              worksheet.cell(24, 17).string("Percentage")
+              worksheet.cell(23, 18).number(psychological_possiblepoints)
+              worksheet.cell(24, 18).number(psychological_percentage)
+              worksheet.cell(24, 19).string("%")
 
 
               worksheet.cell(26, 7, 26, 10, true).string('Grand Total Marks (340)');
-              worksheet.cell(26, 11).number(attacking_possiblepoints+psychological_possiblepoints+physical_possiblepoints+defending_possiblepoints+tactical_possiblepoints);
+              worksheet.cell(26, 11).number(attacking_possiblepoints + psychological_possiblepoints + physical_possiblepoints + defending_possiblepoints + tactical_possiblepoints);
 
               worksheet.cell(28, 7, 28, 10, true).string('Overall % Score');
               worksheet.cell(28, 11).formula('AVERAGE(C24,F24,I24,L24,O24,R24)');
-              worksheet.cell(28,12).string("%")
-              
+              worksheet.cell(28, 12).string("%")
+
               worksheet.cell(29, 1, 29, 18, true).string('Notes');
               worksheet.cell(30, 1, 32, 18, true).string(notes);
-              
+
               worksheet.cell(33, 1, 33, 18, true).string('Summary');
               worksheet.cell(34, 1, 36, 18, true).string(summary).style(myStyle);
 
-              
+
               worksheet.cell(37, 4, 37, 7, true).string('Player Rating');
               worksheet.cell(37, 8).string(rating);
 
