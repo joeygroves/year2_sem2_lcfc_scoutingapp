@@ -75,4 +75,38 @@ module.exports = function (app) {
     }
 
   });
+
+  app.post('/api/filteredReports', (req, res) => {
+
+
+    var rating_filter = req.body.rating_filter;
+
+    var position_filter = "";
+
+    if(rating_filter == "" && position_filter  != ""){
+
+      //
+    } else if (rating_filter != "" && position_filter == ""){ 
+
+      //
+
+    } else {
+      
+
+    console.log(rating_filter);
+
+    connect.connection.query("select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age',goalkeeper_reports.rating AS 'Grade', player.height AS 'Height' , player.position as 'Position', player.player_id from player inner join goalkeeper_reports on goalkeeper_reports.player_id = player.player_id  AND goalkeeper_reports.rating  = ? union  select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age',wide_midfielder_reports.rating AS 'Grade', player.height AS 'Height', player.position as 'Position', player.player_id from player inner join wide_midfielder_reports on wide_midfielder_reports.player_id = player.player_id AND wide_midfielder_reports.rating = ? union  select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age',centre_back_reports.rating AS 'Grade', player.height AS 'Height' , player.position as 'Position' , player.player_id from player inner join centre_back_reports on centre_back_reports.player_id = player.player_id AND centre_back_reports.rating = ? union  select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age',centre_midfielder_reports.rating AS 'Grade', player.height AS 'Height', player.position as 'Position'  , player.player_id from player inner join centre_midfielder_reports on centre_midfielder_reports.player_id = player.player_id AND centre_midfielder_reports.rating = ? union select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age',full_back_reports.rating AS 'Grade', player.height AS 'Height' , player.position as 'Position', player.player_id from player inner join full_back_reports on full_back_reports.player_id = player.player_id AND full_back_reports.rating = ?  union select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age',striker_reports.rating AS 'Grade', player.height AS 'Height' , player.position as 'Position' , player.player_id from player inner join striker_reports on striker_reports.player_id = player.player_id AND striker_reports.rating = ?  ",
+      [rating_filter, rating_filter, rating_filter, rating_filter, rating_filter, rating_filter], function (error, results, fields) {
+
+        res.send(results);
+
+        console.log(results);
+
+      });
+
+
+    }
+  });
+
+
 }  
