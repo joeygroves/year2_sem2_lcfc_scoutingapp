@@ -113,32 +113,38 @@ class HomePage extends React.Component {
                     <div class="homepage">
                         <h1> Player Reports </h1>
 
-                        <div id="RatingFilter">
-                            <select ref="RatingType" onChange={e => this.filterReports()}>
-                                <option value="Blank"></option>
-                                <option value="A">A</option>
-                                <option value="B+">B+</option>
-                                <option value="B">B </option>
-                                <option value="C">C</option>
+                        <div class="Filters">
+                            <h2> Filters: </h2>
 
-                            </select>
+                            <div class="RatingFilter">
+                                <label>Rating  </label>
+                                <select ref="RatingType" onChange={e => this.filterReports()}>
+                                    <option value="Blank"></option>
+                                    <option value="A">A</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B">B </option>
+                                    <option value="C">C</option>
+
+                                </select>
+                            </div>
+
+                            <div class="PositionFilter">
+                                <label>Position  </label>
+                                <select ref="PositionType" onChange={e => this.filterReports()}>
+                                    <option value="Blank"></option>
+                                    <option value="Goalkeeper">Goalkeeper</option>
+                                    <option value="Full Back">Full Back</option>
+                                    <option value="Centre Back">Centre Back</option>
+                                    <option value="Centre Midfield">Centre Midfield</option>
+                                    <option value="Wide Midfield">Wide Midfield</option>
+                                    <option value="Striker">Striker</option>
+
+                                </select>
+                            </div>
+                            <br></br>
+                            
+                            
                         </div>
-
-                        <div id="PositionFilter">
-                            <select ref="PositionType" onChange={e => this.filterReports()}>
-                                <option value="Blank"></option>
-                                <option value="Goalkeeper">Goalkeeper</option>
-                                <option value="Full Back">Full Back</option>
-                                <option value="Centre Back">Centre Back</option>
-                                <option value="Centre Midfield">Centre Midfield</option>
-                                <option value="Wide Midfield">Wide Midfield</option>
-                                <option value="Striker">Striker</option>
-
-                            </select>
-                        </div>
-
-
-
 
                         <table class="Table">
                             <thead>
