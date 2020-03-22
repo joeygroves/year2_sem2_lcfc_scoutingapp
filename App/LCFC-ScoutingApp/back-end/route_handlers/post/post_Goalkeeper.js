@@ -444,10 +444,10 @@ module.exports = function (app) {
 
             physical_counter = 0;
             physical_possiblepoints = 0;
-            for (i = 0; i <= (physicalattributes.length - 1); i++) {
-              if (!(physicalattributes[i] == null)) {
+            for (i = 0; i <= (phsyicalattributes.length - 1); i++) {
+              if (!(phsyicalattributes[i] == null)) {
                 physical_counter++;
-                physical_possiblepoints += Math.round(physicalattributes[i]);
+                physical_possiblepoints += Math.round(phsyicalattributes[i]);
               };
             };
 
@@ -463,7 +463,7 @@ module.exports = function (app) {
 
             worksheet.cell(23, 11).string("Points")
             worksheet.cell(24, 11).string("Percentage")
-            worksheet.cell(23, 12).number(phsyical_possiblepoints)
+            worksheet.cell(23, 12).number(physical_possiblepoints)
             worksheet.cell(24, 12).number(phsyical_percentage)
             worksheet.cell(24, 13).string("%")
 
