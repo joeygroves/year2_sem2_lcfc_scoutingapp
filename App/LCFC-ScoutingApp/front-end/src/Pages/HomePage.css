@@ -2,6 +2,8 @@
 	/* Force table to not be like tables anymore */
 	.homepage table, .homepage thead, .homepage tbody, .homepage th, .homepage td, .homepage tr { 
 		display: block; 
+
+		
 	}
 	
 	/* Hide table headers (but not display: none;, for accessibility) */
@@ -56,4 +58,54 @@ Generic Styling, for Desktops/Laptops
   .homepage tr:nth-child(even) {
     background-color: #DEECFA;
   }
+
+  .Filters{
+
+	width: 100%;
+
+	height: fit-content;
+
+  }
+
+  .RatingFilter{
+
+	width: 50%;
+	float: left;
+
+  }
   
+  .PositionFilter{
+	width: 50%;
+	float: right;
+  }
+
+  @media only screen and (max-width: 760px)  {
+
+	.RatingFilter label{
+		padding-left: 0px;
+		
+	}
+	  
+	.PositionFilter label{
+		padding-left: 0px;
+		
+	}
+
+  }
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

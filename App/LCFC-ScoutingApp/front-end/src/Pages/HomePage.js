@@ -10,6 +10,11 @@ class HomePage extends React.Component {
 
         JSONStringDataForUsers: [], FirstName: '', role: '',
 
+        // Filters 
+
+
+        position_filter: '', rating_filter: '',
+
 
 
     }
@@ -66,10 +71,35 @@ class HomePage extends React.Component {
 
     }
 
+    filterReports = async (e) => {
+
+        const response = await fetch('/api/filteredReports', {
+
+            method: 'POST',
+
+            headers: {
+
+                'Content-Type': 'application/json',
+
+            },
+
+
+            body: JSON.stringify({ rating_filter: this.refs.RatingType.value, position_filter: this.refs.PositionType.value }),
+
+        });
+
+        const body = await response.json();
+
+        this.setState({ JSONStringDataForUsers: body });
+
+        console.log(this.state.JSONStringDataForUsers);
+
+    };
+
 
     render() {
 
-        if (this.state.role == "Scout" || this.state.role == "Senior Scout" ) {
+        if (this.state.role == "Scout" || this.state.role == "Senior Scout") {
 
             return (
 
@@ -82,6 +112,39 @@ class HomePage extends React.Component {
                     </div>
                     <div class="homepage">
                         <h1> Player Reports </h1>
+
+                        <div class="Filters">
+                            <h2> Filters: </h2>
+
+                            <div class="RatingFilter">
+                                <label>Rating  </label>
+                                <select ref="RatingType" onChange={e => this.filterReports()}>
+                                    <option value="Blank"></option>
+                                    <option value="A">A</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B">B </option>
+                                    <option value="C">C</option>
+
+                                </select>
+                            </div>
+
+                            <div class="PositionFilter">
+                                <label>Position  </label>
+                                <select ref="PositionType" onChange={e => this.filterReports()}>
+                                    <option value="Blank"></option>
+                                    <option value="Goalkeeper">Goalkeeper</option>
+                                    <option value="Full Back">Full Back</option>
+                                    <option value="Centre Back">Centre Back</option>
+                                    <option value="Centre Midfield">Centre Midfield</option>
+                                    <option value="Wide Midfield">Wide Midfield</option>
+                                    <option value="Striker">Striker</option>
+
+                                </select>
+                            </div>
+                            <br></br>
+                            
+                            
+                        </div>
 
                         <table class="Table">
                             <thead>
@@ -147,7 +210,7 @@ class HomePage extends React.Component {
                             <a><Link to={"/admin/ViewStaff"}><button>View Staff</button></Link></a>
                             <br></br>
                             <a><Link to={"/admin/ViewAllReports"}><button>View Player Reports</button></Link></a>
-                            
+
 
 
                         </div>

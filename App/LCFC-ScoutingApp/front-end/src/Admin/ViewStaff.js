@@ -52,7 +52,7 @@ class ViewStaff extends Component {
                 <div>
 
                     <NavBar />
-                    
+
                 </div>
 
                 <div>
@@ -62,20 +62,19 @@ class ViewStaff extends Component {
 
                 </div>
 
-                <div>
-                    <table>
+                <div class="AdminViewStaff">
+                    <table class="Table">
+                        <thead>
+                            <tr class="toggle">
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                                <th>Password</th>
+                                <th>Role</th>
+                                <th>View Reports</th>
 
-                        <tr>
-
-                            <th className="Admin">First Name</th>
-                            <th className="Admin"> Last Name</th>
-                            <th className="Admin">Username</th>
-                            <th className="Admin">Password</th>
-                            <th className="Admin">Role</th>
-                            <th className="Admin">View Reports</th>
-
-                        </tr>
-
+                            </tr>
+                        </thead>
                     </table>
 
                     {this.state.staff_data.map((values, index) => {
@@ -83,18 +82,18 @@ class ViewStaff extends Component {
                         return <div>
 
                             <table>
+                                <tbody>
+                                    <tr>
+                                        <td>{values.first_name} </td>
+                                        <td>{values.last_name} </td>
+                                        <td>{values.username}</td>
+                                        <td>{values.password}</td>
+                                        <td>{values.role} </td>
+                                        <td><a><Link to={`/admin/viewScout/${values.username}`}>View Reports</Link></a></td>
 
-                                <tr>
-                                    <td className="Admin">{values.first_name} </td>
-                                    <td className="Admin">{values.last_name} </td>
-                                    <td className="Admin">{values.username}</td>
-                                    <td className="Admin">{values.password}</td>
-                                    <td className="Admin">{values.role} </td>
-                                    <td className="Admin" ><a><Link to={`/admin/viewScout/${values.username}`}>View Reports</Link></a></td>
 
-
-                                </tr>
-
+                                        </tr>
+                                </tbody>
                             </table>
 
                         </div>

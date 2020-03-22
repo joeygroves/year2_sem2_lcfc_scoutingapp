@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from '../Images/LCFC-Print.png';
-import '../App.css';
+import './admin.css';
 import ReactDOM from 'react-dom';
 import HomePage from '../App';
 import NavBar from '../Components/NavigationBar/NavBar'
@@ -49,8 +49,6 @@ class ScoutData extends Component {
 
         return (
 
-           
-
             <div>
 
                 <div>
@@ -58,51 +56,48 @@ class ScoutData extends Component {
                     <NavBar />
 
                 </div>
+                <div class="AdminViewScout">
+                    <h1> Player Reports </h1>
 
-                <div>
-
-                    <table>
-
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Age</th>
-                            <th>Club</th>
-                            <th>Grade</th>
-                            <th>Height</th>
-                            <th>Position</th>
-                            <th>View</th>
-
-                        </tr>
-
+                    <table class="Table">
+                        <thead>
+                            <tr class="toggle">
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Age</th>
+                                <th>Club</th>
+                                <th>Grade</th>
+                                <th>Height</th>
+                                <th>Position</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
                     </table>
 
                     {this.state.scout_data.map((values, index) => {
 
-                        return <div>
+                        return <div class="Values">
 
                             <table>
+                                <tbody>
+                                    <tr>
+                                        <td>{values.FirstName}</td>
+                                        <td>{values.LastName}</td>
+                                        <td>{values.Age} </td>
+                                        <td>{values.Club} </td>
+                                        <td>{values.Grade} </td>
+                                        <td>{values.Height} </td>
+                                        <td>{values.Position}</td>
 
-                                <tr>
-                                    <td>{values.FirstName}</td>
-                                    <td>{values.LastName}</td>
-                                    <td>{values.Age} </td>
-                                    <td>{values.Club} </td>
-                                    <td>{values.Grade} </td>
-                                    <td>{values.Height} </td>
-                                    <td>{values.Position}</td>
-
-                                    <td><a><Link to={`/ViewPlayerReport/${values.Position.replace(/\s/g, "")}/${values.player_id}`}>Report</Link></a></td>
-                                </tr>
-
+                                        <td><a><Link to={`/ViewPlayerReport/${values.Position.replace(/\s/g, "")}/${values.player_id}`}>Report</Link></a></td>
+                                    </tr>
+                                </tbody>
                             </table>
 
                         </div>
 
                     })}
-
                 </div>
-
             </div>
 
         );

@@ -8,48 +8,121 @@
     font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
   }
 
-
-  
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+  @media only screen and (max-width: 760px)  {
+    /* Force table to not be like tables anymore */
+    .AdminViewScout table, .AdminViewScout thead, .AdminViewScout tbody, .AdminViewScout th, .AdminViewScout td, .AdminViewScout tr { 
+      display: block; 
+    }
     
-  }
-  
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 8px;
-    width: 16.7%;
-    /* position: sticky; */
-    /* position: -webkit-sticky; */
+    /* Hide table headers (but not display: none;, for accessibility) */
+    .AdminViewScout thead tr { 
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
     
-  }
-  
-  
-  tr:nth-child(even) {
-    background-color: #DEECFA;
-  }
-  
-  
-  @media screen and (max-width: 900px) {
-  
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
+    .AdminViewScout tr { border: 1px solid #ccc; }
     
+    .AdminViewScout td { 
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid #eee; 
+          position: relative;
+      padding-left: 70%; 
+    }
+    
+    .AdminViewScout td:before { 
+      /* Now like a table header */
+      position: absolute;
+      /* Top/left values mimic padding */
+      top: 6px;
+      left: 6px;
+      width: 45%; 
+          padding-right: 10px; 
+          font-weight: bold;
+      white-space: nowrap;
+    }
+    
+    /*
+    Label the data
+    */
+    .AdminViewScout td:nth-of-type(1):before { content: "First Name"; }
+    .AdminViewScout td:nth-of-type(2):before { content: "Last Name"; }
+    .AdminViewScout td:nth-of-type(3):before { content: "Age"; }
+    .AdminViewScout td:nth-of-type(4):before { content: "Club"; }
+    .AdminViewScout td:nth-of-type(5):before { content: "Grade"; }
+    .AdminViewScout td:nth-of-type(6):before { content: "Height"; }
+    .AdminViewScout td:nth-of-type(7):before { content: "Positiion"; }
+    .AdminViewScout td:nth-of-type(8):before { content: "View"; }
   }
   
-    td, th {
-      border: 1px solid #dddddd;
-      text-align: center;
-      padding: 8px;
-      width: 12.5%;
-      /* position: sticky; */
-      /* position: -webkit-sticky; */
+  /* 
+  Generic Styling, for Desktops/Laptops 
+  */
+    /* Zebra striping */
+    .AdminViewScout tr:nth-of-type(odd) { 
+      background: #eee; 
+    }
+    .AdminViewScout tr:nth-child(even) {
+      background-color: #DEECFA;
+    }
+    
+    @media only screen and (max-width: 760px)  {
+      /* Force table to not be like tables anymore */
+      .AdminViewStaff table, .AdminViewStaff thead, .AdminViewStaff tbody, .AdminViewStaff th, .AdminViewStaff td, .AdminViewStaff tr { 
+        display: block; 
+      }
       
-  }
-  }
-  
+      /* Hide table headers (but not display: none;, for accessibility) */
+      .AdminViewStaff thead tr { 
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+      
+      .AdminViewStaff tr { border: 1px solid #ccc; }
+      
+      .AdminViewStaff td { 
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee; 
+            position: relative;
+        padding-left: 70%; 
+      }
+      
+      .AdminViewStaff td:before { 
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%; 
+            padding-right: 10px; 
+            font-weight: bold;
+        white-space: nowrap;
+      }
+      
+      /*
+      Label the data
+      */
+      .AdminViewStaff td:nth-of-type(1):before { content: "First Name"; }
+      .AdminViewStaff td:nth-of-type(2):before { content: "Last Name"; }
+      .AdminViewStaff td:nth-of-type(3):before { content: "Username"; }
+      .AdminViewStaff td:nth-of-type(4):before { content: "Password"; }
+      .AdminViewStaff td:nth-of-type(5):before { content: "Role"; }
+      .AdminViewStaff td:nth-of-type(6):before { content: "View Reports"; }
+      
+    }
+    
+    /* 
+    Generic Styling, for Desktops/Laptops 
+    */
+      /* Zebra striping */
+      .AdminViewStaff tr:nth-of-type(odd) { 
+        background: #eee; 
+      }
+      .AdminViewStaff tr:nth-child(even) {
+        background-color: #DEECFA;
+      }
+      
+    
