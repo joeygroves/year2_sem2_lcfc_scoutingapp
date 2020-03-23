@@ -1,38 +1,44 @@
-INSERT INTO staff VALUES ("gclemm", "Ruby.22031997", "Gary", "Clemm", "Developer");
+INSERT INTO staff VALUES ("devGary", "Ruby.22031997", "Gary", "Clemm", "Admin");
+INSERT INTO staff VALUES ("devJamie", "022658", "Jamie", "", "Admin");
+INSERT INTO staff VALUES ("devSean", "1521548", "Sean", "", "Admin");
+INSERT INTO staff VALUES ("devJoey", "165166", "Joey", "", "Admin");
+INSERT INTO staff VALUES ("devMihir", "102155", "Mihir", "", "Admin");
+INSERT INTO staff VALUES ("devShiv", "151615", "Shiv", "", "Admin");
+INSERT INTO staff VALUES ("adminGary", "Ruby.22031997", "Gary", "Clemm", "Admin");
 -- CREATE DATABASE LCFC_Scouting;
 
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Ruby.22031997';
+#ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Ruby.22031997';
 
-FLUSH PRIVILEGES;
+#FLUSH PRIVILEGES;
 
 
 
 CREATE TABLE staff(
 username VARCHAR(25) NOT NULL,
-password VARCHAR(25) NOT NULL,
-first_name VARCHAR(20) NOT NULL,
-last_name VARCHAR(20) NOT NULL,
+password VARCHAR(45) NOT NULL,
+first_name VARCHAR(30) NOT NULL,
+last_name VARCHAR(30) NOT NULL,
 role VARCHAR(40) NOT NULL,
 PRIMARY KEY (username)
 );
 
 CREATE TABLE club(
 club_id INTEGER NOT NULL,
-club_name VARCHAR(50) NOT NULL,
+club_name VARCHAR(70) NOT NULL,
 PRIMARY KEY (club_id)
 );
 
 
 CREATE TABLE player(
 player_id INT auto_increment NOT NULL,
-first_name VARCHAR(20) NOT NULL,
-last_name VARCHAR(20) NOT NULL,
-club VARCHAR(20) NOT NULL,
-height FLOAT,
+first_name VARCHAR(30),
+last_name VARCHAR(30) ,
+club VARCHAR(70),
+height VARCHAR(40),
 age INTEGER,
-position VARCHAR(25) NOT NULL,
-shirt_number INT NOT NULL,
+position VARCHAR(45) NOT NULL,
+shirt_number INT,
 PRIMARY KEY (player_id)
 );
 
