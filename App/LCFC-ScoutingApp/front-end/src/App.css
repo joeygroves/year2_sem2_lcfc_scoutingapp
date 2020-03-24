@@ -117,8 +117,7 @@ td, th {
   text-align: center;
   padding: 8px;
   width: 12.5%;
-  /* position: sticky; */
-  /* position: -webkit-sticky; */
+  
   
 }
 
@@ -141,11 +140,9 @@ tr:nth-child(even) {
     text-align: center;
     padding: 8px;
     width: 12.5%;
-    /* position: sticky; */
-    /* position: -webkit-sticky; */
+    
     
 }
 
 }
-
 

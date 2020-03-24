@@ -82,13 +82,19 @@ Generic Styling, for Desktops/Laptops
   @media only screen and (max-width: 760px)  {
 
 	.RatingFilter label{
-		padding-left: 0px;
+		
+		float: left;
 		
 	}
 	  
 	.PositionFilter label{
 		padding-left: 0px;
-		
+		float: left;
+	}
+
+	.Filters{ 
+
+		padding-bottom: 10px;
 	}
 
   }
