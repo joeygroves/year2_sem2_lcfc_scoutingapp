@@ -419,7 +419,7 @@ module.exports = function (app) {
               worksheet.cell(24, 7).string("%")
 
 
-              worksheet.cell(12, 7, 12, 9, true).sting('Defending');
+              worksheet.cell(12, 7, 12, 9, true).string('Defending');
               worksheet.cell(13, 7, 13, 8, true).string('1v1');
               worksheet.cell(13, 9).string(defending_one_v_one);
               worksheet.cell(14, 7, 14, 8, true).string('Aerial Ability');
