@@ -508,7 +508,7 @@ module.exports = function (app) {
 
 
             worksheet.cell(26, 7, 26, 10, true).string('Grand Total Marks (290)');
-            worksheet.cell(26, 11).number(phsyical_possiblepoints + psychological_possiblepoints + decision_making_possiblepoints + distribution_possiblepoints + general_possiblepoints);
+            worksheet.cell(26, 11).number(decision_making_possiblepoints + physical_possiblepoints + psychological_possiblepoints + general_possiblepoints + distribution_possiblepoints);
 
             worksheet.cell(28, 7, 28, 10, true).string('Overall % Score');
             worksheet.cell(28, 11).formula('AVERAGE(C24,F24,I24,L24,O24,R24)');
