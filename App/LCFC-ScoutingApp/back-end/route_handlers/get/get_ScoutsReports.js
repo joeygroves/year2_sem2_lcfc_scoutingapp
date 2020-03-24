@@ -356,7 +356,7 @@ module.exports = function (app) {
           }
           
           else if (position_filter == "Centre Midfield") {
-            sqlStatement = "select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age',centre_midfielder_reports.rating AS 'Grade', player.height AS 'Height', player.position as 'Position'  , player.player_id from player inner join centre_midfielder_reports on centre_midfielder_reports.player_id = player.player_id and and centre_midfielder_reports.rating =?"
+            sqlStatement = "select player.first_name AS 'FirstName',player.last_name AS 'LastName',player.club AS 'Club',player.age AS 'Age',centre_midfielder_reports.rating AS 'Grade', player.height AS 'Height', player.position as 'Position'  , player.player_id from player inner join centre_midfielder_reports on centre_midfielder_reports.player_id = player.player_id and centre_midfielder_reports.rating =?"
             connect.connection.query(sqlStatement, [rating_filter], function (error, results, fields) {
               if (error) console.log(error);
               res.send(results)
