@@ -223,7 +223,7 @@ module.exports = function (app) {
 
 
     console.log(points, average)
-    var summary = first_name + " " + last_name + " was scouted playing for " + club_name + " on " + date_played + ". " + last_name + ", " + first_name + " performed to grade " + rating + " with an average score of " + average + " showing some outstanding attributes";
+    var summary = first_name + " " + last_name + " was scouted playing for " + club_name + " on " + date_played + ". " + first_name + " " + first_name + " performed to grade " + rating + " with an average score of " + average + " showing some outstanding attributes";
 
     for (i = 0; i <= (attributes.length - 1); i++) {
       if (!(isNaN(attributes[i]))) {
