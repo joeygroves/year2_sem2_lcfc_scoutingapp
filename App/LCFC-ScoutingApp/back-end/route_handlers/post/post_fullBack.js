@@ -619,6 +619,20 @@ module.exports = function (app) {
 
             }
 
+            array_of_percentages = [atacking_percentage,defending_percentage,general_percentage,phsyical_percentage,psychological_percentage,tactical_percentage]
+            overall_percentage = 0
+            overall_values  = 0
+
+            for (i = 0; i <= (array_of_percentages.length - 1); i++) {
+              if (!(array_of_percentages[i] == 0)) {
+                overall_values++;
+                overall_percentage += Math.round(array_of_percentages[i]);
+              };
+            };
+
+            percentage = overall_percentage/overall_values
+
+
             worksheet.cell(23, 17).string("Points")
             worksheet.cell(24, 17).string("Percentage")
             worksheet.cell(23, 18).number(psychological_possiblepoints)
@@ -627,10 +641,10 @@ module.exports = function (app) {
 
 
             worksheet.cell(26, 7, 26, 10, true).string('Grand Total Marks (340)');
-            worksheet.cell(26, 11).number(attacking_possiblepoints + psychological_possiblepoints + physical_possiblepoints + defending_possiblepoints + tactical_possiblepoints);
+            worksheet.cell(26, 11).number(general_possiblepoints + attacking_possiblepoints + psychological_possiblepoints + physical_possiblepoints + defending_possiblepoints + tactical_possiblepoints);
 
             worksheet.cell(28, 7, 28, 10, true).string('Overall % Score');
-            worksheet.cell(28, 11).formula('AVERAGE(C24,F24,I24,L24,O24,R24)');
+            worksheet.cell(28, 11).number(percentage);
             worksheet.cell(28, 12).string("%")
 
             worksheet.cell(29, 1, 29, 18, true).string('Notes');
@@ -642,6 +656,53 @@ module.exports = function (app) {
 
             worksheet.cell(37, 4, 37, 7, true).string('Player Rating');
             worksheet.cell(37, 8).string(rating);
+
+            worksheet.cell(39,1,39,2, true).string('Name');
+            worksheet.cell(39,3,39,4, true).string('Club');
+            worksheet.cell(39,5,39,6, true).string('Position');
+            worksheet.cell(39,7,39,8, true).string('Age');
+            worksheet.cell(39,9,39,10, true).string('Height');
+            worksheet.cell(39,11,39,12, true).string('Date');
+            worksheet.cell(39,13,39,14, true).string('Scout');
+            worksheet.cell(39,15,39,16, true).string('Fixture');
+            worksheet.cell(39,17,39,18, true).string('Grade');
+
+            worksheet.cell(39,19,39,20, true).string('General');
+            worksheet.cell(39,21,39,22, true).string('Distribution');
+            worksheet.cell(39,23,39,24, true).string('Decision Making');
+            worksheet.cell(39,25,39,26, true).string('Physical');
+            worksheet.cell(39,27,39,28, true).string('Psychological');
+
+            worksheet.cell(40,1,40,2, true).string(first_name + " " + last_name);
+            worksheet.cell(40,3,40,4, true).string(club_name);
+            worksheet.cell(40,5,40,6, true).string(position);
+            worksheet.cell(40,7,40,8, true).string(age);
+            worksheet.cell(40,9,40,10, true).string(height);
+            worksheet.cell(40,11,40,12, true).string(date_played);
+            worksheet.cell(40,13,40,14, true).string(scouted_by);
+            worksheet.cell(40,15,40,16, true).string(club_name + " vs " + club_played);
+            worksheet.cell(40,17,40,18, true).string(rating);
+
+            worksheet.cell(39,19,39,20, true).string('In Possession');
+            worksheet.cell(39,21,39,22, true).string('Attacking');
+            worksheet.cell(39,23,39,24, true).string('Defending');
+            worksheet.cell(39,25,39,26, true).string('Tactical');
+            worksheet.cell(39,27,39,28, true).string('Physical');
+            worksheet.cell(39,29,39,30, true).string('Psychological');
+
+            worksheet.cell(40,19,40,20, true).number(general_possiblepoints);
+            worksheet.cell(40,21,40,22, true).number(attacking_possiblepoints);
+            worksheet.cell(40,23,40,24, true).number(defending_possiblepoints);
+            worksheet.cell(40,25,40,26, true).number(tactical_possiblepoints);
+            worksheet.cell(40,27,40,28, true).number(physical_possiblepoints);
+            worksheet.cell(40,29,40,30, true).number(psychological_possiblepoints);
+
+
+            worksheet.cell(39,31,39,32, true).string('Overall');
+            worksheet.cell(39,33,39,34, true).string('Comments');
+
+            worksheet.cell(40,31,40,32, true).number(general_possiblepoints+attacking_possiblepoints+defending_possiblepoints+tactical_possiblepoints+physical_possiblepoints+psychological_possiblepoints);
+            worksheet.cell(40,33,40,34, true).string(notes);
 
             workbook.write('Report.xlsx');
 
