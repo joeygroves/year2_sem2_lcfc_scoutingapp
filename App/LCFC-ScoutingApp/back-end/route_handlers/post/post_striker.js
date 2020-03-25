@@ -265,7 +265,7 @@ module.exports = function (app) {
 
 
     console.log(points, average)
-    var summary = last_name + ", " + first_name + " was scouted playing for " + club_name + " on " + date_played + ". " + last_name + ", " + first_name + " performed to grade " + rating + " with an average score of " + average + " showing some outstanding attributes";
+    var summary = first_name + " " + last_name + " was scouted playing for " + club_name + " on " + date_played + ". " + last_name + ", " + first_name + " performed to grade " + rating + " with an average score of " + average + " showing some outstanding attributes";
 
     for (i = 0; i <= (attributes.length - 1); i++) {
       if ((attributes[i] - threshold) > average) {
@@ -289,7 +289,7 @@ module.exports = function (app) {
         console.log(results.length);
         console.log();
 
-        var sql = "INSERT INTO lcfc_scouting.striker_reports (player_id,scouted_by,hold_up_play, receiving_under_pressure, link_up_play, right_foot, left_foot, one_v_one, ariel_ability, finishing, right_foot_shooting, left_foot_shooting, crossing, one_v_two,  tackling,  pressing, recovering_into_shape, agility, dropping_into_space, runs_off_the_shoulder, running_the_channels, movement_off_the_ball, pace, mobility, strength, work_rate, jump, bravery, leadership, teamwork, communication, response_to_criticism, reaction_to_mistakes, rating, notes, summary ) VALUES ?";
+        var sql = "INSERT INTO lcfc_scouting.striker_reports (player_id,scouted_by,hold_up_play, receiving_under_pressure, link_up_play, right_foot, left_foot, one_v_one, ariel_ability, finishing, right_foot_shooting, left_foot_shooting, crossing, one_v_two,  tackling,  pressing, recovering_into_shape, agility, dropping_into_space, runs_off_the_shoulder, running_the_channels, movement_off_the_ball, pace, mobility, strength, work_rate, jump, bravery, leadership, teamwork, communication, response_to_criticism, reaction_to_mistakes, rating, notes, summary) VALUES ?";
         var values = [[results[0].player_id, scouted_by, hold_up_play, receiving_under_pressure, link_up_play, right_foot, left_foot, one_v_one, aerial_ability, finishing, right_foot_shooting, left_foot_shooting, crossing, one_v_two, tackling, pressing, recovering_into_shape, agility, dropping_into_space, runs_off_the_shoulder, running_the_channels, movement_off_the_ball, pace, mobility, strength, work_rate, jump, bravery, leadership, teamwork, communication, response_to_criticism, reaction_to_mistakes, rating, notes, summary]];
 
         connect.connection.query(sql, [values], function (err, result) {
